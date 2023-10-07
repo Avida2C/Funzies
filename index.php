@@ -4,9 +4,9 @@ require 'functions.php';
 ?>
 
 <?php 
-require_once 'header.php';
+require_once 'include/header.php';
 // Start of Body //
-require_once 'navbar.php';
+require_once 'include/navbar.php';
 ?>
 
     
@@ -16,6 +16,6 @@ require_once 'navbar.php';
 
 
 <?php  
-require_once 'footer.php';
+require_once 'include/footer.php';
 // End of Body //
 ?>
