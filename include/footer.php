@@ -52,17 +52,17 @@
                 <ul class="list-unstyled text-center">
                     <li><b>Find Us</b></li>
                     <li>
-                        <a href="#" class="text-decoration-none text-dark">
+                        <a href="#" class="text-decoration-none text-muted">
                             <ion-icon size="large" name="logo-facebook"></ion-icon>
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="text-decoration-none text-dark">
+                        <a href="#" class="text-decoration-none text-muted">
                             <ion-icon size="large" name="logo-instagram"></ion-icon>
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="text-decoration-none text-dark">
+                        <a href="#" class="text-decoration-none text-muted">
                             <ion-icon size="large" name="logo-twitter"></ion-icon>
                             </ion-icon>
                         </a>

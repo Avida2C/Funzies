@@ -9,4 +9,18 @@ body{
 
 footer ul li{
     padding: 0.2em;
+    cursor:default;
+}
+
+footer ul{
+    margin-top: 0.5em;
+}
+
+footer ul li a:hover
+{
+    color: black;
+}
+
+footer p{
+    cursor: default;
 }
