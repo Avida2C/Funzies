@@ -1,31 +1,107 @@
-*{
+* {
     line-height: 24px;
     font-size: 16px;
 }
 
-body{
+body {
     overflow-y: scroll;
 }
 
-footer ul li{
+footer ul li {
     padding: 0.2em;
-    cursor:default;
-}
-
-footer ul{
-    margin-top: 0.5em;
-}
-
-footer ul li a:hover
-{
-    color: black;
-}
-
-footer p{
     cursor: default;
 }
 
-footer a:hover
-{
+footer ul {
+    margin-top: 0.5em;
+}
+
+footer ul li a:hover {
+    color: black;
+}
+
+footer p {
+    cursor: default;
+}
+
+footer a:hover {
     color: rgb(255, 0, 0) !important;
+}
+
+.navLogo
+{
+    max-width: 100px;
+}
+
+.footerLogo
+{
+    max-width: 200px;
+}
+
+/* Responsiveness */
+
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    #navAccount
+    {
+        order: 2;
+        width: 50%;
+    }
+    #navSearchbar
+    {
+        order: 3;
+    }
+    #navLogo
+    {
+        order: 1;
+    }
+
+    #footerLogo{ 
+        order: 1;
+        width: 100%;
+    }
+
+    #footerIcos{
+        order: 4;
+        width: 100%;
+        margin-bottom: 1em;
+ 
+    }
+
+    #footerHelp
+    {
+        width: 33%;
+    }
+
+    #footerAbout{
+        width: 33%;
+    }
+
+    #footerAccount
+    {
+        width: 33%;
+    }
+
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) { 
+
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px)
+{
+
 }

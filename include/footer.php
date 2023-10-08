@@ -1,11 +1,11 @@
-<footer class="text-center text-lg-start bg-light text-muted">
+<footer class="text-center text-lg-start bg-light text-muted py-4">
 
-    <div class="container col-md-10 w-100 pt-4">
+    <div class="container col-md-8 col-sm-12 align-items-center">
         <div class="row">
-            <div class="col-3">
-                <img class="w-100 px-5" src="img/logo.png" alt="logo">
+            <div class="col-lg-3 col-sm-2">
+                <img class="footerLogo" src="img/logo.png" alt="logo">
             </div>
-            <div class="col-2">
+            <div id="footerAccount" class="col-lg-2 col-sm-1">
                 <ul class="list-unstyled">
                     <li><b>Account</b></li>
                     <li>
@@ -20,7 +20,7 @@
                 </ul>
             </div>
 
-            <div class="col-3">
+            <div id="footerAbout" class="col-lg-3 col-sm-1">
                 <ul class="list-unstyled">
                     <li><b>Funzies Collection</b></li>
                     <li>
@@ -34,7 +34,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="col-2">
+            <div id="footerHelp" class="col-lg-3 col-sm-1">
                 <ul class="list-unstyled">
                     <li><b>Help & Support</b></li>
                     <li>
@@ -48,31 +48,23 @@
                     </li>
                 </ul>
             </div>
-            <div class="col-2">
-                <ul class="list-unstyled text-center">
-                    <li><b>Find Us</b></li>
-                    <li>
-                        <a href="#" class="text-decoration-none text-muted">
-                            <ion-icon size="large" name="logo-facebook"></ion-icon>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="text-decoration-none text-muted">
-                            <ion-icon size="large" name="logo-instagram"></ion-icon>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="text-decoration-none text-muted">
-                            <ion-icon size="large" name="logo-twitter"></ion-icon>
-                            </ion-icon>
-                        </a>
-                    </li>
-                </ul>
-
+            <div id="footerIcos" class="col-lg-1 col-sm-1 text-center">
+                    <b>Find Us:</b>
+                    <br>
+                    <a href="#" class="text-decoration-none text-muted">
+                        <ion-icon size="large" name="logo-facebook"></ion-icon>
+                    </a>
+                    <a href="#" class="text-decoration-none text-muted">
+                        <ion-icon size="large" name="logo-instagram"></ion-icon>
+                    </a>
+                    <a href="#" class="text-decoration-none text-muted">
+                        <ion-icon size="large" name="logo-twitter"></ion-icon>
+                        </ion-icon>
+                    </a>
             </div>
         </div>
         <div class="row bg-light border-top pt-3">
-            <div class="col ms-5">
+            <div class="col">
                 <p> Copyright &copy; <?php echo date("Y") ?> Funzies Collection. All Rights Reserved.</p>
             </div>
         </div>
