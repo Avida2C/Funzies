@@ -38,17 +38,23 @@ footer a:hover {
 
 /* Responsiveness */
 @media only screen and (max-width: 992px) {
+    #navCatergories{
+        order: 1;
+        width: 33%;
+    }
+    
     #navAccount {
-        order: 2;
-        width: 50%;
+        order: 3;
+        width: 33%;
     }
 
     #navSearchbar {
-        order: 3;
+        order: 4;
     }
 
     #navLogo {
-        order: 1;
+        order: 2;
+        width: 33%;
     }
 
     #footerLogo {
