@@ -48,18 +48,18 @@
                 </ul>
             </div>
             <div id="footerIcos" class="col-sm-12 col-md-12 col-lg-1 col-xl-2 text-center">
-                    <b>Find Us:</b>
-                    <br>
-                    <a href="#" class="text-decoration-none text-muted">
-                        <ion-icon size="large" name="logo-facebook"></ion-icon>
-                    </a>
-                    <a href="#" class="text-decoration-none text-muted">
-                        <ion-icon size="large" name="logo-instagram"></ion-icon>
-                    </a>
-                    <a href="#" class="text-decoration-none text-muted">
-                        <ion-icon size="large" name="logo-twitter"></ion-icon>
-                        </ion-icon>
-                    </a>
+                <b>Find Us:</b>
+                <br>
+                <a href="#" class="text-decoration-none text-muted">
+                    <ion-icon size="large" name="logo-facebook"></ion-icon>
+                </a>
+                <a href="#" class="text-decoration-none text-muted">
+                    <ion-icon size="large" name="logo-instagram"></ion-icon>
+                </a>
+                <a href="#" class="text-decoration-none text-muted">
+                    <ion-icon size="large" name="logo-twitter"></ion-icon>
+                    </ion-icon>
+                </a>
             </div>
         </div>
         <div class="row bg-light border-top pt-3">

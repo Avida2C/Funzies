@@ -36,7 +36,6 @@ footer a:hover {
     max-width: 200px;
 }
 
-
 /* Responsiveness */
 @media only screen and (max-width: 992px) {
     #navAccount {
@@ -61,7 +60,6 @@ footer a:hover {
         order: 4;
         width: 100%;
         margin-bottom: 1em;
-
     }
 
     #footerHelp {
@@ -77,4 +75,3 @@ footer a:hover {
     }
 
 }
-
