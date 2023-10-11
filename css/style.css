@@ -38,47 +38,6 @@ footer a:hover {
 
 
 /* Responsiveness */
-/* Extra small devices (phones, 576px and down) */
-@media only screen and (max-width: 576px) {
-    #navAccount {
-        order: 2;
-        width: 50%;
-    }
-
-    #navSearchbar {
-        order: 3;
-    }
-
-    #navLogo {
-        order: 1;
-    }
-
-    #footerLogo {
-        order: 1;
-        width: 100%;
-    }
-
-    #footerIcos {
-        order: 4;
-        width: 100%;
-        margin-bottom: 1em;
-
-    }
-
-    #footerHelp {
-        width: 33%;
-    }
-
-    #footerAbout {
-        width: 33%;
-    }
-
-    #footerAccount {
-        width: 33%;
-    }
-
-}
-
 @media only screen and (max-width: 992px) {
     #navAccount {
         order: 2;
