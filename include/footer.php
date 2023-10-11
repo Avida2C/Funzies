@@ -1,11 +1,10 @@
 <footer class="text-center text-lg-start bg-light text-muted py-4">
-
-    <div class="container col-md-8 col-sm-12 align-items-center">
+    <div class="container col-sm-12 col-md-12 col-lg-12 col-xl-10 align-items-center">
         <div class="row">
-            <div class="col-lg-3 col-sm-2">
+            <div class="col-sm-12 col-md-12 col-lg-3 col-xl-3">
                 <img class="footerLogo" src="img/logo.png" alt="logo">
             </div>
-            <div id="footerAccount" class="col-lg-2 col-sm-1">
+            <div id="footerAccount" class="col-sm-4 col-md-4 col-lg-2 col-xl-2">
                 <ul class="list-unstyled">
                     <li><b>Account</b></li>
                     <li>
@@ -20,7 +19,7 @@
                 </ul>
             </div>
 
-            <div id="footerAbout" class="col-lg-3 col-sm-1">
+            <div id="footerAbout" class="col-sm-4 col-md-4 col-lg-3 col-xl-3">
                 <ul class="list-unstyled">
                     <li><b>Funzies Collection</b></li>
                     <li>
@@ -34,7 +33,7 @@
                     </li>
                 </ul>
             </div>
-            <div id="footerHelp" class="col-lg-3 col-sm-1">
+            <div id="footerHelp" class="col-sm-4 col-md-4 col-lg-2 col-xl-2">
                 <ul class="list-unstyled">
                     <li><b>Help & Support</b></li>
                     <li>
@@ -48,7 +47,7 @@
                     </li>
                 </ul>
             </div>
-            <div id="footerIcos" class="col-lg-1 col-sm-1 text-center">
+            <div id="footerIcos" class="col-sm-12 col-md-12 col-lg-1 col-xl-2 text-center">
                     <b>Find Us:</b>
                     <br>
                     <a href="#" class="text-decoration-none text-muted">
@@ -64,7 +63,7 @@
             </div>
         </div>
         <div class="row bg-light border-top pt-3">
-            <div class="col">
+            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
                 <p> Copyright &copy; <?php echo date("Y") ?> Funzies Collection. All Rights Reserved.</p>
             </div>
         </div>
