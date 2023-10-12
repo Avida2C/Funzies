@@ -25,24 +25,26 @@
                     </ion-icon>
                 </a>
             </div>
+        </div>
 
-            <!-- Navbar Categories section -->
-            <div id="navCatergories"
-                class="navbar navbar-expand-lg navbar-light bg-light col-sm-4 col-md-12 col-lg-2 col-xl-2">
-                <div class="container-fluid">
-                    <button class="navbar-toggler py-2" type="button" data-bs-toggle="offcanvas"
+        <!-- Navbar Categories section includes: Slider -->
+        <div class="container navbar navbar-light bg-light">
+            <div class="row w-100">
+                <div class="col-sm-9 col-md-6 col-lg-4 col-xl-4">
+                    <button class="navbar-toggler p-3 d-flex" type="button" data-bs-toggle="offcanvas"
                         data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar"
                         aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
+                        <span class="mx-2">Categories</span>
                     </button>
                     <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar"
                         aria-labelledby="offcanvasNavbarLabel">
-                        <div class="offcanvas-header">
-                            <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Offcanvas</h5>
+                        <div class="offcanvas-header bg-light">
+                            <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Categories</h5>
                             <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
                                 aria-label="Close"></button>
                         </div>
-                        <div class="offcanvas-body">
+                        <div class="offcanvas-body ms-w">
                             <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                                 <li class="nav-item">
                                     <a class="nav-link active" aria-current="page" href="#">Home</a>
@@ -74,6 +76,25 @@
                         </div>
                     </div>
                 </div>
+                <!-- End Categories - Start of Navigation Section -->
+
+                <div class="col-sm-3 col-md-6 col-lg-8 col-xl-8 navbar-expand-lg">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Shop</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Contact Us</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
+    </div>
+ 
+
+
 </nav>
