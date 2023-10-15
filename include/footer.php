@@ -1,24 +1,11 @@
 <footer class="text-center text-lg-start bg-light text-muted py-4">
     <div class="container col-sm-12 col-md-12 col-lg-12 col-xl-10 align-items-center">
         <div class="row">
-            <div class="col-sm-12 col-md-12 col-lg-3 col-xl-3">
+            <div class="col-sm-12 col-md-12 col-lg-3 col-xl-4">
+                <!-- Logo -->
                 <img class="footerLogo" src="img/logo.png" alt="logo">
             </div>
-            <div id="footerAccount" class="col-sm-4 col-md-4 col-lg-2 col-xl-2">
-                <ul class="list-unstyled">
-                    <li><b>Account</b></li>
-                    <li>
-                        <a href="#" class="text-decoration-none text-muted">Sign Up</a>
-                    </li>
-                    <li>
-                        <a href="#" class="text-decoration-none text-muted">Login</a>
-                    </li>
-                    <li>
-                        <a href="#" class="text-decoration-none text-muted">Shopping Cart</a>
-                    </li>
-                </ul>
-            </div>
-
+            <!-- About Section: About Us, Terms and Conditions, Careers -->
             <div id="footerAbout" class="col-sm-4 col-md-4 col-lg-3 col-xl-3">
                 <ul class="list-unstyled">
                     <li><b>Funzies Collection</b></li>
@@ -33,7 +20,8 @@
                     </li>
                 </ul>
             </div>
-            <div id="footerHelp" class="col-sm-4 col-md-4 col-lg-2 col-xl-2">
+            <!-- Help Section: Help & Support, Privacy Policy, Contact Us -->
+            <div id="footerHelp" class="col-sm-4 col-md-4 col-lg-3 col-xl-2">
                 <ul class="list-unstyled">
                     <li><b>Help & Support</b></li>
                     <li>
@@ -47,20 +35,25 @@
                     </li>
                 </ul>
             </div>
-            <div id="footerIcos" class="col-sm-12 col-md-12 col-lg-1 col-xl-2 text-center">
+            
+            <!-- Find Us Section: Icos -->
+            <div id="footerIcos" class="col-sm-12 col-md-12 col-lg-3 col-xl-3 text-center">
                 <b>Find Us:</b>
                 <br>
                 <a href="#" class="text-decoration-none text-muted">
+                    <!-- Facebook Icon -->
                     <ion-icon size="large" name="logo-facebook"></ion-icon>
                 </a>
                 <a href="#" class="text-decoration-none text-muted">
+                    <!-- Instagram Icon -->
                     <ion-icon size="large" name="logo-instagram"></ion-icon>
                 </a>
                 <a href="#" class="text-decoration-none text-muted">
+                    <!-- Twitter/X Icon -->
                     <ion-icon size="large" name="logo-twitter"></ion-icon>
-                    </ion-icon>
                 </a>
             </div>
+            <!-- Copyright section -->
         </div>
         <div class="row bg-light border-top pt-3">
             <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
@@ -68,8 +61,9 @@
             </div>
         </div>
     </div>
-
+    <!-- End of Footer -->
 </footer>
+
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">

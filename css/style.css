@@ -36,14 +36,24 @@ footer a:hover {
     max-width: 200px;
 }
 
-
 /* Responsiveness */
 @media only screen and (max-width: 992px) {
-    #navCatergories{
+
+    #navCategories {
+        display: none !important;
+    }
+
+    #navCategories-sm {
+        display: inline !important;
         order: 1;
         width: 33%;
     }
-    
+
+    #navNavigation {
+        order: 6;
+        display: none;
+    }
+
     #navAccount {
         order: 3;
         width: 33%;
@@ -58,6 +68,7 @@ footer a:hover {
         width: 33%;
     }
 
+
     #footerLogo {
         order: 1;
         width: 100%;
@@ -70,15 +81,23 @@ footer a:hover {
     }
 
     #footerHelp {
-        width: 33%;
+        width: 50%;
     }
 
     #footerAbout {
-        width: 33%;
+        width: 50%;
+    }
+}
+
+
+@media only screen and (min-width: 993px) {
+
+    #navNavigation {
+        display: block;
     }
 
-    #footerAccount {
-        width: 33%;
+    #navCategories-sm {
+        display: none;
     }
 
 }
