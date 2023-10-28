@@ -68,6 +68,10 @@ footer a:hover {
         width: 33%;
     }
 
+    #footerIcos{
+        text-align: center !important;
+    }
+
 }
 
 
@@ -79,6 +83,11 @@ footer a:hover {
 
     #navCategories-sm {
         display: none;
+    }
+
+    
+    #footerIcos{
+        text-align: end !important;
     }
 
 }

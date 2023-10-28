@@ -1,10 +1,10 @@
-<nav class="text-start bg-light py-2">
+<nav class="text-start bg-light py-2 shadow-sm">
     <div class="container col-sm-12 col-md-12 col-lg-12 col-xl-10">
         <div class="row text-muted">
             <!-- Navbar Logo, Searchbar and Account options -->
             <!-- Website Logo -->
             <div id="navLogo" class="col-sm-4 col-md-12 col-lg-2 col-xl-2 text-start py-1">
-                <img class="navLogo" src="img/logo.png" alt="Logo">
+                <a href="index.php"><img class="navLogo" src="img/logo.png" alt="Logo"></a>
             </div>
             <!-- Searchbar -->
             <div id="navSearchbar" class="col-sm-12 col-md-12 col-lg-8 col-xl-8 py-2 align-items-center">
@@ -53,9 +53,7 @@
                     <!-- Slider Content -->
                     <div class="offcanvas-body m-2">
                         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#">Home</a>
-                            </li>
+
                             <li class="nav-item">
                                 <a class="nav-link" href="#">Features</a>
                             </li>
@@ -115,7 +113,7 @@
                             aria-labelledby="nav-menu-tab" tabindex="0">
                             <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                                 <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                                    <a class="nav-link active" aria-current="page" href="index.php">Home</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="#">Shop</a>
@@ -130,9 +128,6 @@
                         <div class="tab-pane fade" id="nav-categories" role="tabpanel"
                             aria-labelledby="nav-categories-tab" tabindex="0">
                             <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                                <li class="nav-item">
-                                    <a class="nav-link" aria-current="page" href="#">Home</a>
-                                </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="#">Features</a>
                                 </li>
@@ -161,7 +156,7 @@
             <div id="navNavigation" class="col-lg-8 col-xl-8 navbar-expand">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active p-3" aria-current="page" href="#">Home</a>
+                        <a class="nav-link active p-3" aria-current="page" href="index.php">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link p-3" href="#">Shop</a>

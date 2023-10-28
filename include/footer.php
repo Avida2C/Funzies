@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-sm-4 col-md-4 col-lg-2 col-xl-2 py-2">
                 <!-- Logo -->
-                <img class="footerLogo" src="img/logo.png" alt="logo">
+                <a href="index.php"><img class="footerLogo" src="img/logo.png" alt="logo"></a>
             </div>
             <!-- Help Section: Help & Support, Privacy Policy, Contact Us -->
             <div id="footerHelp" class="col-sm-6 col-md-6 col-lg-5 col-xl-5">
@@ -13,27 +13,27 @@
                         <a href="contact.php" class="text-decoration-none text-muted">Contact Us</a>
                     </li>
                     <li>
-                        <a href="#" class="text-decoration-none text-muted">Terms & Conditions</a>
+                        <a href="terms.php" class="text-decoration-none text-muted">Terms & Conditions</a>
                     </li>
                     <li>
-                        <a href="#" class="text-decoration-none text-muted">Privacy Policy</a>
+                        <a href="privacy.php" class="text-decoration-none text-muted">Privacy Policy</a>
                     </li>
                 </ul>
             </div>
 
             <!-- Find Us Section: Icos -->
-            <div id="footerIcos" class="col-sm-12 col-md-12 col-lg-5 col-xl-5 text-center py-4">
+            <div id="footerIcos" class="col-sm-12 col-md-12 col-lg-5 col-xl-5 py-4">
                 <b>Find Us:</b>
                 <br>
-                <a href="#" class="text-decoration-none text-muted">
+                <a href="https://www.facebook.com/" target=”_blank” class="text-decoration-none text-muted">
                     <!-- Facebook Icon -->
                     <ion-icon size="large" name="logo-facebook"></ion-icon>
                 </a>
-                <a href="#" class="text-decoration-none text-muted">
+                <a href="https://www.instagram.com/" target=”_blank” class="text-decoration-none text-muted">
                     <!-- Instagram Icon -->
                     <ion-icon size="large" name="logo-instagram"></ion-icon>
                 </a>
-                <a href="#" class="text-decoration-none text-muted">
+                <a href="https://twitter.com/" target=”_blank” class="text-decoration-none text-muted">
                     <!-- Twitter/X Icon -->
                     <ion-icon size="large" name="logo-twitter"></ion-icon>
                 </a>
