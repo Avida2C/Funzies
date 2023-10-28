@@ -121,7 +121,7 @@
                                     <a class="nav-link" href="#">Shop</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">Contact Us</a>
+                                    <a class="nav-link" href="contact.php">Contact Us</a>
                                 </li>
                             </ul>
 
@@ -167,7 +167,7 @@
                         <a class="nav-link p-3" href="#">Shop</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link p-3" href="#">Contact Us</a>
+                        <a class="nav-link p-3" href="contact.php">Contact Us</a>
                     </li>
                 </ul>
             </div>

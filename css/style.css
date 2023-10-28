@@ -68,25 +68,6 @@ footer a:hover {
         width: 33%;
     }
 
-
-    #footerLogo {
-        order: 1;
-        width: 100%;
-    }
-
-    #footerIcos {
-        order: 4;
-        width: 100%;
-        margin-bottom: 1em;
-    }
-
-    #footerHelp {
-        width: 50%;
-    }
-
-    #footerAbout {
-        width: 50%;
-    }
 }
 
 

@@ -1,43 +1,28 @@
-<footer class="text-center text-lg-start bg-light text-muted py-4">
+<footer class="text-center text-lg-start bg-light text-muted py-2">
     <div class="container col-sm-12 col-md-12 col-lg-12 col-xl-10 align-items-center">
         <div class="row">
-            <div class="col-sm-12 col-md-12 col-lg-3 col-xl-4">
+            <div class="col-sm-4 col-md-4 col-lg-2 col-xl-2 py-2">
                 <!-- Logo -->
                 <img class="footerLogo" src="img/logo.png" alt="logo">
             </div>
-            <!-- About Section: About Us, Terms and Conditions, Careers -->
-            <div id="footerAbout" class="col-sm-4 col-md-4 col-lg-3 col-xl-3">
-                <ul class="list-unstyled">
-                    <li><b>Funzies Collection</b></li>
+            <!-- Help Section: Help & Support, Privacy Policy, Contact Us -->
+            <div id="footerHelp" class="col-sm-6 col-md-6 col-lg-5 col-xl-5">
+                <ul class="list-unstyled ">
+                    <li><b>Help & Support</b></li>
                     <li>
-                        <a href="#" class="text-decoration-none text-muted">About Us</a>
+                        <a href="contact.php" class="text-decoration-none text-muted">Contact Us</a>
                     </li>
                     <li>
                         <a href="#" class="text-decoration-none text-muted">Terms & Conditions</a>
                     </li>
                     <li>
-                        <a href="#" class="text-decoration-none text-muted">Careers</a>
-                    </li>
-                </ul>
-            </div>
-            <!-- Help Section: Help & Support, Privacy Policy, Contact Us -->
-            <div id="footerHelp" class="col-sm-4 col-md-4 col-lg-3 col-xl-2">
-                <ul class="list-unstyled">
-                    <li><b>Help & Support</b></li>
-                    <li>
-                        <a href="#" class="text-decoration-none text-muted">Returns & Warranty</a>
-                    </li>
-                    <li>
                         <a href="#" class="text-decoration-none text-muted">Privacy Policy</a>
                     </li>
-                    <li>
-                        <a href="#" class="text-decoration-none text-muted">Contact Us</a>
-                    </li>
                 </ul>
             </div>
-            
+
             <!-- Find Us Section: Icos -->
-            <div id="footerIcos" class="col-sm-12 col-md-12 col-lg-3 col-xl-3 text-center">
+            <div id="footerIcos" class="col-sm-12 col-md-12 col-lg-5 col-xl-5 text-center py-4">
                 <b>Find Us:</b>
                 <br>
                 <a href="#" class="text-decoration-none text-muted">
