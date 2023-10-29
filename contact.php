@@ -10,8 +10,8 @@ require_once 'include/navbar.php';
 ?>
 
 <div class="container py-4 col-sm-12 col-md-12 col-lg-12 col-xl-10">
-    <div class="row">
-        <div id="contactFunzies" class="p-4 me-4 col-sm-12 col-md-12 col-lg-6 col-xl-7">
+    <div class="row d-flex justify-content-center">
+        <div id="contactFunzies" class="p-4 me-4 col-sm-12 col-md-12 col-lg-5 col-xl-5">
             <form method="POST">
                 <h3>Get in Touch</h3>
                 <div class="row">
@@ -33,7 +33,7 @@ require_once 'include/navbar.php';
                 <button class="btn btn-danger rounded-0 w-100" name="Mailer">Send Message</button>
             </form>
         </div>
-        <div id="aboutFunzies" class="col-sm-12 col-md-12 col-lg-4 col-xl-4 p-4">
+        <div id="aboutFunzies" class="col-sm-12 col-md-12 col-lg-3 col-xl-3 p-4">
             <span class="d-flex">
                 <ion-icon size="large" name="location"></ion-icon>
                 <p class="ms-3">Funzies Collection,<br>1346, Lynn Avenue,<br>Triq Funk,<br>San Pawl il-Baħar, SPB0011

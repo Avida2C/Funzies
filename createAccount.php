@@ -10,8 +10,8 @@ require_once 'include/navbar.php';
 ?>
 
 <div class="container py-4 col-sm-12 col-md-12 col-lg-12 col-xl-10">
-    <div class="row">
-        <div id="createAccLeft" class="col-sm-12 col-md-12 col-lg-12 col-xl-6">
+    <div class="row d-flex justify-content-center">
+        <div id="createAccLeft" class="col-sm-12 col-md-12 col-lg-5 col-xl-5">
             <div class="tab-content" id="pills-tabContent">
                 <div class="tab-pane fade show active" id="pills-signup" role="tabpanel"
                     aria-labelledby="pills-signup-tab" tabindex="0">
@@ -52,7 +52,7 @@ require_once 'include/navbar.php';
                 </div>
             </div>
         </div>
-        <div id="createAccRight" class="col-sm-12 col-md-12 col-lg-12 col-xl-6 p-4 align-self-center" style="height: 400px;">
+        <div id="createAccRight" class="col-sm-12 col-md-12 col-lg-4 col-xl-4 p-4 align-self-center" style="height: 400px;">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-12 py-2">
