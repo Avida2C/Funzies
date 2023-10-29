@@ -29,7 +29,7 @@
                 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight"
                     aria-labelledby="offcanvasRightLabel">
                     <div class="offcanvas-header border-bottom">
-                        <h5 class="offcanvas-title" id="offcanvasRightLabel">Sign in</h5>
+                        <h5 class="offcanvas-title" id="offcanvasRightLabel">Log in</h5>
                         <button class="btn" data-bs-dismiss="offcanvas">
                             <ion-icon class="align-middle me-1" style="font-size: 30px;" name="close-outline"></ion-icon>Close
                         </button>

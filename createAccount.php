@@ -13,8 +13,8 @@ require_once 'include/navbar.php';
     <div class="row">
         <div id="createAccLeft" class="col-sm-12 col-md-12 col-lg-12 col-xl-6">
             <div class="tab-content" id="pills-tabContent">
-                <div class="tab-pane fade show active" id="pills-register" role="tabpanel"
-                    aria-labelledby="pills-register-tab" tabindex="0">
+                <div class="tab-pane fade show active" id="pills-signup" role="tabpanel"
+                    aria-labelledby="pills-signup-tab" tabindex="0">
                     <form class="p-4" method="post">
                         <h1>Sign Up</h1>
                         <label for="username">Username<span class="text-danger">*</span></label>
@@ -23,9 +23,9 @@ require_once 'include/navbar.php';
                         <input class="w-100 p-1 mb-2" type="email" name="email" placeholder="Email" required>
                         <label for="password">Password<span class="text-danger">*</span></label>
                         <input class="w-100 p-1 mb-2" type="password" name="password" placeholder="Password" required>
-                        <p>By clicking Register, you agree to our <a class="text-decoration-none" href="terms.php">Terms
+                        <p>By clicking Sign Up, you are agreeing to our <a class="text-decoration-none" href="terms.php">Terms
                                 and Conditions</a>.</p>
-                        <button class="w-100 btn btn-danger rounded-0">Register</button>
+                        <button class="w-100 btn btn-danger rounded-0">Sign Up</button>
                     </form>
                 </div>
                 <div class="tab-pane fade" id="pills-login" role="tabpanel" aria-labelledby="pills-login-tab"
@@ -65,16 +65,16 @@ require_once 'include/navbar.php';
                         <ul class="nav nav-pills" id="pills-tab" role="tablist">
                             <li class="nav-item" role="presentation">
                                 <button class="btnRegister btn btn-danger rounded-0 active"
-                                    style="display:none; width:120px;" id="pills-register-tab" data-bs-toggle="pill"
-                                    data-bs-target="#pills-register" type="button" role="tab"
-                                    aria-controls="pills-register" aria-selected="true"
-                                    onclick="buttonSwitch('register')">Register</button>
+                                    style="display:none; width:120px;" id="pills-signup-tab" data-bs-toggle="pill"
+                                    data-bs-target="#pills-signup" type="button" role="tab"
+                                    aria-controls="pills-signup" aria-selected="true"
+                                    onclick="buttonSwitch('signup')">Sign Up</button>
                             </li>
                             <li class="nav-item" role="presentation">
                                 <button class="btnLogin btn btn-danger rounded-0" style="width:120px;"
                                     id="pills-login-tab" data-bs-toggle="pill" data-bs-target="#pills-login"
                                     type="button" role="tab" aria-controls="pills-login" aria-selected="false"
-                                    onclick="buttonSwitch('login')">Login</button>
+                                    onclick="buttonSwitch('login')">Log In</button>
                             </li>
                         </ul>
                     </div>
