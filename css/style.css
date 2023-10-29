@@ -88,6 +88,18 @@ footer a:hover {
         order: 1;
     }
 
+    #iconDiamond
+    {
+        order: 1;
+    }
+
+    #forgotPassText{
+        order: 2;
+    }
+
+
+
+
 }
 
 
