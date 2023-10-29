@@ -1,9 +1,9 @@
-<nav class="text-start bg-light py-2 shadow-sm">
+<nav class="bg-light py-2 shadow-sm">
     <div class="container col-sm-12 col-md-12 col-lg-12 col-xl-10">
         <div class="row text-muted">
             <!-- Navbar Logo, Searchbar and Account options -->
             <!-- Website Logo -->
-            <div id="navLogo" class="col-sm-4 col-md-12 col-lg-2 col-xl-2 text-start py-1">
+            <div id="navLogo" class="col-sm-1 col-md-12 col-lg-2 col-xl-2 text-start py-1">
                 <a href="index.php"><img class="navLogo" src="img/logo.png" alt="Logo"></a>
             </div>
             <!-- Searchbar -->
@@ -17,25 +17,78 @@
                 </form>
             </div>
             <!-- Account Options -->
-            <div id="navAccount" class="col-sm-4 col-md-12 col-lg-2 col-xl-2 text-end py-3">
-                <a href="#" class="text-decoration-none text-muted px-1">
+            <div id="navAccount" class="col-sm-6 col-md-12 col-lg-2 col-xl-2 text-end align-self-center">
+                
+            <button class="btn text-muted" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+
                     <!-- User Icon (Account)-->
                     <ion-icon size="large" name="person-circle-outline"></ion-icon>
-                </a>
-                <a href="#" class="text-decoration-none text-muted px-1">
+                </button>
+
+                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight"
+                    aria-labelledby="offcanvasRightLabel">
+                    <div class="offcanvas-header border-bottom">
+                        <h5 class="offcanvas-title" id="offcanvasRightLabel">Sign in</h5>
+                        <button class="btn" data-bs-dismiss="offcanvas">
+                            <ion-icon class="align-middle me-1" style="font-size: 30px;" name="close-outline"></ion-icon>Close
+                        </button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <div class="container col-12">
+                            <div class="row">
+                                <div class="col-12">
+                                    <form class="border-bottom" method="post">
+                                        <label for="email">Email address: <span class="text-danger">*</span></label>
+                                        <input class="w-100 rounded-0 border-1 p-1" type="email" name="email" required>
+                                        <label class="mt-2" for="password">Password: <span
+                                                class="text-danger">*</span></label>
+                                        <input class="w-100 p-1 rounded-0 border-1" type="password" name="password"
+                                            required>
+                                        <button class="w-100 my-3 btn btn-danger rounded-0">Log In</button>
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <input type="checkbox" name="rememberme"> <label
+                                                    for="rememberme">Remember
+                                                    me</label>
+                                            </div>
+                                            <div class="col-6 text-end">
+                                                <a class="text-danger text-decoration-none float-left" href="#">
+                                                    <p>Forgot password?</p>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="col text-center my-3 border-bottom">
+                                    <ion-icon class="text-black-50" style="font-size: 64px;" name="person-circle">
+                                    </ion-icon>
+                                    <h3 class="fs-6">No Account yet?</h3>
+                                    <a class="text-decoration-none text-danger text-underscrol" href="#">
+                                        <p>Create Account</p>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Wishlist -->
+
+                <button class="btn text-muted">
                     <!-- Gift Icon (Wishlist)-->
-                    <ion-icon size="large" name="gift-outline"></ion-icon>
-                </a>
-                <a href="#" class="text-decoration-none text-muted px-1">
+                    <ion-icon style="font-size: 30px;" name="gift-outline"></ion-icon>
+                </button>
+                <button class="btn text-muted">
                     <!-- Cart Icon (Shopping List)-->
-                    <ion-icon size="large" name="cart-outline"></ion-icon>
+                    <ion-icon style="font-size: 30px;" name="cart-outline"></ion-icon>
                     </ion-icon>
                 </a>
             </div>
 
             <!-- Navbar Categories section includes: Slider -->
             <!-- Normal Size Screen -->
-            <div id="navCategories" class="container col-sm-4 col-md-6 col-lg-4 col-xl-4 navbar navbar-light bg-light">
+            <div id="navCategories" class="container col-sm-6 col-md-6 col-lg-4 col-xl-4 navbar navbar-light bg-light">
                 <button class="navbar-toggler py-2 ms-2" type="button" data-bs-toggle="offcanvas"
                     data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
                     <!-- Burger menu icon -->
@@ -44,7 +97,7 @@
                 </button>
                 <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar"
                     aria-labelledby="offcanvasNavbarLabel">
-                    <div class="offcanvas-header bg-light">
+                    <div class="offcanvas-header border-bottom">
                         <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Categories</h5>
                         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
                             aria-label="Close"></button>
@@ -83,8 +136,7 @@
             </div>
 
             <!-- Small Size Screen -->
-            <div id="navCategories-sm"
-                class="container col-sm-4 col-md-6 col-lg-4 col-xl-4 navbar navbar-light bg-light">
+            <div id="navCategories-sm" class="container col-sm-4 col-md-6 col-lg-4 col-xl-4 navbar navbar-light bg-light">
                 <button class="navbar-toggler py-2 ms-2" type="button" data-bs-toggle="offcanvas"
                     data-bs-target="#offcanvasNavbar2" aria-controls="offcanvasNavbar2" aria-label="Toggle navigation">
                     <!-- Burger menu icon -->

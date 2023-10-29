@@ -46,7 +46,7 @@ footer a:hover {
     #navCategories-sm {
         display: inline !important;
         order: 1;
-        width: 33%;
+        width: 12%;
     }
 
     #navNavigation {
@@ -56,7 +56,7 @@ footer a:hover {
 
     #navAccount {
         order: 3;
-        width: 33%;
+        width: 45%;
     }
 
     #navSearchbar {
@@ -65,7 +65,7 @@ footer a:hover {
 
     #navLogo {
         order: 2;
-        width: 33%;
+        width: 40%;
     }
 
     #footerIcos{
