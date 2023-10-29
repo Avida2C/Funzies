@@ -1,4 +1,4 @@
-<footer class="text-center text-lg-start bg-light text-muted py-2">
+<footer class="text-center text-lg-start bg-light text-muted py-2 border-top border-5 border-danger">
     <div class="container col-sm-12 col-md-12 col-lg-12 col-xl-10 align-items-center">
         <div class="row">
             <div class="col-sm-4 col-md-4 col-lg-2 col-xl-2 py-2">

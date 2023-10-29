@@ -1,4 +1,4 @@
-<nav class="bg-light py-2 shadow-sm">
+<nav class="bg-light py-2 shadow-sm border-bottom border-5 border-danger">
     <div class="container col-sm-12 col-md-12 col-lg-12 col-xl-10">
         <div class="row text-muted">
             <!-- Navbar Logo, Searchbar and Account options -->
@@ -9,16 +9,15 @@
             <!-- Searchbar -->
             <div id="navSearchbar" class="col-sm-12 col-md-12 col-lg-8 col-xl-8 py-2 align-items-center">
                 <form method="get" class="d-flex">
-                    <input class="border w-100 p-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="border bg-light" type="submit">
+                    <input class="border border-1 border-muted w-100 px-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-danger rounded-0" type="submit">
                         <!-- Search Icon -->
-                        <ion-icon size="large" name="search-outline"></ion-icon>
+                        <ion-icon name="search-outline"></ion-icon>
                     </button>
                 </form>
             </div>
             <!-- Account Options -->
             <div id="navAccount" class="col-sm-6 col-md-12 col-lg-2 col-xl-2 text-end align-self-center">
-                
             <button class="btn text-muted" type="button" data-bs-toggle="offcanvas"
                     data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
 
@@ -28,11 +27,9 @@
 
                 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight"
                     aria-labelledby="offcanvasRightLabel">
-                    <div class="offcanvas-header border-bottom">
+                    <div class="offcanvas-header border-bottom border-3 border-danger">
                         <h5 class="offcanvas-title" id="offcanvasRightLabel">Log in</h5>
-                        <button class="btn" data-bs-dismiss="offcanvas">
-                            <ion-icon class="align-middle me-1" style="font-size: 30px;" name="close-outline"></ion-icon>Close
-                        </button>
+                        <button class="btn btn-close" data-bs-dismiss="offcanvas">
                     </div>
                     <div class="offcanvas-body">
                         <div class="container col-12">
@@ -85,11 +82,10 @@
                     </ion-icon>
                 </a>
             </div>
-
             <!-- Navbar Categories section includes: Slider -->
             <!-- Normal Size Screen -->
             <div id="navCategories" class="container col-sm-6 col-md-6 col-lg-4 col-xl-4 navbar navbar-light bg-light">
-                <button class="navbar-toggler py-2 ms-2" type="button" data-bs-toggle="offcanvas"
+                <button class="btn btn-danger py-2 ms-2 rounded-0" type="button" data-bs-toggle="offcanvas"
                     data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
                     <!-- Burger menu icon -->
                     <span class="navbar-toggler-icon"></span>
@@ -97,7 +93,7 @@
                 </button>
                 <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar"
                     aria-labelledby="offcanvasNavbarLabel">
-                    <div class="offcanvas-header border-bottom">
+                    <div class="offcanvas-header border-bottom border-3 border-danger">
                         <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Categories</h5>
                         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
                             aria-label="Close"></button>
@@ -137,21 +133,21 @@
 
             <!-- Small Size Screen -->
             <div id="navCategories-sm" class="container col-sm-4 col-md-6 col-lg-4 col-xl-4 navbar navbar-light bg-light">
-                <button class="navbar-toggler py-2 ms-2" type="button" data-bs-toggle="offcanvas"
+                <button class="btn btn-danger rounded-0 py-2 ms-2" type="button" data-bs-toggle="offcanvas"
                     data-bs-target="#offcanvasNavbar2" aria-controls="offcanvasNavbar2" aria-label="Toggle navigation">
                     <!-- Burger menu icon -->
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar2"
                     aria-labelledby="offcanvasNavbarLabel">
-                    <div class="offcanvas-header">
+                    <div class="offcanvas-header border-bottom border-danger border-3">
 
                         <!-- Nav Tabs -->
-                        <div class="nav nav-tabs w-100" id="nav-tab" role="tablist">
-                            <button class="nav-link active" id="nav-menu-tab" data-bs-toggle="tab"
+                        <div class="nav nav-tabs border-0" id="nav-tab" role="tablist">
+                            <button style="width:165px;" class="btn btn-danger border-0 rounded-0 active" id="nav-menu-tab" data-bs-toggle="tab"
                                 data-bs-target="#nav-menu" type="button" role="tab" aria-controls="nav-menu"
                                 aria-selected="true">Menu</button>
-                            <button class="nav-link" id="nav-categories-tab" data-bs-toggle="tab"
+                            <button style="width:165px;" class="btn btn-danger border-0 rounded-0" id="nav-categories-tab" data-bs-toggle="tab"
                                 data-bs-target="#nav-categories" type="button" role="tab" aria-controls="nav-categories"
                                 aria-selected="false">Categories</button>
                         </div>
