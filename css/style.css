@@ -78,6 +78,16 @@ footer a:hover {
         height: fit-content !important;
     }
 
+    #contactFunzies
+    {
+        order: 2;
+    }
+
+    #aboutFunzies
+    {
+        order: 1;
+    }
+
 }
 
 
