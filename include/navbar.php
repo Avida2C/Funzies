@@ -9,7 +9,8 @@
             <!-- Searchbar -->
             <div id="navSearchbar" class="col-sm-12 col-md-12 col-lg-8 col-xl-8 py-2 align-items-center">
                 <form method="get" class="d-flex">
-                    <input class="border border-1 border-muted w-100 px-2" type="search" placeholder="Search" aria-label="Search">
+                    <input class="border border-1 border-muted w-100 px-2" type="search" placeholder="Search"
+                        aria-label="Search">
                     <button class="btn btn-danger rounded-0" type="submit">
                         <!-- Search Icon -->
                         <ion-icon name="search-outline"></ion-icon>
@@ -18,8 +19,8 @@
             </div>
             <!-- Account Options -->
             <div id="navAccount" class="col-sm-6 col-md-12 col-lg-2 col-xl-2 text-end align-self-center">
-            <button class="btn text-muted" type="button" data-bs-toggle="offcanvas"
-                    data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+                <button class="btn text-muted" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
+                    aria-controls="offcanvasRight">
 
                     <!-- User Icon (Account)-->
                     <ion-icon size="large" name="person-circle-outline"></ion-icon>
@@ -50,7 +51,8 @@
                                                     me</label>
                                             </div>
                                             <div class="col-6 text-end">
-                                                <a class="text-danger text-decoration-none float-left" href="forgotPassword.php">
+                                                <a class="text-danger text-decoration-none float-left"
+                                                    href="forgotPassword.php">
                                                     <p>Forgot password?</p>
                                                 </a>
                                             </div>
@@ -61,7 +63,8 @@
                                     <ion-icon class="text-black-50" style="font-size: 64px;" name="person-circle">
                                     </ion-icon>
                                     <h3 class="fs-6">No Account yet?</h3>
-                                    <a class="text-decoration-none text-danger text-underscrol" href="createAccount.php">
+                                    <a class="text-decoration-none text-danger text-underscrol"
+                                        href="createAccount.php">
                                         <p>Create Account</p>
                                     </a>
                                 </div>
@@ -80,12 +83,12 @@
                     <!-- Cart Icon (Shopping List)-->
                     <ion-icon style="font-size: 30px;" name="cart-outline"></ion-icon>
                     </ion-icon>
-                </a>
+                    </a>
             </div>
             <!-- Navbar Categories section includes: Slider -->
             <!-- Normal Size Screen -->
             <div id="navCategories" class="container col-sm-6 col-md-6 col-lg-4 col-xl-4 navbar navbar-light bg-light">
-                <button class="btn btn-danger py-2 ms-2 rounded-0" type="button" data-bs-toggle="offcanvas"
+                <button class="btn py-2 rounded-0" type="button" data-bs-toggle="offcanvas"
                     data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
                     <!-- Burger menu icon -->
                     <span class="navbar-toggler-icon"></span>
@@ -132,8 +135,9 @@
             </div>
 
             <!-- Small Size Screen -->
-            <div id="navCategories-sm" class="container col-sm-4 col-md-6 col-lg-4 col-xl-4 navbar navbar-light bg-light">
-                <button class="btn btn-danger rounded-0 py-2 ms-2" type="button" data-bs-toggle="offcanvas"
+            <div id="navCategories-sm"
+                class="container col-sm-4 col-md-6 col-lg-4 col-xl-4 navbar navbar-light bg-light">
+                <button class="btn rounded-0 py-2 ms-2" type="button" data-bs-toggle="offcanvas"
                     data-bs-target="#offcanvasNavbar2" aria-controls="offcanvasNavbar2" aria-label="Toggle navigation">
                     <!-- Burger menu icon -->
                     <span class="navbar-toggler-icon"></span>
@@ -144,12 +148,24 @@
 
                         <!-- Nav Tabs -->
                         <div class="nav nav-tabs border-0" id="nav-tab" role="tablist">
-                            <button style="width:165px;" class="btn btn-danger border-0 rounded-0 active" id="nav-menu-tab" data-bs-toggle="tab"
-                                data-bs-target="#nav-menu" type="button" role="tab" aria-controls="nav-menu"
-                                aria-selected="true">Menu</button>
-                            <button style="width:165px;" class="btn btn-danger border-0 rounded-0" id="nav-categories-tab" data-bs-toggle="tab"
-                                data-bs-target="#nav-categories" type="button" role="tab" aria-controls="nav-categories"
-                                aria-selected="false">Categories</button>
+
+                            <ul class="nav nav-underline">
+                                <li class="nav-item">
+                                    <button class="nav-link text-muted active btn border-0 rounded-0 text-start"
+                                        id="nav-menu-tab" data-bs-toggle="tab" data-bs-target="#nav-menu" type="button"
+                                        role="tab" aria-controls="nav-menu" aria-selected="true">Menu</button>
+                                </li>
+                                <li class="nav-item">
+                                    <button class="nav-link text-muted btn border-0 rounded-0 text-start"
+                                        id="nav-categories-tab" data-bs-toggle="tab" data-bs-target="#nav-categories"
+                                        type="button" role="tab" aria-controls="nav-categories"
+                                        aria-selected="false">Categories</button>
+                                </li>
+
+                            </ul>
+
+
+
                         </div>
                         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
                             aria-label="Close"></button>
