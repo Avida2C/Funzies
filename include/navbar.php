@@ -38,7 +38,7 @@
                         <div class="container col-12">
                             <div class="row">
                                 <div class="col-12">
-                                    <form class="border-bottom" method="post">
+                                    <form class="border-bottom text-start" method="post">
                                         <label for="email">Email address: <span class="text-danger">*</span></label>
                                         <input class="w-100 rounded-0 border-1 p-1" type="email" name="email" required>
                                         <label class="mt-2" for="password">Password: <span
