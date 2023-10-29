@@ -53,7 +53,7 @@
                                                     me</label>
                                             </div>
                                             <div class="col-6 text-end">
-                                                <a class="text-danger text-decoration-none float-left" href="#">
+                                                <a class="text-danger text-decoration-none float-left" href="forgotPassword.php">
                                                     <p>Forgot password?</p>
                                                 </a>
                                             </div>
@@ -64,7 +64,7 @@
                                     <ion-icon class="text-black-50" style="font-size: 64px;" name="person-circle">
                                     </ion-icon>
                                     <h3 class="fs-6">No Account yet?</h3>
-                                    <a class="text-decoration-none text-danger text-underscrol" href="#">
+                                    <a class="text-decoration-none text-danger text-underscrol" href="createAccount.php">
                                         <p>Create Account</p>
                                     </a>
                                 </div>

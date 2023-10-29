@@ -72,6 +72,12 @@ footer a:hover {
         text-align: center !important;
     }
 
+
+    #createAccRight
+    {
+        height: fit-content !important;
+    }
+
 }
 
 
