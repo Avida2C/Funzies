@@ -13,7 +13,7 @@ require_once 'include/navbar.php';
     <div class="row justify-content-center">
         <div class="col-sm-12 col-md-12 col-lg-5 col-xl-5 my-4">
             <div class="row">
-                <div id="forgotPassText" class="col-sm-12 col-md-12 col-lg-9 col-xl-9">
+                <div id="forgotPassText" class="col-sm-12 col-md-12 col-lg-8 col-xl-8">
                     <p class="pb-3">
                         Lost your precious password key, adventurer? No worries! Enter your email below, and we'll
                         dispatch a special code – like a treasure map to your inbox. Follow the clues, enter the code,

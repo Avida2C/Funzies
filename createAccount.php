@@ -9,7 +9,7 @@ require_once 'include/header.php';
 require_once 'include/navbar.php';
 ?>
 
-<div class="container py-4 col-sm-12 col-md-12 col-lg-12 col-xl-10">
+<div class="container py-4 col-sm-12 col-md-12 col-lg-8 col-xl-8">
     <div class="row d-flex justify-content-center">
         <div id="createAccLeft" class="col-sm-12 col-md-12 col-lg-5 col-xl-5">
             <div class="tab-content" id="pills-tabContent">

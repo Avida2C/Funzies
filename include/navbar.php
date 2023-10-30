@@ -1,5 +1,5 @@
 <nav class="bg-light py-2 shadow-sm border-bottom border-5 border-danger">
-    <div class="container col-sm-12 col-md-12 col-lg-12 col-xl-10">
+    <div class="container col-sm-12 col-md-12 col-lg-10 col-xl-10">
         <div class="row text-muted">
             <!-- Navbar Logo, Searchbar and Account options -->
             <!-- Website Logo -->
