@@ -121,6 +121,12 @@
                                 <a class="nav-link" href="#">Lego</a>
                             </li>
                             <li class="nav-item">
+                                <a class="nav-link" href="#">LOL Surprise</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Playmobil</a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link" href="#">Plushies</a>
                             </li>
                             <li class="nav-item">
@@ -206,6 +212,12 @@
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="#">Lego</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">LOL Surprise</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Playmobil</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="#">Plushies</a>
