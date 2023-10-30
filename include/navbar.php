@@ -118,6 +118,9 @@
                                 <a class="nav-link" href="#">Models</a>
                             </li>
                             <li class="nav-item">
+                                <a class="nav-link" href="#">Lego</a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link" href="#">Plushies</a>
                             </li>
                             <li class="nav-item">
@@ -200,6 +203,9 @@
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="#">Models</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Lego</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="#">Plushies</a>

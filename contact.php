@@ -11,7 +11,7 @@ require_once 'include/navbar.php';
 
 <div class="container py-4 col-sm-12 col-md-12 col-lg-12 col-xl-10">
     <div class="row d-flex justify-content-center">
-        <div id="contactFunzies" class="p-4 me-4 col-sm-12 col-md-12 col-lg-5 col-xl-5">
+        <div id="contactFunzies" class="p-4 col-sm-12 col-md-12 col-lg-5 col-xl-5">
             <form method="POST">
                 <h3>Get in Touch</h3>
                 <div class="row">
