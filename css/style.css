@@ -123,6 +123,7 @@ footer a:hover {
 ::-webkit-scrollbar {
     width: 10px;
     height: 10px;
+    
   }
   
   /* Track */
@@ -136,4 +137,8 @@ footer a:hover {
     background: #DC3545;
     
   }
+
+  
+
+  
 
