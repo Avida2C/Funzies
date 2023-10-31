@@ -36,6 +36,17 @@ footer a:hover {
     max-width: 200px;
 }
 
+.carousel-md img
+{
+    height:380px;
+}
+
+.categories-btn a
+{
+    width: 150px; 
+    height: 40px;
+}
+
 /* Responsiveness */
 @media only screen and (max-width: 992px) {
 

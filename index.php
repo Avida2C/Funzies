@@ -21,15 +21,15 @@ require_once 'include/navbar.php';
       <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
         aria-label="Slide 3"></button>
     </div>
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img class="imageStyling w-100 object-fit-cover" style="height:380px;" src="img/MaistoBanner.png" alt="...">
+    <div class="carousel-inner carousel-md">
+      <div class="carousel-item active ">
+        <img class="w-100 object-fit-cover" src="img/MaistoBanner.png" alt="...">
       </div>
       <div class="carousel-item">
-        <img class="imageStyling w-100 object-fit-cover" style="height:380px;" src="img/FunkoBanner.png" alt="...">
+        <img class="w-100 object-fit-cover" src="img/FunkoBanner.png" alt="...">
       </div>
       <div class="carousel-item">
-        <img class="imageStyling w-100 object-fit-cover" style="height:380px;" src="img/LegoBanner.png" alt="...">
+        <img class="w-100 object-fit-cover" src="img/LegoBanner.png" alt="...">
       </div>
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
@@ -51,32 +51,33 @@ require_once 'include/navbar.php';
     <div class="col">
       <h3 class="fs-5">Shop by Categories</h3>
     </div>
-    <div class="col">
+    <div class="col categories-btn">
       <div class="d-flex flex-nowrap overflow-auto py-2">
         <!-- Funko -->
         <div class="col me-2">
-<a class="btn btn-danger text-center align-middle rounded-0" style="width: 150px; height: 40px;" href="">Board Games</a>
+          <a class="btn btn-danger text-center align-middle rounded-0" href="">Board
+            Games</a>
         </div>
         <div class="col me-2">
-        <a class="btn btn-danger text-center align-middle rounded-0" style="width: 150px; height: 40px;" href="">Collectibles</a>
+          <a class="btn btn-danger text-center align-middle rounded-0" href="">Collectibles</a>
         </div>
         <div class="col me-2">
-        <a class="btn btn-danger text-center align-middle rounded-0" style="width: 150px; height: 40px;" href="">Figurines</a>
+          <a class="btn btn-danger text-center align-middle rounded-0" href="">Figurines</a>
         </div>
         <div class="col me-2">
-        <a class="btn btn-danger text-center align-middle rounded-0" style="width: 150px; height: 40px;" href="">Models</a>
+          <a class="btn btn-danger text-center align-middle rounded-0" href="">Models</a>
         </div>
         <div class="col me-2">
-        <a class="btn btn-danger text-center align-middle rounded-0" style="width: 150px; height: 40px;" href="">Puzzles</a>
+          <a class="btn btn-danger text-center align-middle rounded-0" href="">Puzzles</a>
         </div>
         <div class="col me-2">
-        <a class="btn btn-danger text-center align-middle rounded-0" style="width: 150px; height: 40px;" href="">Plushies</a>
+          <a class="btn btn-danger text-center align-middle rounded-0" href="">Plushies</a>
         </div>
         <div class="col me-2">
-        <a class="btn btn-danger text-center align-middle rounded-0" style="width: 150px; height: 40px;" href="">Posters</a>
+          <a class="btn btn-danger text-center align-middle rounded-0" href="">Posters</a>
         </div>
         <div class="col">
-        <a class="btn btn-danger text-center align-middle rounded-0" style="width: 150px; height: 40px;" href="">Gifts</a>
+          <a class="btn btn-danger text-center align-middle rounded-0" href="">Gifts</a>
         </div>
       </div>
     </div>
@@ -99,8 +100,8 @@ require_once 'include/navbar.php';
       <div class="row justify-content-between">
         <div class="card shadow-sm rounded-0 border-0" style="width: 15rem;">
           <img
-            src="https://modelshop.com.mt/wp-content/uploads/2020/08/Maisto-31269-Ford-Mustang-Boss-302-Diecast-Model-1.jpg" style="height:220px; width: 100%"
-            class="card-img-top mb-4" alt="...">
+            src="https://modelshop.com.mt/wp-content/uploads/2020/08/Maisto-31269-Ford-Mustang-Boss-302-Diecast-Model-1.jpg"
+            style="height:220px; width: 100%" class="card-img-top mb-4" alt="...">
           <div class="card-body p-0">
             <a href="#" class="text-decoration-none">
               <h5 class="card-title text-black fs-6" style="height:30px;">Maisto Ford Mustang Boss 302 1/24 Diecast
@@ -119,8 +120,8 @@ require_once 'include/navbar.php';
           </div>
         </div>
         <div class="card shadow-sm rounded-0 border-0" style="width: 15rem;">
-          <img src="https://modelshop.com.mt/wp-content/uploads/2023/06/67974-funko-pop-mary-poppins-defudis67974.jpg" style="height:220px; width: 100%"
-            class="card-img-top mb-4 object-fit-cover" alt="...">
+          <img src="https://modelshop.com.mt/wp-content/uploads/2023/06/67974-funko-pop-mary-poppins-defudis67974.jpg"
+            style="height:220px; width: 100%" class="card-img-top mb-4 object-fit-cover" alt="...">
           <div class="card-body p-0">
             <a href="#" class="text-decoration-none">
               <h5 class="card-title text-black fs-6 " style="height:30px;">Funko Pop Rides Mary Poppins
@@ -139,8 +140,8 @@ require_once 'include/navbar.php';
           </div>
         </div>
         <div class="card shadow-sm rounded-0 border-0" style="width: 15rem;">
-          <img src="https://modelshop.com.mt/wp-content/uploads/2020/06/jenga-HASA2120-1.jpg" class="object-fit-cover card-img-top mb-4" style="height:220px; width: 100%"
-            alt="...">
+          <img src="https://modelshop.com.mt/wp-content/uploads/2020/06/jenga-HASA2120-1.jpg"
+            class="object-fit-cover card-img-top mb-4" style="height:220px; width: 100%" alt="...">
           <div class="card-body p-0">
             <a href="#" class="text-decoration-none">
               <h5 class="card-title text-black fs-6 " style="height:30px;">Jenga</h5>
@@ -158,8 +159,8 @@ require_once 'include/navbar.php';
           </div>
         </div>
         <div class="card shadow-sm rounded-0 border-0" style="width: 15rem;">
-          <img src="https://modelshop.com.mt/wp-content/uploads/2020/06/uno-SG52277-1.jpg" class="card-img-top mb-4 object-fit-cover" style="height:220px; width: 100%"
-            alt="...">
+          <img src="https://modelshop.com.mt/wp-content/uploads/2020/06/uno-SG52277-1.jpg"
+            class="card-img-top mb-4 object-fit-cover" style="height:220px; width: 100%" alt="...">
           <div class="card-body p-0">
             <a href="#" class="text-decoration-none">
               <h5 class="card-title text-black fs-6" style="height:30px;">UNO</h5>
@@ -196,9 +197,8 @@ require_once 'include/navbar.php';
     <div class="container-fluid">
       <div class="row justify-content-between">
         <div class="card shadow-sm rounded-0 border-0" style="width: 15rem;">
-          <img
-            src="https://gamesplusmalta.com/wp-content/uploads/2023/10/f7d170726207c6f9d7ef71ec328627c8.jpg" style="height:220px; width: 100%"
-            class="card-img-top mb-4 object-fit-cover" alt="...">
+          <img src="https://gamesplusmalta.com/wp-content/uploads/2023/10/f7d170726207c6f9d7ef71ec328627c8.jpg"
+            style="height:220px; width: 100%" class="card-img-top mb-4 object-fit-cover" alt="...">
           <div class="card-body p-0">
             <a href="#" class="text-decoration-none">
               <h5 class="card-title text-black fs-6" style="height:30px;">LEGO Minifigures 71039 Marvel Series 2</h5>
@@ -216,11 +216,12 @@ require_once 'include/navbar.php';
           </div>
         </div>
         <div class="card shadow-sm rounded-0 border-0" style="width: 15rem;">
-          <img src="https://gamesplusmalta.com/wp-content/uploads/2023/05/73487741db8fa6bf7837896006c22dd2-1.jpg" style="height:220px; width: 100%"
-            class="card-img-top mb-4 object-fit-cover" alt="...">
+          <img src="https://gamesplusmalta.com/wp-content/uploads/2023/05/73487741db8fa6bf7837896006c22dd2-1.jpg"
+            style="height:220px; width: 100%" class="card-img-top mb-4 object-fit-cover" alt="...">
           <div class="card-body p-0">
             <a href="#" class="text-decoration-none">
-              <h5 class="card-title text-black fs-6 " style="height:30px;">Funko POP! Friends N° 1066 – Chandler Bing (Bunny Suit)
+              <h5 class="card-title text-black fs-6 " style="height:30px;">Funko POP! Friends N° 1066 – Chandler Bing
+                (Bunny Suit)
               </h5>
             </a>
             <a href="#" class="text-decoration-none">
@@ -236,8 +237,8 @@ require_once 'include/navbar.php';
           </div>
         </div>
         <div class="card shadow-sm rounded-0 border-0" style="width: 15rem;">
-          <img src="https://gamesplusmalta.com/wp-content/uploads/2023/09/a1a3be5d6a1529ef6375b3744747681a.jpg" style="height:220px; width: 100%" class="card-img-top mb-4 object-fit-cover"
-            alt="...">
+          <img src="https://gamesplusmalta.com/wp-content/uploads/2023/09/a1a3be5d6a1529ef6375b3744747681a.jpg"
+            style="height:220px; width: 100%" class="card-img-top mb-4 object-fit-cover" alt="...">
           <div class="card-body p-0">
             <a href="#" class="text-decoration-none">
               <h5 class="card-title text-black fs-6 " style="height:30px;">LEGO Minifigures 71037 Series 24</h5>
@@ -254,8 +255,8 @@ require_once 'include/navbar.php';
           </div>
         </div>
         <div class="card shadow-sm rounded-0 border-0" style="width: 15rem;">
-          <img src="https://modelshop.com.mt/wp-content/uploads/2022/10/EN_BoardVisual_Malta_2022_MP02-HR.jpg" style="height:220px; width: 100%" class="card-img-top mb-4 object-fit-cover"
-            alt="...">
+          <img src="https://modelshop.com.mt/wp-content/uploads/2022/10/EN_BoardVisual_Malta_2022_MP02-HR.jpg"
+            style="height:220px; width: 100%" class="card-img-top mb-4 object-fit-cover" alt="...">
           <div class="card-body p-0">
             <a href="#" class="text-decoration-none">
               <h5 class="card-title text-black fs-6" style="height:30px;">Monopoly Malta</h5>

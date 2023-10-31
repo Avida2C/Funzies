@@ -241,7 +241,7 @@
                         <a class="nav-link active p-3" aria-current="page" href="index.php">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link p-3" href="#">Shop</a>
+                        <a class="nav-link p-3" href="shop.php">Shop</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link p-3" href="contact.php">Contact Us</a>
