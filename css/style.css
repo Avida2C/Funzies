@@ -47,6 +47,66 @@ footer a:hover {
     height: 40px;
 }
 
+.brand-img img
+{
+    width: 175px; 
+    height: 125px;
+}
+
+.product-card div
+{
+    padding: 0;
+    margin: 0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+    max-width: 15rem;
+}
+
+
+.product-card button
+{
+    margin-top: 10px;
+    margin-bottom: 0;
+    max-width: 100%;
+    width: 100%;
+}
+
+.product-card h5
+{
+    height:30px;
+}
+
+.product-card img{
+    height:220px; 
+    width: 100%;
+}
+
+.product-card-font
+{
+    margin: 0;
+    padding: 0;
+    font-size:24px;
+    font-weight:600;
+    margin-top: 1em;
+}
+
+.product-card-icon
+{
+    font-size: 24px;
+}
+
+.div-spacing-mt
+{
+    margin-top: 3em;
+}
+
+.div-spacing-mb
+{
+    margin-bottom: 3em;
+}
+
 /* Responsiveness */
 @media only screen and (max-width: 992px) {
 
