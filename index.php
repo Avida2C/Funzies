@@ -46,44 +46,7 @@ require_once 'include/navbar.php';
   </div>
 </div>
 
-<!-- Shop by Categories -->
-<div class="container col-sm-12 col-md-12 col-lg-12 col-xl-8 div-spacing-mt">
-  <div class="row">
-    <!-- Title section -->
-    <div class="col">
-      <h3 class="fs-5">Shop by Categories</h3>
-    </div>
-    <div class="col categories-btn">
-      <div class="d-flex flex-nowrap overflow-auto py-2">
-        <!-- Funko -->
-        <div class="col me-2">
-          <a class="btn btn-danger text-center rounded-0" href="">Board Games</a>
-        </div>
-        <div class="col me-2">
-          <a class="btn btn-danger text-center rounded-0" href="">Collectibles</a>
-        </div>
-        <div class="col me-2">
-          <a class="btn btn-danger text-center rounded-0" href="">Figurines</a>
-        </div>
-        <div class="col me-2">
-          <a class="btn btn-danger text-center rounded-0" href="">Models</a>
-        </div>
-        <div class="col me-2">
-          <a class="btn btn-danger text-center rounded-0" href="">Puzzles</a>
-        </div>
-        <div class="col me-2">
-          <a class="btn btn-danger text-center rounded-0" href="">Plushies</a>
-        </div>
-        <div class="col me-2">
-          <a class="btn btn-danger text-center rounded-0" href="">Posters</a>
-        </div>
-        <div class="col">
-          <a class="btn btn-danger text-center rounded-0" href="">Gifts</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+<?php require_once 'include/categories-menu.php'; ?>
 
 <!--New Arrivals -->
 <div class="container col-sm-12 col-md-12 col-lg-12 col-xl-8 div-spacing-mt">
@@ -98,84 +61,13 @@ require_once 'include/navbar.php';
   </div>
   <div class="col">
     <div class="container-fluid">
-      <div class="row justify-content-between product-card">
-        <!-- Product card -->
-        <div class="card shadow-sm rounded-0 border-0">
-          <img class="card-img-top"
-            src="img/products/MaistoDiecast.jpg">
-          <div class="card-body">
-            <a href="#" class="text-decoration-none">
-              <h5 class="card-title text-black fs-6">Maisto Ford Mustang Boss 302 1/24 Diecast Model</h5>
-            </a>
-            <a href="#" class="text-decoration-none">
-              <p class="card-text text-muted pb-2">Maisto</p>
-            </a>
-            <p class="fw-bold">
-              <ion-icon class="text-danger align-middle product-card-icon" name="checkmark-outline"></ion-icon>
-              In Stock
-            </p>
-            <p class="text-danger product-card-font"> &euro;27.99</p>
-            <button class="btn btn-danger rounded-0 w-100">Add To Cart</button>
-          </div>
-        </div>
-        <!-- Product card -->
-        <div class="card shadow-sm rounded-0 border-0">
-          <img class="card-img-top"
-            src="img/products/funkomary.jpg">
-          <div class="card-body">
-            <a href="#" class="text-decoration-none">
-              <h5 class="card-title text-black fs-6">Funko Pop Rides Mary Poppins</h5>
-            </a>
-            <a href="#" class="text-decoration-none">
-              <p class="card-text text-muted pb-2">Funko Pop!</p>
-            </a>
-            <p class="fw-bold">
-              <ion-icon class="text-danger align-middle product-card-icon" name="checkmark-outline"></ion-icon>
-              In Stock
-            </p>
-            <p class="text-danger product-card-font"> &euro;20.99</p>
-            <button class="btn btn-danger rounded-0 w-100">Add To Cart</button>
-          </div>
-        </div>
-        <!-- Product card -->
-        <div class="card shadow-sm rounded-0 border-0">
-          <img class="card-img-top" src="img/products/uno.jpg">
-          <div class="card-body">
-            <a href="#" class="text-decoration-none">
-              <h5 class="card-title text-black fs-6">UNO</h5>
-            </a>
-            <a href="#" class="text-decoration-none">
-              <p class="card-text text-muted pb-2">MATTEL</p>
-            </a>
-            <p class="fw-bold">
-              <ion-icon class="text-danger align-middle product-card-icon" name="checkmark-outline"></ion-icon>
-              In Stock
-            </p>
-            <p class="text-danger product-card-font">&euro;10.99</p>
-            <button class="btn btn-danger rounded-0 w-100">Add To Cart</button>
-          </div>
-        </div>
-        <!-- Product card -->
-        <div class="card shadow-sm rounded-0 border-0">
-          <img class="card-img-top" src="img/products/jenga.jpg">
-          <div class="card-body">
-            <a href="#" class="text-decoration-none">
-              <h5 class="card-title text-black fs-6">Jenga</h5>
-            </a>
-            <a href="#" class="text-decoration-none">
-              <p class="card-text text-muted pb-2">Board Games</p>
-            </a>
-            <p class="fw-bold">
-              <ion-icon class="text-danger align-middle product-card-icon" name="checkmark-outline"></ion-icon>
-              In Stock
-            </p>
-            <p class="text-danger product-card-font">&euro;31.99</p>
-            <button class="btn btn-danger rounded-0 w-100">Add To Cart</button>
-          </div>
-        </div>
-
-
-
+      <div class="row justify-content-between">
+        <?php 
+        require 'include/product-card.php'; 
+        require 'include/product-card.php';
+        require 'include/product-card.php';
+        require 'include/product-card.php';
+        ?>
       </div>
     </div>
   </div>
@@ -194,87 +86,13 @@ require_once 'include/navbar.php';
   </div>
   <div class="col">
     <div class="container-fluid">
-      <div class="row justify-content-between product-card">
-
-
-
-        <!-- Product card -->
-        <div class="card shadow-sm rounded-0 border-0">
-          <img class="card-img-top"
-            src="img/products/legomarvel.jpg">
-          <div class="card-body">
-            <a href="#" class="text-decoration-none">
-              <h5 class="card-title text-black fs-6">LEGO Minifigures 71039 Marvel Series 2</h5>
-            </a>
-            <a href="#" class="text-decoration-none">
-              <p class="card-text text-muted pb-2">LEGO</p>
-            </a>
-            <p class="fw-bold">
-              <ion-icon class="text-danger align-middle product-card-icon" name="checkmark-outline"></ion-icon>
-              In Stock
-            </p>
-            <p class="text-danger product-card-font"> &euro;4.99</p>
-            <button class="btn btn-danger rounded-0 w-100">Add To Cart</button>
-          </div>
-        </div>
-        <!-- Product card -->
-        <div class="card shadow-sm rounded-0 border-0">
-          <img class="card-img-top"
-            src="img/products/funkorabbit.jpg">
-          <div class="card-body">
-            <a href="#" class="text-decoration-none">
-              <h5 class="card-title text-black fs-6">Funko POP! Friends N° 1066 – Chandler Bing
-                (Bunny Suit)</h5>
-            </a>
-            <a href="#" class="text-decoration-none">
-              <p class="card-text text-muted pb-2">Funko Pop!</p>
-            </a>
-            <p class="fw-bold">
-              <ion-icon class="text-danger align-middle product-card-icon" name="checkmark-outline"></ion-icon>
-              In Stock
-            </p>
-            <p class="text-danger product-card-font"> &euro;15.99</p>
-            <button class="btn btn-danger rounded-0 w-100">Add To Cart</button>
-          </div>
-        </div>
-        <!-- Product card -->
-        <div class="card shadow-sm rounded-0 border-0">
-          <img class="card-img-top"
-            src="img/products/monopolymalta.jpg">
-          <div class="card-body">
-            <a href="#" class="text-decoration-none">
-              <h5 class="card-title text-black fs-6">Monopoly Malta</h5>
-            </a>
-            <a href="#" class="text-decoration-none">
-              <p class="card-text text-muted pb-2">Board Games</p>
-            </a>
-            <p class="fw-bold">
-              <ion-icon class="text-danger align-middle product-card-icon" name="checkmark-outline"></ion-icon>
-              In Stock
-            </p>
-            <p class="text-danger product-card-font"> &euro;49.99</p>
-            <button class="btn btn-danger rounded-0 w-100">Add To Cart</button>
-          </div>
-        </div>
-        <!-- Product card -->
-        <div class="card shadow-sm rounded-0 border-0">
-          <img class="card-img-top"
-            src="img/products/legominigifure.jpg">
-          <div class="card-body">
-            <a href="#" class="text-decoration-none">
-              <h5 class="card-title text-black fs-6">LEGO Minifigures 71037 Series 24</h5>
-            </a>
-            <a href="#" class="text-decoration-none">
-              <p class="card-text text-muted pb-2">LEGO</p>
-            </a>
-            <p class="fw-bold">
-              <ion-icon class="text-danger align-middle product-card-icon" name="checkmark-outline"></ion-icon>
-              In Stock
-            </p>
-            <p class="text-danger product-card-font"> &euro;5.99</p>
-            <button class="btn btn-danger rounded-0 w-100">Add To Cart</button>
-          </div>
-        </div>
+      <div class="row justify-content-between">
+        <?php 
+        require 'include/product-card.php'; 
+        require 'include/product-card.php';
+        require 'include/product-card.php';
+        require 'include/product-card.php';
+        ?>
       </div>
     </div>
   </div>
