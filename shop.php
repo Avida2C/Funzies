@@ -12,6 +12,22 @@ require_once 'include/categories-menu.php';
 ?>
 
 <div class="container col-sm-12 col-md-12 col-lg-8 col-xl-8">
+    <div class="row justify-content-between">
+        <div class="col text-center">
+            <p class="text-muted">Showing 9 out of 1000 Products</p>
+        </div>
+        <div class="col-sm-12 col-md-12 col-lg-3 col-xl-3">
+            <select class="form-select border-0 rounded-0 shadow-sm mb-3" aria-label="Default select example">
+                <option class="form-select" selected>Sort by popularity</option>
+                <option value="1">Sort by latest</option>
+                <option value="2">Sort by price: low to high</option>
+                <option value="3">Sort by price: high to low </option>
+            </select>
+        </div>
+    </div>
+</div>
+
+<div class="container col-sm-12 col-md-12 col-lg-8 col-xl-8">
     <div class="row">
         <!-- Product Categories -->
         <div class="col-sm-12 col-md-12 col-lg-3 col-xl-3">
@@ -91,6 +107,7 @@ require_once 'include/categories-menu.php';
                 </li>
             </ul>
         </div>
+
         <!-- Product List -->
         <div class="col-sm-12 col-md-12 col-lg-9 col-xl-9">
             <div class="container-fluid">
@@ -113,7 +130,6 @@ require_once 'include/categories-menu.php';
     </div>
 </div>
 
-
 <!-- Pagination -->
 <div class="container col-sm-12 col-md-12 col-lg-8 col-xl-8 mt-2 mb-4">
     <div class="row">
@@ -134,7 +150,6 @@ require_once 'include/categories-menu.php';
         </div>
     </div>
 </div>
-
 
 <?php  
 require_once 'include/footer.php';
