@@ -1,7 +1,7 @@
 <div class="card shadow-sm rounded-0 border-0 product-card mb-2">
-    <img class="card-img-top object-fit-cover" src="img/comingsoon.jpg">
+    <a href="product-page.php"><img class="card-img-top object-fit-cover" src="img/comingsoon.jpg"></a>
     <div class="card-body">
-        <a href="#" class="text-decoration-none">
+        <a href="product-page.php" class="text-decoration-none">
             <h5 class="card-title text-black fs-6">Coming Soon - Info Unavailable</h5>
         </a>
         <a href="#" class="text-decoration-none">
