@@ -36,72 +36,157 @@ footer a:hover {
     max-width: 200px;
 }
 
-.carousel-md img
-{
-    height:380px;
+.carousel-md img {
+    height: 380px;
 }
 
-.categories-btn a
-{
-    width: 150px; 
+.categories-btn a {
+    width: 150px;
     height: 40px;
 }
 
-.brand-img img
-{
-    width: 175px; 
+.brand-img img {
+    width: 175px;
     height: 125px;
 }
 
-.div-spacing-mt
-{
+.div-spacing-mt {
     margin-top: 3em;
 }
 
-.div-spacing-mb
-{
+.div-spacing-mb {
     margin-bottom: 3em;
 }
 
-.product-card
-{
+.product-card {
     padding: 5px !important;
     margin: 0;
     max-width: 15rem !important;
 }
 
-.product-card button
-{
+.product-card button {
     margin-top: 10px;
     margin-bottom: 0;
     width: 100%;
 }
 
-.product-card h5
-{
-    height:30px;
+.product-card h5 {
+    height: 30px;
 }
 
-.product-card img{
-    height:220px; 
+.product-card img {
+    height: 220px;
     width: 100%;
 }
 
-.product-card-font
-{
+.product-card-font {
     margin: 0;
     padding: 0;
-    font-size:24px;
-    font-weight:600;
+    font-size: 24px;
+    font-weight: 600;
     margin-top: 1em;
 }
 
-.product-card-icon
-{
+.product-card-icon {
     font-size: 24px;
 }
 
+.tab-overflow {
+    height: 250px;
+    overflow: auto;
+    padding: 5px;
+}
 
+/* Scrollbar */
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background-color: #2D2D2D;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #DC3545;
+}
+
+/*Slider */
+.slidecontainer {
+    width: 100%;
+    /* Width of the outside container */
+}
+
+/* The slider itself */
+.slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 5px;
+    background: #DC3545;
+    opacity: 1;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 3px;
+    height: 15px;
+    background: #DC3545;
+    cursor: pointer;
+}
+
+#star-review {
+
+    /* use display:inline-flex to prevent whitespace issues. alternatively, you can put all the children of .rating-group on a single line */
+    .rating-group {
+        display: inline-flex;
+    }
+
+    /* hide radio inputs */
+    .rating-input {
+        position: absolute !important;
+        left: -9999px !important;
+    }
+
+    /* hide 'none' input from screenreaders */
+    .rating-input-none {
+        display: none
+    }
+
+    /* set icon padding and size */
+    .rating-label {
+        cursor: pointer;
+        padding: 0 0.1em;
+        font-size: 2rem;
+    }
+
+    /* set default star color */
+    .rating-icon-star {
+        color: orange;
+    }
+
+    /* if any input is checked, make its following siblings grey */
+    .rating-input:checked~.rating-label .rating-icon-star {
+        color: #ddd;
+    }
+
+    /* make all stars orange on rating group hover */
+    .rating-group:hover .rating-label .rating-icon-star {
+        color: orange;
+    }
+
+    /* make hovered input's following siblings grey on hover */
+    .rating-input:hover~.rating-label .rating-icon-star {
+        color: #ddd;
+    }
+}
 
 /* Responsiveness */
 @media only screen and (max-width: 992px) {
@@ -135,35 +220,30 @@ footer a:hover {
         width: 40%;
     }
 
-    #footerIcos{
+    #footerIcos {
         text-align: center !important;
     }
 
 
-    #createAccRight
-    {
+    #createAccRight {
         height: fit-content !important;
     }
 
-    #contactFunzies
-    {
+    #contactFunzies {
         order: 2;
     }
 
-    #aboutFunzies
-    {
+    #aboutFunzies {
         order: 1;
     }
 
-    #iconDiamond
-    {
+    #iconDiamond {
         order: 1;
     }
 
-    #forgotPassText{
+    #forgotPassText {
         order: 2;
     }
-
 }
 
 @media only screen and (min-width: 993px) {
@@ -176,73 +256,9 @@ footer a:hover {
         display: none;
     }
 
-    
-    #footerIcos{
+
+    #footerIcos {
         text-align: end !important;
     }
 
 }
-
-
-
-/* Scrollbar */
-/* width */
-::-webkit-scrollbar {
-    width: 10px;
-    height: 10px;
-    
-  }
-  
-  /* Track */
-  ::-webkit-scrollbar-track {
-    background-color: #2D2D2D;
-
-  }
-  
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-    background: #DC3545;
-    
-  }
-
-  
-
-/*Slider */
-.slidecontainer {
-    width: 100%; /* Width of the outside container */
-  }
-  
-  /* The slider itself */
-  .slider {
-    -webkit-appearance: none;  /* Override default CSS styles */
-    appearance: none;
-    width: 100%; /* Full-width */
-    height: 5px; /* Specified height */
-    background: #DC3545; /* Grey background */
-    opacity: 1; /* Set transparency (for mouse-over effects on hover) */
-    -webkit-transition: .2s; /* 0.2 seconds transition on hover */
-    transition: opacity .2s;
-  }
-    
-  /* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
-  .slider::-webkit-slider-thumb {
-    -webkit-appearance: none; /* Override default look */
-    appearance: none;
-    width: 3px; /* Set a specific slider handle width */
-    height: 15px; /* Slider handle height */
-    background: #DC3545; /* Green background */
-    cursor: pointer; /* Cursor on hover */
-  }
-  
-  .slider::-moz-range-thumb {
-    width: 25px; /* Set a specific slider handle width */
-    height: 25px; /* Slider handle height */
-    background: #04AA6D; /* Green background */
-    cursor: pointer; /* Cursor on hover */
-  }
-  
-
-
-    
-
-

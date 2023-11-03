@@ -23,7 +23,8 @@ require_once 'include/navbar.php';
                         <input class="w-100 p-1 mb-2" type="email" name="email" placeholder="Email" required>
                         <label for="password">Password<span class="text-danger">*</span></label>
                         <input class="w-100 p-1 mb-2" type="password" name="password" placeholder="Password" required>
-                        <p>By clicking Sign Up, you are agreeing to our <a class="text-decoration-none" href="terms.php">Terms
+                        <p>By clicking Sign Up, you are agreeing to our <a class="text-decoration-none"
+                                href="terms.php">Terms
                                 and Conditions</a>.</p>
                         <button class="w-100 btn btn-danger rounded-0">Sign Up</button>
                     </form>
@@ -52,12 +53,14 @@ require_once 'include/navbar.php';
                 </div>
             </div>
         </div>
-        <div id="createAccRight" class="col-sm-12 col-md-12 col-lg-4 col-xl-4 p-4 align-self-center" style="height: 400px;">
+        <div id="createAccRight" class="col-sm-12 col-md-12 col-lg-4 col-xl-4 p-4 align-self-center"
+            style="height: 400px;">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-12 py-2">
                         <p>Ready to dive into the treasure trove? Unearth the world of collectibles! Whether you're
-                            itching to discover hidden gems or expand your cherished collection, just spill the beans, and we'll whisk you away on this electrifying journey. Fret not, we'll only ask
+                            itching to discover hidden gems or expand your cherished collection, just spill the beans,
+                            and we'll whisk you away on this electrifying journey. Fret not, we'll only ask
                             for the must-haves to make your collectibles escapade sizzle!</p>
                         <hr>
                     </div>
@@ -66,9 +69,8 @@ require_once 'include/navbar.php';
                             <li class="nav-item" role="presentation">
                                 <button class="btnRegister btn btn-danger rounded-0 active"
                                     style="display:none; width:120px;" id="pills-signup-tab" data-bs-toggle="pill"
-                                    data-bs-target="#pills-signup" type="button" role="tab"
-                                    aria-controls="pills-signup" aria-selected="true"
-                                    onclick="buttonSwitch('signup')">Sign Up</button>
+                                    data-bs-target="#pills-signup" type="button" role="tab" aria-controls="pills-signup"
+                                    aria-selected="true" onclick="buttonSwitch('signup')">Sign Up</button>
                             </li>
                             <li class="nav-item" role="presentation">
                                 <button class="btnLogin btn btn-danger rounded-0" style="width:120px;"

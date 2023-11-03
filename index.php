@@ -62,6 +62,7 @@ require_once 'include/navbar.php';
   <div class="col">
     <div class="container-fluid">
       <div class="row justify-content-between">
+        <!-- Product Card called via PHP -->
         <?php 
         require 'include/product-card.php'; 
         require 'include/product-card.php';
@@ -80,7 +81,7 @@ require_once 'include/navbar.php';
       <h3 class="fs-5">Best Sellers</h3>
     </div>
     <div class="col text-end">
-      <button class="btn btn-danger rounded-0 p-2 align-middle mb-4">More Products<ion-icon class="align-middle"
+      <button class="btn btn-danger rounded-0 p-2 align-middle mb-3">More Products<ion-icon class="align-middle"
           style="font-size:18px;" name="chevron-forward-outline"></ion-icon></button>
     </div>
   </div>
@@ -97,7 +98,6 @@ require_once 'include/navbar.php';
     </div>
   </div>
 </div>
-
 
 <!-- Shop by Brands -->
 <div class="container col-sm-12 col-md-12 col-lg-12 col-xl-8 div-spacing-mt div-spacing-mb">

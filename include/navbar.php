@@ -6,6 +6,7 @@
             <div id="navLogo" class="col-sm-1 col-md-12 col-lg-2 col-xl-2 text-start py-1">
                 <a href="index.php"><img class="navLogo" src="img/logo.png" alt="Logo"></a>
             </div>
+            
             <!-- Searchbar -->
             <div id="navSearchbar" class="col-sm-12 col-md-12 col-lg-8 col-xl-8 py-2 align-items-center">
                 <form method="get" class="d-flex">
@@ -17,6 +18,7 @@
                     </button>
                 </form>
             </div>
+
             <!-- Account Options -->
             <div id="navAccount" class="col-sm-6 col-md-12 col-lg-2 col-xl-2 text-end align-self-center">
                 <button class="btn text-muted" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
@@ -74,7 +76,6 @@
                 </div>
 
                 <!-- Wishlist -->
-
                 <button class="btn text-muted">
                     <!-- Gift Icon (Wishlist)-->
                     <ion-icon style="font-size: 30px;" name="gift-outline"></ion-icon>
@@ -154,7 +155,6 @@
 
                         <!-- Nav Tabs -->
                         <div class="nav nav-tabs border-0" id="nav-tab" role="tablist">
-
                             <ul class="nav nav-underline">
                                 <li class="nav-item">
                                     <button class="nav-link text-muted active btn border-0 rounded-0 text-start"
@@ -167,11 +167,7 @@
                                         type="button" role="tab" aria-controls="nav-categories"
                                         aria-selected="false">Categories</button>
                                 </li>
-
                             </ul>
-
-
-
                         </div>
                         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
                             aria-label="Close"></button>
@@ -192,7 +188,6 @@
                                     <a class="nav-link" href="contact.php">Contact Us</a>
                                 </li>
                             </ul>
-
                         </div>
                         <!-- Slider Content: Categories-->
                         <div class="tab-pane fade" id="nav-categories" role="tabpanel"
