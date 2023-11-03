@@ -6,7 +6,7 @@
             <div id="navLogo" class="col-sm-1 col-md-12 col-lg-2 col-xl-2 text-start py-1">
                 <a href="index.php"><img class="navLogo" src="img/logo.png" alt="Logo"></a>
             </div>
-            
+
             <!-- Searchbar -->
             <div id="navSearchbar" class="col-sm-12 col-md-12 col-lg-8 col-xl-8 py-2 align-items-center">
                 <form method="get" class="d-flex">
@@ -21,17 +21,17 @@
 
             <!-- Account Options -->
             <div id="navAccount" class="col-sm-6 col-md-12 col-lg-2 col-xl-2 text-end align-self-center">
-                <button class="btn text-muted" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
-                    aria-controls="offcanvasRight">
+                <button class="btn text-muted" type="button" data-bs-toggle="offcanvas" data-bs-target="#AccountLogin"
+                    aria-controls="AccountLogin">
 
                     <!-- User Icon (Account)-->
                     <ion-icon size="large" name="person-circle-outline"></ion-icon>
                 </button>
-
-                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight"
-                    aria-labelledby="offcanvasRightLabel">
+                <!-- Account Login Side-bar -->
+                <div class="offcanvas offcanvas-end" tabindex="-1" id="AccountLogin"
+                    aria-labelledby="AccountLoginLabel">
                     <div class="offcanvas-header border-bottom border-3 border-danger">
-                        <h5 class="offcanvas-title" id="offcanvasRightLabel">Log in</h5>
+                        <h5 class="offcanvas-title" id="AccountLoginLabel">Log in</h5>
                         <button class="btn btn-close" data-bs-dismiss="offcanvas">
                     </div>
                     <div class="offcanvas-body">
@@ -80,12 +80,55 @@
                     <!-- Gift Icon (Wishlist)-->
                     <ion-icon style="font-size: 30px;" name="gift-outline"></ion-icon>
                 </button>
-                <button class="btn text-muted">
-                    <!-- Cart Icon (Shopping List)-->
-                    <ion-icon style="font-size: 30px;" name="cart-outline"></ion-icon>
-                    </ion-icon>
-                    </a>
+
+                <!-- Shopping Cart -->
+                <button class="btn text-muted" type="button" data-bs-toggle="offcanvas" data-bs-target="#ShoppingCart"
+                    aria-controls="ShoppingCart">
+
+                    <!-- Cart Icon (Shopping chart)-->
+                    <ion-icon size="large" name="cart-outline"></ion-icon>
+                </button>
+                <!-- Shopping cart Side-bar -->
+                <div class="offcanvas offcanvas-end h-100" tabindex="-1" id="ShoppingCart"
+                    aria-labelledby="ShoppingCartLabel">
+                    <div class="offcanvas-header border-bottom border-3 border-danger">
+                        <h5 class="offcanvas-title" id="ShoppingCartLabel">Shopping Cart</h5>
+                        <button class="btn btn-close" data-bs-dismiss="offcanvas">
+                    </div>
+                    <div class="offcanvas-body w-100 h-100">
+                        <div class="row h-100">
+                            <div class="col-12 overflow-auto h-75">
+                                <!-- Input Info -->
+                                <!-- product card sm -->
+                                <?php 
+                                require 'include/product-card-sm.php';
+                                require 'include/product-card-sm.php';
+                                require 'include/product-card-sm.php';
+                                require 'include/product-card-sm.php';
+                                require 'include/product-card-sm.php';
+                                require 'include/product-card-sm.php';
+                                require 'include/product-card-sm.php';
+                                ?>
+
+                            </div>
+                            <!-- Bottom of the cart -->
+                            <div class="col align-self-end">
+                                <div class="row d-flex justify-content-between py-2">
+                                    <div class="col">
+                                        <h3 class="fs-6 text-start mt-2">Subtotal:</h3>
+                                    </div>
+                                    <div class="col">
+                                        <p class="product-card-font">&euro;0.00</p>
+                                    </div>
+                                </div>
+                                <button class="btn btn-danger rounded-0 w-100 mb-1">View Cart</button>
+                                <button class="btn btn-danger rounded-0 w-100">Proceed to Checkout</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
+
             <!-- Navbar Categories section includes: Slider -->
             <!-- Normal Size Screen -->
             <div id="navCategories" class="container col-sm-6 col-md-6 col-lg-4 col-xl-4 navbar navbar-light bg-light">
