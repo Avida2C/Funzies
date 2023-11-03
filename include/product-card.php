@@ -1,22 +1,27 @@
 <div class="card shadow-sm rounded-0 border-0 product-card mb-2">
     <a href="product-page.php"><img class="card-img-top object-fit-cover" src="img/comingsoon.jpg"></a>
     <div class="card-body">
-        <!-- Title -->
-        <a href="product-page.php" class="text-decoration-none">
-            <h5 class="card-title text-black fs-6">Coming Soon - Info Unavailable</h5>
-        </a>
         <!-- Brand -->
         <a href="#" class="text-decoration-none">
-            <p class="card-text text-muted pb-2">Hopefully... Soon</p>
+            <p class="card-text text-muted fs-6">Hopefully... Soon</p>
         </a>
-        <!-- In Stock? -->
-        <p class="fw-bold pt-4">
-            <ion-icon class="text-danger align-middle product-card-icon" name="checkmark-outline"></ion-icon>
-            In Stock
-        </p>
+        <!-- Title -->
+        <a href="product-page.php" class="text-decoration-none ">
+            <h5 class="card-title text-black fs-6 mb-4">Coming Soon - Info Unavailable</h5>
+        </a>
+
         <!-- Price -->
         <p class="text-danger product-card-font"> &euro;0.00</p>
         <!-- Button add to cart -->
-        <button class="btn btn-danger rounded-0 w-100">Add To Cart</button>
+        <button class="btn btn-danger rounded-0 w-100 mb-1">Add To Cart</button>
+        <div class="row m-0 p-0">
+            <div class="col m-0 p-0">
+                <p class="text-end">
+                    <a class="text-muted text-decoration-none" href="#">
+                        Add to wishlist
+                    </a>
+                </p>
+            </div>
+        </div>
     </div>
 </div>
