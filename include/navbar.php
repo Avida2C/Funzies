@@ -118,7 +118,7 @@
                                         <p class="product-card-font">&euro;0.00</p>
                                     </div>
                                 </div>
-                                <button class="btn btn-danger rounded-0 w-100">View Cart</button>
+                                <button onclick="document.location='viewcart.php'" class="btn btn-danger rounded-0 w-100">View Cart</button>
                             </div>
                         </div>
                     </div>
