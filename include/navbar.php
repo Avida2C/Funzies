@@ -76,7 +76,7 @@
                 </div>
 
                 <!-- Wishlist -->
-                <button class="btn text-muted">
+                <button onclick="document.location='wishlist.php'" class="btn text-muted">
                     <!-- Gift Icon (Wishlist)-->
                     <ion-icon style="font-size: 30px;" name="gift-outline"></ion-icon>
                 </button>

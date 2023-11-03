@@ -10,13 +10,23 @@
             <p class="card-text text-muted pb-2">Hopefully... Soon</p>
         </a>
         <!-- In Stock? -->
-        <p class="fw-bold pt-4">
+        <p class="fw-bold">
             <ion-icon class="text-danger align-middle product-card-icon" name="checkmark-outline"></ion-icon>
             In Stock
         </p>
         <!-- Price -->
         <p class="text-danger product-card-font"> &euro;0.00</p>
         <!-- Button add to cart -->
-        <button class="btn btn-danger rounded-0 w-100">Add To Cart</button>
+        <button class="btn btn-danger rounded-0 w-100 mb-2">Move To Cart</button>
+        <div class="row m-0 p-0">
+            <div class="col m-0 p-0">
+                <p class="text-center">
+                    <a class="text-muted text-decoration-none" href="#">
+                        <ion-icon class="text-muted align-middle product-card-icon" name="close"></ion-icon>
+                        Remove from wishlist
+                    </a>
+                </p>
+            </div>
+        </div>
     </div>
 </div>
