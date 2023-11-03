@@ -97,13 +97,10 @@
                     </div>
                     <div class="offcanvas-body w-100 h-100">
                         <div class="row h-100">
-                            <div class="col-12 overflow-auto h-75">
+                            <div class="col-12 overflow-auto" style="height: 85%;">
                                 <!-- Input Info -->
                                 <!-- product card sm -->
                                 <?php 
-                                require 'include/product-card-sm.php';
-                                require 'include/product-card-sm.php';
-                                require 'include/product-card-sm.php';
                                 require 'include/product-card-sm.php';
                                 require 'include/product-card-sm.php';
                                 require 'include/product-card-sm.php';
@@ -113,7 +110,7 @@
                             </div>
                             <!-- Bottom of the cart -->
                             <div class="col align-self-end">
-                                <div class="row d-flex justify-content-between py-2">
+                                <div class="row d-flex justify-content-between py-2 h-100">
                                     <div class="col">
                                         <h3 class="fs-6 text-start mt-2">Subtotal:</h3>
                                     </div>
@@ -121,8 +118,7 @@
                                         <p class="product-card-font">&euro;0.00</p>
                                     </div>
                                 </div>
-                                <button class="btn btn-danger rounded-0 w-100 mb-1">View Cart</button>
-                                <button class="btn btn-danger rounded-0 w-100">Proceed to Checkout</button>
+                                <button class="btn btn-danger rounded-0 w-100">View Cart</button>
                             </div>
                         </div>
                     </div>
