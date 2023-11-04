@@ -175,28 +175,28 @@ require_once 'include/navbar.php';
             <h3 class="fs-5">Order Summary</h3>
             <table class="table table-borderless">
                 <tr>
-                    <td class="py-3">
+                    <td class="py-2">
                         Subtotal
                     </td>
-                    <td class="py-3">
+                    <td class="py-2">
                         &euro;0.00
                     </td>
                 </tr>
                 <tr>
-                    <td class="py-3">
+                    <td class="py-2">
                         Delivery
                     </td>
-                    <td class="py-3">
+                    <td class="py-2">
                         &euro;0.00
                     </td>
                 </tr>
                 <tr class="border-top">
-                    <th class="py-3">
+                    <th class="py-2">
                         <p class="product-card-font fs-5">
                             Total
                         </p>
                     </th>
-                    <td class="py-3">
+                    <td class="py-2">
                         <p class="product-card-font text-danger fs-5">
                             &euro;0.00
                         </p>
