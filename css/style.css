@@ -97,6 +97,11 @@ footer a:hover {
     padding: 5px;
 }
 
+.clearMP{
+    padding: 0;
+    margin: 0;
+}
+
 /* Scrollbar */
 /* width */
 ::-webkit-scrollbar {
