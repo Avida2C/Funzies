@@ -21,11 +21,11 @@ require_once 'include/navbar.php';
         <div class="container-fluid">
             <div class="row justify-content-between">
                 <?php 
-                require 'include/wl-product-card.php'; 
-                require 'include/wl-product-card.php'; 
-                require 'include/wl-product-card.php'; 
-                require 'include/wl-product-card.php'; 
-                require 'include/wl-product-card.php'; 
+                require 'include/product-card-wl.php'; 
+                require 'include/product-card-wl.php'; 
+                require 'include/product-card-wl.php'; 
+                require 'include/product-card-wl.php'; 
+                require 'include/product-card-wl.php'; 
                 ?>
             </div>
         </div>
