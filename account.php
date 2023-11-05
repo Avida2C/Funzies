@@ -10,7 +10,7 @@ require_once 'include/navbar.php';
 ?>
 
 
-<div class="container col-sm-12 col-md-12 col-lg-9 col-xl-9 spacing-my">
+<div class="container col-sm-12 col-md-12 col-lg-9 col-xl-9 spacing-my p-1">
     <div class="row">
         <!-- Sidebar -->
         <div class="col-sm-12 col-md-12 col-lg-3 col-xl-3 text-center me-4">
@@ -39,7 +39,7 @@ require_once 'include/navbar.php';
         <div class="col-sm-12 col-md-12 col-lg-8 col-xl-8" id="account-sections">
             <div class="collapse fade show" data-bs-parent="#account-sections" id="overview">
                 <h3 class="border-bottom border-2 border-danger pb-2">Profile Overview</h3>
-                <div class="card-body">
+                <div class="card-body ">
                     <!-- Profile Image and User Details -->
                     <div class="row align-items-center">
                         <div class="col-md-3 ">
@@ -349,13 +349,63 @@ require_once 'include/navbar.php';
             </div>
             <div class="collapse fade" data-bs-parent="#account-sections" id="reviews">
                 <h3 class="border-bottom border-2 border-danger pb-2">Reviews</h3>
-                <p>Your settings content goes here.</p>
+                <div class="container mt-4">
+                    <table class="table table-striped align-middle">
+                        <tr>
+                            <th>Product</th>
+                            <th>Title</th>
+                            <th>Review</th>
+                            <th>Actions</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <img src="img/comingsoon.jpg" alt="Product Image 1" width="50" height="50">
+                            </td>
+                            <td>Coming Soon - Info Unavailable</td>
+
+                            <td>
+                                I love this product! It's so useful.
+                            </td>
+                            <td>
+                                <a href="#" class="text-primary text-decoration-none me-3">Edit</a>
+                                <a href="#" class="text-danger text-decoration-none">Delete</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <img src="img/comingsoon.jpg" alt="Product Image 2" width="50" height="50">
+                            </td>
+                            <td>Coming Soon - Info Unavailable</td>
+
+                            <td>
+                                Could be better. I had some issues.
+                            </td>
+                            <td>
+                                <a href="#" class="text-primary text-decoration-none me-3">Edit</a>
+                                <a href="#" class="text-danger text-decoration-none">Delete</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <img src="img/comingsoon.jpg" alt="Product Image 3" width="50" height="50">
+                            </td>
+                            <td>Coming Soon - Info Unavailable</td>
+
+                            <td>
+                                Overall, a good purchase for the price.
+                            </td>
+                            <td>
+                                <a href="#" class="text-primary text-decoration-none me-3">Edit</a>
+                                <a href="#" class="text-danger text-decoration-none">Delete</a>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
             </div>
-            <!-- Sign Out does not have a corresponding section since it might directly sign the user out -->
         </div>
     </div>
 </div>
-</div>
+
 
 
 
