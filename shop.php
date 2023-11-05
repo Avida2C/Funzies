@@ -11,13 +11,13 @@ require_once 'include/navbar.php';
 require_once 'include/shop-categories.php';
 ?>
 
-<div class="container col-sm-12 col-md-12 col-lg-8 col-xl-8">
-    <div class="row justify-content-between">
+<div  class="container col-sm-12 col-md-12 col-lg-8 col-xl-8">
+    <div  class="row justify-content-between">
         <!-- Showing Products Info -->
-        <div class="col text-center">
+        <div id="showDetails" class="col text-center">
             <p class="text-muted">Showing 9 out of 1000 Products</p>
         </div>
-        <div class="col-sm-12 col-md-12 col-lg-3 col-xl-3">
+        <div id="sortProducts" class="col-sm-12 col-md-12 col-lg-3 col-xl-3">
             <!-- Sorting Dropdown -->
             <select class="form-select border-0 rounded-0 shadow-sm mb-3" aria-label="Sort products by">
                 <option selected value="1">Sort by popularity</option>
@@ -32,7 +32,7 @@ require_once 'include/shop-categories.php';
 <div class="container col-sm-12 col-md-12 col-lg-8 col-xl-8">
     <div class="row">
         <!-- Product Categories -->
-        <div class="col-sm-12 col-md-12 col-lg-3 col-xl-3">
+        <div id="productCategories" class="col-sm-12 col-md-12 col-lg-3 col-xl-3">
             <h3 class="fs-6 mb-2">Product Categories</h3>
             <?php
             $categories = [

@@ -16,7 +16,7 @@ require_once 'include/navbar.php';
 
 <div class="container col-sm-12 col-md-12 col-lg-9 col-xl-9 spacing-mb text-center">
     <div class="row">
-        <div class="col-8 overflow-auto me-4" style="height: 475px;">
+        <div class="col-sm-12 col-md-12 col-lg-8 col-xl-8 overflow-auto me-4" style="height: 475px;">
             <table class="table">
                 <tr>
                     <th>
@@ -45,11 +45,11 @@ require_once 'include/navbar.php';
                         </div>
                     </td>
                     <td class="px-4">
-                        <div class="quantity-selector">
-                            <button onclick="decrementValue()" id="decrement" class="quantity-button">-</button>
-                            <input type="text" id="quantity" name="quantity" value="1" readonly>
-                            <button onclick="incrementValue()" id="increment" class="quantity-button">+</button>
-                        </div>
+                    <div class="quantity-selector">
+                        <button class="quantity-button decrement-btn">-</button>
+                        <input type="text" class="quantity quantity-input" name="quantity" value="1" readonly>
+                        <button class="quantity-button increment-btn">+</button>
+                    </div>
                     </td>
                     <td class="px-4">
                         <p class="product-card-font fs-5 text-danger">&euro;0.00</p>
@@ -71,11 +71,11 @@ require_once 'include/navbar.php';
                         </div>
                     </td>
                     <td class="px-4">
-                        <div class="quantity-selector">
-                            <button onclick="decrementValue()" id="decrement" class="quantity-button">-</button>
-                            <input type="text" id="quantity" name="quantity" value="1" readonly>
-                            <button onclick="incrementValue()" id="increment" class="quantity-button">+</button>
-                        </div>
+                    <div class="quantity-selector">
+                        <button class="quantity-button decrement-btn">-</button>
+                        <input type="text" class="quantity quantity-input" name="quantity" value="1" readonly>
+                        <button class="quantity-button increment-btn">+</button>
+                    </div>
                     </td>
                     <td class="px-4">
                         <p class="product-card-font fs-5 text-danger">&euro;0.00</p>
@@ -97,11 +97,11 @@ require_once 'include/navbar.php';
                         </div>
                     </td>
                     <td class="px-4">
-                        <div class="quantity-selector">
-                            <button onclick="decrementValue()" id="decrement" class="quantity-button">-</button>
-                            <input type="text" id="quantity" name="quantity" value="1" readonly>
-                            <button onclick="incrementValue()" id="increment" class="quantity-button">+</button>
-                        </div>
+                    <div class="quantity-selector">
+                        <button class="quantity-button decrement-btn">-</button>
+                        <input type="text" class="quantity quantity-input" name="quantity" value="1" readonly>
+                        <button class="quantity-button increment-btn">+</button>
+                    </div>
                     </td>
                     <td class="px-4">
                         <p class="product-card-font fs-5 text-danger">&euro;0.00</p>
@@ -123,19 +123,20 @@ require_once 'include/navbar.php';
                         </div>
                     </td>
                     <td class="px-4">
-                        <div class="quantity-selector">
-                            <button onclick="decrementValue()" id="decrement" class="quantity-button">-</button>
-                            <input type="text" id="quantity" name="quantity" value="1" readonly>
-                            <button onclick="incrementValue()" id="increment" class="quantity-button">+</button>
-                        </div>
+                    <div class="quantity-selector">
+                        <button class="quantity-button decrement-btn">-</button>
+                        <input type="text" class="quantity quantity-input" name="quantity" value="1" readonly>
+                        <button class="quantity-button increment-btn">+</button>
+                    </div>
                     </td>
                     <td class="px-4">
                         <p class="product-card-font fs-5 text-danger">&euro;0.00</p>
                     </td>
                 </tr>
+                
             </table>
         </div>
-        <div class="col-3">
+        <div class="col-sm-12 col-md-12 col-lg-3 col-xl-3">
             <h3 class="fs-5">Order Summary</h3>
             <table class="table table-borderless">
                 <tr>

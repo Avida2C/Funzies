@@ -11,9 +11,9 @@ require_once 'include/navbar.php';
 ?>
 
 <!-- Carousel -->
-<div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 border-bottom border-5 border-danger">
-  <div id="carouselExampleIndicators" class="carousel slide">
-    <div class="carousel-indicators">
+<div class="sm-carousel col-sm-12 col-md-12 col-lg-12 col-xl-12 border-bottom border-5 border-danger">
+  <div id="carouselExampleIndicators" class="carousel slide sm-carousel">
+    <div class="carousel-indicators ">
       <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
         aria-current="true" aria-label="Slide 1"></button>
       <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
@@ -22,15 +22,15 @@ require_once 'include/navbar.php';
         aria-label="Slide 3"></button>
     </div>
     <!-- Items in the carousel -->
-    <div class="carousel-inner carousel-md">
+    <div class="carousel-inner carousel-md sm-carousel">
       <div class="carousel-item active ">
-        <img class="w-100 object-fit-cover" src="img/MaistoBanner.png" alt="...">
+        <img class=" sm-carousel w-100 object-fit-cover" src="img/MaistoBanner.png" alt="...">
       </div>
       <div class="carousel-item">
-        <img class="w-100 object-fit-cover" src="img/FunkoBanner.png" alt="...">
+        <img class="sm-carousel w-100 object-fit-cover" src="img/FunkoBanner.png" alt="...">
       </div>
       <div class="carousel-item">
-        <img class="w-100 object-fit-cover" src="img/LegoBanner.png" alt="...">
+        <img class="sm-carousel w-100 object-fit-cover" src="img/LegoBanner.png" alt="...">
       </div>
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
@@ -50,7 +50,7 @@ require_once 'include/navbar.php';
 
 <!--New Arrivals -->
 <div class="container col-sm-12 col-md-12 col-lg-12 col-xl-8 spacing-mb">
-  <div class="row">
+  <div class="row d-flex justify-content-between">
     <div class="col">
       <h3 class="fs-5">New Arrivals</h3>
     </div>
@@ -59,7 +59,7 @@ require_once 'include/navbar.php';
           style="font-size:18px;" name="chevron-forward-outline"></ion-icon></button>
     </div>
   </div>
-  <div class="col">
+  <div class="col-12">
     <div class="container-fluid">
       <div class="row justify-content-between">
         <!-- Product Card called via PHP -->

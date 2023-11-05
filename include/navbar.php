@@ -1,6 +1,6 @@
 <nav class="bg-light py-2 shadow-sm border-bottom border-5 border-danger">
     <div class="container col-sm-12 col-md-12 col-lg-10 col-xl-10">
-        <div class="row text-muted">
+        <div class="row text-muted align-items-center">
             <!-- Navbar Logo, Searchbar and Account options -->
             <div id="navLogo" class="col-sm-1 col-md-12 col-lg-2 col-xl-2 text-start py-1">
                 <!-- Website Logo -->
@@ -8,7 +8,7 @@
             </div>
 
             <!-- Searchbar -->
-            <div id="navSearchbar" class="col-sm-12 col-md-12 col-lg-8 col-xl-8 py-2 align-items-center">
+            <div id="navSearchbar" class="col-sm-12 col-md-12 col-lg-7 col-xl-7 py-2 align-items-center">
                 <form method="get" class="d-flex">
                     <label for="searchInput" class="visually-hidden">Search</label>
                     <input id="searchInput" class="border border-1 border-muted w-100 px-2" type="search"
@@ -20,7 +20,7 @@
                 </form>
             </div>
 
-            <div id="navAccount" class="col-sm-6 col-md-12 col-lg-2 col-xl-2 text-end align-self-center">
+            <div id="navAccount" class="col-sm-6 col-md-12 col-lg-3 col-xl-3 text-end align-self-center">
                 <button class="btn text-muted" type="button" data-bs-toggle="offcanvas" data-bs-target="#AccountLogin"
                     aria-controls="AccountLogin">
                     <!-- User Icon (Account)-->
@@ -39,16 +39,19 @@
                                 <div class="col-12">
                                     <form class="border-bottom text-start" method="post">
                                         <label for="email">Email address: <span class="text-danger">*</span></label>
-                                        <input class="w-100 rounded-0 border-1 p-1" type="email" name="email" required>
+                                        <input class="w-100 rounded-0 border-1 p-1" type="email" id="email" name="email"
+                                            required autocomplete="email">
                                         <label class="mt-2" for="password">Password: <span
                                                 class="text-danger">*</span></label>
-                                        <input class="w-100 p-1 rounded-0 border-1" type="password" name="password"
-                                            required>
+                                        <input class="w-100 p-1 rounded-0 border-1" type="password" id="password"
+                                            name="password" required>
+
                                         <button class="w-100 my-3 btn btn-danger rounded-0">Log In</button>
+
                                         <div class="row">
                                             <div class="col-6">
-                                                <input type="checkbox" name="rememberme"> <label
-                                                    for="rememberme">Remember me</label>
+                                                <input type="checkbox" id="rememberme" name="rememberme">
+                                                <label for="rememberme">Remember me</label>
                                             </div>
                                             <div class="col-6 text-end">
                                                 <a class="text-danger text-decoration-none"
@@ -218,7 +221,7 @@
                                     <a class="nav-link active" aria-current="page" href="index.php">Home</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">Shop</a>
+                                    <a class="nav-link" href="shop.php">Shop</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="contact.php">Contact Us</a>

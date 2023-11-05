@@ -11,12 +11,12 @@ function buttonSwitch(btnClicked){
 
 $(document).ready(function() {
     $(".quantity-button").click(function() {
-        let $input = $(this).siblings("input");
+        let $input = $(this).siblings(".quantity-input");
         let value = parseInt($input.val(), 10);
         
-        if ($(this).attr("id") === "increment" && value < 99) {
+        if ($(this).hasClass("increment-btn") && value < 99) {
             $input.val(value + 1);
-        } else if ($(this).attr("id") === "decrement" && value > 1) {
+        } else if ($(this).hasClass("decrement-btn") && value > 1) {
             $input.val(value - 1);
         }
     });

@@ -8,9 +8,9 @@
             <div class="row d-flex">
                 <div class="col mb-2">
                     <div class="quantity-selector">
-                        <button onclick="decrementValue()" id="decrement" class="quantity-button">-</button>
-                        <input type="text" id="quantity" name="quantity" value="1" readonly>
-                        <button onclick="incrementValue()" id="increment" class="quantity-button">+</button>
+                        <button class="quantity-button decrement-btn">-</button>
+                        <input type="text" class="quantity quantity-input" name="quantity" value="1" readonly>
+                        <button class="quantity-button increment-btn">+</button>
                     </div>
                 </div>
             </div>

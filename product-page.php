@@ -109,8 +109,8 @@ require_once 'include/navbar.php';
                 <!-- Info goes here -->
                 <div class="container col-sm-12 col-md-12 col-lg-10 col-xl-10">
                     <div class="row">
-                        <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 me-3 my-4 pb-2">
-                            <form method="GET">
+                        <div id="reviewForm" class="col-sm-12 col-md-12 col-lg-6 col-xl-6 me-3 my-4 pb-2">
+                            <form method="POST">
                                 <label for="fullname">Full Name</label>
                                 <br>
                                 <input class="w-100 mb-2" type="text">
@@ -159,7 +159,7 @@ require_once 'include/navbar.php';
                             </form>
                         </div>
                         <!-- Review form Message -->
-                        <div class="col-sm-12 col-md-12 col-lg-5 col-xl-5 m-auto">
+                        <div id="ReviewFormMessage" class="col-sm-12 col-md-12 col-lg-5 col-xl-5 m-auto">
                             <p class="fs-6 ">
                                 Gear up for the ultimate review adventure! Your words have the power to inspire and
                                 guide

@@ -17,12 +17,12 @@ require_once 'include/navbar.php';
 
 <div class="container col-sm-12 col-md-12 col-lg-10 col-xl-10 spacing-mb">
     <div class="row justify-content-center">
-        <div class="col-5 me-4">
+        <div id="loginMessage" class="col-sm-12 col-md-12 col-lg-5 col-xl-5 mx-4">
         <p class="product-card-font bg-danger p-2 fs-6 text-white w-100 mb-4">Already have an account? <a
             href="createAccount.php" class="text-decoration-none text-dark">Log In</a> for faster checkout!</p>
 
         
-            <form class="form" method="POST">
+            <form id="customerDetailsForm" class="form" method="POST">
                 <h3 class="product-card-font fs-4 mb-3">Customer Details</h3>
 
                 <label for="firstname">First Name:<span class="text-danger">*</span></label>
@@ -33,8 +33,6 @@ require_once 'include/navbar.php';
                 <input class="w-100 p-1 mb-3" type="email" name="email">
                 <label for="phone">Mobile Number:<span class="text-danger">*</span></label>
                 <input class="w-100 p-1 mb-3" type="number" name="phone">
-
-
                 <h3 class="product-card-font fs-4 my-3">Delivery Details</h3>
                 <label for="region">Region:<span class="text-danger">*</span></label>
                 <select name="region" class="form rounded-0 p-1 mb-3" style="width: 100%;">
@@ -55,9 +53,9 @@ require_once 'include/navbar.php';
                 <ion-icon class="align-middle" name="lock-closed"></ion-icon> Secure Checkout
             </p>
         </div>
-        <div class="col-4 px-3">
-            <div class="row">
-                <div class="col-6 ">
+        <div id="orderSummary" class="col-sm-12 col-md-12 col-lg-4 col-xl-4 px-3">
+            <div  class="row">
+                <div  class="col-6 ">
                     <h3 class="fs-5">Order Summary</h3>
                 </div>
                 <div class="col-6">

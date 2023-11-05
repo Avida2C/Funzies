@@ -29,7 +29,7 @@ footer a:hover {
 }
 
 .navLogo {
-    max-width: 100px;
+    width: 75px;
 }
 
 .footerLogo {
@@ -114,7 +114,7 @@ footer a:hover {
 }
 
 .quantity-button {
-    padding: 2px 10px 2px 10px; 
+    padding: 2px 10px 2px 10px;
     color: white;
     border: none;
     background-color: transparent;
@@ -127,19 +127,26 @@ footer a:hover {
     background-color: #B02A37;
 }
 
-#quantity {
-    width: 30px; /* Adjust as needed */
-    padding: 10px; /* Adjust to match the buttons' height */
+.quantity {
+    width: 30px;
+    /* Adjust as needed */
+    padding: 10px;
+    /* Adjust to match the buttons' height */
     text-align: center;
-    border: none; /* Remove the border or set it to match the buttons */
+    border: none;
+    /* Remove the border or set it to match the buttons */
     font-size: 20px;
-    background-color: white; /* Different background for the input/number */
-    margin: 0 5px; /* Add some space between the buttons and the number box */
+    background-color: white;
+    /* Different background for the input/number */
+    margin: 0 5px;
+    /* Add some space between the buttons and the number box */
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
     box-sizing: border-box;
-  }
+}
 
 /* Scrollbar */
 /* width */
@@ -288,7 +295,35 @@ footer a:hover {
     #forgotPassText {
         order: 2;
     }
+
+    .sm-carousel {
+        height: 220px !important;
+    }
+
+    #productCategories {
+        display: none;
+    }
+
+    #sortProducts {
+        order: 1;
+    }
+
+    #showDetails {
+        order: 2;
+    }
+
+    #ReviewFormMessage{
+        order: 1;
+    }
+
+    #reviewForm
+    {
+        order: 2;
+    }
 }
+
+
+
 
 @media only screen and (min-width: 993px) {
 

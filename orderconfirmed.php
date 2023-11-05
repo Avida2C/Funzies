@@ -12,7 +12,7 @@ require_once 'include/navbar.php';
 
 <div class="container col-sm-12 col-md-12 col-lg-10 col-xl-10 spacing-my">
     <div class="row justify-content-center">
-        <div class="col-5">
+        <div class="col-sm-12 col-md-12 col-lg-5 col-xl-5">
             <h3 class="product-card-font fs-4 text-danger">Order confirmed! </h3>
             <p class="fs-6 mb-4">The adventure starts now! Your order has arrived in our
                 world, poised for a thrilling journey to your doorstep. Brace yourself for a delivery team touchdown –
@@ -26,7 +26,7 @@ require_once 'include/navbar.php';
                 <br> Country
             </p>
         </div>
-        <div class="col-4">
+        <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4">
             <h3 class="product-card-font fs-6 text-center">Order Summary</h3>
             </p>
             <div class="container overflow-auto" style="height:150px;">
