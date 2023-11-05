@@ -50,6 +50,11 @@ footer a:hover {
     height: 125px;
 }
 
+.list-group-item-action.active {
+    background-color: #DC3545;
+    border: 0;  /* light green */          /* dark green */
+}
+
 .spacing-mt {
     margin-top: 3em;
 }

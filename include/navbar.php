@@ -46,7 +46,8 @@
                                         <input class="w-100 p-1 rounded-0 border-1" type="password" id="password"
                                             name="password" required>
 
-                                        <button class="w-100 my-3 btn btn-danger rounded-0">Log In</button>
+                                        <button onclick="window.location.href='account.php'"
+                                            class="w-100 my-3 btn btn-danger rounded-0">Log In</button>
 
                                         <div class="row">
                                             <div class="col-6">
@@ -74,7 +75,7 @@
 
 
                 <!-- Wishlist -->
-                <button onclick="document.location='wishlist.php'" class="btn text-muted">
+                <button onclick="navigateToWishlist()" class="btn text-muted">
                     <!-- Gift Icon (Wishlist)-->
                     <ion-icon style="font-size: 30px;" name="gift-outline"></ion-icon>
                 </button>
