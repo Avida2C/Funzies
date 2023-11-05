@@ -1,3 +1,8 @@
+/* Reset and Global Styles */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
 * {
     line-height: 24px;
     font-size: 16px;
@@ -7,13 +12,14 @@ body {
     overflow-y: scroll;
 }
 
+/* Footer Styles */
+footer ul {
+    margin-top: 0.5em;
+}
+
 footer ul li {
     padding: 0.2em;
     cursor: default;
-}
-
-footer ul {
-    margin-top: 0.5em;
 }
 
 footer ul li a:hover {
@@ -28,6 +34,7 @@ footer a:hover {
     color: rgb(255, 0, 0) !important;
 }
 
+/* Logo Styles */
 .navLogo {
     width: 75px;
 }
@@ -36,25 +43,30 @@ footer a:hover {
     max-width: 200px;
 }
 
+/* Carousel Styles */
 .carousel-md img {
     height: 380px;
 }
 
+/* Category Styles */
 .categories-btn a {
     width: 150px;
     height: 40px;
 }
 
+/* Brand Image Styles */
 .brand-img img {
     width: 175px;
     height: 125px;
 }
 
+/* List Group Styles */
 .list-group-item-action.active {
     background-color: #DC3545;
-    border: 0;  /* light green */          /* dark green */
+    border: 0;
 }
 
+/* Spacing Utilities */
 .spacing-mt {
     margin-top: 3em;
 }
@@ -64,9 +76,11 @@ footer a:hover {
 }
 
 .spacing-my {
-    margin-bottom: 3em;
     margin-top: 3em;
+    margin-bottom: 3em;
 }
+
+/* Card Styles */
 .order-card {
     height: 15rem;
 }
@@ -120,72 +134,54 @@ footer a:hover {
     margin: 0;
 }
 
-
-/* Quantity Element */
+/* Quantity Element Styles */
 .quantity-selector {
     display: flex;
     align-items: center;
 }
 
+.quantity {
+    width: 30px;
+    padding: 10px;
+    text-align: center;
+    border: none;
+    font-size: 20px;
+    background-color: white;
+    margin: 0 5px;
+}
+
 .quantity-button {
-    padding: 2px 10px 2px 10px;
+    padding: 2px 10px;
     color: white;
     border: none;
-    background-color: transparent;
+    background-color: #DC3545;
     cursor: pointer;
     transition: background-color 0.3s;
-    background-color: #DC3545;
 }
 
 .quantity-button:hover {
     background-color: #B02A37;
 }
 
-.quantity {
-    width: 30px;
-    /* Adjust as needed */
-    padding: 10px;
-    /* Adjust to match the buttons' height */
-    text-align: center;
-    border: none;
-    /* Remove the border or set it to match the buttons */
-    font-size: 20px;
-    background-color: white;
-    /* Different background for the input/number */
-    margin: 0 5px;
-    /* Add some space between the buttons and the number box */
-}
-
-*,
-*::before,
-*::after {
-    box-sizing: border-box;
-}
-
-/* Scrollbar */
-/* width */
+/* Scrollbar Styles */
 ::-webkit-scrollbar {
     width: 10px;
     height: 10px;
 }
 
-/* Track */
 ::-webkit-scrollbar-track {
     background-color: #2D2D2D;
 }
 
-/* Handle */
 ::-webkit-scrollbar-thumb {
     background: #DC3545;
 }
 
-/*Slider */
+/* Slider Styles */
 .slidecontainer {
     width: 100%;
-    /* Width of the outside container */
 }
 
-/* The slider itself */
 .slider {
     -webkit-appearance: none;
     appearance: none;
@@ -197,7 +193,6 @@ footer a:hover {
     transition: opacity .2s;
 }
 
-/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
 .slider::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
@@ -207,50 +202,40 @@ footer a:hover {
     cursor: pointer;
 }
 
-#star-review {
+/* Star Review Styles */
+#star-review .rating-group {
+    display: inline-flex;
+}
 
-    /* use display:inline-flex to prevent whitespace issues. alternatively, you can put all the children of .rating-group on a single line */
-    .rating-group {
-        display: inline-flex;
-    }
+#star-review .rating-input {
+    position: absolute !important;
+    left: -9999px !important;
+}
 
-    /* hide radio inputs */
-    .rating-input {
-        position: absolute !important;
-        left: -9999px !important;
-    }
+#star-review .rating-input-none {
+    display: none;
+}
 
-    /* hide 'none' input from screenreaders */
-    .rating-input-none {
-        display: none
-    }
+#star-review .rating-label {
+    cursor: pointer;
+    padding: 0 0.1em;
+    font-size: 2rem;
+}
 
-    /* set icon padding and size */
-    .rating-label {
-        cursor: pointer;
-        padding: 0 0.1em;
-        font-size: 2rem;
-    }
+#star-review .rating-icon-star {
+    color: orange;
+}
 
-    /* set default star color */
-    .rating-icon-star {
-        color: orange;
-    }
+#star-review .rating-input:checked ~ .rating-label .rating-icon-star {
+    color: #ddd;
+}
 
-    /* if any input is checked, make its following siblings grey */
-    .rating-input:checked~.rating-label .rating-icon-star {
-        color: #ddd;
-    }
+#star-review .rating-group:hover .rating-label .rating-icon-star {
+    color: orange;
+}
 
-    /* make all stars orange on rating group hover */
-    .rating-group:hover .rating-label .rating-icon-star {
-        color: orange;
-    }
-
-    /* make hovered input's following siblings grey on hover */
-    .rating-input:hover~.rating-label .rating-icon-star {
-        color: #ddd;
-    }
+#star-review .rating-input:hover ~ .rating-label .rating-icon-star {
+    color: #ddd;
 }
 
 /* Responsiveness */
@@ -326,30 +311,25 @@ footer a:hover {
         order: 2;
     }
 
-    #ReviewFormMessage{
+    #ReviewFormMessage {
         order: 1;
     }
 
-    #reviewForm
-    {
+    #reviewForm {
         order: 2;
     }
 
-    .accountOptions
-    {
+    .accountOptions {
         order: 2;
     }
 
-    .account-sections{
+    .account-sections {
         order: 1;
 
     }
 
 
 }
-
-
-
 
 @media only screen and (min-width: 993px) {
 

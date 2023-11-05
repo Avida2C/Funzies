@@ -1,12 +1,12 @@
 // This code is used in the signup/login page, 
 // which determines which content and button to show, if one is active
 function buttonSwitch(btnClicked) {
-    if (btnClicked == "login") {
-        $(".btnLogin").css("display", "none");
-        $(".btnRegister").css("display", "");
+    if (btnClicked === "login") {
+        $(".btnLogin").hide();
+        $(".btnRegister").show();
     } else {
-        $(".btnLogin").css("display", "");
-        $(".btnRegister").css("display", "none");
+        $(".btnLogin").show();
+        $(".btnRegister").hide();
     }
 }
 
@@ -52,7 +52,7 @@ $(document).ready(function () {
     // If there's a hash in the URL
     if (window.location.hash) {
         let target = window.location.hash;
-
+        
         // Hide any other active sections and remove active state from all list group items
         $('.collapse.show').removeClass('show');
         $('.list-group-item-action.active').removeClass('active');
@@ -64,6 +64,6 @@ $(document).ready(function () {
     } else {
         // Default to "Profile Overview" as the active section if no hash is present
         $('#overview').addClass('show');
-        $('a[href="account/account-overview.php"]').addClass('active');
+        $('a[href="#overview"]').addClass('active');  // Changed to #overview, assuming this was the intended behavior.
     }
 });

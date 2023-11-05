@@ -5,7 +5,6 @@ require_once 'include/header.php';
 ?>
 
 <?php 
-
 // Start of Body //
 require_once 'include/navbar.php';
 ?>
@@ -45,11 +44,11 @@ require_once 'include/navbar.php';
                         </div>
                     </td>
                     <td class="px-4">
-                    <div class="quantity-selector">
-                        <button class="quantity-button decrement-btn">-</button>
-                        <input type="text" class="quantity quantity-input" name="quantity" value="1" readonly>
-                        <button class="quantity-button increment-btn">+</button>
-                    </div>
+                        <div class="quantity-selector">
+                            <button class="quantity-button decrement-btn">-</button>
+                            <input type="text" class="quantity quantity-input" name="quantity" value="1" readonly>
+                            <button class="quantity-button increment-btn">+</button>
+                        </div>
                     </td>
                     <td class="px-4">
                         <p class="product-card-font fs-5 text-danger">&euro;0.00</p>
@@ -71,11 +70,11 @@ require_once 'include/navbar.php';
                         </div>
                     </td>
                     <td class="px-4">
-                    <div class="quantity-selector">
-                        <button class="quantity-button decrement-btn">-</button>
-                        <input type="text" class="quantity quantity-input" name="quantity" value="1" readonly>
-                        <button class="quantity-button increment-btn">+</button>
-                    </div>
+                        <div class="quantity-selector">
+                            <button class="quantity-button decrement-btn">-</button>
+                            <input type="text" class="quantity quantity-input" name="quantity" value="1" readonly>
+                            <button class="quantity-button increment-btn">+</button>
+                        </div>
                     </td>
                     <td class="px-4">
                         <p class="product-card-font fs-5 text-danger">&euro;0.00</p>
@@ -97,11 +96,11 @@ require_once 'include/navbar.php';
                         </div>
                     </td>
                     <td class="px-4">
-                    <div class="quantity-selector">
-                        <button class="quantity-button decrement-btn">-</button>
-                        <input type="text" class="quantity quantity-input" name="quantity" value="1" readonly>
-                        <button class="quantity-button increment-btn">+</button>
-                    </div>
+                        <div class="quantity-selector">
+                            <button class="quantity-button decrement-btn">-</button>
+                            <input type="text" class="quantity quantity-input" name="quantity" value="1" readonly>
+                            <button class="quantity-button increment-btn">+</button>
+                        </div>
                     </td>
                     <td class="px-4">
                         <p class="product-card-font fs-5 text-danger">&euro;0.00</p>
@@ -123,17 +122,16 @@ require_once 'include/navbar.php';
                         </div>
                     </td>
                     <td class="px-4">
-                    <div class="quantity-selector">
-                        <button class="quantity-button decrement-btn">-</button>
-                        <input type="text" class="quantity quantity-input" name="quantity" value="1" readonly>
-                        <button class="quantity-button increment-btn">+</button>
-                    </div>
+                        <div class="quantity-selector">
+                            <button class="quantity-button decrement-btn">-</button>
+                            <input type="text" class="quantity quantity-input" name="quantity" value="1" readonly>
+                            <button class="quantity-button increment-btn">+</button>
+                        </div>
                     </td>
                     <td class="px-4">
                         <p class="product-card-font fs-5 text-danger">&euro;0.00</p>
                     </td>
                 </tr>
-                
             </table>
         </div>
         <div class="col-sm-12 col-md-12 col-lg-3 col-xl-3">
@@ -177,8 +175,6 @@ require_once 'include/navbar.php';
         </div>
     </div>
 </div>
-
-
 
 <?php  
 require_once 'include/footer.php';

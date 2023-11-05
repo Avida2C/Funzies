@@ -57,9 +57,6 @@ require_once 'include/navbar.php';
     </div>
 </div>
 
-
-
-
 <?php  
 require_once 'include/footer.php';
 // End of Body //

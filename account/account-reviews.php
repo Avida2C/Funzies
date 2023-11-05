@@ -1,8 +1,10 @@
 <h3 class="border-bottom border-2 border-danger pb-2">Reviews</h3>
 <div class="container mt-4">
-    <div class="table-responsive"> <!-- Responsive table container -->
+    <div class="table-responsive">
+        <!-- Responsive table container -->
         <table class="table table-striped align-middle">
-            <thead> <!-- Table header section -->
+            <thead>
+                <!-- Table header section -->
                 <tr>
                     <th>Product</th>
                     <th>Title</th>
@@ -10,7 +12,8 @@
                     <th>Actions</th>
                 </tr>
             </thead>
-            <tbody> <!-- Table body section -->
+            <tbody>
+                <!-- Table body section -->
                 <tr>
                     <td>
                         <img src="img/comingsoon.jpg" alt="Product Placeholder Image" width="50" height="50">

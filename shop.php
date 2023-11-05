@@ -64,7 +64,7 @@ require_once 'include/shop-categories.php';
                 echo '<span class="badge bg-danger rounded-pill">' . htmlspecialchars($count) . '</span>';
                 echo '</li>';
             }
-        ?>
+            ?>
 
         </div>
         <!-- Product List -->
@@ -74,7 +74,7 @@ require_once 'include/shop-categories.php';
                     <!-- Product cards -->
                     <?php 
                     for ($i = 0; $i < 6; $i++) {
-                        require 'include/product-card.php';
+                        include 'include/product-card.php';
                     }
                     ?>
                 </div>

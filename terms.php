@@ -5,7 +5,6 @@ require_once 'include/header.php';
 ?>
 
 <?php 
-
 // Start of Body //
 require_once 'include/navbar.php';
 ?>

@@ -5,7 +5,6 @@ require_once 'include/header.php';
 ?>
 
 <?php 
-
 // Start of Body //
 require_once 'include/navbar.php';
 ?>
@@ -87,7 +86,7 @@ require_once 'include/navbar.php';
   <div class="col">
     <div class="container-fluid">
       <div class="row justify-content-between">
-      <?php 
+        <?php 
         for ($i = 0; $i < 4; $i++) {
             include 'include/product-card.php';
         }

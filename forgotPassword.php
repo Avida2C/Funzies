@@ -27,7 +27,8 @@ require_once 'include/navbar.php';
             </div>
             <form method="post">
                 <label for="email">Email Address<span class="text-danger">*</span>:</label>
-                <input type="email" class="w-100 p-1" name="email" placeholder="Enter email" required autocomplete="email">
+                <input type="email" class="w-100 p-1" name="email" placeholder="Enter email" required
+                    autocomplete="email">
                 <button name="verificationCode" class="btn btn-danger rounded-0 w-100 mt-3">Send Verification
                     Code</button>
             </form>
