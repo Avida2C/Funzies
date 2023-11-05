@@ -23,32 +23,40 @@ require_once 'include/navbar.php';
 
         
             <form id="customerDetailsForm" class="form" method="POST">
-                <h3 class="product-card-font fs-4 mb-3">Customer Details</h3>
+    <h3 class="product-card-font fs-4 mb-3">Customer Details</h3>
 
-                <label for="firstname">First Name:<span class="text-danger">*</span></label>
-                <input class="w-100 p-1 mb-3" type="text" name="firstname">
-                <label for="lastname">Last Name:<span class="text-danger">*</span></label>
-                <input class="w-100 p-1 mb-3" type="text" name="lastname">
-                <label for="email">Email:<span class="text-danger">*</span></label>
-                <input class="w-100 p-1 mb-3" type="email" name="email">
-                <label for="phone">Mobile Number:<span class="text-danger">*</span></label>
-                <input class="w-100 p-1 mb-3" type="number" name="phone">
-                <h3 class="product-card-font fs-4 my-3">Delivery Details</h3>
-                <label for="region">Region:<span class="text-danger">*</span></label>
-                <select name="region" class="form rounded-0 p-1 mb-3" style="width: 100%;">
-                    <option selected>Malta</option>
-                    <option value="1">Gozo</option>
-                </select>
-                <label for="address">Address:<span class="text-danger">*</span></label>
-                <input class="w-100 p-1 mb-3" type="text" name="address">
-                <label for="city">City:<span class="text-danger">*</span></label>
-                <input class="w-100 p-1 mb-3" type="text" name="city">
-                <label for="zipcode">ZIP Code:<span class="text-danger">*</span></label>
-                <input class="w-100 p-1 mb-3" type="text" name="zipcode">
-                <button type="button" onclick="document.location='orderconfirmed.php'" class="btn w-100 btn-danger rounded-0">
-                    Complete Order
-                </button>
-            </form>
+    <label for="firstname-input">First Name:<span class="text-danger">*</span></label>
+    <input class="w-100 p-1 mb-3" type="text" id="firstname-input" name="firstname" required>
+    
+    <label for="lastname-input">Last Name:<span class="text-danger">*</span></label>
+    <input class="w-100 p-1 mb-3" type="text" id="lastname-input" name="lastname" required>
+    
+    <label for="email-input">Email:<span class="text-danger">*</span></label>
+    <input class="w-100 p-1 mb-3" type="email" id="email-input" name="email" required autocomplete="email">
+    
+    <label for="phone-input">Mobile Number:<span class="text-danger">*</span></label>
+    <input class="w-100 p-1 mb-3" type="tel" id="phone-input" name="phone" required autocomplete="tel">
+
+    <h3 class="product-card-font fs-4 my-3">Delivery Details</h3>
+    
+    <select name="region" id="region-select" class="form rounded-0 p-1 mb-3" style="width: 100%;" required autocomplete="region" required>
+    <option selected>Malta</option>
+    <option value="1">Gozo</option>
+</select>
+    
+    <label for="address-input">Address:<span class="text-danger">*</span></label>
+    <input class="w-100 p-1 mb-3" type="text" id="address-input" name="address" required autocomplete="street-address">
+    
+    <label for="city-input">City:<span class="text-danger">*</span></label>
+    <input class="w-100 p-1 mb-3" type="text" id="city-input" name="city" required>
+    
+    <label for="zipcode-input">ZIP Code:<span class="text-danger">*</span></label>
+    <input class="w-100 p-1 mb-3" type="text" id="zipcode-input" name="zipcode" required>
+
+    <button type="button" onclick="document.location='orderconfirmed.php'" class="btn w-100 btn-danger rounded-0">
+        Complete Order
+    </button>
+</form>
             <p class="product-card-font fs-6 py-3">
                 <ion-icon class="align-middle" name="lock-closed"></ion-icon> Secure Checkout
             </p>

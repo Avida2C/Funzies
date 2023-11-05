@@ -17,39 +17,53 @@ require_once 'include/navbar.php';
                     aria-labelledby="pills-signup-tab" tabindex="0">
                     <form class="p-4" method="post">
                         <h1>Sign Up</h1>
-                        <label for="username">Username<span class="text-danger">*</span></label>
-                        <input class="w-100 p-1 mb-2" type="text" name="username" placeholder="Username" required>
-                        <label for="email">Email<span class="text-danger">*</span></label>
-                        <input class="w-100 p-1 mb-2" type="email" name="email" placeholder="Email" required>
-                        <label for="password">Password<span class="text-danger">*</span></label>
-                        <input class="w-100 p-1 mb-2" type="password" name="password" placeholder="Password" required>
+
+                        <label for="username-input">Username<span class="text-danger">*</span></label>
+                        <input class="w-100 p-1 mb-2" type="text" id="username-input" name="username"
+                            placeholder="Username" required autocomplete="username">
+
+                        <label for="email-input">Email<span class="text-danger">*</span></label>
+                        <input class="w-100 p-1 mb-2" type="email" id="email-input" name="email" placeholder="Email"
+                            required autocomplete="email">
+
+                        <label for="password-input">Password<span class="text-danger">*</span></label>
+                        <input class="w-100 p-1 mb-2" type="password" id="password-input" name="password"
+                            placeholder="Password" required autocomplete="new-password">
+
                         <p>By clicking Sign Up, you are agreeing to our <a class="text-decoration-none"
-                                href="terms.php">Terms
-                                and Conditions</a>.</p>
+                                href="terms.php">Terms and Conditions</a>.</p>
+
                         <button class="w-100 btn btn-danger rounded-0">Sign Up</button>
                     </form>
+
                 </div>
                 <div class="tab-pane fade" id="pills-login" role="tabpanel" aria-labelledby="pills-login-tab"
                     tabindex="0">
                     <form class="p-4" method="post">
                         <h1>Log In</h1>
-                        <label for="email">Email address: <span class="text-danger">*</span></label>
-                        <input class="w-100 rounded-0 border-1 p-1" type="email" name="email" required>
-                        <label class="mt-2" for="password">Password: <span class="text-danger">*</span></label>
-                        <input class="w-100 p-1 rounded-0 border-1" type="password" name="password" required>
+
+                        <label for="email-input">Email address: <span class="text-danger">*</span></label>
+                        <input class="w-100 rounded-0 border-1 p-1" type="email" name="email" id="email-input" required
+                            autocomplete="email">
+
+                        <label class="mt-2" for="password-input">Password: <span class="text-danger">*</span></label>
+                        <input class="w-100 p-1 rounded-0 border-1" type="password" name="password" id="password-input"
+                            required autocomplete="current-password">
+
                         <button class="w-100 my-3 btn btn-danger rounded-0">Log In</button>
+
                         <div class="row">
                             <div class="col-6">
-                                <input type="checkbox" name="rememberme"> <label for="rememberme">Remember
-                                    me</label>
+                                <input type="checkbox" name="rememberme" id="rememberme-check">
+                                <label for="rememberme-check">Remember me</label>
                             </div>
                             <div class="col-6 text-end">
-                                <a class="text-danger text-decoration-none float-left" href="forgotPassword.php">
-                                    <p>Forgot password?</p>
-                                </a>
+                                <a class="text-danger text-decoration-none" href="forgotPassword.php">Forgot
+                                    password?</a>
                             </div>
                         </div>
                     </form>
+
                 </div>
             </div>
         </div>

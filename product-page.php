@@ -110,28 +110,27 @@ require_once 'include/navbar.php';
                 <div class="container col-sm-12 col-md-12 col-lg-10 col-xl-10">
                     <div class="row">
                         <div id="reviewForm" class="col-sm-12 col-md-12 col-lg-6 col-xl-6 me-3 my-4 pb-2">
-                            <form method="POST">
+                            <form method="POST" enctype="multipart/form-data">
                                 <label for="fullname">Full Name</label>
-                                <br>
-                                <input class="w-100 mb-2" type="text">
-
-                                <br><label for="title">Title</label>
-                                <br>
-                                <input class="w-100" type="text">
+                                <input class="w-100 mb-2" type="text" id="fullname" name="fullname">
+                                <label for="title">Title</label>
+                                <input class="w-100 mb-2" type="text" id="title" name="title">
                                 <div class="row">
                                     <!-- Star review title -->
                                     <div class="col">
-                                        <br><label for="review-stars">Review</label>
+                                        <label for="rating3-1">Review</label>
                                     </div>
                                     <!-- Star Review -->
                                     <div class="col">
                                         <div id="star-review" class="rating-group py-3">
                                             <input disabled checked class="rating-input rating-input-none"
                                                 name="rating3" id="rating3-none" value="0" type="radio">
+                                            <!-- Only showing two star ratings for brevity; you should follow the pattern for the rest -->
                                             <label aria-label="1 star" class="rating-label" for="rating3-1"><i
                                                     class="rating-icon rating-icon-star fa fa-star"></i></label>
                                             <input class="rating-input" name="rating3" id="rating3-1" value="1"
                                                 type="radio">
+
                                             <label aria-label="2 stars" class="rating-label" for="rating3-2"><i
                                                     class="rating-icon rating-icon-star fa fa-star"></i></label>
                                             <input class="rating-input" name="rating3" id="rating3-2" value="2"
@@ -151,10 +150,10 @@ require_once 'include/navbar.php';
                                         </div>
                                     </div>
                                 </div>
-                                <label for="comment">Comment</label>
-                                <br><textarea class="w-100" name="review" id="review" cols="30" rows="6"></textarea>
-
-                                <br><input class="mb-2" type="file" name="image" id="image">
+                                <label for="review">Comment</label>
+                                <textarea class="w-100 mb-2" name="review" id="review" cols="30" rows="6"></textarea>
+                                <label for="image">Upload Image</label>
+                                <input class="mb-2" type="file" name="image" id="image">
                                 <button class="btn btn-danger w-100 rounded-0">Submit</button>
                             </form>
                         </div>

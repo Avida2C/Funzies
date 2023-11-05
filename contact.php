@@ -16,22 +16,27 @@ require_once 'include/navbar.php';
                 <h3>Get in Touch</h3>
                 <div class="row">
                     <div class="col">
-                        <label for="firstname">First Name:</label><br>
-                        <input class="w-100 mb-3 p-1" type="text" name="firstname" required></br>
+                        <label for="firstname-input">First Name:</label>
+                        <input class="w-100 mb-3 p-1" id="firstname-input" type="text" name="firstname" required>
                     </div>
                     <div class="col">
-                        <label for="lastname">Last Name:</label><br>
-                        <input class="w-100 mb-3 p-1" type="text" name="lastname" required></br>
+                        <label for="lastname-input">Last Name:</label>
+                        <input class="w-100 mb-3 p-1" id="lastname-input" type="text" name="lastname" required>
                     </div>
                 </div>
-                <label for="email">Email:</label><br>
-                <input class="w-100 mb-3 p-1" type="email" name="email" required><br>
-                <label for="subject">Subject:</label><br>
-                <input class="w-100 mb-3 p-1" type="text" name="subject" required><br>
-                <label for="message">Message:</label><br>
-                <textarea class="w-100 mb-1 p-2" name="message" cols="20" rows="8" required></textarea><br>
+                <label for="email-input">Email:</label>
+                <input class="w-100 mb-3 p-1" id="email-input" type="email" name="email" required autocomplete="email">
+
+                <label for="subject-input">Subject:</label>
+                <input class="w-100 mb-3 p-1" id="subject-input" type="text" name="subject" required>
+
+                <label for="message-textarea">Message:</label>
+                <textarea class="w-100 mb-3 p-2" id="message-textarea" name="message" cols="20" rows="8"
+                    required></textarea>
+
                 <button class="btn btn-danger rounded-0 w-100" name="Mailer">Send Message</button>
             </form>
+
         </div>
         <div id="aboutFunzies" class="col-sm-12 col-md-12 col-lg-3 col-xl-3 p-4">
             <span class="d-flex">
