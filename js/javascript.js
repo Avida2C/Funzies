@@ -64,6 +64,6 @@ $(document).ready(function () {
     } else {
         // Default to "Profile Overview" as the active section if no hash is present
         $('#overview').addClass('show');
-        $('a[href="#overview"]').addClass('active');
+        $('a[href="account/account-overview.php"]').addClass('active');
     }
 });

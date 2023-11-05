@@ -23,7 +23,7 @@ require_once 'include/navbar.php';
                 <br>0123, House name,
                 <br>Street,
                 <br>Town, ZPC 001
-                <br> Country
+                <br>Region
             </p>
         </div>
         <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4">
