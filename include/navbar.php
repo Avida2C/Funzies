@@ -2,16 +2,17 @@
     <div class="container col-sm-12 col-md-12 col-lg-10 col-xl-10">
         <div class="row text-muted">
             <!-- Navbar Logo, Searchbar and Account options -->
-            <!-- Website Logo -->
             <div id="navLogo" class="col-sm-1 col-md-12 col-lg-2 col-xl-2 text-start py-1">
-                <a href="index.php"><img class="navLogo" src="img/logo.png" alt="Logo"></a>
+                <!-- Website Logo -->
+                <a href="index.php"><img class="navLogo" src="img/logo.png" alt="Website Logo"></a>
             </div>
 
             <!-- Searchbar -->
             <div id="navSearchbar" class="col-sm-12 col-md-12 col-lg-8 col-xl-8 py-2 align-items-center">
                 <form method="get" class="d-flex">
-                    <input class="border border-1 border-muted w-100 px-2" type="search" placeholder="Search"
-                        aria-label="Search">
+                    <label for="searchInput" class="visually-hidden">Search</label>
+                    <input id="searchInput" class="border border-1 border-muted w-100 px-2" type="search"
+                        placeholder="Search" aria-label="Search">
                     <button class="btn btn-danger rounded-0" type="submit">
                         <!-- Search Icon -->
                         <ion-icon name="search-outline"></ion-icon>
@@ -19,11 +20,9 @@
                 </form>
             </div>
 
-            <!-- Account Options -->
             <div id="navAccount" class="col-sm-6 col-md-12 col-lg-2 col-xl-2 text-end align-self-center">
                 <button class="btn text-muted" type="button" data-bs-toggle="offcanvas" data-bs-target="#AccountLogin"
                     aria-controls="AccountLogin">
-
                     <!-- User Icon (Account)-->
                     <ion-icon size="large" name="person-circle-outline"></ion-icon>
                 </button>
@@ -32,7 +31,7 @@
                     aria-labelledby="AccountLoginLabel">
                     <div class="offcanvas-header border-bottom border-3 border-danger">
                         <h5 class="offcanvas-title" id="AccountLoginLabel">Log in</h5>
-                        <button class="btn btn-close" data-bs-dismiss="offcanvas">
+                        <button class="btn btn-close" data-bs-dismiss="offcanvas"></button>
                     </div>
                     <div class="offcanvas-body">
                         <div class="container col-12">
@@ -49,14 +48,11 @@
                                         <div class="row">
                                             <div class="col-6">
                                                 <input type="checkbox" name="rememberme"> <label
-                                                    for="rememberme">Remember
-                                                    me</label>
+                                                    for="rememberme">Remember me</label>
                                             </div>
                                             <div class="col-6 text-end">
-                                                <a class="text-danger text-decoration-none float-left"
-                                                    href="forgotPassword.php">
-                                                    <p>Forgot password?</p>
-                                                </a>
+                                                <a class="text-danger text-decoration-none"
+                                                    href="forgotPassword.php">Forgot password?</a>
                                             </div>
                                         </div>
                                     </form>
@@ -65,15 +61,14 @@
                                     <ion-icon class="text-black-50" style="font-size: 64px;" name="person-circle">
                                     </ion-icon>
                                     <h3 class="fs-6">No Account yet?</h3>
-                                    <a class="text-decoration-none text-danger text-underscrol"
-                                        href="createAccount.php">
-                                        <p>Create Account</p>
-                                    </a>
+                                    <a class="text-decoration-none text-danger" href="createAccount.php">Create
+                                        Account</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
 
                 <!-- Wishlist -->
                 <button onclick="document.location='wishlist.php'" class="btn text-muted">
@@ -84,16 +79,16 @@
                 <!-- Shopping Cart -->
                 <button class="btn text-muted" type="button" data-bs-toggle="offcanvas" data-bs-target="#ShoppingCart"
                     aria-controls="ShoppingCart">
-
                     <!-- Cart Icon (Shopping chart)-->
                     <ion-icon size="large" name="cart-outline"></ion-icon>
                 </button>
+
                 <!-- Shopping cart Side-bar -->
                 <div class="offcanvas offcanvas-end h-100" tabindex="-1" id="ShoppingCart"
                     aria-labelledby="ShoppingCartLabel">
                     <div class="offcanvas-header border-bottom border-3 border-danger">
                         <h5 class="offcanvas-title" id="ShoppingCartLabel">Shopping Cart</h5>
-                        <button class="btn btn-close" data-bs-dismiss="offcanvas">
+                        <button class="btn btn-close" data-bs-dismiss="offcanvas"></button>
                     </div>
                     <div class="offcanvas-body w-100 h-100">
                         <div class="row h-100">
@@ -101,12 +96,10 @@
                                 <!-- Input Info -->
                                 <!-- product card sm -->
                                 <?php 
-                                require 'include/product-card-sm.php';
-                                require 'include/product-card-sm.php';
-                                require 'include/product-card-sm.php';
-                                require 'include/product-card-sm.php';
+                                for ($i = 0; $i < 6; $i++) {
+                                    include 'include/product-card-slider.php';
+                                }
                                 ?>
-
                             </div>
                             <!-- Bottom of the cart -->
                             <div class="col align-self-end">
@@ -118,13 +111,15 @@
                                         <p class="product-card-font">&euro;0.00</p>
                                     </div>
                                 </div>
-                                <button onclick="document.location='viewcart.php'" class="btn btn-danger rounded-0 w-100">View Cart</button>
+                                <button onclick="document.location='viewcart.php'"
+                                    class="btn btn-danger rounded-0 w-100">View Cart</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
+            <!-- Start of 2nd Navbar -->
             <!-- Navbar Categories section includes: Slider -->
             <!-- Normal Size Screen -->
             <div id="navCategories" class="container col-sm-6 col-md-6 col-lg-4 col-xl-4 navbar navbar-light bg-light">
@@ -134,6 +129,8 @@
                     <span class="navbar-toggler-icon"></span>
                     <span>Categories</span>
                 </button>
+
+
                 <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar"
                     aria-labelledby="offcanvasNavbarLabel">
                     <div class="offcanvas-header border-bottom border-3 border-danger">
@@ -269,7 +266,7 @@
             </div>
 
             <!-- End Categories - Start of Navigation Section -->
-            <div id="navNavigation" class="col-lg-8 col-xl-8 navbar-expand">
+            <div id="navNavigation" class="col-lg-8 col-xl-8 navbar-expand mx-auto text-center">
                 <ul class="navbar-nav">
                     <li class="nav-item">
                         <a class="nav-link active p-3" aria-current="page" href="index.php">Home</a>

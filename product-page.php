@@ -189,12 +189,9 @@ require_once 'include/navbar.php';
         <div class="container-fluid">
             <div class="row justify-content-between">
                 <?php 
-                require 'include/product-card.php'; 
-                require 'include/product-card.php'; 
-                require 'include/product-card.php'; 
-                require 'include/product-card.php'; 
-                require 'include/product-card.php';
-                require 'include/product-card.php';
+                for ($i = 0; $i < 6; $i++) {
+                    include 'include/product-card-wl.php';
+                }
                 ?>
             </div>
         </div>

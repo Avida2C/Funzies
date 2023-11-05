@@ -10,11 +10,11 @@ require_once 'include/header.php';
 require_once 'include/navbar.php';
 ?>
 
-<div class="container col-sm-12 col-md-12 col-lg-9 col-xl-9 div-spacing-mt">
+<div class="container col-sm-12 col-md-12 col-lg-9 col-xl-9 spacing-mt">
     <h3 class="fs-4">Shopping Cart</h3>
 </div>
 
-<div class="container col-sm-12 col-md-12 col-lg-9 col-xl-9 div-spacing-mb text-center">
+<div class="container col-sm-12 col-md-12 col-lg-9 col-xl-9 spacing-mb text-center">
     <div class="row">
         <div class="col-8 overflow-auto me-4" style="height: 475px;">
             <table class="table">
@@ -35,91 +35,7 @@ require_once 'include/navbar.php';
                             <div class="col-1">
                                 <button type="button" class="btn-close"></button>
                             </div>
-                            <div class="col-2">
-                                <img style="height: 70px;" src="img/comingsoon.jpg" alt="">
-                            </div>
-                            <div class="col-9 text-start">
-                                <p class="fs-6">Coming Soon - Info Unavailable Coming Soon - Info Unavailable</p>
-                                <p class="product-card-font fs-6">&euro;0.00</p>
-                            </div>
-                        </div>
-                    </td>
-                    <td class="px-4">
-                        <select class="form rounded-0" style="width: 50px;">
-                            <option selected>1</option>
-                            <option value="1">2</option>
-                            <option value="2">3</option>
-                            <option value="3">4</option>
-                            <option value="4">5</option>
-                        </select>
-                    </td>
-                    <td class="px-4">
-                        <p class="product-card-font fs-5 text-danger">&euro;0.00</p>
-                    </td>
-                </tr>
-                <tr class="align-middle">
-                    <td class="px-4">
-                        <div class="row align-items-center">
-                            <div class="col-1">
-                                <button type="button" class="btn-close"></button>
-                            </div>
-                            <div class="col-2">
-                                <img style="height: 70px;" src="img/comingsoon.jpg" alt="">
-                            </div>
-                            <div class="col-9 text-start">
-                                <p class="fs-6">Coming Soon - Info Unavailable Coming Soon - Info Unavailable</p>
-                                <p class="product-card-font fs-6">&euro;0.00</p>
-                            </div>
-                        </div>
-                    </td>
-                    <td class="px-4">
-                        <select class="form rounded-0" style="width: 50px;">
-                            <option selected>1</option>
-                            <option value="1">2</option>
-                            <option value="2">3</option>
-                            <option value="3">4</option>
-                            <option value="4">5</option>
-                        </select>
-                    </td>
-                    <td class="px-4">
-                        <p class="product-card-font fs-5 text-danger">&euro;0.00</p>
-                    </td>
-                </tr>
-                <tr class="align-middle">
-                    <td class="px-4">
-                        <div class="row align-items-center">
-                            <div class="col-1">
-                                <button type="button" class="btn-close"></button>
-                            </div>
-                            <div class="col-2">
-                                <img style="height: 70px;" src="img/comingsoon.jpg" alt="">
-                            </div>
-                            <div class="col-9 text-start">
-                                <p class="fs-6">Coming Soon - Info Unavailable Coming Soon - Info Unavailable</p>
-                                <p class="product-card-font fs-6">&euro;0.00</p>
-                            </div>
-                        </div>
-                    </td>
-                    <td class="px-4">
-                        <select class="form rounded-0" style="width: 50px;">
-                            <option selected>1</option>
-                            <option value="1">2</option>
-                            <option value="2">3</option>
-                            <option value="3">4</option>
-                            <option value="4">5</option>
-                        </select>
-                    </td>
-                    <td class="px-4">
-                        <p class="product-card-font fs-5 text-danger">&euro;0.00</p>
-                    </td>
-                </tr>
-                <tr class="align-middle">
-                    <td class="px-4">
-                        <div class="row align-items-center">
-                            <div class="col-1">
-                                <button type="button" class="btn-close"></button>
-                            </div>
-                            <div class="col-2">
+                            <div class="col-3">
                                 <img style="height: 70px;" src="img/comingsoon.jpg" alt="">
                             </div>
                             <div class="col-8 text-start">
@@ -129,13 +45,11 @@ require_once 'include/navbar.php';
                         </div>
                     </td>
                     <td class="px-4">
-                        <select class="form rounded-0" style="width: 50px;">
-                            <option selected>1</option>
-                            <option value="1">2</option>
-                            <option value="2">3</option>
-                            <option value="3">4</option>
-                            <option value="4">5</option>
-                        </select>
+                        <div class="quantity-selector">
+                            <button onclick="decrementValue()" id="decrement" class="quantity-button">-</button>
+                            <input type="text" id="quantity" name="quantity" value="1" readonly>
+                            <button onclick="incrementValue()" id="increment" class="quantity-button">+</button>
+                        </div>
                     </td>
                     <td class="px-4">
                         <p class="product-card-font fs-5 text-danger">&euro;0.00</p>
@@ -147,7 +61,7 @@ require_once 'include/navbar.php';
                             <div class="col-1">
                                 <button type="button" class="btn-close"></button>
                             </div>
-                            <div class="col-2">
+                            <div class="col-3">
                                 <img style="height: 70px;" src="img/comingsoon.jpg" alt="">
                             </div>
                             <div class="col-8 text-start">
@@ -157,13 +71,63 @@ require_once 'include/navbar.php';
                         </div>
                     </td>
                     <td class="px-4">
-                        <select class="form rounded-0" style="width: 50px;">
-                            <option selected>1</option>
-                            <option value="1">2</option>
-                            <option value="2">3</option>
-                            <option value="3">4</option>
-                            <option value="4">5</option>
-                        </select>
+                        <div class="quantity-selector">
+                            <button onclick="decrementValue()" id="decrement" class="quantity-button">-</button>
+                            <input type="text" id="quantity" name="quantity" value="1" readonly>
+                            <button onclick="incrementValue()" id="increment" class="quantity-button">+</button>
+                        </div>
+                    </td>
+                    <td class="px-4">
+                        <p class="product-card-font fs-5 text-danger">&euro;0.00</p>
+                    </td>
+                </tr>
+                <tr class="align-middle">
+                    <td class="px-4">
+                        <div class="row align-items-center">
+                            <div class="col-1">
+                                <button type="button" class="btn-close"></button>
+                            </div>
+                            <div class="col-3">
+                                <img style="height: 70px;" src="img/comingsoon.jpg" alt="">
+                            </div>
+                            <div class="col-8 text-start">
+                                <p class="fs-6">Coming Soon - Info Unavailable Coming Soon - Info Unavailable</p>
+                                <p class="product-card-font fs-6">&euro;0.00</p>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="px-4">
+                        <div class="quantity-selector">
+                            <button onclick="decrementValue()" id="decrement" class="quantity-button">-</button>
+                            <input type="text" id="quantity" name="quantity" value="1" readonly>
+                            <button onclick="incrementValue()" id="increment" class="quantity-button">+</button>
+                        </div>
+                    </td>
+                    <td class="px-4">
+                        <p class="product-card-font fs-5 text-danger">&euro;0.00</p>
+                    </td>
+                </tr>
+                <tr class="align-middle">
+                    <td class="px-4">
+                        <div class="row align-items-center">
+                            <div class="col-1">
+                                <button type="button" class="btn-close"></button>
+                            </div>
+                            <div class="col-3">
+                                <img style="height: 70px;" src="img/comingsoon.jpg" alt="">
+                            </div>
+                            <div class="col-8 text-start">
+                                <p class="fs-6">Coming Soon - Info Unavailable Coming Soon - Info Unavailable</p>
+                                <p class="product-card-font fs-6">&euro;0.00</p>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="px-4">
+                        <div class="quantity-selector">
+                            <button onclick="decrementValue()" id="decrement" class="quantity-button">-</button>
+                            <input type="text" id="quantity" name="quantity" value="1" readonly>
+                            <button onclick="incrementValue()" id="increment" class="quantity-button">+</button>
+                        </div>
                     </td>
                     <td class="px-4">
                         <p class="product-card-font fs-5 text-danger">&euro;0.00</p>

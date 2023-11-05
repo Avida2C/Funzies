@@ -9,16 +9,15 @@ require_once 'include/header.php';
 require_once 'include/navbar.php';
 ?>
 
-<div class="container py-4 col-sm-12 col-md-12 col-lg-8 col-xl-8">
+<div class="container col-sm-12 col-md-12 col-lg-8 col-xl-8 spacing-my">
     <div class="row">
         <div class="col">
             <h3><strong>Privacy Policy for Funzies</strong></h3>
 
             <p>At Funzies Collection, accessible from Funzies, one of our main priorities is the privacy of our
-                visitors. This
-                Privacy Policy document contains types of information that is collected and recorded by Funzies
-                Collection and how
-                we use it.</p>
+                visitors. This Privacy Policy document contains types of information that is collected and recorded by
+                Funzies
+                Collection and how we use it.</p>
 
             <p>If you have additional questions or require more information about our Privacy Policy, do not hesitate to
                 contact us.
@@ -126,8 +125,7 @@ require_once 'include/navbar.php';
 
             <p>Under the CCPA, among other rights, California consumers have the right to:</p>
             <p>Request that a business that collects a consumer's personal data disclose the categories and specific
-                pieces of
-                personal data that a business has collected about consumers.</p>
+                pieces of personal data that a business has collected about consumers.</p>
             <p>Request that a business delete any personal data about the consumer that a business has collected.</p>
             <p>Request that a business that sells a consumer's personal data, not sell the consumer's personal data.</p>
             <p>If you make a request, we have one month to respond to you. If you would like to exercise any of these

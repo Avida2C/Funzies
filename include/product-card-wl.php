@@ -1,5 +1,5 @@
 <div class="card shadow-sm rounded-0 border-0 product-card mb-2">
-    <a href="product-page.php"><img class="card-img-top object-fit-cover" src="img/comingsoon.jpg"></a>
+<a href="product-page.php"><img class="card-img-top object-fit-cover" src="img/comingsoon.jpg" alt="Coming Soon Product Image"></a>
     <div class="card-body">
         <!-- Brand -->
         <a href="#" class="text-decoration-none">

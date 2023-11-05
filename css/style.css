@@ -50,18 +50,23 @@ footer a:hover {
     height: 125px;
 }
 
-.div-spacing-mt {
+.spacing-mt {
     margin-top: 3em;
 }
 
-.div-spacing-mb {
+.spacing-mb {
     margin-bottom: 3em;
+}
+
+.spacing-my {
+    margin-bottom: 3em;
+    margin-top: 3em;
 }
 
 .product-card {
     padding: 5px !important;
     margin: 0;
-    max-width: 15rem !important;
+    width: 15rem !important;
     height: 27em !important;
 }
 
@@ -97,10 +102,44 @@ footer a:hover {
     padding: 5px;
 }
 
-.clearMP{
+.clearMP {
     padding: 0;
     margin: 0;
 }
+
+/* Quantity Element */
+.quantity-selector {
+    display: flex;
+    align-items: center;
+}
+
+.quantity-button {
+    padding: 2px 10px 2px 10px; 
+    color: white;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    background-color: #DC3545;
+}
+
+.quantity-button:hover {
+    background-color: #B02A37;
+}
+
+#quantity {
+    width: 30px; /* Adjust as needed */
+    padding: 10px; /* Adjust to match the buttons' height */
+    text-align: center;
+    border: none; /* Remove the border or set it to match the buttons */
+    font-size: 20px;
+    background-color: white; /* Different background for the input/number */
+    margin: 0 5px; /* Add some space between the buttons and the number box */
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+  }
 
 /* Scrollbar */
 /* width */

@@ -10,7 +10,7 @@ require_once 'include/header.php';
 require_once 'include/navbar.php';
 ?>
 
-<div class="container col-sm-12 col-md-12 col-lg-10 col-xl-10 div-spacing-mt div-spacing-mb">
+<div class="container col-sm-12 col-md-12 col-lg-10 col-xl-10 spacing-my">
     <div class="row justify-content-center">
         <div class="col-5">
             <h3 class="product-card-font fs-4 text-danger">Order confirmed! </h3>

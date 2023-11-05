@@ -46,10 +46,10 @@ require_once 'include/navbar.php';
   </div>
 </div>
 
-<?php require_once 'include/categories-menu.php'; ?>
+<?php require_once 'include/shop-categories.php'; ?>
 
 <!--New Arrivals -->
-<div class="container col-sm-12 col-md-12 col-lg-12 col-xl-8 div-spacing-mt">
+<div class="container col-sm-12 col-md-12 col-lg-12 col-xl-8 spacing-mb">
   <div class="row">
     <div class="col">
       <h3 class="fs-5">New Arrivals</h3>
@@ -64,10 +64,9 @@ require_once 'include/navbar.php';
       <div class="row justify-content-between">
         <!-- Product Card called via PHP -->
         <?php 
-        require 'include/product-card.php'; 
-        require 'include/product-card.php';
-        require 'include/product-card.php';
-        require 'include/product-card.php';
+        for ($i = 0; $i < 4; $i++) {
+            include 'include/product-card.php';
+        }
         ?>
       </div>
     </div>
@@ -75,7 +74,7 @@ require_once 'include/navbar.php';
 </div>
 
 <!-- Best Sellers -->
-<div class="container col-sm-12 col-md-12 col-lg-12 col-xl-8 div-spacing-mt">
+<div class="container col-sm-12 col-md-12 col-lg-12 col-xl-8">
   <div class="row">
     <div class="col">
       <h3 class="fs-5">Best Sellers</h3>
@@ -88,65 +87,18 @@ require_once 'include/navbar.php';
   <div class="col">
     <div class="container-fluid">
       <div class="row justify-content-between">
-        <?php 
-        require 'include/product-card.php'; 
-        require 'include/product-card.php';
-        require 'include/product-card.php';
-        require 'include/product-card.php';
+      <?php 
+        for ($i = 0; $i < 4; $i++) {
+            include 'include/product-card.php';
+        }
         ?>
       </div>
     </div>
   </div>
 </div>
 
-<!-- Shop by Brands -->
-<div class="container col-sm-12 col-md-12 col-lg-12 col-xl-8 div-spacing-mt div-spacing-mb">
-  <div class="row">
-    <!-- Section title -->
-    <div class="col">
-      <h3 class="fs-5">Shop by Brand</h3>
-    </div>
-    <!-- Brand links -->
-    <div class="col">
-      <div class="d-flex flex-nowrap overflow-auto pb-4 brand-img">
-        <!-- Funko -->
-        <div class="col me-4">
-          <a href="#">
-            <img class="mx-auto object-fit-cover border-0 rounded-0 text-center" src="img/brands/funko.webp">
-          </a>
-        </div>
-        <!-- Lego -->
-        <div class="col me-4">
-          <a href="#">
-            <img class="mx-auto object-fit-fit border-0 rounded-0 text-center" src="img/brands/lego.jpg">
-          </a>
-        </div>
-        <!-- Playmobil -->
-        <div class="col me-4">
-          <a href="#">
-            <img class="mx-auto object-fit-cover border-0 rounded-0 text-center" src="img/brands/playmobil.webp">
-          </a>
-        </div>
-        <div class="col me-4">
-          <a href="#">
-            <img class="mx-auto object-fit-cover border-0 rounded-0 text-center" src="img/brands/maisto.jpg">
-          </a>
-        </div>
-        <!-- LOL Surprise -->
-        <div class="col me-4">
-          <a href="#">
-            <img class="mx-auto object-fit-cover border-0 rounded-0 text-center" src="img/brands/lolsurprise.png">
-          </a>
-        </div>
-        <div class="col">
-          <a href="#">
-            <img class="mx-auto object-fit-cover border-0 rounded-0 text-center" src="img/brands/burago.svg">
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+<?php require 'include/shop-brand.php';
+?>
 
 <?php  
 require_once 'include/footer.php';
