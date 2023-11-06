@@ -6,7 +6,7 @@
                     <a href="../admin/role-management.php" class="list-group-item" style="background-color: transparent;">Role Management</a>
                     <a href="../admin/product-management.php" class="list-group-item" style="background-color: transparent;">Product Management</a>
                     <a href="../admin/order-management.php" class="list-group-item" style="background-color: transparent;">Order Management</a>
-                    <a href="../admin/review-management.php" class="list-group-item" style="background-color: transparent;">Review Approval</a>
+                    <a href="../admin/review-management.php" class="list-group-item" style="background-color: transparent;">Review Management</a>
                 </div>
                 <div class="mt-auto col-sm-8 col-md-8 col-lg-9 col-xl-9 text-center"> <!-- Pushed to the bottom -->
                     <h5>NameOfAdmin</h5>
