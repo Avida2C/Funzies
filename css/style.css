@@ -10,6 +10,7 @@
 
 body {
     overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 /* Footer Styles */
