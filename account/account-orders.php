@@ -22,9 +22,88 @@
                 </div>
             </div>
             <div class="d-flex justify-content-end">
-                <a class="btn btn-outline-danger me-2 rounded-0" href="#">Order Details</a>
-                <a class="btn btn-outline-warning me-2 rounded-0" href="#">Edit</a>
+            <a class="btn btn-outline-danger rounded-0" data-bs-toggle="modal" data-bs-target="#orderDetails2">Order
+                    Details</a>
                 <a class="btn btn-danger rounded-0" href="#">Cancel Order</a>
+
+          
+                <!-- Button trigger modal -->
+                <!-- Modal -->
+                <div class="modal fade" id="orderDetails2" tabindex="-1" aria-labelledby="#orderDetails2Label"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="orderDetails2Label">Order #12347</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <h3 class="product-card-font fs-6 text-center">Order Summary</h3>
+                                </p>
+                                <div class="container overflow-auto" style="height:150px;">
+                                    <table class="table table-borderless">
+                                        <tr>
+                                            <td>
+                                                <p class="clearMP">Coming Soon - Info Unavailable
+                                                    <span class="product-card-font fs-6">X1</span></p>
+                                            </td>
+                                            <td>
+                                                <p class="clearMP">&euro;0.00</p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <p class="clearMP">Coming Soon - Info Unavailable
+                                                    <span class="product-card-font fs-6">X1</span></p>
+                                            </td>
+                                            <td>
+                                                <p class="clearMP">&euro;0.00</p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <p class="clearMP">Coming Soon - Info Unavailable
+                                                    <span class="product-card-font fs-6">X1</span></p>
+                                            </td>
+                                            <td>
+                                                <p class="clearMP">&euro;0.00</p>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <table class="table table-borderless text-center">
+                                    <tr class="border-top">
+                                        <th class="py-2">
+                                            <p>
+                                                Total
+                                            </p>
+                                        </th>
+                                        <td class="py-2">
+                                            <p class="text-danger product-card-font fs-6">
+                                                &euro;0.00
+                                            </p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="container px-4">
+                                <h3 class="fs-5">Shipped to:</h3>
+                                <p>
+                                    FirstName LastName
+                                    <br>0123, House name,
+                                    <br>Street,
+                                    <br>Town, ZPC 001
+                                    <br>Region
+                                </p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary rounded-0"
+                                    data-bs-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -46,8 +125,78 @@
                 </div>
             </div>
             <div class="d-flex justify-content-end">
-                <a class="btn btn-outline-danger rounded-0" href="#">Order Details</a>
-                <!-- No Edit or Cancel buttons for shipped order -->
+                <a class="btn btn-outline-danger rounded-0" data-bs-toggle="modal" data-bs-target="#orderDetails1">Order
+                    Details</a>
+                <!-- No Edit or Cancel buttons for delivered order -->
+                <!-- Button trigger modal -->
+                <!-- Modal -->
+                <div class="modal fade" id="orderDetails1" tabindex="-1" aria-labelledby="#orderDetails1Label"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="orderDetails1Label">Order #12345</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <h3 class="product-card-font fs-6 text-center">Order Summary</h3>
+                                </p>
+                                <div class="container overflow-auto" style="height:150px;">
+                                    <table class="table table-borderless">
+                                        <tr>
+                                            <td>
+                                                <p class="clearMP">Coming Soon - Info Unavailable
+                                                    <span class="product-card-font fs-6">X1</span></p>
+                                            </td>
+                                            <td>
+                                                <p class="clearMP">&euro;0.00</p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <p class="clearMP">Coming Soon - Info Unavailable
+                                                    <span class="product-card-font fs-6">X1</span></p>
+                                            </td>
+                                            <td>
+                                                <p class="clearMP">&euro;0.00</p>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <table class="table table-borderless text-center">
+                                    <tr class="border-top">
+                                        <th class="py-2">
+                                            <p>
+                                                Total
+                                            </p>
+                                        </th>
+                                        <td class="py-2">
+                                            <p class="text-danger product-card-font fs-6">
+                                                &euro;0.00
+                                            </p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="container px-4">
+                                <h3 class="fs-5">Shipped to:</h3>
+                                <p>
+                                    FirstName LastName
+                                    <br>0123, House name,
+                                    <br>Street,
+                                    <br>Town, ZPC 001
+                                    <br>Region
+                                </p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary rounded-0"
+                                    data-bs-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
@@ -64,8 +213,69 @@
                 <img src="img/comingsoon.jpg" alt="Product Image" class="img-fluid order-product-img">
             </div>
             <div class="d-flex justify-content-end">
-                <a class="btn btn-outline-danger rounded-0" href="#">Order Details</a>
+                <a class="btn btn-outline-danger rounded-0" data-bs-toggle="modal" data-bs-target="#orderDetails">Order
+                    Details</a>
                 <!-- No Edit or Cancel buttons for delivered order -->
+                <!-- Button trigger modal -->
+                <!-- Modal -->
+                <div class="modal fade" id="orderDetails" tabindex="-1" aria-labelledby="#orderDetailsLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="orderDetailsLabel">Order #12346</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <h3 class="product-card-font fs-6 text-center">Order Summary</h3>
+                                </p>
+                                <div class="container overflow-auto" style="height:150px;">
+                                    <table class="table table-borderless">
+                                        <tr>
+                                            <td>
+                                                <p class="clearMP">Coming Soon - Info Unavailable
+                                                    <span class="product-card-font fs-6">X1</span></p>
+                                            </td>
+                                            <td>
+                                                <p class="clearMP">&euro;0.00</p>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <table class="table table-borderless text-center">
+                                    <tr class="border-top">
+                                        <th class="py-2">
+                                            <p>
+                                                Total
+                                            </p>
+                                        </th>
+                                        <td class="py-2">
+                                            <p class="text-danger product-card-font fs-6">
+                                                &euro;0.00
+                                            </p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="container px-4">
+                                <h3 class="fs-5">Delivered to:</h3>
+                                <p>
+                                    FirstName LastName
+                                    <br>0123, House name,
+                                    <br>Street,
+                                    <br>Town, ZPC 001
+                                    <br>Region
+                                </p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary rounded-0"
+                                    data-bs-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
