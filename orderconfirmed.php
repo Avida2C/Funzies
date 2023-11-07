@@ -89,7 +89,7 @@ require_once 'include/navbar.php';
                         style="width: 190px;">
                         Home
                     </button>
-                    <button class="btn btn-danger rounded-0" style="width: 190px;">
+                    <button onclick="navigateToOrders()" class="btn btn-danger rounded-0" style="width: 190px;">
                         Check my order
                     </button>
                 </div>

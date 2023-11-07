@@ -98,6 +98,13 @@ function navigateToWishlist() {
     }
 }
 
+function navigateToOrders() {
+    window.location.href = 'account.php#orders';
+    window.onload = function () {
+        scrollToOrders();
+    }
+}
+
 // this code is used to check whether to show or hide content depending on the .hash location
 $(document).ready(function () {
     // If there's a hash in the URL
