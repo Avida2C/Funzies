@@ -15,13 +15,15 @@ require_once 'include/navbar.php';
     <h3 class="fs-3 text-center">Check Out</h3>
 </div>
 
+<!-- Main Checkout Container -->
 <div class="container col-sm-12 col-md-12 col-lg-10 col-xl-10 spacing-mb">
     <div class="row justify-content-center">
+        <!-- Customer Details and Delivery Information Form -->
         <div id="loginMessage" class="col-sm-12 col-md-12 col-lg-5 col-xl-5 mx-4">
             <p class="product-card-font bg-danger p-2 fs-6 text-white w-100 mb-4">Already have an account? <a
                     href="createAccount.php" class="text-decoration-none text-dark">Log In</a> for faster checkout!</p>
 
-
+            <!-- Customer Details Form -->
             <form id="customerDetailsForm" class="form" method="POST">
                 <h3 class="product-card-font fs-4 mb-3">Customer Details</h3>
 
@@ -60,10 +62,13 @@ require_once 'include/navbar.php';
                     Complete Order
                 </button>
             </form>
+            <!-- Secure Checkout -->
             <p class="product-card-font fs-6 py-3">
                 <ion-icon class="align-middle" name="lock-closed"></ion-icon> Secure Checkout
             </p>
         </div>
+
+        <!-- Order Summary Section -->
         <div id="orderSummary" class="col-sm-12 col-md-12 col-lg-4 col-xl-4 px-3">
             <div class="row">
                 <div class="col-6 ">
@@ -76,7 +81,9 @@ require_once 'include/navbar.php';
             </div>
 
             <div class="container overflow-auto" style="height:350px;">
+                <!-- Product List -->
                 <table class="table">
+                    <!-- Product -->
                     <tr class="align-middle">
                         <td>
                             <div class="row align-items-center">
@@ -93,6 +100,7 @@ require_once 'include/navbar.php';
                             <p class="product-card-font fs-5 text-danger">&euro;0.00</p>
                         </td>
                     </tr>
+                    <!-- Product -->
                     <tr class="align-middle">
                         <td>
                             <div class="row align-items-center">
@@ -109,6 +117,7 @@ require_once 'include/navbar.php';
                             <p class="product-card-font fs-5 text-danger">&euro;0.00</p>
                         </td>
                     </tr>
+                    <!-- Product -->
                     <tr class="align-middle">
                         <td>
                             <div class="row align-items-center">
@@ -125,6 +134,7 @@ require_once 'include/navbar.php';
                             <p class="product-card-font fs-5 text-danger">&euro;0.00</p>
                         </td>
                     </tr>
+                    <!-- Product -->
                     <tr class="align-middle">
                         <td>
                             <div class="row align-items-center">
@@ -141,8 +151,11 @@ require_once 'include/navbar.php';
                             <p class="product-card-font fs-5 text-danger">&euro;0.00</p>
                         </td>
                     </tr>
+                    <!-- End of Products List -->
                 </table>
             </div>
+
+            <!-- Subtotal, Delivery Charges, Total, and Payment Information -->
             <table class="table table-borderless text-center">
                 <tr>
                     <td class="py-2">
@@ -173,6 +186,8 @@ require_once 'include/navbar.php';
                     </td>
                 </tr>
             </table>
+
+            <!-- Delivery and Payment Details -->
             <div class="container mt-4 bg-danger text-white p-3 text-center">
                 <h3 class="product-card-font fs-5">Delivery</h3>
                 <p>Monday to Friday</p>
@@ -183,14 +198,6 @@ require_once 'include/navbar.php';
         </div>
     </div>
 </div>
-
-
-
-
-
-
-
-
 
 <?php  
 require_once 'include/footer.php';
