@@ -1,5 +1,8 @@
 <h3 class="border-bottom border-2 border-danger pb-2 rounded-0">Orders</h3>
+<!-- Section Heading -->
+
 <div class="container mt-4">
+    <!-- Subheading for Displaying User's Orders -->
     <h2 class="product-card-font fs-5 mb-4">Your Orders</h2>
 
     <!-- Order #12347 with 3 product images -->
@@ -22,31 +25,35 @@
                 </div>
             </div>
             <div class="d-flex justify-content-end">
-            <a class="btn btn-outline-danger rounded-0" data-bs-toggle="modal" data-bs-target="#orderDetails2">Order
+                <!-- Modal opening button -->
+                <a class="btn btn-outline-danger rounded-0" data-bs-toggle="modal" data-bs-target="#orderDetails2">Order
                     Details</a>
                 <a class="btn btn-danger rounded-0" href="#">Cancel Order</a>
 
-          
-                <!-- Button trigger modal -->
                 <!-- Modal -->
                 <div class="modal fade" id="orderDetails2" tabindex="-1" aria-labelledby="#orderDetails2Label"
                     aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                         <div class="modal-content">
+
+                            <!-- Modal Title -->
                             <div class="modal-header">
                                 <h1 class="modal-title fs-5" id="orderDetails2Label">Order #12347</h1>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                     aria-label="Close"></button>
                             </div>
+
+                            <!-- Modal Content -->
                             <div class="modal-body">
                                 <h3 class="product-card-font fs-6 text-center">Order Summary</h3>
-                                </p>
                                 <div class="container overflow-auto" style="height:150px;">
+                                    <!-- Order contents : Products w/ Prices -->
                                     <table class="table table-borderless">
                                         <tr>
                                             <td>
                                                 <p class="clearMP">Coming Soon - Info Unavailable
-                                                    <span class="product-card-font fs-6">X1</span></p>
+                                                    <span class="product-card-font fs-6">X1</span>
+                                                </p>
                                             </td>
                                             <td>
                                                 <p class="clearMP">&euro;0.00</p>
@@ -87,6 +94,8 @@
                                     </tr>
                                 </table>
                             </div>
+
+                            <!-- Order and Address Details -->
                             <div class="container px-4">
                                 <h3 class="fs-5">Shipped to:</h3>
                                 <p>
@@ -104,9 +113,11 @@
                         </div>
                     </div>
                 </div>
+                <!-- Modal End -->
             </div>
         </div>
     </div>
+    <!-- Order end -->
 
     <!-- Order #12345 with 2 product images -->
     <div class="card mb-3 rounded-0 border-0 shadow-sm order-card">
@@ -124,11 +135,14 @@
                     <img src="img/comingsoon.jpg" alt="Product Image" class="order-product-img img-fluid mb-2">
                 </div>
             </div>
+
             <div class="d-flex justify-content-end">
+                <!-- Modal opening button -->
                 <a class="btn btn-outline-danger rounded-0" data-bs-toggle="modal" data-bs-target="#orderDetails1">Order
                     Details</a>
+
                 <!-- No Edit or Cancel buttons for delivered order -->
-                <!-- Button trigger modal -->
+
                 <!-- Modal -->
                 <div class="modal fade" id="orderDetails1" tabindex="-1" aria-labelledby="#orderDetails1Label"
                     aria-hidden="true">
@@ -139,6 +153,7 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                     aria-label="Close"></button>
                             </div>
+                            <!-- Modal Content -->
                             <div class="modal-body">
                                 <h3 class="product-card-font fs-6 text-center">Order Summary</h3>
                                 </p>
@@ -179,6 +194,7 @@
                                     </tr>
                                 </table>
                             </div>
+                            <!-- Order and Address details -->
                             <div class="container px-4">
                                 <h3 class="fs-5">Shipped to:</h3>
                                 <p>
@@ -196,10 +212,11 @@
                         </div>
                     </div>
                 </div>
-
+                <!-- Modal End -->
             </div>
         </div>
     </div>
+    <!-- Order End -->
 
     <!-- Order #12346 with 1 product image -->
     <div class="card mb-3 shadow-sm rounded-0 border-0 order-card">
@@ -213,10 +230,12 @@
                 <img src="img/comingsoon.jpg" alt="Product Image" class="img-fluid order-product-img">
             </div>
             <div class="d-flex justify-content-end">
+                <!-- Modal opening button -->
                 <a class="btn btn-outline-danger rounded-0" data-bs-toggle="modal" data-bs-target="#orderDetails">Order
                     Details</a>
+            
                 <!-- No Edit or Cancel buttons for delivered order -->
-                <!-- Button trigger modal -->
+
                 <!-- Modal -->
                 <div class="modal fade" id="orderDetails" tabindex="-1" aria-labelledby="#orderDetailsLabel"
                     aria-hidden="true">
@@ -258,6 +277,7 @@
                                     </tr>
                                 </table>
                             </div>
+                            <!-- Order and Address details -->
                             <div class="container px-4">
                                 <h3 class="fs-5">Delivered to:</h3>
                                 <p>
@@ -275,8 +295,9 @@
                         </div>
                     </div>
                 </div>
-
+                <!-- End of Modal -->
             </div>
         </div>
     </div>
+    <!-- Order End -->
 </div>

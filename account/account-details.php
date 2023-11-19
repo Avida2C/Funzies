@@ -1,4 +1,4 @@
-<h3 class="border-bottom border-2 border-danger">Account Details</h3>
+<h3 class="border-bottom border-2 border-danger pb-2">Account Details</h3>
 <!-- Account Details Section -->
 <div class="mt-4">
     <!-- Account Verification Alert -->
@@ -7,7 +7,8 @@
         verification email.
     </div>
 </div>
-<!-- Update Full Name, Contact Number, and Address -->
+
+<!-- Form to Update Full Name and Contact Number -->
 <form method="POST" class="form mt-3 px-4">
     <!-- Full Name -->
     <div class="mb-3">
@@ -25,11 +26,11 @@
             required>
     </div>
 
-    <!-- Submit Button for Details -->
+    <!-- Submit Button for Updating Details -->
     <button class="btn btn-danger rounded-0 mb-4">Update Details</button>
 </form>
 
-<!-- Update Email -->
+<!-- Form to Update Email Address -->
 <form method="POST" class="form mt-3 px-4">
     <!-- Email Address -->
     <div class="mb-3">
@@ -37,10 +38,11 @@
         <input type="email" class="form-control rounded-0" id="emailAddress" name="emailAddress"
             value="janedoe@example.com" required>
     </div>
-    <!-- Submit Button for Email -->
+    <!-- Submit Button for Updating Email -->
     <button class="btn btn-danger rounded-0 mb-4">Update Email</button>
 </form>
-<!-- Change Password -->
+
+<!-- Form to Change Password -->
 <form method="POST" class="form mt-3 px-4">
     <div class="mb-3">
         <label for="currentPassword" class="form-label">Current Password</label>
@@ -57,6 +59,6 @@
         <input type="password" class="form-control rounded-0" id="confirmPassword" name="confirmPassword"
             placeholder="Confirm new password" required>
     </div>
-    <!-- Submit Button for Password -->
+    <!-- Submit Button for Changing Password -->
     <button class="btn btn-danger rounded-0 mb-4">Change Password</button>
 </form>

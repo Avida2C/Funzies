@@ -12,45 +12,27 @@ require_once 'include/navbar.php';
 <div class="container col-sm-12 col-md-12 col-lg-9 col-xl-9 spacing-my p-1">
     <div class="row">
         <!-- Sidebar -->
-        <div class="col-sm-12 col-md-12 col-lg-3 col-xl-3 text-center me-4 accountOptions">
-            <div class="list-group list-group-flush" id="accountOptions">
-                <h3 class="product-card-font fs-5 my-1 border-bottom border-danger border-2 pb-3">Account
-                </h3>
-                <a class="list-group-item list-group-item-action active" data-bs-toggle="collapse" href="#overview"
-                    role="button" aria-expanded="false">Profile Overview</a>
-                <a class="list-group-item list-group-item-action" data-bs-toggle="collapse" href="#details"
-                    role="button" aria-expanded="false">Account Details</a>
-                <a class="list-group-item list-group-item-action" data-bs-toggle="collapse" href="#addresses"
-                    role="button" aria-expanded="false">Addresses</a>
-                <a class="list-group-item list-group-item-action" data-bs-toggle="collapse" href="#orders" role="button"
-                    aria-expanded="false">Orders</a>
-                <a class="list-group-item list-group-item-action" data-bs-toggle="collapse" href="#wishlist"
-                    role="button" aria-expanded="false">Wishlist</a>
-                <a class="list-group-item list-group-item-action" data-bs-toggle="collapse" href="#reviews"
-                    role="button" aria-expanded="false">Reviews</a>
-                <a class="list-group-item list-group-item-action" href="#signout">Sign Out</a>
-            </div>
-        </div>
+        <?php require_once 'account/account-sidebar.php'; // Sidebar for account navigation ?>
 
         <!-- Main Content -->
         <div class="col-sm-12 col-md-12 col-lg-8 col-xl-8 account-sections" id="account-sections">
             <div class="col collapse fade show" data-bs-parent="#account-sections" id="overview">
-                <?php require 'account/account-overview.php'?>
+                <?php require 'account/account-overview.php' // Includes the account overview section ?>
             </div>
             <div class="col collapse fade" data-bs-parent="#account-sections" id="details">
-                <?php require 'account/account-details.php'; ?>
+                <?php require 'account/account-details.php'; // Includes the account details section ?>
             </div>
             <div class="col collapse fade" data-bs-parent="#account-sections" id="addresses">
-                <?php require 'account/account-addresses.php'; ?>
+                <?php require 'account/account-addresses.php'; // Includes the addresses management section ?>
             </div>
             <div class="col collapse fade" data-bs-parent="#account-sections" id="orders">
-                <?php require 'account/account-orders.php'; ?>
+                <?php require 'account/account-orders.php'; // Includes the orders history section ?>
             </div>
             <div class="col collapse fade" data-bs-parent="#account-sections" id="wishlist">
-                <?php require 'account/account-wishlist.php'; ?>
+                <?php require 'account/account-wishlist.php'; // Includes the wishlist section ?>
             </div>
             <div class="col collapse fade" data-bs-parent="#account-sections" id="reviews">
-                <?php require 'account/account-reviews.php'; ?>
+                <?php require 'account/account-reviews.php'; // Includes the reviews section ?>
             </div>
         </div>
     </div>
