@@ -8,8 +8,9 @@ require_once 'include/header.php';
 // Start of Body //
 require_once 'include/navbar.php';
 ?>
-<!-- Page - Breadcrumb -->
+<!-- Breadcrumb for Navigation -->
 <div class="container col-sm-12 col-md-12 col-lg-8 col-xl-8 mt-3 div-spacing-mb">
+    <!-- Breadcrumb Structure -->
     <div class="row">
         <div class="col">
             <div aria-label="breadcrumb">
@@ -25,10 +26,10 @@ require_once 'include/navbar.php';
     </div>
 </div>
 
-<!-- Product Details -->
+<!-- Product Details Section -->
 <div class="container col-sm-12 col-md-12 col-lg-8 col-xl-8 mb-4">
     <div class="row">
-        <!-- Product Image -->
+        <!-- Product Image and Details -->
         <div class="col-sm-12 col-md-12 col-lg-8 col-xl-8">
             <img src="img/comingsoon.jpg" class="img-thumbnail border-0 rounded-0" alt="...">
         </div>
@@ -59,21 +60,24 @@ require_once 'include/navbar.php';
     </div>
 </div>
 
-<!-- Desc/Reviews Menu -->
+<!-- Tabs for Description, Reviews, and Review Submission -->
 <div class="container col-sm-12 col-md-12 col-lg-8 col-xl-8 mb-4 shadow-sm">
     <div class="row">
-        <!-- Tabs (Description/Customer Reviews/Leave a Review)-->
+        <!-- Navigation Pills for Tabs -->
         <div class="nav nav-pills mb-3 bg-danger m-0 p-1" id="pills-tab" role="tablist">
+            <!-- Description Tab -->
             <li class="nav-item" role="presentation">
                 <button class="btn btn-danger rounded-0 active" id="pills-desc-tab" data-bs-toggle="pill"
                     data-bs-target="#pills-desc" type="button" role="tab" aria-controls="pills-desc"
                     aria-selected="true">Description</button>
             </li>
+            <!-- Customer Reviews Tab -->
             <li class="nav-item" role="presentation">
                 <button class="btn btn-danger rounded-0" id="pills-reviews-tab" data-bs-toggle="pill"
                     data-bs-target="#pills-reviews" type="button" role="tab" aria-controls="pills-reviews"
                     aria-selected="false">Customer Reviews</button>
             </li>
+            <!-- Leave Review Tab -->
             <li class="nav-item" role="presentation">
                 <button class="btn btn-danger rounded-0" id="pills-reviews-tab" data-bs-toggle="pill"
                     data-bs-target="#pills-leavereview" type="button" role="tab" aria-controls="pills-leavereview"
@@ -110,6 +114,8 @@ require_once 'include/navbar.php';
                 <div class="container col-sm-12 col-md-12 col-lg-10 col-xl-10">
                     <div class="row">
                         <div id="reviewForm" class="col-sm-12 col-md-12 col-lg-6 col-xl-6 me-3 my-4 pb-2">
+
+                            <!-- Reviews Form -->
                             <form method="POST" enctype="multipart/form-data">
                                 <label for="fullname">Full Name</label>
                                 <input class="w-100 mb-2" type="text" id="fullname" name="fullname">
@@ -172,13 +178,15 @@ require_once 'include/navbar.php';
 </div>
 
 
-<!-- Related Products -->
+<!-- Related Products Section -->
 <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 mt-3 p-4 bg-danger">
     <div class="row">
+        <!-- Related Products Header and More Products Button -->
         <div class="col">
             <h3 class="fs-5">Related Products</h3>
         </div>
         <div class="col text-end">
+            <!-- More Products Button -->
             <a href="shop.php" class="btn btn-danger rounded-0 p-2 align-middle mb-2">More Products<ion-icon
                     class="align-middle" style="font-size:18px;" name="chevron-forward-outline"></ion-icon>
             </a>
@@ -187,6 +195,7 @@ require_once 'include/navbar.php';
     <div class="col">
         <div class="container-fluid">
             <div class="row justify-content-between">
+                <!-- Loop to include related product cards -->
                 <?php 
                 for ($i = 0; $i < 6; $i++) {
                     include 'include/product-card-wl.php';

@@ -9,9 +9,12 @@ require_once 'include/header.php';
 require_once 'include/navbar.php';
 ?>
 
+<!-- Main Content Container -->
 <div class="container py-4 col-sm-12 col-md-12 col-lg-12 col-xl-10">
     <div class="row d-flex justify-content-center">
         <div id="contactFunzies" class="p-4 col-sm-12 col-md-12 col-lg-5 col-xl-5">
+
+            <!-- Contact Form Section -->
             <form method="POST">
                 <h3>Get in Touch</h3>
                 <div class="row">
@@ -34,11 +37,14 @@ require_once 'include/navbar.php';
                 <textarea class="w-100 mb-3 p-2" id="message-textarea" name="message" cols="20" rows="8"
                     required></textarea>
 
+                <!-- Send Message Button -->
                 <button class="btn btn-danger rounded-0 w-100" name="Mailer">Send Message</button>
             </form>
-
         </div>
+
+        <!-- About Business Section -->
         <div id="aboutFunzies" class="col-sm-12 col-md-12 col-lg-3 col-xl-3 p-4">
+            <!-- Business Location, Contact Number, Email Address -->
             <span class="d-flex">
                 <ion-icon size="large" name="location"></ion-icon>
                 <p class="ms-3">Funzies Collection,<br>1346, Lynn Avenue,<br>Triq Funk,<br>San Pawl il-Baħar, SPB0011
@@ -53,6 +59,7 @@ require_once 'include/navbar.php';
                 <p class="ms-3">example@email.com</p>
             </span>
 
+            <!-- Opening Hours Table -->
             <h3 class="fs-5">Opening Hours</h3>
             <table class="table">
                 <tr>
@@ -115,8 +122,6 @@ require_once 'include/navbar.php';
         </div>
     </div>
 </div>
-
-
 
 <?php  
 require_once 'include/footer.php';

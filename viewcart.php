@@ -13,10 +13,13 @@ require_once 'include/navbar.php';
     <h3 class="fs-4">Shopping Cart</h3>
 </div>
 
+<!-- Shopping Cart Main Content -->
 <div class="container col-sm-12 col-md-12 col-lg-9 col-xl-9 spacing-mb text-center">
     <div class="row">
         <div class="col-sm-12 col-md-12 col-lg-8 col-xl-8 overflow-auto me-4" style="height: 475px;">
+            <!-- Cart Items Table -->
             <table class="table">
+                <!-- Table Headers for Product, Quantity, and Price -->
                 <tr>
                     <th>
                         Product
@@ -28,6 +31,7 @@ require_once 'include/navbar.php';
                         Price
                     </th>
                 </tr>
+                <!-- Product Details -->
                 <tr class="align-middle">
                     <td class="px-4">
                         <div class="row align-items-center">
@@ -54,6 +58,7 @@ require_once 'include/navbar.php';
                         <p class="product-card-font fs-5 text-danger">&euro;0.00</p>
                     </td>
                 </tr>
+                <!-- Product Details -->
                 <tr class="align-middle">
                     <td class="px-4">
                         <div class="row align-items-center">
@@ -80,6 +85,7 @@ require_once 'include/navbar.php';
                         <p class="product-card-font fs-5 text-danger">&euro;0.00</p>
                     </td>
                 </tr>
+                <!-- Product Details -->
                 <tr class="align-middle">
                     <td class="px-4">
                         <div class="row align-items-center">
@@ -106,6 +112,7 @@ require_once 'include/navbar.php';
                         <p class="product-card-font fs-5 text-danger">&euro;0.00</p>
                     </td>
                 </tr>
+                <!-- Product Details -->
                 <tr class="align-middle">
                     <td class="px-4">
                         <div class="row align-items-center">
@@ -132,11 +139,15 @@ require_once 'include/navbar.php';
                         <p class="product-card-font fs-5 text-danger">&euro;0.00</p>
                     </td>
                 </tr>
+                <!-- End of Products -->
             </table>
         </div>
+        <!-- Order Summary Section -->
         <div class="col-sm-12 col-md-12 col-lg-3 col-xl-3">
             <h3 class="fs-5">Order Summary</h3>
+
             <table class="table table-borderless">
+                <!-- Displaying subtotal, delivery charges, and total amount -->
                 <tr>
                     <td class="py-3">
                         Subtotal
@@ -166,6 +177,7 @@ require_once 'include/navbar.php';
                     </td>
                 </tr>
             </table>
+            <!-- Button to proceed to checkout -->
             <button onclick="document.location='checkout.php'" class="btn w-100 btn-danger rounded-0">
                 Proceed to Checkout
             </button>

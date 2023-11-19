@@ -9,7 +9,7 @@ require_once 'include/header.php';
 require_once 'include/navbar.php';
 ?>
 
-<!-- Carousel -->
+<!-- Carousel Section -->
 <div class="sm-carousel col-sm-12 col-md-12 col-lg-12 col-xl-12 border-bottom border-5 border-danger">
   <div id="carouselExampleIndicators" class="carousel slide sm-carousel">
     <div class="carousel-indicators ">
@@ -45,15 +45,17 @@ require_once 'include/navbar.php';
   </div>
 </div>
 
+<!-- Including Categories Section -->
 <?php require_once 'include/shop-categories.php'; ?>
 
-<!--New Arrivals -->
+<!-- New Arrivals Section -->
 <div class="container col-sm-12 col-md-12 col-lg-12 col-xl-8 spacing-mb">
   <div class="row d-flex justify-content-between">
     <div class="col">
       <h3 class="fs-5">New Arrivals</h3>
     </div>
     <div class="col text-end">
+      <!-- More Products Button -->
       <button class="btn btn-danger rounded-0 p-2 align-middle mb-4">More Products<ion-icon class="align-middle"
           style="font-size:18px;" name="chevron-forward-outline"></ion-icon></button>
     </div>
@@ -61,8 +63,9 @@ require_once 'include/navbar.php';
   <div class="col-12">
     <div class="container-fluid">
       <div class="row justify-content-between">
-        <!-- Product Card called via PHP -->
+        <!-- Loop to include product cards -->
         <?php 
+        // Will add 4 product cards
         for ($i = 0; $i < 4; $i++) {
             include 'include/product-card.php';
         }
@@ -72,13 +75,14 @@ require_once 'include/navbar.php';
   </div>
 </div>
 
-<!-- Best Sellers -->
+<!-- Best Sellers Section -->
 <div class="container col-sm-12 col-md-12 col-lg-12 col-xl-8">
   <div class="row">
     <div class="col">
       <h3 class="fs-5">Best Sellers</h3>
     </div>
     <div class="col text-end">
+      <!-- More products button -->
       <button class="btn btn-danger rounded-0 p-2 align-middle mb-3">More Products<ion-icon class="align-middle"
           style="font-size:18px;" name="chevron-forward-outline"></ion-icon></button>
     </div>
@@ -86,7 +90,9 @@ require_once 'include/navbar.php';
   <div class="col">
     <div class="container-fluid">
       <div class="row justify-content-between">
+        <!-- Loop to include product cards -->
         <?php 
+        // Will add 4 product cards
         for ($i = 0; $i < 4; $i++) {
             include 'include/product-card.php';
         }
@@ -96,6 +102,7 @@ require_once 'include/navbar.php';
   </div>
 </div>
 
+<!-- Including Brand Section -->
 <?php require 'include/shop-brand.php';
 ?>
 

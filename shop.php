@@ -11,28 +11,28 @@ require_once 'include/navbar.php';
 require_once 'include/shop-categories.php';
 ?>
 
+<!-- Product Sorting and Information Display -->
 <div class="container col-sm-12 col-md-12 col-lg-8 col-xl-8">
     <div class="row justify-content-between">
-        <!-- Showing Products Info -->
+        <!-- Displaying the number of products shown -->
         <div id="showDetails" class="col text-center">
             <p class="text-muted">Showing 9 out of 1000 Products</p>
         </div>
+        <!-- Sorting functionality to order products -->
         <div id="sortProducts" class="col-sm-12 col-md-12 col-lg-3 col-xl-3">
-            <!-- Sorting Dropdown -->
             <select id="sortBy" class="form-select border-0 rounded-0 shadow-sm mb-3" aria-label="Sort products by">
                 <option selected value="1">Sort by popularity</option>
                 <option value="2">Sort by latest</option>
                 <option value="3">Sort by price: low to high</option>
                 <option value="4">Sort by price: high to low</option>
             </select>
-
         </div>
     </div>
 </div>
 
 <div class="container col-sm-12 col-md-12 col-lg-8 col-xl-8">
     <div class="row">
-        <!-- Product Categories -->
+        <!-- Product Categories List -->
         <div id="productCategories" class="col-sm-12 col-md-12 col-lg-3 col-xl-3">
             <h3 class="fs-6 mb-2">Product Categories</h3>
             <?php
@@ -67,11 +67,12 @@ require_once 'include/shop-categories.php';
             ?>
 
         </div>
-        <!-- Product List -->
+        <!-- Product Cards Display -->
         <div class="col-sm-12 col-md-12 col-lg-9 col-xl-9">
             <div class="container-fluid">
                 <div class="row justify-content-between">
                     <!-- Product cards -->
+                    <!-- Loop to include individual product cards -->
                     <?php 
                     for ($i = 0; $i < 6; $i++) {
                         include 'include/product-card.php';
@@ -83,7 +84,7 @@ require_once 'include/shop-categories.php';
     </div>
 </div>
 
-<!-- Pagination -->
+<!-- Pagination Section -->
 <div class="container col-sm-12 col-md-12 col-lg-8 col-xl-8 mt-2 mb-4">
     <div class="row">
         <div class="col">

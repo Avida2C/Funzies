@@ -10,6 +10,7 @@ require_once 'include/header.php';
 require_once 'include/navbar.php';
 ?>
 
+<!-- Order Confirmation Section -->
 <div class="container col-sm-12 col-md-12 col-lg-10 col-xl-10 spacing-my">
     <div class="row justify-content-center">
         <div class="col-sm-12 col-md-12 col-lg-5 col-xl-5">
@@ -17,6 +18,8 @@ require_once 'include/navbar.php';
             <p class="fs-6 mb-4">The adventure starts now! Your order has arrived in our
                 world, poised for a thrilling journey to your doorstep. Brace yourself for a delivery team touchdown –
                 we'll be ringing you soon to make your day extra special!</p>
+
+            <!-- Customer Address and Details -->
             <h3 class="fs-5">Customer Details</h3>
             <p>
                 FirstName LastName
@@ -26,10 +29,14 @@ require_once 'include/navbar.php';
                 <br>Region
             </p>
         </div>
+
+        <!-- Order Summary -->
         <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4">
             <h3 class="product-card-font fs-6 text-center">Order Summary</h3>
             </p>
             <div class="container overflow-auto" style="height:150px;">
+            
+            <!-- Table of Ordered Items -->
                 <table class="table table-borderless">
                     <tr>
                         <td>
@@ -69,6 +76,7 @@ require_once 'include/navbar.php';
                     </tr>
                 </table>
             </div>
+            <!-- Total Price and Action Buttons -->
             <table class="table table-borderless text-center">
                 <tr class="border-top">
                     <th class="py-2">
@@ -83,12 +91,16 @@ require_once 'include/navbar.php';
                     </td>
                 </tr>
             </table>
+
+            <!-- Action Buttons -->
             <div class="row">
                 <div class="col-12 text-center">
+                    <!-- Return home button -->
                     <button onclick="document.location='index.php'" class="btn btn-danger rounded-0"
                         style="width: 190px;">
                         Home
                     </button>
+                    <!-- Check my order button -->
                     <button onclick="navigateToOrders()" class="btn btn-danger rounded-0" style="width: 190px;">
                         Check my order
                     </button>
