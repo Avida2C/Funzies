@@ -18,7 +18,8 @@
             </div>
         </div>
     </div>
-    <!-- Button to Trigger Add New Address Modal --><button type="button" class="btn btn-success mt-2 rounded-0"
+    <!-- Button to Trigger Add New Address Modal -->
+    <button type="button" class="btn btn-success mt-2 rounded-0"
         data-bs-toggle="modal" data-bs-target="#addAddressModal">Add
         New Address </button>
     <!-- Add New Address Modal -->

@@ -1,17 +1,24 @@
 <?php require '../functions.php'; ?>
+<!-- Functions Include: Importing shared functions for the site -->
 
-<?php require_once 'include/header.php'; 
-require_once 'include/navbar.php';?>
+<?php 
+require_once 'include/header.php'; // Header Include: HTML header setup
+require_once 'include/navbar.php'; // Navbar Include: Site navigation bar
+?>
 
 <div class="container-fluid col-10">
     <div class="row justify-content-between">
-        <?php require_once 'include/sidebar.php';?>
+        <?php require_once 'include/sidebar.php'; //Contains the sidebar with navigation links ?>
 
         <div class="col p-4 shadow-sm bg-white">
             <h2>Product Management</h2>
+            <!-- Product Management Section-->
+            <!-- Add Product Button: Triggers form to add a new product -->
             <button class="btn btn-success mb-3" type="button">Add New Product</button>
+            <!-- PHP To gather the following product details from the database -->
             <table class="table">
                 <thead class="thead-dark">
+                    <!-- Table Head: Columns titles -->
                     <tr>
                         <th>ID</th>
                         <th>Name</th>
@@ -25,6 +32,8 @@ require_once 'include/navbar.php';?>
                     </tr>
                 </thead>
                 <tbody>
+                    <!-- Table Body: Each row represents a product with edit and delete options -->
+                    <!-- Product -->
                     <tr>
                         <td>1</td>
                         <td>Space Explorer Rocket</td>
@@ -40,6 +49,7 @@ require_once 'include/navbar.php';?>
                             <button class="btn btn-danger btn-sm w-100">Delete</button>
                         </td>
                     </tr>
+                    <!-- Product -->
                     <tr>
                         <td>2</td>
                         <td>Deluxe Train Set</td>
@@ -55,6 +65,7 @@ require_once 'include/navbar.php';?>
                             <button class="btn btn-danger btn-sm w-100">Delete</button>
                         </td>
                     </tr>
+                    <!-- Product -->
                     <tr>
                         <td>3</td>
                         <td>Magic Science Kit</td>
@@ -70,6 +81,7 @@ require_once 'include/navbar.php';?>
                             <button class="btn btn-danger btn-sm w-100">Delete</button>
                         </td>
                     </tr>
+                    <!-- Product -->
                     <tr>
                         <td>4</td>
                         <td>Dinosaur Puzzle</td>
@@ -84,6 +96,7 @@ require_once 'include/navbar.php';?>
                             <button class="btn btn-danger btn-sm w-100">Delete</button>
                         </td>
                     </tr>
+                    <!-- Product -->
                     <tr>
                         <td>5</td>
                         <td>Remote Control Car</td>
@@ -99,10 +112,11 @@ require_once 'include/navbar.php';?>
                             <button class="btn btn-danger btn-sm w-100">Delete</button>
                         </td>
                     </tr>
+                    <!-- Products end-->
                 </tbody>
             </table>
         </div>
     </div>
 </div>
 
-<?php require_once 'include/footer.php'; ?>
+<?php require_once 'include/footer.php'; // Contains the footer information ?>

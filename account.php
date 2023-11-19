@@ -29,7 +29,6 @@ require_once 'include/navbar.php';
                 <a class="list-group-item list-group-item-action" data-bs-toggle="collapse" href="#reviews"
                     role="button" aria-expanded="false">Reviews</a>
                 <a class="list-group-item list-group-item-action" href="#signout">Sign Out</a>
-                <!-- No collapse for Sign Out -->
             </div>
         </div>
 

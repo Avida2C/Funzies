@@ -1,18 +1,23 @@
 <?php require '../functions.php'; ?>
+<!-- Functions Include: Importing shared functions for the site -->
 
-<?php require_once 'include/header.php'; 
-require_once 'include/navbar.php';?>
+<?php 
+require_once 'include/header.php'; // Header Include: HTML header setup
+require_once 'include/navbar.php'; // Navbar Include: Site navigation bar
+?>
 
 <div class="container-fluid col-10">
     <div class="row justify-content-between">
-        <?php require_once '../admin/include/sidebar.php';?>
+        <?php require_once 'include/sidebar.php'; //Contains the sidebar with navigation links ?>
 
         <div class="col py-2 shadow-sm bg-white">
-
             <div class="container mt-3">
+                <!-- User Management Section -->
                 <h2>User Management</h2>
                 <table class="table">
+                    <!-- User Management Table -->
                     <thead class="thead-dark">
+                        <!-- Table Header: Contains column titles -->
                         <tr>
                             <th>ID</th>
                             <th>Email</th>
@@ -27,6 +32,8 @@ require_once 'include/navbar.php';?>
                         </tr>
                     </thead>
                     <tbody>
+                        <!-- Table Body: Each row shows user data with options to edit or delete -->
+                        <!-- User -->
                         <tr>
                             <td>1</td>
                             <td>johndoe@example.com</td>
@@ -42,6 +49,7 @@ require_once 'include/navbar.php';?>
                                 <button class="btn btn-danger btn-sm">Delete</button>
                             </td>
                         </tr>
+                        <!-- User -->
                         <tr>
                             <td>2</td>
                             <td>janedoe@example.com</td>
@@ -57,6 +65,7 @@ require_once 'include/navbar.php';?>
                                 <button class="btn btn-danger btn-sm">Delete</button>
                             </td>
                         </tr>
+                        <!-- User -->
                         <tr>
                             <td>3</td>
                             <td>mike.smith@example.net</td>
@@ -72,6 +81,7 @@ require_once 'include/navbar.php';?>
                                 <button class="btn btn-danger btn-sm">Delete</button>
                             </td>
                         </tr>
+                        <!-- User -->
                         <tr>
                             <td>4</td>
                             <td>sarah.connor@futuremail.com</td>
@@ -87,6 +97,7 @@ require_once 'include/navbar.php';?>
                                 <button class="btn btn-danger btn-sm">Delete</button>
                             </td>
                         </tr>
+                        <!-- User -->
                         <tr>
                             <td>5</td>
                             <td>alex.mercer@prototype.com</td>
@@ -102,6 +113,7 @@ require_once 'include/navbar.php';?>
                                 <button class="btn btn-danger btn-sm">Delete</button>
                             </td>
                         </tr>
+                        <!-- Users end -->
                     </tbody>
                 </table>
             </div>
@@ -109,4 +121,4 @@ require_once 'include/navbar.php';?>
     </div>
 </div>
 
-<?php require_once '../admin/include/footer.php'; ?>
+<?php require_once 'include/footer.php'; // Contains the footer information ?>
