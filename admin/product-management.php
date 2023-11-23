@@ -24,6 +24,7 @@ require_once 'include/navbar.php'; // Navbar Include: Site navigation bar
                         <th>Name</th>
                         <th>Description</th>
                         <th>Short Description</th>
+                        <th>Category</th>
                         <th>Price</th>
                         <th>Stock</th>
                         <th>Brand</th>
@@ -39,6 +40,7 @@ require_once 'include/navbar.php'; // Navbar Include: Site navigation bar
                         <td>Space Explorer Rocket</td>
                         <td>A durable plastic rocket toy designed to inspire young astronauts.</td>
                         <td>Space toy</td>
+                        <td>Toy</td>
                         <td>$29.95</td>
                         <td>20</td>
                         <td>Galactic Toys</td>
@@ -55,6 +57,7 @@ require_once 'include/navbar.php'; // Navbar Include: Site navigation bar
                         <td>Deluxe Train Set</td>
                         <td>An expansive train set with multiple cars, tracks, and scenery.</td>
                         <td>Train set</td>
+                        <td>Toy</td>
                         <td>$49.99</td>
                         <td>10</td>
                         <td>Locomotion</td>
@@ -71,6 +74,7 @@ require_once 'include/navbar.php'; // Navbar Include: Site navigation bar
                         <td>Magic Science Kit</td>
                         <td>A science kit that combines learning with fun magical experiments.</td>
                         <td>Educational fun</td>
+                        <td>Education</td>
                         <td>$24.99</td>
                         <td>25</td>
                         <td>Wizardry Labs</td>
@@ -87,6 +91,7 @@ require_once 'include/navbar.php'; // Navbar Include: Site navigation bar
                         <td>Dinosaur Puzzle</td>
                         <td>A challenging 100-piece puzzle featuring various dinosaurs in a prehistoric landscape.</td>
                         <td>Dino puzzle for kids</td>
+                        <td>Puzzle</td>
                         <td>$15.99</td>
                         <td>35</td>
                         <td>PuzzleMania</td>
@@ -102,6 +107,7 @@ require_once 'include/navbar.php'; // Navbar Include: Site navigation bar
                         <td>Remote Control Car</td>
                         <td>An off-road remote control car capable of high speeds and rugged terrains.</td>
                         <td>RC Car with 4x4 grip</td>
+                        <td>Model</td>
                         <td>$39.99</td>
                         <td>12</td>
                         <td>Speedster</td>

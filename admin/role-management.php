@@ -14,7 +14,7 @@ require_once 'include/navbar.php'; // Navbar Include: Site navigation bar
             <!-- Role Management Section -->
             <h2>Role Management</h2>
             <!-- New Role Creation: Button to trigger form for adding new roles -->
-            <button class="btn btn-success mb-3">Create New Role</button>
+            <button class="btn btn-success mb-3">Add New Role</button>
             <!-- PHP To gather the following role details from the database -->
             <table class="table">
                 <!-- Role Data Table -->
