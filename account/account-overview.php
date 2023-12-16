@@ -2,16 +2,14 @@
 <div class="card-body">
     <!-- Profile Image and User Details -->
     <div class="row align-items-center">
-        <div class="col-sm-5 col-md-4 col-lg-3">
-            <img src="img/comingsoon.jpg" alt="Profile image of Jane Doe"
-                class="rounded-circle mb-3 img-fluid profile-image"> <!-- use a class for styles -->
-        </div>
         <div class="col-sm-7 col-md-8 col-lg-9">
             <!-- Adjusted the column size -->
             <h4>Jane Doe</h4>
             <p><strong>Joined:</strong> January 1, 2023</p>
-            <span class="badge rounded-pill text-bg-danger" aria-label="Account status: Unverified">UNVERIFIED</span>
+            <div class="col"><span class="badge rounded-pill text-bg-danger" aria-label="Account status: Unverified">UNVERIFIED</span>
             <!-- Added aria-label for more context -->
+        </div>
+            
         </div>
     </div>
 

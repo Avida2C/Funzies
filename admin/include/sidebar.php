@@ -1,3 +1,8 @@
+<?php 
+$user = $_SESSION['USER'];
+$fullname = $user['Name']." ".$user['Surname'];
+?>
+
 <!-- Sidebar -->
 <div class="col-2">
     <!-- Sidebar Container: Full height, sticky positioning -->
@@ -17,8 +22,8 @@
         <!-- Admin Info and Sign-out Section -->
         <div class="mt-auto col-sm-8 col-md-8 col-lg-9 col-xl-9 text-center">
             <!-- Display admin name and sign-out button -->
-            <h5>NameOfAdmin</h5>
-            <p><a href="admin.php" class="btn btn-primary w-100">Sign Out</a></p>
+            <h5><?php echo $fullname;?></h5>
+            <p><a href="../admin/admin-logout.php" class="btn btn-primary w-100">Sign Out</a></p>
         </div>
     </div>
 </div>

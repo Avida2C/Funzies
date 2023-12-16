@@ -1,5 +1,29 @@
-<?php require '../functions.php'; ?>
-<!-- Functions Include: Importing shared functions for the site -->
+<?php require '../functions.php'; 
+
+if($_SERVER['REQUEST_METHOD'] == "POST") {
+    $email = htmlspecialchars(addslashes($_POST['email'])); // 'addslashes' allows the user to use brackets
+    $password = htmlspecialchars(addslashes($_POST['password']));
+    
+    $query = "SELECT * FROM user WHERE email = '$email' && password = '$password' && role = '1' LIMIT 1";
+    
+    $result = mysqli_query($con, $query);
+
+    // print_r(mysqli_num_rows($result)); this will display the result which includes the results found in the db under num_rows
+    if(mysqli_num_rows($result) > 0) {
+        $row = mysqli_fetch_assoc($result); //fetches an array and uses it as an associative array
+        //['email' => email] : this is an associative array
+        $_SESSION['USER'] = ($row); //Memory location, this saves session's data 
+
+
+        header("Location: ../admin/user-management.php"); //this will direct the user to a different page
+        die; //will stop the process
+    }
+    else
+    {
+        $error = "Incorrect email or password, try again!";
+    }
+}
+?>
 
 <?php 
 require_once 'include/header.php'; // Header Include: HTML header setup
@@ -21,17 +45,27 @@ require_once 'include/navbar.php'; // Navbar Include: Site navigation bar
                 <h1>Log In</h1>
 
                 <!-- Email Input -->
-                <label for="email-input">Email address: <span class="text-danger">*</span></label>
-                <input class="w-100 p-1" type="email" name="email" id="email-input" required autocomplete="email">
+                <label for="email">Email address: <span class="text-danger">*</span></label>
+                <input class="w-100 p-1" type="email" name="email" id="email" required autocomplete="email">
 
                 <!-- Password Input -->
-                <label class="mt-2" for="password-input">Password: <span class="text-danger">*</span></label>
-                <input class="w-100 p-1" type="password" name="password" id="password-input" required
+                <label class="mt-2" for="password">Password: <span class="text-danger">*</span></label>
+                <input class="w-100 p-1" type="password" name="password" id="password" required
                     autocomplete="current-password">
 
                 <!-- Login Button -->
-                <a href="admin-logged-in.php" class="w-100 my-3 btn btn-primary">Log In</a>
+                <button class="w-100 my-3 btn btn-primary">Log In</button>
             </form>
+
+            <?php
+    if(!empty($error)) {
+        echo '<div class="container" style="margin-left: auto; margin-right: auto;">
+        <p style="text-align:center;color:red;">' 
+        . $error . 
+        '</p></div>';
+    }
+    ?>
+
         </div>
     </div>
 </div>
