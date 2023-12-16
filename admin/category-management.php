@@ -1,4 +1,9 @@
-<?php require '../functions.php'; ?>
+<?php require '../functions.php'; 
+require '../dbfunctions.php'; 
+
+$categories = GetCategories($con);
+
+?>
 <!-- Functions Include: Importing shared functions for the site -->
 
 <?php 
@@ -11,7 +16,7 @@ require_once 'include/navbar.php'; // Navbar Include: Site navigation bar
         <?php require_once 'include/sidebar.php'; //Contains the sidebar with navigation links ?>
 
         <div class="col p-4 shadow-sm bg-white">
-            <h2>Category Management</h2>
+            <h4>Category Management</h4>
             <!-- Category Management Section-->
             <!-- Add Category Button: Triggers form to add a new category -->
             <button class="btn btn-success mb-3" type="button">Add New Category</button>
@@ -23,42 +28,25 @@ require_once 'include/navbar.php'; // Navbar Include: Site navigation bar
                         <th>ID</th>
                         <th>Name</th>
                         <th>Description</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- Table Body: Each row represents a Category with edit and delete options -->
-                    <!-- Category -->
-                    <tr>
-                        <td>1</td>
-                        <td>Toy</td>
-                        <td>Includes a diverse range of play items for young ages.</td>
-                        <td>
-                            <button class="btn btn-primary btn-sm w-100">Edit</button>
-                            <button class="btn btn-danger btn-sm w-100">Delete</button>
-                        </td>
-                    </tr>
-                    <!-- Category -->
-                    <tr>
-                        <td>2</td>
-                        <td>Educational</td>
-                        <td>Kits and gadgets specifically for educational purposes.</td>
-                        <td>
-                            <button class="btn btn-primary btn-sm w-100">Edit</button>
-                            <button class="btn btn-danger btn-sm w-100">Delete</button>
-                        </td>
-                    </tr>
-                    <!-- Category -->
-                    <tr>
-                        <td>3</td>
-                        <td>Model</td>
-                        <td>Collectable items; such as Figurines, Cars, Ships, etc.</td>
-                        <td>
-                            <button class="btn btn-primary btn-sm w-100">Edit</button>
-                            <button class="btn btn-danger btn-sm w-100">Delete</button>
-                        </td>
-                    </tr>
-                    <!-- Category end-->
-                </tbody>
+                        <?php foreach($categories as $category):
+                        ?>
+                        <!-- Table Body: Each row shows user data with options to edit or delete -->
+                        <!-- User -->
+                        <tr>
+                            <td><?php echo $category["ID"]; ?></td>
+                            <td><?php echo $category["Name"]; ?></td>
+                            <td><?php echo $category["Details"]; ?></td>
+                            <td>
+                                <button class="btn btn-primary btn-sm w-100">Edit</button>
+                                <button class="btn btn-danger btn-sm w-100">Delete</button>
+                            </td>
+                        </tr>
+                        <?php endforeach ?>
+                    </tbody>
             </table>
         </div>
     </div>

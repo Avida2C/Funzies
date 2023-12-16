@@ -1,4 +1,8 @@
-<?php require '../functions.php'; ?>
+<?php require '../functions.php'; 
+require '../dbfunctions.php'; 
+
+$products = GetProducts($con);
+?>
 <!-- Functions Include: Importing shared functions for the site -->
 
 <?php 
@@ -11,7 +15,7 @@ require_once 'include/navbar.php'; // Navbar Include: Site navigation bar
         <?php require_once 'include/sidebar.php'; //Contains the sidebar with navigation links ?>
 
         <div class="col p-4 shadow-sm bg-white">
-            <h2>Product Management</h2>
+            <h4>Product Management</h4>
             <!-- Product Management Section-->
             <!-- Add Product Button: Triggers form to add a new product -->
             <button class="btn btn-success mb-3" type="button">Add New Product</button>
@@ -33,93 +37,26 @@ require_once 'include/navbar.php'; // Navbar Include: Site navigation bar
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- Table Body: Each row represents a product with edit and delete options -->
-                    <!-- Product -->
-                    <tr>
-                        <td>1</td>
-                        <td>Space Explorer Rocket</td>
-                        <td>A durable plastic rocket toy designed to inspire young astronauts.</td>
-                        <td>Space toy</td>
-                        <td>Toy</td>
-                        <td>$29.95</td>
-                        <td>20</td>
-                        <td>Galactic Toys</td>
-                        <td><img src="../img/comingsoon.jpg" alt="Space Explorer Rocket"
-                                style="width:50px;height:50px;"></td>
-                        <td>
-                            <button class="btn btn-primary btn-sm w-100">Edit</button>
-                            <button class="btn btn-danger btn-sm w-100">Delete</button>
-                        </td>
-                    </tr>
-                    <!-- Product -->
-                    <tr>
-                        <td>2</td>
-                        <td>Deluxe Train Set</td>
-                        <td>An expansive train set with multiple cars, tracks, and scenery.</td>
-                        <td>Train set</td>
-                        <td>Toy</td>
-                        <td>$49.99</td>
-                        <td>10</td>
-                        <td>Locomotion</td>
-                        <td><img src="../img/comingsoon.jpg" alt="Deluxe Train Set" style="width:50px;height:50px;">
-                        </td>
-                        <td>
-                            <button class="btn btn-primary btn-sm w-100">Edit</button>
-                            <button class="btn btn-danger btn-sm w-100">Delete</button>
-                        </td>
-                    </tr>
-                    <!-- Product -->
-                    <tr>
-                        <td>3</td>
-                        <td>Magic Science Kit</td>
-                        <td>A science kit that combines learning with fun magical experiments.</td>
-                        <td>Educational fun</td>
-                        <td>Education</td>
-                        <td>$24.99</td>
-                        <td>25</td>
-                        <td>Wizardry Labs</td>
-                        <td><img src="../img/comingsoon.jpg" alt="Magic Science Kit" style="width:50px;height:50px;">
-                        </td>
-                        <td>
-                            <button class="btn btn-primary btn-sm w-100">Edit</button>
-                            <button class="btn btn-danger btn-sm w-100">Delete</button>
-                        </td>
-                    </tr>
-                    <!-- Product -->
-                    <tr>
-                        <td>4</td>
-                        <td>Dinosaur Puzzle</td>
-                        <td>A challenging 100-piece puzzle featuring various dinosaurs in a prehistoric landscape.</td>
-                        <td>Dino puzzle for kids</td>
-                        <td>Puzzle</td>
-                        <td>$15.99</td>
-                        <td>35</td>
-                        <td>PuzzleMania</td>
-                        <td><img src="../img/comingsoon.jpg" alt="Dinosaur Puzzle" style="width:50px;height:50px;"></td>
-                        <td>
-                            <button class="btn btn-primary btn-sm w-100">Edit</button>
-                            <button class="btn btn-danger btn-sm w-100">Delete</button>
-                        </td>
-                    </tr>
-                    <!-- Product -->
-                    <tr>
-                        <td>5</td>
-                        <td>Remote Control Car</td>
-                        <td>An off-road remote control car capable of high speeds and rugged terrains.</td>
-                        <td>RC Car with 4x4 grip</td>
-                        <td>Model</td>
-                        <td>$39.99</td>
-                        <td>12</td>
-                        <td>Speedster</td>
-                        <td><img src="../img/comingsoon.jpg" alt="Remote Control Car" style="width:50px;height:50px;">
-                        </td>
-                        <td>
-                            <button class="btn btn-primary btn-sm w-100">Edit</button>
-                            <button class="btn btn-danger btn-sm w-100">Delete</button>
-                        </td>
-                    </tr>
-                    <!-- Products end-->
-                </tbody>
+                        <?php foreach($products as $product):
+                        ?>
+                        <!-- Table Body: Each row shows user data with options to edit or delete -->
+                        <!-- User -->
+                        <tr>
+                            <td><?php echo $product["ID"]; ?></td>
+                            <td><?php echo $product["Name"]; ?></td>
+                            <td><?php echo $product["Description"]; ?></td>
+                            <td><?php echo $product["ShortDescription"]; ?></td>
+                            <td><?php echo $product["Price"]; ?></td>
+                            <td><?php echo $product["Stock"]; ?></td>
+                            <td><?php echo $product["Brand"]; ?></td>
+                            <td><?php echo $product["Image"]; ?></td>
+                            <td>
+                                <button class="btn btn-primary btn-sm w-100">Edit</button>
+                                <button class="btn btn-danger btn-sm w-100">Delete</button>
+                            </td>
+                        </tr>
+                        <?php endforeach ?>
+                    </tbody>
             </table>
         </div>
     </div>

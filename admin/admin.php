@@ -3,6 +3,7 @@
 if($_SERVER['REQUEST_METHOD'] == "POST") {
     $email = htmlspecialchars(addslashes($_POST['email'])); // 'addslashes' allows the user to use brackets
     $password = htmlspecialchars(addslashes($_POST['password']));
+    $password = sha1($password);
     
     $query = "SELECT * FROM user WHERE email = '$email' && password = '$password' && role = '1' LIMIT 1";
     
@@ -51,7 +52,7 @@ require_once 'include/navbar.php'; // Navbar Include: Site navigation bar
                 <!-- Password Input -->
                 <label class="mt-2" for="password">Password: <span class="text-danger">*</span></label>
                 <input class="w-100 p-1" type="password" name="password" id="password" required
-                    autocomplete="current-password">
+                    autocomplete="current-password" >
 
                 <!-- Login Button -->
                 <button class="w-100 my-3 btn btn-primary">Log In</button>

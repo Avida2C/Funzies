@@ -1,4 +1,9 @@
-<?php require '../functions.php'; ?>
+<?php require '../functions.php'; 
+require '../dbfunctions.php'; 
+
+$reviewStatuses = GetReviewStatus($con);
+$reviews = GetReviews($con);
+?>
 <!-- Functions Include: Importing shared functions for the site -->
 
 <?php 
@@ -13,7 +18,37 @@ require_once 'include/navbar.php'; // Navbar Include: Site navigation bar
 
         <div class="col-sm-12 col-md-12 col-lg-10 col-xl-10 p-4 shadow-sm bg-white">
             <!-- Reviews Management Section -->
-            <h2>Reviews Management</h2>
+            <h4>Reviews Status Management</h4>
+            <button class="btn btn-success mb-3" type="button">Add New Review Status</button>
+            <!-- PHP To gather the following review details from the database -->
+            <table class="table">
+                <!-- Reviews Table: Displays review details with action options -->
+                <thead class="thead-dark">
+                    <!-- Table Head: Column titles -->
+                    <tr>
+                        <th>ID</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach($reviewStatuses as $reviewStatus):
+                            ?>
+                    <!-- Table Body: Each row shows user data with options to edit or delete -->
+                    <!-- User -->
+                    <tr>
+                        <td><?php echo $reviewStatus["ID"]; ?></td>
+                        <td><?php echo $reviewStatus["Status"]; ?></td>
+                        <td>
+                            <button class="btn btn-primary btn-sm w-100">Edit</button>
+                            <button class="btn btn-danger btn-sm w-100">Delete</button>
+                        </td>
+                    </tr>
+                    <?php endforeach ?>
+                </tbody>
+            </table>
+
+            <h4>Reviews Management</h4>
             <!-- PHP To gather the following review details from the database -->
             <table class="table">
                 <!-- Reviews Table: Displays review details with action options -->
@@ -30,95 +65,22 @@ require_once 'include/navbar.php'; // Navbar Include: Site navigation bar
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- Table Body: Rows with review data and management actions -->
-                    <!-- Review -->
+                <?php foreach($reviews as $review):
+                            ?>
+                    <!-- Table Body: Each row shows user data with options to edit or delete -->
+                    <!-- User -->
                     <tr>
-                        <td>1</td>
-                        <td>Love this product, would recommend!</td>
-                        <td>101</td>
-                        <td>501</td>
-                        <td>5</td>
-                        <td>Awaiting Approval</td>
+                        <td><?php echo $review["ID"]; ?></td>
+                        <td><?php echo $review["Content"]; ?></td>
+                        <td><?php echo $review["Product"]; ?></td>
+                        <td><?php echo $review["Rating"]; ?></td>
+                        <td><?php echo $review["statusReview"]; ?></td>
                         <td>
-                            <button class="btn btn-success btn-sm">Approve</button>
-                            <button class="btn btn-danger btn-sm">Decline</button>
+                            <button class="btn btn-primary btn-sm w-100">Edit</button>
+                            <button class="btn btn-danger btn-sm w-100">Delete</button>
                         </td>
                     </tr>
-                    <!-- Review -->
-                    <tr>
-                        <td>7</td>
-                        <td>Loved it! Exactly what I needed.</td>
-                        <td>107</td>
-                        <td>507</td>
-                        <td>5</td>
-                        <td>Approved</td>
-                        <td>
-                            <!-- Actions can be omitted for approved reviews -->
-                        </td>
-                    </tr>
-                    <!-- Review -->
-                    <tr>
-                        <td>8</td>
-                        <td>The size was not as expected, slightly small.</td>
-                        <td>108</td>
-                        <td>508</td>
-                        <td>3</td>
-                        <td>Declined - User Notified</td>
-                        <td>
-                            <!-- No actions needed for declined reviews if the user has been notified -->
-                        </td>
-                    </tr>
-                    <!-- Review -->
-                    <tr>
-                        <td>9</td>
-                        <td>Great quality, but I expected a faster delivery.</td>
-                        <td>109</td>
-                        <td>509</td>
-                        <td>4</td>
-                        <td>Awaiting Approval</td>
-                        <td>
-                            <button class="btn btn-success btn-sm">Approve</button>
-                            <button class="btn btn-danger btn-sm">Decline</button>
-                        </td>
-                    </tr>
-                    <!-- Review -->
-                    <tr>
-                        <td>13</td>
-                        <td>The packaging was damaged upon arrival, but the product was fine.</td>
-                        <td>113</td>
-                        <td>513</td>
-                        <td>3</td>
-                        <td>Awaiting Approval</td>
-                        <td>
-                            <button class="btn btn-success btn-sm">Approve</button>
-                            <button class="btn btn-danger btn-sm">Decline</button>
-                        </td>
-                    </tr>
-                    <!-- Review -->
-                    <tr>
-                        <td>11</td>
-                        <td>Completely satisfied, best purchase ever!</td>
-                        <td>111</td>
-                        <td>511</td>
-                        <td>5</td>
-                        <td>Awaiting Approval</td>
-                        <td>
-                            <button class="btn btn-success btn-sm">Approve</button>
-                            <button class="btn btn-danger btn-sm">Decline</button>
-                        </td>
-                    </tr>
-                    <!-- Review -->
-                    <tr>
-                        <td>12</td>
-                        <td>The item stopped working after one week.</td>
-                        <td>112</td>
-                        <td>512</td>
-                        <td>1</td>
-                        <td>Declined - User Notified</td>
-                        <td>
-                        </td>
-                    </tr>
-                    <!-- Reviews end -->
+                    <?php endforeach ?>
                 </tbody>
             </table>
         </div>
