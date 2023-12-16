@@ -45,9 +45,9 @@ require_once 'include/navbar.php';
             <!-- Contact Form Section -->
             <form id="ContactMeform" method="POST">
                 <h3>Get in Touch</h3>
-                        <label for="name">Full Name:</label>
-                        <input class="w-100 mb-3 p-1" id="contactName" type="text" name="name" required>
-       
+                <label for="name">Full Name:</label>
+                <input class="w-100 mb-3 p-1" id="contactName" type="text" name="name" required>
+
 
                 <label for="email">Email:</label>
                 <input class="w-100 mb-3 p-1" id="contactEmail" type="email" name="email" required autocomplete="email">
@@ -62,16 +62,16 @@ require_once 'include/navbar.php';
                 <!-- Send Message Button -->
                 <button class="btn btn-danger rounded-0 w-100" name="Mailer">Send Message</button>
                 <?php if(!$isValid) {
-                echo '<p style="color:red;" class="pt-3">One or more inputs are incorrect! Please try again. </p>';
-          }
-          if (isset($sent)) {
-              if($sent) {
-                    echo "<p class='pt-3' style='color:green;'> Message Sent! </p>";
-              }
-              else{
-                  echo "<p class='pt-3' style='color:red;'> Message not sent! </p>";
-              }  
-          }?>
+                    echo '<p style="color:red;" class="pt-3">One or more inputs are incorrect! Please try again. </p>';
+                }
+                if (isset($sent)) {
+                    if($sent) {
+                          echo "<p class='pt-3' style='color:green;'> Message Sent! </p>";
+                    }
+                    else{
+                        echo "<p class='pt-3' style='color:red;'> Message not sent! </p>";
+                    }  
+                }?>
             </form>
         </div>
 
