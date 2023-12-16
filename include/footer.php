@@ -52,6 +52,7 @@
 <script src="js/javascript.js"></script>
 <!-- Ionicons for iconography -->
 <script src="https://unpkg.com/ionicons@latest/dist/ionicons.js"></script>
+<script src="js/regex.js"></script>
 </body>
 
 </html>

@@ -149,6 +149,17 @@ footer a:hover {
     /* Add some space between the buttons and the number box */
 }
 
+.valid {
+    border: 3px solid rgb(0, 255, 0) !important;
+    border-radius: 4px !important;
+}
+
+.invalid {
+    border: 3px solid red !important;
+    border-radius: 4px !important;
+
+}
+
 *,
 *::before,
 *::after {

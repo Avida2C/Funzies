@@ -2,7 +2,35 @@
 // functions.php will contain any functionalities which may be required on more than one page. 
 require 'functions.php';
 require_once 'include/header.php';
-?>
+$isValid = true;
+if($_SERVER['REQUEST_METHOD'] == "POST") {
+    $name = htmlspecialchars(addslashes($_POST['name']));
+    if(preg_match($pattern['name'], $name)!= 1) {
+        $isValid = false;
+    }
+
+    $email = htmlspecialchars(addslashes($_POST['email'])); 
+    if(preg_match($pattern['email'], $email)!= 1) {
+        $isValid = false;
+    }
+    
+    $subject = htmlspecialchars(addslashes($_POST['subject']));
+    if(preg_match($pattern['subject'], $subject)!= 1) {
+        $isValid = false;
+    }
+   
+    if($isValid) {
+        if (isset($_POST["Mailer"])) {
+            $name = htmlspecialchars($_POST["name"]);
+            $email = htmlspecialchars($_POST["email"]);
+            $subject = htmlspecialchars($_POST["subject"]);
+            $message= htmlspecialchars($_POST["message"]);
+    
+            $sent = Mailer($email, $name, $subject, $message);
+        }   
+    }
+}?>
+
 
 <?php 
 // Start of Body //
@@ -12,33 +40,38 @@ require_once 'include/navbar.php';
 <!-- Main Content Container -->
 <div class="container py-4 col-sm-12 col-md-12 col-lg-12 col-xl-10">
     <div class="row d-flex justify-content-center">
-        <div id="contactFunzies" class="p-4 col-sm-12 col-md-12 col-lg-5 col-xl-5">
+        <div id="contact" class="p-4 col-sm-12 col-md-12 col-lg-5 col-xl-5">
 
             <!-- Contact Form Section -->
-            <form method="POST">
+            <form id="ContactMeform" method="POST">
                 <h3>Get in Touch</h3>
-                <div class="row">
-                    <div class="col">
-                        <label for="firstname-input">First Name:</label>
-                        <input class="w-100 mb-3 p-1" id="firstname-input" type="text" name="firstname" required>
-                    </div>
-                    <div class="col">
-                        <label for="lastname-input">Last Name:</label>
-                        <input class="w-100 mb-3 p-1" id="lastname-input" type="text" name="lastname" required>
-                    </div>
-                </div>
-                <label for="email-input">Email:</label>
-                <input class="w-100 mb-3 p-1" id="email-input" type="email" name="email" required autocomplete="email">
+                        <label for="name">Full Name:</label>
+                        <input class="w-100 mb-3 p-1" id="contactName" type="text" name="name" required>
+       
 
-                <label for="subject-input">Subject:</label>
-                <input class="w-100 mb-3 p-1" id="subject-input" type="text" name="subject" required>
+                <label for="email">Email:</label>
+                <input class="w-100 mb-3 p-1" id="contactEmail" type="email" name="email" required autocomplete="email">
 
-                <label for="message-textarea">Message:</label>
-                <textarea class="w-100 mb-3 p-2" id="message-textarea" name="message" cols="20" rows="8"
+                <label for="subject">Subject:</label>
+                <input class="w-100 mb-3 p-1" id="contactSubject" type="text" name="subject" required>
+
+                <label for="message">Message:</label>
+                <textarea class="w-100 mb-3 p-2" id="contactMessage" name="message" cols="20" rows="8"
                     required></textarea>
 
                 <!-- Send Message Button -->
                 <button class="btn btn-danger rounded-0 w-100" name="Mailer">Send Message</button>
+                <?php if(!$isValid) {
+                echo '<p style="color:red;" class="pt-3">One or more inputs are incorrect! Please try again. </p>';
+          }
+          if (isset($sent)) {
+              if($sent) {
+                    echo "<p class='pt-3' style='color:green;'> Message Sent! </p>";
+              }
+              else{
+                  echo "<p class='pt-3' style='color:red;'> Message not sent! </p>";
+              }  
+          }?>
             </form>
         </div>
 

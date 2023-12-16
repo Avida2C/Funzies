@@ -21,10 +21,22 @@ require_once 'include/navbar.php';
                     <!-- Sign Up Form -->
                     <form class="p-4" method="post">
                         <h1>Sign Up</h1>
+                        <div class="row">
+                            <div class="col">
+                                <label for="name-input">Name<span class="text-danger">*</span></label>
+                                <input class="w-100 p-1 mb-2" type="text" id="name-input" name="name" placeholder="Same"
+                                    required autocomplete="name">
+                            </div>
+                            <div class="col">
+                                <label for="surname-input">Surname<span class="text-danger">*</span></label>
+                                <input class="w-100 p-1 mb-2" type="text" id="surname-input" name="surname"
+                                    placeholder="Surname" required autocomplete="surname">
+                            </div>
+                        </div>
 
-                        <label for="username-input">Username<span class="text-danger">*</span></label>
-                        <input class="w-100 p-1 mb-2" type="text" id="username-input" name="username"
-                            placeholder="Username" required autocomplete="username">
+                        <label for="contactnumber">Contact Number<span class="text-danger">*</span></label>
+                        <input class="w-100 p-1 mb-2" type="contactnumber" id="contactnumber-input" name="contactnumber"
+                            placeholder="Contact Number" required autocomplete="contactnumber">
 
                         <label for="email-input">Email<span class="text-danger">*</span></label>
                         <input class="w-100 p-1 mb-2" type="email" id="email-input" name="email" placeholder="Email"

@@ -14,6 +14,6 @@
             aria-expanded="false">Wishlist</a>
         <a class="list-group-item list-group-item-action" data-bs-toggle="collapse" href="#reviews" role="button"
             aria-expanded="false">Reviews</a>
-        <a class="list-group-item list-group-item-action" href="#signout">Sign Out</a>
+        <a class="list-group-item list-group-item-action" href="logout.php">Sign Out</a>
     </div>
 </div>
