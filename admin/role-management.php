@@ -2,14 +2,14 @@
 require '../dbfunctions.php'; 
 
 
-if ($_SERVER['REQUEST_METHOD'] == "POST" && $_POST['roleIDDelete']) {
+if ($_SERVER['REQUEST_METHOD'] == "POST" && !empty($_POST['roleIDDelete'])) {
     $id = htmlspecialchars(addslashes($_POST['roleIDDelete']));
     $deleteRole = deleteRole($con, $id);
-} else if($_SERVER['REQUEST_METHOD'] == "POST" && !$_POST['roleName']) {
+} else if($_SERVER['REQUEST_METHOD'] == "POST" && empty($_POST['roleID'])) {
     $name = htmlspecialchars(addslashes($_POST['roleName'])); // 'addslashes' allows the user to use brackets
     $details = htmlspecialchars(addslashes($_POST['roleDetails']));
     $createRole = createRole($con,$name,$details);
-} else if($_SERVER['REQUEST_METHOD'] == "POST" && $_POST['roleName']) {
+} else if($_SERVER['REQUEST_METHOD'] == "POST" && !empty($_POST['roleID'])) {
     $id = htmlspecialchars(addslashes($_POST['roleID']));
     $name = htmlspecialchars(addslashes($_POST['roleName'])); // 'addslashes' allows the user to use brackets
     $details = htmlspecialchars(addslashes($_POST['roleDetails']));
@@ -35,7 +35,7 @@ require_once 'include/navbar.php'; // Navbar Include: Site navigation bar
             <h4>Role Management</h4>
             <!-- New Role Creation: Button to trigger form for adding new roles -->
             <!-- Button trigger modal -->
-            <button type="button" class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <button type="button" class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="clearModalRoleFields();">
                 Add New Role
             </button>
 

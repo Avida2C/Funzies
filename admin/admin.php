@@ -5,7 +5,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
     $password = htmlspecialchars(addslashes($_POST['password']));
     $password = sha1($password);
     
-    $query = "SELECT * FROM user WHERE email = '$email' && password = '$password' && role = '1' LIMIT 1";
+    $query = "SELECT * FROM user WHERE email = '$email' && password = '$password' && role = '1' && Deleted = '0' LIMIT 1";
     
     $result = mysqli_query($con, $query);
 
