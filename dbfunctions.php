@@ -29,9 +29,7 @@ function updateUser($con, $id, $name, $email, $surname, $number, $role)
         exit();
     }
 
-    mysqli_stmt_execute($stmt);
-
-    $result = mysqli_stmt_get_result($stmt);
+    $result = mysqli_stmt_execute($stmt);
 
     mysqli_stmt_close($stmt);
 
@@ -48,9 +46,7 @@ function deleteUser($con, $id)
         exit();
     }
 
-    mysqli_stmt_execute($stmt);
-
-    $result = mysqli_stmt_get_result($stmt);
+    $result = mysqli_stmt_execute($stmt);
 
     mysqli_stmt_close($stmt);
 
@@ -87,9 +83,7 @@ function createRole($con,$name, $details)
         exit();
     }
 
-    mysqli_stmt_execute($stmt);
-
-    $result = mysqli_stmt_get_result($stmt);
+    $result = $result = mysqli_stmt_execute($stmt);
 
     mysqli_stmt_close($stmt);
 
@@ -106,9 +100,7 @@ function updateRole($con, $id, $name, $details)
         exit();
     }
 
-    mysqli_stmt_execute($stmt);
-
-    $result = mysqli_stmt_get_result($stmt);
+    $result = $result = mysqli_stmt_execute($stmt);
 
     mysqli_stmt_close($stmt);
 
@@ -125,9 +117,7 @@ function deleteRole($con, $id)
         exit();
     }
 
-    mysqli_stmt_execute($stmt);
-
-    $result = mysqli_stmt_get_result($stmt);
+    $result = mysqli_stmt_execute($stmt);
 
     mysqli_stmt_close($stmt);
 
@@ -180,9 +170,7 @@ function createBrand($con, $name, $details, $image)
         exit();
     }
 
-    mysqli_stmt_execute($stmt);
-
-    $result = mysqli_stmt_get_result($stmt);
+    $result = mysqli_stmt_execute($stmt);
 
     mysqli_stmt_close($stmt);
 
@@ -219,8 +207,6 @@ function updateBrand($con, $id, $name, $details, $image)
 
     mysqli_stmt_execute($stmt);
 
-    $result = mysqli_stmt_get_result($stmt);
-
     mysqli_stmt_close($stmt);
 
     return $result;
@@ -236,9 +222,7 @@ function deleteBrand($con, $id)
         exit();
     }
 
-    mysqli_stmt_execute($stmt);
-
-    $result = mysqli_stmt_get_result($stmt);
+    $result = mysqli_stmt_execute($stmt);
 
     mysqli_stmt_close($stmt);
 
@@ -275,9 +259,7 @@ function createCategory($con,$name, $details)
         exit();
     }
 
-    mysqli_stmt_execute($stmt);
-
-    $result = mysqli_stmt_get_result($stmt);
+    $result = mysqli_stmt_execute($stmt);
 
     mysqli_stmt_close($stmt);
 
@@ -294,9 +276,7 @@ function updateCategory($con, $id, $name, $details)
         exit();
     }
 
-    mysqli_stmt_execute($stmt);
-
-    $result = mysqli_stmt_get_result($stmt);
+    $result = mysqli_stmt_execute($stmt);
 
     mysqli_stmt_close($stmt);
 
@@ -313,9 +293,7 @@ function deleteCategory($con, $id)
         exit();
     }
 
-    mysqli_stmt_execute($stmt);
-
-    $result = mysqli_stmt_get_result($stmt);
+    $result = mysqli_stmt_execute($stmt);
 
     mysqli_stmt_close($stmt);
 
@@ -371,9 +349,8 @@ function createProduct($con, $name, $description, $shortDescription, $category, 
         exit();
     }
 
-    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_execute($stmt);
 
-    $result = mysqli_stmt_get_result($stmt);
 
     mysqli_stmt_close($stmt);
 
@@ -410,9 +387,7 @@ function updateProduct($con, $id, $name, $description, $shortDescription, $categ
         exit();
     }
 
-    mysqli_stmt_execute($stmt);
-
-    $result = mysqli_stmt_get_result($stmt);
+    $result = mysqli_stmt_execute($stmt);
 
     mysqli_stmt_close($stmt);
 
@@ -429,9 +404,7 @@ function deleteProduct($con, $id)
         exit();
     }
 
-    mysqli_stmt_execute($stmt);
-
-    $result = mysqli_stmt_get_result($stmt);
+    $result = mysqli_stmt_execute($stmt);
 
     mysqli_stmt_close($stmt);
 
@@ -488,9 +461,7 @@ function createOrderStatus($con,$name)
         exit();
     }
 
-    mysqli_stmt_execute($stmt);
-
-    $result = mysqli_stmt_get_result($stmt);
+    $result = mysqli_stmt_execute($stmt);
 
     mysqli_stmt_close($stmt);
 
@@ -507,9 +478,7 @@ function updateOrderStatus($con, $id, $name)
         exit();
     }
 
-    mysqli_stmt_execute($stmt);
-
-    $result = mysqli_stmt_get_result($stmt);
+    $result = mysqli_stmt_execute($stmt);
 
     mysqli_stmt_close($stmt);
 
@@ -526,9 +495,7 @@ function deleteOrderStatus($con, $id)
         exit();
     }
 
-    mysqli_stmt_execute($stmt);
-
-    $result = mysqli_stmt_get_result($stmt);
+    $result = mysqli_stmt_execute($stmt);
 
     mysqli_stmt_close($stmt);
 
@@ -566,12 +533,9 @@ function GetReviews($con)
         exit();
     }
 
-    mysqli_stmt_execute($stmt);
-
-    $result = mysqli_stmt_get_result($stmt);
+    $result = mysqli_stmt_execute($stmt);
 
     mysqli_stmt_close($stmt);
-
     return $result;
 }
 
@@ -585,9 +549,7 @@ function createReviewStatus($con,$name)
         exit();
     }
 
-    mysqli_stmt_execute($stmt);
-
-    $result = mysqli_stmt_get_result($stmt);
+    $result = mysqli_stmt_execute($stmt);
 
     mysqli_stmt_close($stmt);
 
@@ -604,9 +566,7 @@ function updateReviewStatus($con, $id, $name)
         exit();
     }
 
-    mysqli_stmt_execute($stmt);
-
-    $result = mysqli_stmt_get_result($stmt);
+    $result = mysqli_stmt_execute($stmt);
 
     mysqli_stmt_close($stmt);
 
@@ -623,9 +583,7 @@ function deleteReviewStatus($con, $id)
         exit();
     }
 
-    mysqli_stmt_execute($stmt);
-
-    $result = mysqli_stmt_get_result($stmt);
+    $result = mysqli_stmt_execute($stmt);
 
     mysqli_stmt_close($stmt);
 
@@ -637,4 +595,32 @@ function getGUID()
     return sprintf('%04X%04X-%04X-%04X-%04X-%04X%04X%04X', mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(16384, 20479), mt_rand(32768, 49151), mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(0, 65535));
 }
 
+function adminLogin($con, $email, $password)
+{
+    $password = sha1($password);
+    $sql = "SELECT * FROM user WHERE email = '$email' && password = '$password' && role = '1' && Deleted = '0' LIMIT 1";
+    
+    $stmt = mysqli_stmt_init($con);
+    if(!mysqli_stmt_prepare($stmt, $sql)) {
+        echo "Could not load Users";
+        exit();
+    }
+
+    mysqli_stmt_execute($stmt);
+
+    $result = mysqli_stmt_get_result($stmt);
+
+    mysqli_stmt_close($stmt);
+
+    if(mysqli_num_rows($result) > 0) {
+
+        $_SESSION['USER'] = $result->fetch_assoc(); //Memory location, this saves session's data 
+        return true;
+    }
+
+    return false;
+}
+
+
 ?>
+

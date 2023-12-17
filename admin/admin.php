@@ -1,23 +1,15 @@
 <?php require '../functions.php'; 
+require '../dbfunctions.php'; 
+
 
 if($_SERVER['REQUEST_METHOD'] == "POST") {
     $email = htmlspecialchars(addslashes($_POST['email'])); // 'addslashes' allows the user to use brackets
     $password = htmlspecialchars(addslashes($_POST['password']));
-    $password = sha1($password);
-    
-    $query = "SELECT * FROM user WHERE email = '$email' && password = '$password' && role = '1' && Deleted = '0' LIMIT 1";
-    
-    $result = mysqli_query($con, $query);
 
     // print_r(mysqli_num_rows($result)); this will display the result which includes the results found in the db under num_rows
-    if(mysqli_num_rows($result) > 0) {
-        $row = mysqli_fetch_assoc($result); //fetches an array and uses it as an associative array
-        //['email' => email] : this is an associative array
-        $_SESSION['USER'] = ($row); //Memory location, this saves session's data 
-
-
+    if(adminLogin($con, $email, $password)) 
+    {
         header("Location: ../admin/user-management.php"); //this will direct the user to a different page
-        die; //will stop the process
     }
     else
     {
