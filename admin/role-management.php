@@ -68,9 +68,6 @@ require_once 'include/navbar.php'; // Navbar Include: Site navigation bar
                 </div>
             </div>
 
-
-
-
             <!-- PHP To gather the following role details from the database -->
             <table class="table">
                 <!-- Role Data Table -->
@@ -91,7 +88,7 @@ require_once 'include/navbar.php'; // Navbar Include: Site navigation bar
                         <td><?php echo $role["ID"]; ?></td>
                         <td><?php echo $role["Name"]; ?></td>
                         <td><?php echo $role["Details"]; ?></td>
-                        <td>
+                        <td style="width:100px;">
                             <form method="POST">
                             <input type="hidden" id="roleIDDelete" name="roleIDDelete" value='<?php echo $role["ID"]; ?>'></input>
                             <button type="button" class="btn btn-primary btn-sm w-100" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick='setModalRoleFields("<?php echo $role["ID"]; ?>", "<?php echo $role["Name"]; ?>", "<?php echo $role["Details"]; ?>")'>Edit</button>

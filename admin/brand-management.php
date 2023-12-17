@@ -87,9 +87,9 @@ require_once 'include/navbar.php'; // Navbar Include: Site navigation bar
                         <tr>
                             <td><?php echo $brand["ID"]; ?></td>
                             <td><?php echo $brand["Name"]; ?></td>
-                            <td><?php echo $brand["Details"]; ?></td>
+                            <td class="w-50"><?php echo $brand["Details"]; ?></td>
                             <td><img class="w-25" src='<?php echo "../" . $brand["Image"]; ?>' alt=""></td>
-                            <td>
+                            <td style="width:100px;">
                             <form method="POST">
                                 <input type="hidden" id="brandIDDelete" name="brandIDDelete" value='<?php echo $brand["ID"]; ?>'></input>
                                 <button type="button" class="btn btn-primary btn-sm w-100" data-bs-toggle="modal" data-bs-target="#brandModal" onclick='setModalBrandFields("<?php echo $brand["ID"]; ?>", "<?php echo $brand["Name"]; ?>", "<?php echo $brand["Details"]; ?>")'>Edit</button>

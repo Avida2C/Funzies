@@ -533,7 +533,9 @@ function GetReviews($con)
         exit();
     }
 
-    $result = mysqli_stmt_execute($stmt);
+    mysqli_stmt_execute($stmt);
+
+    $result = mysqli_stmt_get_result($stmt);
 
     mysqli_stmt_close($stmt);
     return $result;
