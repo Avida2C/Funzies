@@ -1,27 +1,15 @@
-<?php
-
-$users = GetUsers($con);
-
-?>
-
 <h3 class="border-bottom border-2 border-danger pb-2">Account Details</h3>
 <!-- Account Details Section -->
 <div class="mt-4">
     <!-- Account Verification Alert -->
-    <?php foreach($users as $user):
-                ?>
-                <?php if($user['Verified'] == 1) {
 
-                }
-                else
-                {
+                <?php if($user['Verified'] != 1) {
                     echo '<div class="alert alert-warning rounded-0" role="alert" id="verificationAlert">
                         Your account is not verified. <a href="#" class="alert-link">Click here</a> to resend the
                         verification email.
                         </div>';
                 }
                 ?>
-            <?php endforeach ?>
 </div>
 
 <!-- Form to Update Full Name and Contact Number -->

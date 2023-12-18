@@ -1,23 +1,15 @@
-<?php
-
-$users = GetUsers($con);
-
-?>
-
 <h3 class="border-bottom border-2 border-danger pb-2">Profile Overview</h3>
 <div class="card-body">
     <!-- Profile Image and User Details -->
     <div class="row align-items-center">
         <div class="col-sm-7 col-md-8 col-lg-9">
 
-            <?php foreach($users as $user):
-                ?>
             <!-- Adjusted the column size -->
             <h4><?php echo $user["Name"] . " " . $user["Surname"]?></h4>
             <p><strong>Joined:</strong> <?php echo $user["Joined"]?></p>
                 <?php if($user['Verified'] == 1) {
                     echo '<div class="col"><span class="badge rounded-pill text-bg-success"
-                    aria-label="Account status: verified">Verified</span></div>';
+                    aria-label="Account status: verified">VERIFIED</span></div>';
                 }
                 else
                 {
@@ -25,7 +17,6 @@ $users = GetUsers($con);
                     aria-label="Account status: Unverified">UNVERIFIED</span></div>';
                 }
                 ?>
-            <?php endforeach ?>
         </div>
     </div>
 

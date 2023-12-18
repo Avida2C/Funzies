@@ -3,6 +3,8 @@
 require 'functions.php';
 require 'dbfunctions.php';
 require_once 'include/header.php';
+
+$user = GetUserByID($con, $_SESSION['USER']['ID']);
 ?>
 
 <?php 

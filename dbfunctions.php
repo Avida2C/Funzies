@@ -19,6 +19,32 @@ function GetUsers($con)
     return $result;
 }
 
+/* Users Management */
+function GetUserByID($con, $id)
+{
+    $sql = "SELECT * FROM user WHERE ID = '$id'"; 
+
+    $stmt = mysqli_stmt_init($con);
+    if(!mysqli_stmt_prepare($stmt, $sql)) {
+        echo "Could not load Users";
+        exit();
+    }
+
+    mysqli_stmt_execute($stmt);
+
+    $result = mysqli_stmt_get_result($stmt);
+
+    mysqli_stmt_close($stmt);
+
+    if(mysqli_num_rows($result) > 0) {
+
+        return $result->fetch_assoc(); //Memory location, this saves session's data 
+    }
+
+    return false;
+
+}
+
 function updateUser($con, $id, $name, $email, $surname, $number, $role)
 {
     $sql = "UPDATE user SET Name = '$name', Email = '$email', Surname = '$surname', ContactNumber = '$number', Role = '$role' WHERE ID = $id;";
@@ -318,6 +344,31 @@ function GetProducts($con)
     mysqli_stmt_close($stmt);
 
     return $result;
+}
+
+function GetProductByID($con,$id)
+{
+    $sql = "SELECT * FROM product WHERE ID = '$id'";
+
+    $stmt = mysqli_stmt_init($con);
+    if(!mysqli_stmt_prepare($stmt, $sql)) {
+        echo "Could not load Products";
+        exit();
+    }
+
+    mysqli_stmt_execute($stmt);
+
+    $result = mysqli_stmt_get_result($stmt);
+
+    mysqli_stmt_close($stmt);
+
+    if(mysqli_num_rows($result) > 0) {
+
+        return $result->fetch_assoc(); //Memory location, this saves session's data 
+    }
+
+    return false;
+
 }
 
 function createProduct($con, $name, $description, $category, $price, $stock, $brand, $image)
@@ -648,6 +699,8 @@ function userLogin($con, $email, $password)
 
     return false;
 }
+
+
 
 
 ?>

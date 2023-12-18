@@ -4,8 +4,6 @@ require 'functions.php';
 require 'dbfunctions.php';
 require_once 'include/header.php';
 
-$product = ProductByCategory($con);
-
 ?>
 
 <?php 
