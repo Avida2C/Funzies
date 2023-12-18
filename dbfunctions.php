@@ -623,6 +623,32 @@ function adminLogin($con, $email, $password)
     return false;
 }
 
+function userLogin($con, $email, $password)
+{
+    $password = sha1($password);
+    $sql = "SELECT * FROM user WHERE email = '$email' && password = '$password' && Deleted = '0' LIMIT 1";
+    
+    $stmt = mysqli_stmt_init($con);
+    if(!mysqli_stmt_prepare($stmt, $sql)) {
+        echo "Could not load Users";
+        exit();
+    }
+
+    mysqli_stmt_execute($stmt);
+
+    $result = mysqli_stmt_get_result($stmt);
+
+    mysqli_stmt_close($stmt);
+
+    if(mysqli_num_rows($result) > 0) {
+
+        $_SESSION['USER'] = $result->fetch_assoc(); //Memory location, this saves session's data 
+        return true;
+    }
+
+    return false;
+}
+
 
 ?>
 

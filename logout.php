@@ -1,5 +1,6 @@
 <?php
 require "functions.php";
+require "dbfunctions.php";
 
 //the following will reset the session data completely:
 session_unset();

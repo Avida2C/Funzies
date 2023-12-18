@@ -1,3 +1,6 @@
+<?php 
+$categories = GetCategories($con);
+?>
 <div id="navCategories-sm" class="container col-sm-4 col-md-6 col-lg-4 col-xl-4 navbar navbar-light bg-light">
     <!-- Categories for small screens -->
     <button class="btn rounded-0 py-2 ms-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar2"
@@ -8,7 +11,6 @@
     <!-- Offcanvas Navigation Panel -->
     <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar2" aria-labelledby="offcanvasNavbarLabel">
         <div class="offcanvas-header border-bottom border-danger border-3">
-
 
             <div class="nav nav-tabs border-0" id="nav-tab" role="tablist">
                 <!-- Navigation Tabs -->
@@ -50,36 +52,14 @@
                 tabindex="0">
                 <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                     <!-- Categories List -->
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Board games & Puzzles</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Collectibles & Figurines</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Funko</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Models</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Lego</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">LOL Surprise</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Playmobil</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Plushies</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Posters</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Gifts</a>
-                    </li>
+                    <?php foreach($categories as $category):
+                        ?>
+                <!-- Table Body: Each row shows user data with options to edit or delete -->
+                <!-- User -->
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><?php echo $category["Name"] ?></a>
+                </li>
+                <?php endforeach ?>
                     <!-- Categories End -->
                 </ul>
             </div>

@@ -1,3 +1,19 @@
+<?php
+if($_SERVER['REQUEST_METHOD'] == "POST") {
+    $email = htmlspecialchars(addslashes($_POST['email'])); // 'addslashes' allows the user to use brackets
+    $password = htmlspecialchars(addslashes($_POST['password']));
+
+    // print_r(mysqli_num_rows($result)); this will display the result which includes the results found in the db under num_rows
+    if(userLogin($con, $email, $password)) {
+        header("Location: account.php"); //this will direct the user to a different page
+    }
+    else
+    {
+        $error = "Incorrect email or password, try again!";
+    }
+}
+?>
+
 <div class="offcanvas offcanvas-end" tabindex="-1" id="AccountLogin" aria-labelledby="AccountLoginLabel">
     <!-- Login Panel -->
     <div class="offcanvas-header border-bottom border-3 border-danger">
@@ -19,7 +35,16 @@
                         <input class="w-100 p-1 rounded-0 border-1" type="password" id="password" name="password"
                             required>
 
-                        <button onclick="window.location.href='account.php'" class="w-100 my-3 btn btn-danger rounded-0">Log In</button>
+                        <?php
+                        if(!empty($error)) {
+                            echo '<div class="container" style="margin-left: auto; margin-right: auto;">
+                            <p style="text-align:center;color:red;">' 
+                            . $error . 
+                            '</p></div>';
+                        }
+                        ?>
+
+                        <button class="w-100 my-3 btn btn-danger rounded-0">Log In</button>
 
                         <!-- Remember Me Checkbox and Forgot Password Link -->
                         <div class="row">

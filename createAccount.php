@@ -1,7 +1,24 @@
 <?php 
 // functions.php will contain any functionalities which may be required on more than one page. 
 require 'functions.php';
+require 'dbfunctions.php';
 require_once 'include/header.php';
+
+
+if($_SERVER['REQUEST_METHOD'] == "POST") {
+    $email = htmlspecialchars(addslashes($_POST['email'])); // 'addslashes' allows the user to use brackets
+    $password = htmlspecialchars(addslashes($_POST['password']));
+
+    // print_r(mysqli_num_rows($result)); this will display the result which includes the results found in the db under num_rows
+    if(userLogin($con, $email, $password)) {
+        header("Location: account.php"); //this will direct the user to a different page
+    }
+    else
+    {
+        $error = "Incorrect email or password, try again!";
+    }
+}
+
 ?>
 
 <?php 
@@ -69,6 +86,16 @@ require_once 'include/navbar.php';
                             required autocomplete="current-password">
                         <!-- Login submit button -->
                         <button class="w-100 my-3 btn btn-danger rounded-0">Log In</button>
+
+                        <?php
+                        if(!empty($error)) {
+
+                            echo '<div class="container" style="margin-left: auto; margin-right: auto;">
+                            <p style="text-align:center;color:red;">' 
+                            . $error . 
+                            '</p></div>';
+                        }
+                        ?>
 
                         <div class="row">
                             <div class="col-6">
