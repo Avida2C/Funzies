@@ -205,7 +205,7 @@ function updateBrand($con, $id, $name, $details, $image)
         exit();
     }
 
-    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_execute($stmt);
 
     mysqli_stmt_close($stmt);
 
@@ -320,7 +320,7 @@ function GetProducts($con)
     return $result;
 }
 
-function createProduct($con, $name, $description, $shortDescription, $category, $price, $stock, $brand, $image)
+function createProduct($con, $name, $description, $category, $price, $stock, $brand, $image)
 {
     $imagePath = '';
     if(!empty($image["name"])) {
@@ -340,8 +340,8 @@ function createProduct($con, $name, $description, $shortDescription, $category, 
         $imagePath = $path . $guid . '.' . $imageFileType;
     }
 
-    $sql = "INSERT INTO product (Name, Description, ShortDescription, Category, Price, Stock, Brand, Image, Deleted) 
-            VALUES ('$name', '$description', '$shortDescription', '$category', '$price', '$stock', '$brand', '$imagePath', '0')";
+    $sql = "INSERT INTO product (Name, Description, Category, Price, Stock, Brand, Image, Deleted) 
+            VALUES ('$name', '$description', '$category', '$price', '$stock', '$brand', '$imagePath', '0')";
     
     $stmt = mysqli_stmt_init($con);
     if(!mysqli_stmt_prepare($stmt, $sql)) {
@@ -357,7 +357,7 @@ function createProduct($con, $name, $description, $shortDescription, $category, 
     return $result;
 }
 
-function updateProduct($con, $id, $name, $description, $shortDescription, $category, $price, $stock, $brand, $image)
+function updateProduct($con, $id, $name, $description, $category, $price, $stock, $brand, $image)
 {
     $imagePath = '';
     if(!empty($image["name"])) {
@@ -377,7 +377,7 @@ function updateProduct($con, $id, $name, $description, $shortDescription, $categ
         $imagePath = $path . $guid . '.' . $imageFileType;
     }
 
-    $sql = "UPDATE product SET Name = '$name', Description = '$description', ShortDescription = '$shortDescription', Category = '$category', Price = '$price', Stock = '$stock',
+    $sql = "UPDATE product SET Name = '$name', Description = '$description', Category = '$category', Price = '$price', Stock = '$stock',
             Brand = '$brand', Image = '$imagePath'
             WHERE ID = $id;";
     

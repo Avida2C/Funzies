@@ -59,7 +59,6 @@ function setModalProductFields(id, name, description, shortDescription, category
     $("#productID").val(id);
     $("#productName").val(name);
     $("#productDescription").val(description);
-    $("#productShortDescription").val(shortDescription);
     $("#productCategory").val(category);
     $("#productPrice").val(price);
     $("#productStock").val(stock);
@@ -79,7 +78,6 @@ function clearModalProductFields() {
     $("#productID").val();
     $("#productName").val();
     $("#productDescription").val();
-    $("#productShortDescription").val();
     $("#productPrice").val();
     $("#productStock").val();
 }

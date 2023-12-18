@@ -9,24 +9,22 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && !empty($_POST['productIDDelete'])) {
 } else if($_SERVER['REQUEST_METHOD'] == "POST" && empty($_POST['productID'])) {
     $name = htmlspecialchars(addslashes($_POST['productName'])); // 'addslashes' allows the user to use brackets
     $description = htmlspecialchars(addslashes($_POST['productDescription']));
-    $shortDescription = htmlspecialchars(addslashes($_POST['productShortDescription']));
     $category = htmlspecialchars(addslashes($_POST['productCategory']));
     $price = htmlspecialchars(addslashes($_POST['productPrice']));
     $stock = htmlspecialchars(addslashes($_POST['productStock']));
     $brand = htmlspecialchars(addslashes($_POST['productBrand']));
     $image = $_FILES['productImage'];
-    $createproduct = createProduct($con, $name, $description, $shortDescription, $category, $price, $stock, $brand, $image);
+    $createproduct = createProduct($con, $name, $description, $category, $price, $stock, $brand, $image);
 } else if($_SERVER['REQUEST_METHOD'] == "POST" && !empty($_POST['productID'])) {
     $id = htmlspecialchars(addslashes($_POST['productID']));
     $name = htmlspecialchars(addslashes($_POST['productName'])); // 'addslashes' allows the user to use brackets
     $description = htmlspecialchars(addslashes($_POST['productDescription']));
-    $shortDescription = htmlspecialchars(addslashes($_POST['productShortDescription']));
     $category = htmlspecialchars(addslashes($_POST['productCategory']));
     $price = htmlspecialchars(addslashes($_POST['productPrice']));
     $stock = htmlspecialchars(addslashes($_POST['productStock']));
     $brand = htmlspecialchars(addslashes($_POST['productBrand']));
     $image = $_FILES['productImage'];
-    $updateproduct = updateProduct($con, $id, $name, $description, $shortDescription, $category, $price, $stock, $brand, $image);
+    $updateproduct = updateProduct($con, $id, $name, $description, $category, $price, $stock, $brand, $image);
 }
 
 $products = GetProducts($con);
@@ -65,10 +63,8 @@ require_once 'include/navbar.php'; // Navbar Include: Site navigation bar
                             <input type="hidden" name="productID" id="productID"></input>
                             <label class="w-100" for="productName">Product Name<span class="text-danger">*</span>:</label>
                             <input class="w-100 mt-2 p-2" type="text" id="productName" name="productName" required>
-                            <label class="w-100" for="productDescription">Product Description<span class="text-danger">*</span>:</label>
-                            <input class="w-100 mt-2 p-2" type="text" id="productDescription" name="productDescription" required>
-                            <label class="w-100" for="productShortDescription">Product Short Description<span class="text-danger">*</span>:</label>
-                            <input class="w-100 mt-2 p-2" type="text" id="productShortDescription" name="productShortDescription" required>
+                            <label class="w-100" for="productDescription">Product Description:</label>
+                            <input class="w-100 mt-2 p-2" type="text" id="productDescription" name="productDescription">
                             <label class="w-100" for="productCategory">Product Category<span class="text-danger">*</span>:</label>
                             <select name="productCategory" id="productCategory" required>
                                 <?php foreach($categories as $category): ?>
@@ -96,7 +92,7 @@ require_once 'include/navbar.php'; // Navbar Include: Site navigation bar
                     </div>
                 </div>
             </div>
-
+                                    <div class="container overflow-auto" style="height:500px;">
             <!-- PHP To gather the following product details from the database -->
             <table class="table">
                 <thead class="thead-dark">
@@ -105,7 +101,6 @@ require_once 'include/navbar.php'; // Navbar Include: Site navigation bar
                         <th>ID</th>
                         <th>Name</th>
                         <th>Description</th>
-                        <th>Short Description</th>
                         <th>Category</th>
                         <th>Price</th>
                         <th>Stock</th>
@@ -123,7 +118,6 @@ require_once 'include/navbar.php'; // Navbar Include: Site navigation bar
                             <td><?php echo $product["ID"]; ?></td>
                             <td><?php echo $product["Name"]; ?></td>
                             <td><?php echo $product["Description"]; ?></td>
-                            <td><?php echo $product["ShortDescription"]; ?></td>
                             <td><?php echo $product["categoryName"]; ?></td>
                             <td><?php echo $product["Price"]; ?></td>
                             <td><?php echo $product["Stock"]; ?></td>
@@ -134,7 +128,7 @@ require_once 'include/navbar.php'; // Navbar Include: Site navigation bar
                                 <input type="hidden" id="productIDDelete" name="productIDDelete" value='<?php echo $product["ID"]; ?>'></input>
                                 <button type="button" class="btn btn-primary btn-sm w-100" data-bs-toggle="modal" data-bs-target="#productModal" 
                                     onclick='setModalProductFields("<?php echo $product["ID"]; ?>", "<?php echo $product["Name"]; ?>", "<?php echo $product["Description"]; ?>"
-                                    , "<?php echo $product["ShortDescription"]; ?>", "<?php echo $product["Category"]; ?>", "<?php echo $product["Price"]; ?>"
+                                    , "<?php echo $product["Category"]; ?>", "<?php echo $product["Price"]; ?>"
                                     , "<?php echo $product["Stock"]; ?>", "<?php echo $product["Brand"]; ?>")'>Edit</button>
                                 <button type="submit" class="btn btn-danger btn-sm w-100">Delete</button>
                             </form>
@@ -143,6 +137,7 @@ require_once 'include/navbar.php'; // Navbar Include: Site navigation bar
                         <?php endforeach ?>
                     </tbody>
             </table>
+                        </div>
         </div>
     </div>
 </div>
