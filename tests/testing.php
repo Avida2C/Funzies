@@ -78,5 +78,30 @@ class testing extends TestCase{
     }
     */
 
+    /* Get user by ID 
+    public function testGetUser()
+    {
+        $con = mysqli_connect('localhost', 'root', '', 'funzies');
+        $result = GetUserByID($con, 2);
+        print_r ($result);
+        $this -> assertNotEmpty($result);
+    }
+    */
+
+    /*Update Account Details
+    public function testUpdateAccountDetails()
+    {
+        $con = mysqli_connect('localhost', 'root', '', 'funzies');
+        $user = GetUserByID($con, 2);
+        $user['Name'] = 'Jane'; 
+        $user['Surname'] = 'Doe'; 
+        $user['ContactNumber'] = '777777777'; 
+        $result = updateUserObject($con, $user);
+        $this -> assertTrue($result);
+    }
+    */
+
+    
+    
 }
 ?>
