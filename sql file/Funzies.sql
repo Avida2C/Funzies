@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 18, 2023 at 01:30 AM
+-- Generation Time: Dec 19, 2023 at 10:23 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -29,12 +29,14 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `address` (
   `ID` int(11) NOT NULL,
-  `Address` longtext NOT NULL,
+  `Name` varchar(200) NOT NULL,
+  `Surname` varchar(200) NOT NULL,
+  `Street` longtext NOT NULL,
   `City` varchar(200) NOT NULL,
   `ZipCode` varchar(200) NOT NULL,
   `Region` varchar(45) NOT NULL,
   `User` int(11) NOT NULL,
-  `Default` tinyint(4) NOT NULL,
+  `Def` tinyint(4) NOT NULL,
   `Deleted` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
@@ -70,7 +72,7 @@ INSERT INTO `brand` (`ID`, `Name`, `Details`, `Image`, `Deleted`) VALUES
 (11, 'Pokémon', 'Pokémon is a media franchise centered around fictional creatures called &quot;Pokémon&quot;, which humans catch and train to battle each other for sport.', 'img/brands/0A385449-B6F2-4F06-AA3D-DA6F4D95BB8E.png', 0),
 (12, 'Nintendo', 'Nintendo is a Japanese multinational video game company known for creating some of the most popular and influential video games and consoles in the industry.', 'img/brands/048DD5D8-4344-4578-B27D-BA85355BAA5A.png', 1),
 (13, 'Anime', 'Anime refers to a style of animation originating from Japan, characterized by colorful artwork, fantastical themes, and vibrant characters.', 'img/brands/C1E3716B-B3CF-4F8B-946D-3C7114F5279C.jpg', 0),
-(14, 'N/A', 'No Brand Applicable ', 'img/brands/520E97A2-5FA0-4AA5-A518-903A43A2969F.png', 0),
+(14, 'N/A', 'No Brand Applicable ', 'img/brands/520E97A2-5FA0-4AA5-A518-903A43A2969F.png', 1),
 (15, 'Banpresto', 'Banpresto is a Japanese company known for producing toys and prize items for amusement arcades, including detailed figurines and collectibles from popular anime and manga series.', 'img/brands/EC0A6F4E-683E-4A35-ADDE-FF12E6EB057B.png', 0),
 (16, 'BANDAI', 'Bandai is a Japanese company known for producing toys, video games, and a wide range of entertainment products, notably famous for action figures and model kits related to popular anime and TV series.', 'img/brands/FCB03118-8E62-4670-A79E-1F2CBF00F8A9.png', 0),
 (17, 'Ravensburger', 'Ravensburger is a German company renowned for producing high-quality puzzles, board games, and educational toys for children and adults.', 'img/brands/BEB29127-39D4-4D5F-BC6D-5CF5CCA933D0.png', 0),
@@ -97,7 +99,7 @@ INSERT INTO `category` (`ID`, `Name`, `Details`, `Deleted`) VALUES
 (1, 'Board Games', 'Board games are tabletop games involving strategy, skill, or chance, played with pieces or cards on a pre-marked surface.', 0),
 (2, 'Playing Cards', 'Playing cards are a set of rectangular pieces of card stock or plastic, typically used for playing a variety of games ranging from traditional card games to complex strategic activities.', 0),
 (3, 'Models', 'Model consist of scaled-down replicas of various objects, like vehicles, buildings, or figures, often meticulously detailed and assembled by hobbyists.', 0),
-(4, 'Collectibles and Figurines', 'Collectibles and figurines are small, decorative objects, often representing characters or themes from popular culture, movies, or history, prized by collectors for their detail and rarity.', 0),
+(4, 'Figurines', 'Figurines are small, decorative objects, often representing characters or themes from popular culture, movies, or history, prized by collectors for their detail and rarity.', 0),
 (5, 'Merchandise ', 'Merchandise refers to products branded with themes or characters from popular media, including clothing, accessories, toys, and collectibles, often marketed to fans.', 1),
 (6, 'Gifts', 'Gifts are items given to someone without the expectation of payment, often as a gesture of appreciation, love, or celebration on various occasions.', 1),
 (7, 'Miscellaneous', 'Miscellaneous refers to a category of items that don&#039;t fit neatly into any specific type or classification, often encompassing a diverse range of objects with varied purposes.', 1),
@@ -172,7 +174,7 @@ CREATE TABLE `product` (
   `Category` int(11) NOT NULL,
   `Price` float NOT NULL,
   `Stock` int(11) NOT NULL,
-  `Brand` int(11) NOT NULL,
+  `Brand` int(11) DEFAULT NULL,
   `Image` varchar(2000) DEFAULT NULL,
   `Deleted` tinyint(4) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;

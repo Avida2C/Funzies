@@ -2,33 +2,33 @@
 <!-- Account Details Section -->
 <div class="mt-4">
     <!-- Account Verification Alert -->
-
-                <?php if($user['Verified'] != 1) {
-                    echo '<div class="alert alert-warning rounded-0" role="alert" id="verificationAlert">
-                        Your account is not verified. <a href="#" class="alert-link">Click here</a> to resend the
-                        verification email.
-                        </div>';
-                }
-                ?>
+    <?php if($user['Verified'] != 1) {
+        echo '<div class="alert alert-warning rounded-0" role="alert" id="verificationAlert">
+            Your account is not verified. <a href="#" class="alert-link">Click here</a> to resend the
+            verification email.
+            </div>';
+    }
+    ?>
 </div>
 
 <!-- Form to Update Full Name and Contact Number -->
-<form method="POST" class="form mt-3 px-4">
+<form class="form mt-3 px-4" method="POST">
     <!-- Full Name -->
     <div class="mb-3">
         <label for="firstname" class="form-label">First Name:</label>
-        <input type="text" class="form-control rounded-0" id="firstname" name="firstname" value="Jane" required>
+        <input type="text" class="form-control rounded-0" id="firstname" name="firstname" value="<?php echo $user['Name'] ?>" required>
     </div>
     <div class="mb-3">
         <label for="lastname" class="form-label">Last Name:</label>
-        <input type="text" class="form-control rounded-0" id="lastname" name="lastname" value="Doe" required>
+        <input type="text" class="form-control rounded-0" id="lastname" name="lastname" value="<?php echo $user['Surname'] ?>" required>
     </div>
     <!-- Mobile Number -->
     <div class="mb-3">
         <label for="mobilenumber" class="form-label">Mobile Number</label>
-        <input type="text" class="form-control rounded-0" id="mobilenumber" name="mobilenumber" value="+356 12312312"
+        <input type="text" class="form-control rounded-0" id="mobilenumber" name="mobilenumber" value="<?php echo $user['ContactNumber'] ?>"
             required>
     </div>
+    <input type="hidden" name="updateDetails">
 
     <!-- Submit Button for Updating Details -->
     <button class="btn btn-danger rounded-0 mb-4">Update Details</button>
@@ -40,10 +40,11 @@
     <div class="mb-3">
         <label for="emailAddress" class="form-label">Email Address</label>
         <input type="email" class="form-control rounded-0" id="emailAddress" name="emailAddress"
-            value="janedoe@example.com" required>
+            value="<?php echo $user['Email'] ?>" required>
     </div>
     <!-- Submit Button for Updating Email -->
     <button class="btn btn-danger rounded-0 mb-4">Update Email</button>
+    <input type="hidden" name="updateEmail">
 </form>
 
 <!-- Form to Change Password -->
@@ -63,6 +64,11 @@
         <input type="password" class="form-control rounded-0" id="confirmPassword" name="confirmPassword"
             placeholder="Confirm new password" required>
     </div>
+    <div class ="mb-3">
+        <label class="form-label"><?php echo $incorrectPassword ?></label>
+        <?php if($passwordUpdated) echo '<label class="form-label">Password changed successfully!</label>' ?>
+    </div>
     <!-- Submit Button for Changing Password -->
     <button class="btn btn-danger rounded-0 mb-4">Change Password</button>
+    <input type="hidden" name="updatePassword">
 </form>

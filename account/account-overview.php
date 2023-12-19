@@ -62,16 +62,16 @@
             </tr>
         </table>
     </div>
-    <h5 class="mt-4">Recently Viewed Products</h5>
+    <!-- <h5 class="mt-4">Recently Viewed Products</h5>
     <div class="container">
-        <div class="row justify-content-between">
+        <div class="row justify-content-between"> -->
             <!-- Product cards -->
             <?php 
-            for ($i = 0; $i < 3; $i++) {
+            //for ($i = 0; $i < 3; $i++) {
                 // Include individual product card for the wishlist
-                include 'include/product-card-wl.php';
-            }
+            //    include 'include/product-card-wl.php';
+            //}
             ?>
-        </div>
-    </div>
+        <!-- </div> -->
+    <!-- </div> -->
 </div>

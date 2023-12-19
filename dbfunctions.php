@@ -45,9 +45,9 @@ function GetUserByID($con, $id)
 
 }
 
-function updateUser($con, $id, $name, $email, $surname, $number, $role)
+function updateUser($con, $id, $name, $email, $surname, $number, $role, $password)
 {
-    $sql = "UPDATE user SET Name = '$name', Email = '$email', Surname = '$surname', ContactNumber = '$number', Role = '$role' WHERE ID = $id;";
+    $sql = "UPDATE user SET Name = '$name', Email = '$email', Surname = '$surname', ContactNumber = '$number', Role = '$role', Password = '$password' WHERE ID = $id;";
     
     $stmt = mysqli_stmt_init($con);
     if(!mysqli_stmt_prepare($stmt, $sql)) {
@@ -60,6 +60,11 @@ function updateUser($con, $id, $name, $email, $surname, $number, $role)
     mysqli_stmt_close($stmt);
 
     return $result;
+}
+
+function updateUserObject($con, $user)
+{
+    return updateUser($con, $user["ID"], $user["Name"], $user["Email"], $user["Surname"], $user["ContactNumber"], $user["Role"], $user["Password"]);
 }
 
 function deleteUser($con, $id)
@@ -700,7 +705,118 @@ function userLogin($con, $email, $password)
     return false;
 }
 
+function GetAddressesByUser($con, $userID)
+{
+    $sql = "SELECT * FROM address WHERE User = '$userID' AND Deleted = '0';";
 
+    $stmt = mysqli_stmt_init($con);
+    if(!mysqli_stmt_prepare($stmt, $sql)) {
+        echo "Could not load Roles";
+        exit();
+    }
+
+    mysqli_stmt_execute($stmt);
+
+    $result = mysqli_stmt_get_result($stmt);
+
+    mysqli_stmt_close($stmt);
+
+    return $result;
+}
+
+function createAddress($con, $userID, $address)
+{
+    $name = $address["Name"];
+    $surname = $address["Surname"];
+    $street = $address["Address"];
+    $city = $address["City"];
+    $zipCode = $address["ZipCode"];
+    $region = $address["Region"];
+    $default = $address["Default"] === 'on';
+
+    if($default) {
+        $sql = "UPDATE address SET Def = '0' WHERE User = '$userID';";
+        $stmt = mysqli_stmt_init($con);
+        if(!mysqli_stmt_prepare($stmt, $sql)) {
+            echo "Could not create Order Status";
+            exit();
+        }
+
+        $result = mysqli_stmt_execute($stmt);
+
+        mysqli_stmt_close($stmt);
+    }
+
+    $sql = "INSERT INTO address (Street, City, ZipCode, Region, User, Def, Deleted, Name, Surname) VALUES ('$street', '$city', '$zipCode', '$region', '$userID', '$default', '0', '$name', '$surname');";
+    
+    $stmt = mysqli_stmt_init($con);
+    if(!mysqli_stmt_prepare($stmt, $sql)) {
+        echo "Could not create Order Status";
+        exit();
+    }
+
+    $result = mysqli_stmt_execute($stmt);
+
+    mysqli_stmt_close($stmt);
+
+    return $result;
+}
+
+function updateAddress($con, $userID, $address)
+{
+    $id = $address["ID"];
+    $name = $address["Name"];
+    $surname = $address["Surname"];
+    $street = $address["Address"];
+    $city = $address["City"];
+    $zipCode = $address["ZipCode"];
+    $region = $address["Region"];
+    $default = $address["Default"] === 'on';
+
+    if($default) {
+        $sql = "UPDATE address SET Def = '0' WHERE User = '$userID';";
+        $stmt = mysqli_stmt_init($con);
+        if(!mysqli_stmt_prepare($stmt, $sql)) {
+            echo "Could not create Order Status";
+            exit();
+        }
+
+        $result = mysqli_stmt_execute($stmt);
+
+        mysqli_stmt_close($stmt);
+    }
+
+    $sql = "UPDATE address SET Street = '$street', City = '$city', ZipCode = '$zipCode', Region = '$region', Def = '$default', Name = '$name', Surname = '$surname' WHERE ID = '$id';";
+    
+    $stmt = mysqli_stmt_init($con);
+    if(!mysqli_stmt_prepare($stmt, $sql)) {
+        echo "Could not create Order Status";
+        exit();
+    }
+
+    $result = mysqli_stmt_execute($stmt);
+
+    mysqli_stmt_close($stmt);
+
+    return $result;
+}
+
+function deleteAddress($con, $id)
+{
+    $sql = "UPDATE address SET Deleted = '1' WHERE ID = '$id'";
+    
+    $stmt = mysqli_stmt_init($con);
+    if(!mysqli_stmt_prepare($stmt, $sql)) {
+        echo "Could not delete Review Status";
+        exit();
+    }
+
+    $result = mysqli_stmt_execute($stmt);
+
+    mysqli_stmt_close($stmt);
+
+    return $result;
+}
 
 
 ?>

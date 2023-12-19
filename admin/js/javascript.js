@@ -65,13 +65,14 @@ function setModalProductFields(id, name, description, shortDescription, category
     $("#productBrand").val(brand);
 }
 
-function setModalUserFields(id, name, surname, email, number, role) {
+function setModalUserFields(id, name, surname, email, number, role, password) {
     $("#userID").val(id);
     $("#userName").val(name);
     $("#userSurname").val(surname);
     $("#userEmail").val(email);
     $("#userNumber").val(number);
     $("#userRole").val(role);
+    $("#userPassword").val(password);
 }
 
 function clearModalProductFields() {

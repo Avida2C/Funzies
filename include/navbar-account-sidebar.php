@@ -1,5 +1,7 @@
 <?php
-if($_SERVER['REQUEST_METHOD'] == "POST") {
+
+$incorrectLoginSidebar = false;
+if($_SERVER['REQUEST_METHOD'] == "POST" && !empty($_POST["sideBarLogin"]) && $_POST["sideBarLogin"] == "true") {
     $email = htmlspecialchars(addslashes($_POST['email'])); // 'addslashes' allows the user to use brackets
     $password = htmlspecialchars(addslashes($_POST['password']));
 
@@ -9,12 +11,13 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
     }
     else
     {
-        $error = "Incorrect email or password, try again!";
+        $incorrectLoginSidebar = true;
+        $errorSidebar = "Incorrect email or password, try again!";
     }
 }
 ?>
 
-<div class="offcanvas offcanvas-end" tabindex="-1" id="AccountLogin" aria-labelledby="AccountLoginLabel">
+<div class="offcanvas offcanvas-end <?php if($incorrectLoginSidebar) echo 'show' ?>" tabindex="-1" id="AccountLogin" aria-labelledby="AccountLoginLabel">
     <!-- Login Panel -->
     <div class="offcanvas-header border-bottom border-3 border-danger">
         <h5 class="offcanvas-title" id="AccountLoginLabel">Log in</h5>
@@ -36,10 +39,10 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
                             required>
 
                         <?php
-                        if(!empty($error)) {
+                        if(!empty($errorSidebar)) {
                             echo '<div class="container" style="margin-left: auto; margin-right: auto;">
                             <p style="text-align:center;color:red;">' 
-                            . $error . 
+                            . $errorSidebar . 
                             '</p></div>';
                         }
                         ?>
@@ -57,6 +60,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
                                     password?</a>
                             </div>
                         </div>
+                        <input type="hidden" id="sideBarLogin" name="sideBarLogin" value="true"></input>
                     </form>
                 </div>
                 <!-- Sign Up Section -->
@@ -68,6 +72,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
                         Account</a>
                 </div>
             </div>
+            <?php $incorrectLoginSidebar = false; ?>
         </div>
     </div>
 </div>
