@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 25, 2023 at 02:52 PM
+-- Generation Time: Dec 25, 2023 at 03:34 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -48,29 +48,6 @@ CREATE TABLE `address` (
 --
 
 INSERT INTO `address` (`ID`, `Street`, `City`, `ZipCode`, `Region`, `User`, `Def`, `Deleted`, `Name`, `Surname`, `Mobile`) VALUES
-(1, 'fdsffds', 'fsdfsd', 'fdsfds', 'fsfds', 2, 0, 1, 'dsa', 'fgrg', ''),
-(2, '1', '1', '1', 'Malta', 2, 0, 1, '1', '1', ''),
-(3, 'jyut', 'jyt', 'hty', 'Malta', 2, 0, 1, 'yrdyt', 'yrjy', ''),
-(4, 'hgetr', 'hgter', 'hter', 'Malta', 2, 0, 1, 'htr', 'hter', ''),
-(5, 'gfwre', 'gfrwe', 'gfrew', '1', 2, 0, 1, 'few', 'gfrew', ''),
-(6, 'gre', 'ger', 'gre', 'Malta', 2, 0, 1, 'gfre', 'gre', ''),
-(7, 'gre', 'grew', 'gre', 'Malta', 2, 0, 1, 'Nad', 'grfe', ''),
-(8, 'gre', 'ghert', 'hgter', 'Malta', 2, 0, 1, 'gert', 'ghert', ''),
-(9, 'htdfgfffffffffffffffffffffffffffffff', 'shgfdhg', '6767567', 'Malta', 2, 0, 1, 'ssss', 'ssssss', ''),
-(10, 'htyrhr', 'hrth', 'hrt', 'Malta', 2, 0, 1, 'hyrgrh', 'hrtyh', ''),
-(11, 'kjuyt', 'kjtu', 'kjuty', 'Gozo', 2, 0, 1, 'jkyu', 'kjuyt', ''),
-(12, 'hgrte', 'ghert', 'ghe', 'Malta', 2, 0, 1, 'tgfr', 'gr5e', ''),
-(13, 'jnrty', 'jnrtyg', 'jnryt', 'Malta', 2, 0, 1, 'hygj', 'jnyt', ''),
-(14, 'ehrtg', 'egrg', 'gertghert', 'Malta', 2, 0, 1, 'greg', 'gergher', ''),
-(15, 'ghret5r', '555rhgyy', 'htrehg', 'Malta', 2, 0, 1, 'hgtreghr', 'hgtr', ''),
-(16, 'jnry', 'jnmyg', 'jnmyrg', 'Malta', 2, 0, 1, 'jnyrgtj', 'jnmyg', ''),
-(17, 'h4etr55', 'htrfhgt', 'hgtrf', 'Malta', 2, 0, 1, 'htrhg', 'htr', ''),
-(18, '43214', '4324', '324', 'Malta', 2, 0, 1, '32132', '32312', ''),
-(19, 'hgtre', 'hgter', 'ghtre', 'Gozo', 2, 0, 1, 'hgtergh', 'hgtre', ''),
-(20, 'aaaaa', 'aaaaaa', 'aaaaaaa', 'Gozo', 2, 0, 1, 'aaaaa', 'aaaaa', ''),
-(21, '1', '1', '1', 'Malta', 2, 0, 1, '1', '1', ''),
-(22, 'jhryt', 'jhyrt', 'jhyrt', 'Malta', 2, 0, 1, 'jry', 'jhry', ''),
-(23, 'gtyer', 'ghy5r', 'h4e5', 'Malta', 2, 0, 1, 'htr', 'hgter', ''),
 (24, 'gre', 'grew', 'ghre', 'Malta', 2, 1, 0, 'ferfef', 'greg', ''),
 (25, 'test', 'test', 'tetret', 'Malta', 2, 0, 0, 'test', 'test', '34254325342'),
 (26, '39, Triq Santa Marija', 'Gudja', 'GDJ1064', 'Malta', 4, 1, 0, 'Nadine', 'Vidal', '79316986');
@@ -164,9 +141,9 @@ CREATE TABLE `orders` (
 INSERT INTO `orders` (`ID`, `created`, `updated`, `status`, `user`, `address`, `deleted`) VALUES
 (1, '2023-12-24 15:47:50', '2023-12-24 15:47:50', 4, 2, 24, 1),
 (2, '2023-12-24 15:49:23', '2023-12-24 15:49:23', 1, 2, 24, 0),
-(3, '2023-12-24 15:50:39', '2023-12-24 15:50:39', 2, 2, 24, 1),
+(3, '2023-12-24 15:50:39', '2023-12-24 15:50:39', 5, 2, 24, 1),
 (4, '2023-12-24 15:50:46', '2023-12-24 15:50:46', 1, 2, 24, 0),
-(5, '2023-12-24 15:52:03', '2023-12-24 15:52:03', 1, 2, 24, 0),
+(5, '2023-12-24 15:52:03', '2023-12-24 15:52:03', 3, 2, 24, 0),
 (6, '2023-12-24 16:15:44', '2023-12-24 16:15:44', 1, 2, 24, 0),
 (7, '2023-12-24 16:55:02', '2023-12-24 16:55:02', 1, 2, 24, 0),
 (8, '2023-12-24 18:15:46', '2023-12-24 18:15:46', 1, 2, 24, 0),
@@ -299,11 +276,11 @@ INSERT INTO `product` (`ID`, `Name`, `Description`, `Category`, `Price`, `Stock`
 (40, 'Sailor Moon Cosmos The Movie Eternal Sailor Mercury Q Posket', '', 4, 33.99, 2, 15, 'img/products/73DE3825-EA07-490A-98F7-30E8E33DDA68.jpg', 0, '2023-12-23 05:38:49'),
 (41, ' Sailor Moon Cosmos The Movie Luna Sofvimates', '', 4, 33.99, 2, 15, 'img/products/76BD4EB5-B607-4C21-A7D4-513726BA10F0.jpg', 0, '2023-12-26 13:59:20'),
 (42, 'Pretty Guardian Sailor Moon Eternal Sailor Chibi Moon Q Posket ', '', 4, 33.99, 2, 15, 'img/products/6CE277F8-26E8-45E7-8F4F-B5E653CD0820.jpg', 0, '2023-12-24 10:33:26'),
-(43, 'Naruto Shippuden Gaara Q Posket', '', 4, 33.99, 5, 15, 'img/products/E1B98593-7201-4FA5-A521-4C2E8A5E32BB.jpg', 0, '2023-12-26 19:55:46'),
+(43, 'Naruto Shippuden Gaara Q Posket', '', 4, 33.99, 4, 15, 'img/products/E1B98593-7201-4FA5-A521-4C2E8A5E32BB.jpg', 0, '2023-12-26 19:55:46'),
 (44, 'My Hero Academia Pinky Age Of Heroes', '', 4, 37.99, 5, 15, 'img/products/C1EF6B7C-0ED8-4996-90B3-3C9B27DC34D9.jpg', 0, '2023-12-22 01:31:43'),
 (45, 'My Hero Academia Nejire Hado The Amazing Heroes ', '', 4, 37.99, 1, 15, 'img/products/C698B521-0808-494D-AF36-4688573AD0BE.jpg', 0, '2023-12-25 18:44:30'),
 (46, 'My Hero Academia Dabi Q Posket', '', 4, 33.99, 4, 15, 'img/products/55C11FC3-337D-450D-8C9E-091779BA0E5A.jpg', 0, '2023-12-23 22:40:34'),
-(47, 'Pokemon Select Battle Figure Squirtle Metallic', '', 4, 18.99, 1, 11, 'img/products/E901B30B-D416-419C-974D-4A645D57D361.jpg', 0, '2023-12-26 18:15:54'),
+(47, 'Pokemon Select Battle Figure Squirtle Metallic', '', 4, 18.99, 0, 11, 'img/products/E901B30B-D416-419C-974D-4A645D57D361.jpg', 0, '2023-12-26 18:15:54'),
 (48, 'Pokemon Pichu, Pikachu, Raichu Evolution Multi-Pack', '', 4, 29.99, 3, 11, 'img/products/B415FA54-79F7-4AC4-B1EF-A806F6E02081.jpg', 0, '2023-12-23 04:51:02'),
 (49, 'My Hero Academia Izuku Midoriya The Amazing Heroes', '', 4, 35.99, 4, 15, 'img/products/3C7710F0-0A1E-41BE-BB2C-3200C4955FA3.jpg', 0, '2023-12-20 02:34:03'),
 (50, 'One Piece Film Red Usopp Ichibansho', '', 4, 99.99, 0, 16, 'img/products/6DF66FCF-4C62-4BE9-8B18-0C63BDBDE1E1.jpg', 0, '2023-12-26 21:10:23'),
@@ -320,7 +297,7 @@ INSERT INTO `product` (`ID`, `Name`, `Description`, `Category`, `Price`, `Stock`
 (61, 'Pokemon Pikachu With Heart Pokeball', '8inch', 8, 24.99, 3, 11, 'img/products/40F6CAA9-3E9D-406B-A78E-5B8E19F61988.jpg', 0, '2023-12-25 03:42:21'),
 (62, ' Squritle ', '8inch', 8, 27, 2, 11, 'img/products/1365EBAE-7A71-4F66-81A5-572EBC83EFA4.jpg', 0, '2023-12-21 01:03:52'),
 (63, 'Pokemon Jigglypuff ', '20cm', 8, 26.99, 5, 11, 'img/products/16FCD7C9-FDCB-4737-9362-57309369FAA8.jpg', 0, '2023-12-25 17:05:29'),
-(64, 'Pokemon Scorbunny', '', 8, 26.99, 2, 11, 'img/products/3391158F-0F04-45EB-A3B1-E87D95F444E0.jpg', 0, '2023-12-26 15:49:05'),
+(64, 'Pokemon Scorbunny', '', 8, 26.99, 0, 11, 'img/products/3391158F-0F04-45EB-A3B1-E87D95F444E0.jpg', 0, '2023-12-26 15:49:05'),
 (65, 'Pokemon Pancham', '8inch', 8, 27, 3, 11, 'img/products/25948580-DAEA-4637-BD6C-2C91E0D22021.jpg', 0, '2023-12-17 09:22:10'),
 (66, 'Funko: Stranger Things Hunter Robin', '', 8, 17.99, 3, 5, 'img/products/AD0103F0-8CF5-440F-9556-97742B4B95BC.jpg', 0, '2023-12-26 01:50:08'),
 (67, 'Funko: Stranger Things Hunter Steve', '', 8, 17.99, 5, 5, 'img/products/AF0018EA-A06D-4C5E-8A09-35C128F71469.jpg', 0, '2023-12-16 07:04:05'),
@@ -336,7 +313,7 @@ INSERT INTO `product` (`ID`, `Name`, `Description`, `Category`, `Price`, `Stock`
 (77, 'Dragon Ball Supercolor', '180 Pieces', 9, 7.99, 8, 13, 'img/products/7B67C81A-22CA-41C1-BB6F-AF0199DC39B9.jpg', 0, '2023-12-18 18:05:03'),
 (78, 'Hearthstone Heroes of Warcraft', 'Puzzle 1000 Piece', 9, 29.99, 1, 14, 'img/products/E058E7E5-BB5F-40CA-99EB-8DE2BC5124E8.jpg', 0, '2023-12-24 01:20:46'),
 (79, 'Looney Tunes Bugs Bunny ', '500 Pieces', 9, 14.99, 10, 14, 'img/products/CDE0013B-6336-407C-B032-A8CC7139DA4B.jpg', 0, '2023-12-25 06:01:58'),
-(80, 'Naruto Shippuden Naruto’s Adventures XXL', '300 Pieces', 9, 15.99, 2, 17, 'img/products/DC644123-85E3-48F4-A086-CFD0D0AFFA5B.jpg', 0, '2023-12-26 21:27:22'),
+(80, 'Naruto Shippuden Naruto’s Adventures XXL', '300 Pieces', 9, 15.99, -1, 17, 'img/products/DC644123-85E3-48F4-A086-CFD0D0AFFA5B.jpg', 0, '2023-12-26 21:27:22'),
 (81, 'What’s Your Number', '', 2, 32, 0, 14, 'img/products/3265CD1F-1615-4EBF-A901-8853DF8744D8.png', 0, '2023-12-19 22:44:10'),
 (82, 'IT Shuffle Card Game', '', 1, 15.99, 2, 14, 'img/products/86F247AE-DC55-4C24-9DB1-946BEB213CD4.png', 0, '2023-12-26 13:58:38'),
 (83, 'Pitchstorm Party Game', '', 1, 35, 2, 14, 'img/products/4312C43F-FDBA-43BF-9B9B-416947150FAD.png', 0, '2023-12-22 17:27:16'),
@@ -593,7 +570,7 @@ ALTER TABLE `wishlist`
 -- AUTO_INCREMENT for table `address`
 --
 ALTER TABLE `address`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `brand`
@@ -611,7 +588,7 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `orderstatus`
@@ -647,7 +624,7 @@ ALTER TABLE `role`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `wishlist`
@@ -663,22 +640,22 @@ ALTER TABLE `wishlist`
 -- Constraints for table `address`
 --
 ALTER TABLE `address`
-  ADD CONSTRAINT `address_user` FOREIGN KEY (`User`) REFERENCES `user` (`ID`);
+  ADD CONSTRAINT `address_user` FOREIGN KEY (`User`) REFERENCES `user` (`ID`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `orders`
 --
 ALTER TABLE `orders`
-  ADD CONSTRAINT `order_address` FOREIGN KEY (`address`) REFERENCES `address` (`ID`),
-  ADD CONSTRAINT `order_status` FOREIGN KEY (`status`) REFERENCES `orderstatus` (`ID`),
-  ADD CONSTRAINT `order_user` FOREIGN KEY (`user`) REFERENCES `user` (`ID`);
+  ADD CONSTRAINT `order_address` FOREIGN KEY (`address`) REFERENCES `address` (`ID`) ON DELETE CASCADE,
+  ADD CONSTRAINT `order_status` FOREIGN KEY (`status`) REFERENCES `orderstatus` (`ID`) ON DELETE CASCADE,
+  ADD CONSTRAINT `order_user` FOREIGN KEY (`user`) REFERENCES `user` (`ID`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `order_product`
 --
 ALTER TABLE `order_product`
-  ADD CONSTRAINT `orderprod_order` FOREIGN KEY (`orderid`) REFERENCES `orders` (`ID`),
-  ADD CONSTRAINT `orderprod_product` FOREIGN KEY (`productid`) REFERENCES `product` (`ID`);
+  ADD CONSTRAINT `orderprod_order` FOREIGN KEY (`orderid`) REFERENCES `orders` (`ID`) ON DELETE CASCADE,
+  ADD CONSTRAINT `orderprod_product` FOREIGN KEY (`productid`) REFERENCES `product` (`ID`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `product`
