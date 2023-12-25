@@ -90,33 +90,6 @@ require_once 'include/navbar.php';
     </div>
 </div>
 
-<!-- Related Products Section -->
-<div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 mt-3 p-4 bg-danger">
-    <div class="row">
-        <!-- Related Products Header and More Products Button -->
-        <div class="col">
-            <h3 class="fs-5">Related Products</h3>
-        </div>
-        <div class="col text-end">
-            <!-- More Products Button -->
-            <a href="shop.php" class="btn btn-danger rounded-0 p-2 align-middle mb-2">More Products<ion-icon
-                    class="align-middle" style="font-size:18px;" name="chevron-forward-outline"></ion-icon>
-            </a>
-        </div>
-    </div>
-    <div class="col">
-        <div class="container-fluid">
-            <div class="row justify-content-between">
-                <!-- Loop to include related product cards -->
-                <?php 
-                for ($i = 0; $i < 6; $i++) {
-                    include 'include/product-card-wl.php';
-                }
-                ?>
-            </div>
-        </div>
-    </div>
-</div>
 
 <?php  
 require_once 'include/footer.php';
