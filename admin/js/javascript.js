@@ -82,3 +82,9 @@ function clearModalProductFields() {
     $("#productPrice").val();
     $("#productStock").val();
 }
+
+function enableOrderEdit(id) {
+    $('#orderstatus'+id).prop("disabled", false);
+    $('#btnOrderEdit'+id).addClass("d-none");
+    $('#btnOrderSave'+id).removeClass("d-none");
+}

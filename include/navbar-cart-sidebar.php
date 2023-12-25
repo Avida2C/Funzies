@@ -1,3 +1,32 @@
+<?php 
+
+if ($_SERVER['REQUEST_METHOD'] == "POST" && !empty($_POST['deleteCartItem'])) {
+    foreach($_SESSION['CART_ITEMS'] as $key => $itm) {
+        if ($itm['ID'] == $_POST['deleteCartItem']) {
+            unset($_SESSION['CART_ITEMS'][$key]);
+        }
+    }
+}
+
+$cartItems = null;
+$subtotal = 0;
+$delivery = 0;
+$total = 0;
+if(isset($_SESSION['CART_ITEMS'])) {
+    $cartItems = $_SESSION['CART_ITEMS'];
+    foreach($cartItems as $key => $item) {
+        $subtotal += $item['Price'] * $item['Quantity'];
+    }
+    $delivery = 5;
+    $total = $subtotal + $delivery;
+}
+
+function includeItem($item){
+    include 'include/product-card-slider.php';
+}
+
+?>
+
 <div class="offcanvas offcanvas-end h-100" tabindex="-1" id="ShoppingCart" aria-labelledby="ShoppingCartLabel">
     <!-- Shopping Cart Panel -->
     <div class="offcanvas-header border-bottom border-3 border-danger">
@@ -11,9 +40,11 @@
             <div class="col-12 overflow-auto" style="height: 85%;">
                 <!-- Product Cards Section -->
                 <?php 
-                // PHP Loop to Include Product Cards i (6) amount of cards in the Shopping Cart
-                for ($i = 0; $i < 6; $i++) {
-                    include 'include/product-card-slider.php';
+                if($cartItems) {
+                    // PHP Loop to Include Product Cards i (6) amount of cards in the Shopping Cart
+                    foreach ($cartItems as $key => $item) {
+                        includeItem($item);
+                    }
                 }
                 ?>
             </div>
@@ -25,7 +56,7 @@
                     </div>
                     <div class="col">
                         <!-- Subtotal -->
-                        <p class="product-card-font">&euro;0.00</p>
+                        <p class="product-card-font subTotalPrice">&euro;<?php echo number_format((float) $subtotal, 2, '.', '');?></p>
                     </div>
                 </div>
                 <button onclick="document.location='viewcart.php'" class="btn btn-danger rounded-0 w-100">View

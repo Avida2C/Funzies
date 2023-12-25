@@ -3,12 +3,17 @@
 require 'functions.php';
 require 'dbfunctions.php';
 require_once 'include/header.php';
-?>
-
-<?php 
-
-// Start of Body //
 require_once 'include/navbar.php';
+
+$user = $_SESSION["USER"];
+$address = $_SESSION["ORDER_SUMMARY"]["ADDRESS"];
+$items = $_SESSION["ORDER_SUMMARY"]["ITEMS"];
+
+$subtotal = 0;
+$delivery = 5;
+
+$total = $delivery;
+
 ?>
 
 <!-- Order Confirmation Section -->
@@ -21,13 +26,13 @@ require_once 'include/navbar.php';
                 we'll be ringing you soon to make your day extra special!</p>
 
             <!-- Customer Address and Details -->
-            <h3 class="fs-5">Customer Details</h3>
+            <h3 class="fs-5">Delivery Details</h3>
             <p>
-                FirstName LastName
-                <br>0123, House name,
-                <br>Street,
-                <br>Town, ZPC 001
-                <br>Region
+                <?php echo $address["Name"] . ' ' . $address['Surname']; ?>
+                <br><?php echo $address["Street"]; ?>
+                <br><?php echo $address["City"]; ?>
+                <br><?php echo $address["ZipCode"]; ?>
+                <br><?php echo $address["Region"]; ?>
             </p>
         </div>
 
@@ -39,42 +44,18 @@ require_once 'include/navbar.php';
             
             <!-- Table of Ordered Items -->
                 <table class="table table-borderless">
-                    <tr>
-                        <td>
-                            <p class="clearMP">Coming Soon - Info Unavailable
-                                <span class="product-card-font fs-6">X1</span></p>
-                        </td>
-                        <td>
-                            <p class="clearMP">&euro;0.00</p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <p class="clearMP">Coming Soon - Info Unavailable
-                                <span class="product-card-font fs-6">X1</span></p>
-                        </td>
-                        <td>
-                            <p class="clearMP">&euro;0.00</p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <p class="clearMP">Coming Soon - Info Unavailable
-                                <span class="product-card-font fs-6">X1</span></p>
-                        </td>
-                        <td>
-                            <p class="clearMP">&euro;0.00</p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <p class="clearMP">Coming Soon - Info Unavailable
-                                <span class="product-card-font fs-6">X1</span></p>
-                        </td>
-                        <td>
-                            <p class="clearMP">&euro;0.00</p>
-                        </td>
-                    </tr>
+                    <?php foreach ($items as $item) : ?>
+                        <?php $total += $item["Price"]; ?>
+                        <tr>
+                            <td>
+                                <p class="clearMP"><?php echo $item["Name"]; ?>
+                                    <span class="product-card-font fs-6">X<?php echo $item["Quantity"]; ?></span></p>
+                            </td>
+                            <td>
+                                <p class="clearMP">&euro;<?php echo number_format($item["Price"], 2, '.', ','); ?></p>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
                 </table>
             </div>
             <!-- Total Price and Action Buttons -->
@@ -87,7 +68,7 @@ require_once 'include/navbar.php';
                     </th>
                     <td class="py-2">
                         <p class="text-danger product-card-font fs-6">
-                            &euro;0.00
+                            &euro;<?php echo number_format($total, 2, '.', ','); ?>
                         </p>
                     </td>
                 </tr>

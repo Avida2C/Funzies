@@ -13,8 +13,12 @@ if($_SERVER['REQUEST_METHOD'] == "POST" && !empty($_POST['isOrderStatus'])) {
         $name = htmlspecialchars(addslashes($_POST['orderStatusName'])); // 'addslashes' allows the user to use brackets
         $updateorderStatus = updateOrderStatus($con, $id, $name);
     }
-} else if($_SERVER['REQUEST_METHOD'] == "POST" && !empty($_POST['isOrder'])) {
-
+} else if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['editorderid']) && !empty($_POST['editorderid'])) {
+    if(isset($_POST['btnUpdateOrder'])) {
+        $updateOrder = setOrderStatus($con, $_POST['editorderid'], $_POST['editorderstatus']);
+    } else if(isset($_POST['btnDeleteOrder'])) {
+        $deletedOrder = deleteOrder($con, $_POST['editorderid']);
+    }
 }
 
 
@@ -122,16 +126,26 @@ require_once 'include/navbar.php'; // Navbar Include: Site navigation bar
                         <!-- Table Body: Each row shows user data with options to edit or delete -->
                         <!-- User -->
                         <tr>
-                            <td><?php echo $order["ID"]; ?></td>
-                            <td><?php echo $order["created"]; ?></td>
-                            <td><?php echo $order["updated"]; ?></td>
-                            <td><?php echo $order["statusOrder"]; ?></td>
-                            <td><?php echo $order["user"]; ?></td>
-                            <td><?php echo $order["address"]; ?></td>
-                            <td>
-                                <button class="btn btn-primary btn-sm w-100">Edit</button>
-                                <button class="btn btn-danger btn-sm w-100">Delete</button>
-                            </td>
+                            <form method="POST">
+                                <td><?php echo $order["ID"]; ?></td>
+                                <td><?php echo $order["created"]; ?></td>
+                                <td><?php echo $order["updated"]; ?></td>
+                                <td>
+                                    <select id="orderstatus<?php echo $order["ID"] ?>" name="editorderstatus" disabled>
+                                        <?php foreach($orderStatuses as $orderStatus): ?>
+                                            <option value="<?php echo $orderStatus['ID'] ?>" <?php if($order['status'] == $orderStatus['ID']) echo 'selected'; ?>><?php echo $orderStatus['Status'] ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                </td>
+                                <td><?php echo $order["user"]; ?></td>
+                                <td><?php echo $order["address"]; ?></td>
+                                <td>
+                                    <button type="button" id="btnOrderEdit<?php echo $order["ID"]; ?>" class="btn btn-primary btn-sm w-100" onclick="enableOrderEdit('<?php echo $order['ID']; ?>');">Edit</button>
+                                    <button type="submit" id="btnOrderSave<?php echo $order["ID"]; ?>" name="btnUpdateOrder" class="btn btn-primary btn-sm w-100 d-none">Save</button>
+                                    <button type="submit" name="btnDeleteOrder" class="btn btn-danger btn-sm w-100">Delete</button>
+                                    <input type="hidden" name="editorderid" value="<?php echo $order["ID"]; ?>">
+                                </td>
+                            </form>
                         </tr>
                         <?php endforeach ?>
                     </tbody>

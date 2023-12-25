@@ -3,11 +3,31 @@
 require 'functions.php';
 require 'dbfunctions.php';
 require_once 'include/header.php';
-?>
-
-<?php 
-// Start of Body //
 require_once 'include/navbar.php';
+
+if ($_SERVER['REQUEST_METHOD'] == "POST" && !empty($_POST['deleteCartItem'])) {
+    foreach($_SESSION['CART_ITEMS'] as $key => $itm) {
+        if ($itm['ID'] == $_POST['deleteCartItem']) {
+            unset($_SESSION['CART_ITEMS'][$key]);
+        }
+    }
+}
+
+$cartItems = null;
+$subtotal = 0;
+$delivery = 0;
+$total = 0;
+if(isset($_SESSION['CART_ITEMS'])) {
+    $cartItems = $_SESSION['CART_ITEMS'];
+    foreach($cartItems as $key => $item) {
+        $subtotal += $item['Price'] * $item['Quantity'];
+    }
+    $delivery = 5;
+    $total = $subtotal + $delivery;
+}
+
+
+
 ?>
 
 <div class="container col-sm-12 col-md-12 col-lg-9 col-xl-9 spacing-mt">
@@ -16,6 +36,7 @@ require_once 'include/navbar.php';
 
 <!-- Shopping Cart Main Content -->
 <div class="container col-sm-12 col-md-12 col-lg-9 col-xl-9 spacing-mb text-center">
+    <?php if(isset($cartItems) && !empty($cartItems)) : ?>
     <div class="row">
         <div class="col-sm-12 col-md-12 col-lg-8 col-xl-8 overflow-auto me-4" style="height: 475px;">
             <!-- Cart Items Table -->
@@ -33,113 +54,39 @@ require_once 'include/navbar.php';
                     </th>
                 </tr>
                 <!-- Product Details -->
+                <?php foreach($cartItems as $item) : ?>
                 <tr class="align-middle">
                     <td class="px-4">
                         <div class="row align-items-center">
                             <div class="col-1">
-                                <button type="button" class="btn-close"></button>
+                                <form method="POST">
+                                    <input type="hidden" name="deleteCartItem" value="<?php echo $item['ID']; ?>" >
+                                    <button type="submit" class="btn-close"></button>
+                                </form>
                             </div>
                             <div class="col-3">
-                                <img style="height: 70px;" src="img/comingsoon.jpg" alt="">
+                                <img style="height: 70px;" src="<?php echo $item["Image"] ?>" alt="">
                             </div>
                             <div class="col-8 text-start">
-                                <p class="fs-6">Coming Soon - Info Unavailable Coming Soon - Info Unavailable</p>
-                                <p class="product-card-font fs-6">&euro;0.00</p>
+                                <p class="fs-6"><?php echo $item['Name']; ?></p>
+                                <p class="product-card-font fs-6">&euro;<?php echo number_format((float) $item["Price"], 2, '.', '');?></p>
                             </div>
                         </div>
                     </td>
                     <td class="px-4">
                         <div class="quantity-selector">
-                            <button class="quantity-button decrement-btn">-</button>
-                            <input type="text" class="quantity quantity-input" name="quantity" value="1" readonly>
-                            <button class="quantity-button increment-btn">+</button>
+                            <button class="quantity-button decrement-btn" value="<?php echo $item["ID"]?>">-</button>
+                            <input type="text" class="quantity quantity-input quantity-input<?php echo $item["ID"]?>" name="quantity" value="<?php echo $item["Quantity"] ?>" readonly>
+                            <button class="quantity-button increment-btn" value="<?php echo $item["ID"]?>">+</button>
+                            <input type="hidden" id="maxStock<?php echo $item["ID"]?>" value="<?php echo $item["Stock"] ?>"> 
                         </div>
                     </td>
                     <td class="px-4">
-                        <p class="product-card-font fs-5 text-danger">&euro;0.00</p>
+                        <input type="hidden" id="prodPrice<?php echo $item["ID"] ?>" value="<?php echo $item["Price"] ?>">
+                        <p class="product-card-font fs-5 text-danger subtotalprice<?php echo $item["ID"] ?>">&euro;<?php echo number_format((float) ($item["Price"] * $item["Quantity"]), 2, '.', '');?></p>
                     </td>
                 </tr>
-                <!-- Product Details -->
-                <tr class="align-middle">
-                    <td class="px-4">
-                        <div class="row align-items-center">
-                            <div class="col-1">
-                                <button type="button" class="btn-close"></button>
-                            </div>
-                            <div class="col-3">
-                                <img style="height: 70px;" src="img/comingsoon.jpg" alt="">
-                            </div>
-                            <div class="col-8 text-start">
-                                <p class="fs-6">Coming Soon - Info Unavailable Coming Soon - Info Unavailable</p>
-                                <p class="product-card-font fs-6">&euro;0.00</p>
-                            </div>
-                        </div>
-                    </td>
-                    <td class="px-4">
-                        <div class="quantity-selector">
-                            <button class="quantity-button decrement-btn">-</button>
-                            <input type="text" class="quantity quantity-input" name="quantity" value="1" readonly>
-                            <button class="quantity-button increment-btn">+</button>
-                        </div>
-                    </td>
-                    <td class="px-4">
-                        <p class="product-card-font fs-5 text-danger">&euro;0.00</p>
-                    </td>
-                </tr>
-                <!-- Product Details -->
-                <tr class="align-middle">
-                    <td class="px-4">
-                        <div class="row align-items-center">
-                            <div class="col-1">
-                                <button type="button" class="btn-close"></button>
-                            </div>
-                            <div class="col-3">
-                                <img style="height: 70px;" src="img/comingsoon.jpg" alt="">
-                            </div>
-                            <div class="col-8 text-start">
-                                <p class="fs-6">Coming Soon - Info Unavailable Coming Soon - Info Unavailable</p>
-                                <p class="product-card-font fs-6">&euro;0.00</p>
-                            </div>
-                        </div>
-                    </td>
-                    <td class="px-4">
-                        <div class="quantity-selector">
-                            <button class="quantity-button decrement-btn">-</button>
-                            <input type="text" class="quantity quantity-input" name="quantity" value="1" readonly>
-                            <button class="quantity-button increment-btn">+</button>
-                        </div>
-                    </td>
-                    <td class="px-4">
-                        <p class="product-card-font fs-5 text-danger">&euro;0.00</p>
-                    </td>
-                </tr>
-                <!-- Product Details -->
-                <tr class="align-middle">
-                    <td class="px-4">
-                        <div class="row align-items-center">
-                            <div class="col-1">
-                                <button type="button" class="btn-close"></button>
-                            </div>
-                            <div class="col-3">
-                                <img style="height: 70px;" src="img/comingsoon.jpg" alt="">
-                            </div>
-                            <div class="col-8 text-start">
-                                <p class="fs-6">Coming Soon - Info Unavailable Coming Soon - Info Unavailable</p>
-                                <p class="product-card-font fs-6">&euro;0.00</p>
-                            </div>
-                        </div>
-                    </td>
-                    <td class="px-4">
-                        <div class="quantity-selector">
-                            <button class="quantity-button decrement-btn">-</button>
-                            <input type="text" class="quantity quantity-input" name="quantity" value="1" readonly>
-                            <button class="quantity-button increment-btn">+</button>
-                        </div>
-                    </td>
-                    <td class="px-4">
-                        <p class="product-card-font fs-5 text-danger">&euro;0.00</p>
-                    </td>
-                </tr>
+                <?php endforeach; ?>
                 <!-- End of Products -->
             </table>
         </div>
@@ -154,7 +101,7 @@ require_once 'include/navbar.php';
                         Subtotal
                     </td>
                     <td class="py-3">
-                        &euro;0.00
+                        <div class="subTotalPrice">&euro;<?php echo number_format((float) $subtotal, 2, '.', '');?></div>
                     </td>
                 </tr>
                 <tr>
@@ -162,7 +109,8 @@ require_once 'include/navbar.php';
                         Delivery
                     </td>
                     <td class="py-3">
-                        &euro;0.00
+                        <input type="hidden" id="deliveryPrice" value="<?php echo $delivery ?>">
+                        &euro;<?php echo number_format((float) $delivery, 2, '.', '');?>
                     </td>
                 </tr>
                 <tr class="border-top">
@@ -172,8 +120,8 @@ require_once 'include/navbar.php';
                         </p>
                     </th>
                     <td class="py-2">
-                        <p class="product-card-font text-danger fs-5">
-                            &euro;0.00
+                        <p id="totalPrice" class="product-card-font text-danger fs-5">
+                            &euro;<?php echo number_format((float) $total, 2, '.', '');?>
                         </p>
                     </td>
                 </tr>
@@ -187,6 +135,11 @@ require_once 'include/navbar.php';
             </p>
         </div>
     </div>
+    <?php else : ?>
+    <div class="row">
+        <h2>You have no items in your cart!</h2>
+    </div>
+    <?php endif; ?>
 </div>
 
 <?php  

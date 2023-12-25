@@ -13,24 +13,61 @@ function buttonSwitch(btnClicked) {
 }
 
 $(document).ready(function () {
-
     // Increment Quantity
     $(".quantity-selector .increment-btn").click(function () {
-        let $input = $(this).prev(".quantity-input");
-        let value = parseInt($input.val(), 10);
-
-        if (value < 99) {
-            $input.val(value + 1);
+        let $input = $(".quantity-input" + $(this).val());
+        let value = parseInt($($input[0]).val(), 10);
+        var stock = parseInt($('#maxStock' + $(this).val()).val());
+        if (value <= stock) {
+            value++;
+            $input.each(function() {
+                $(this).val(value);
+            });
+            $input.val(value);
+            $.post('updatecartquantity.php', { ID: $(this).val(), Quantity: (value) });
+            let price = parseFloat($('#prodPrice' + $(this).val()).val());
+            let delivery = parseFloat($('#deliveryPrice').val());
+            let subtotal = (price * value).toFixed(2);
+            let allsubtotal = parseFloat($($('.subTotalPrice')[0]).text().substring(1));
+            allsubtotal += price;
+            let total = allsubtotal + delivery;
+            
+            $('.subtotalprice' + $(this).val()).each(function (){
+                $(this).text('€' + subtotal);
+            });
+            $('.subTotalPrice').each(function(){
+                $(this).text('€' + allsubtotal.toFixed(2));
+            });
+            $('#totalPrice').text('€' + total.toFixed(2));
         }
+        
     });
 
     // Decrement Quantity
     $(".quantity-selector .decrement-btn").click(function () {
-        let $input = $(this).next(".quantity-input");
-        let value = parseInt($input.val(), 10);
+        let $input = $(".quantity-input" + $(this).val());
+        let value = parseInt($($input[0]).val(), 10);
 
         if (value > 1) {
-            $input.val(value - 1);
+            value--;
+            $input.each(function () {
+                $(this).val(value);
+            });
+            $.post('updatecartquantity.php', { ID: $(this).val(), Quantity: (value) });
+            let price = parseFloat($('#prodPrice' + $(this).val()).val());
+            let delivery = parseFloat($('#deliveryPrice').val());
+            let subtotal = (price * value).toFixed(2);
+            let allsubtotal = parseFloat($($('.subTotalPrice')[0]).text().substring(1));
+            allsubtotal -= price;
+            let total = allsubtotal + delivery;
+            
+            $('.subtotalprice' + $(this).val()).each(function (){
+                $(this).text('€' + subtotal);
+            });
+            $('.subTotalPrice').each(function(){
+                $(this).text('€' + allsubtotal.toFixed(2));
+            });
+            $('#totalPrice').text('€' + total.toFixed(2));
         }
     });
 });
@@ -52,7 +89,7 @@ $(document).ready(function () {
 
 // Navigate from navbar to account.php#wishlist, where user is taken to the wishlist
 function navigateToWishlist() {
-    window.location.href = 'account.php#wishlist';
+    window.location.href = 'account.php#accountwishlist';
     window.onload = function () {
         scrollToWishlist();
     }
@@ -96,14 +133,14 @@ $(document).ready(function () {
 
 // Navigate from navbar to account.php#wishlist, where user is taken to the wishlist
 function navigateToWishlist() {
-    window.location.href = 'account.php#wishlist';
+    window.location.href = 'account.php#accountwishlist';
     window.onload = function () {
         scrollToWishlist();
     }
 }
 
 function navigateToOrders() {
-    window.location.href = 'account.php#orders';
+    window.location.href = 'account.php#accountorders';
     window.onload = function () {
         scrollToOrders();
     }
@@ -150,6 +187,11 @@ function clearModalAddressFields() {
     $("#region-select").val("");
     $("#city-input").val("");
     $("#zipcode-input").val("");
-    $("#default-address-input").prop('checked', false);
-    $("#default-address-input").prop("disabled", false);
+    //$("#default-address-input").prop('checked', false);
+    //$("#default-address-input").prop("disabled", false);
+}
+
+function setValToAddToCart(guid) {
+    $("#setAddToCart" + guid).val("true");
+    $("#addProductCardToCartForm" + guid).submit();
 }
