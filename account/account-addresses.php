@@ -12,6 +12,7 @@
             <div class="card shadow-sm border-0 rounded-0">
                 <!-- Card Body -->
                 <div class="card-body">
+                    <?php if($userAddress["Def"]) echo "(Default)"; ?>
                     <h5 class="card-title"><?php echo $userAddress["Name"] . " " . $userAddress["Surname"]; ?></h5>
                     <p class="card-text">
                         <?php echo $userAddress["Street"]; ?>
@@ -79,9 +80,11 @@
                             <div class="mb-3">
                                 <label for="zipcode-input">Make default address:</label>
                                 <?php if($userAddresses->num_rows > 0) : ?>
-                                    <input type="checkbox" id="default-address-input" name="defaultAddress">
+                                    <input type="hidden" name="defaultAddress" value="false"/>
+                                    <input type="checkbox" id="default-address-input" name="defaultAddress" value="true"/>
                                 <?php else : ?>
-                                    <input type="checkbox" id="default-address-input" name="defaultAddress" disabled checked>
+                                    <input type="hidden" name="defaultAddress" value="true"/>
+                                    <input type="checkbox" id="default-address-input" name="defaultAddress" value="true" checked disabled/>
                                 <?php endif; ?>
                             </div>
                         
