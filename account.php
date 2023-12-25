@@ -60,7 +60,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
         $address["City"] = $_POST["city"];
         $address["ZipCode"] = $_POST["zipcode"];
         $address["Region"] = $_POST["region"];
-        $address["Default"] = isset($_POST["defaultAddress"]) ? $_POST["defaultAddress"] : 'on';
+        $address["Default"] = $_POST["defaultAddress"]; //isset($_POST["defaultAddress"]) ? $_POST["defaultAddress"] : 'true';
         if(isset($_POST['addressID']) && !empty($_POST['addressID'])) { 
             $address['ID'] = $_POST['addressID'];
             updateAddress($con, $user["ID"], $address);
@@ -76,9 +76,6 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
         $tabToShow = "accountaddress";
     }
 }
-
-
-
 
 $userAddresses = GetAddressesByUser($con, $user['ID']);
 
