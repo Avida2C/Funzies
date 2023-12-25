@@ -3,14 +3,77 @@
 require 'functions.php';
 require 'dbfunctions.php';
 require_once 'include/header.php';
-
-?>
-
-<?php 
-// Start of Body //
 require_once 'include/navbar.php';
 // Categories menu // 
 require_once 'include/shop-categories.php';
+
+$brands = GetBrands($con);
+$selectedSort = '1';
+$selectedCategory = null;
+$selectedBrand = null;
+$search = null;
+$pageSize = 9.0;
+$currentPage = 1;
+
+if(isset($_GET["category"])) {
+    $selectedCategory = $_GET["category"];
+} 
+if(isset($_GET["brand"])) {
+    $selectedBrand = $_GET["brand"];
+}
+if(isset($_GET["search"])) {
+    $search = $_GET["search"];
+}
+if(isset($_GET["page"])) {
+    $currentPage = (int)$_GET["page"];
+}
+
+if($_SERVER['REQUEST_METHOD'] == "POST") {
+    if(isset($_POST["sort"])) {
+        $selectedSort = $_POST["sortProduct"];
+        $products = GetProductsPage($con, $selectedSort, $selectedCategory, $selectedBrand, $search);
+        
+    }
+}
+
+$products = GetProductsPage($con, $selectedSort, isset($selectedCategory) ? $selectedCategory : null, isset($selectedBrand) ? $selectedBrand : null, isset($search) ? $search : null);
+
+$noPages = ceil($products->num_rows / $pageSize);
+
+$startRow = ($currentPage * $pageSize) - $pageSize;
+
+$limit = 9;
+$pageTo = ($currentPage * $pageSize);
+if(($currentPage * $pageSize) > $products->num_rows) {
+    $limit = $products->num_rows - (($currentPage-1) * $pageSize);
+    $pageTo = $products->num_rows;
+}
+
+$key = 0;
+
+function includeProduct($product, $key) {
+  include 'include/product-card.php';
+}
+
+function getUrl($selectedCategory, $selectedBrand, $search, $pageNumber) {
+    $url = $_SERVER['PHP_SELF'] . '?';
+    $params = [];
+    if(isset($selectedCategory)) {
+        array_push($params, 'category='. $selectedCategory);
+    }
+    if(isset($selectedBrand)) {
+        array_push($params, 'brand='. $selectedBrand);
+    }
+    if(isset($search)) {
+        array_push($params, 'search='. $search);
+    }
+    if(isset($pageNumber)) {
+        array_push($params, 'page=' . $pageNumber);
+    }
+    $url .= join("&", $params);
+    return $url;
+}
+
 ?>
 
 <!-- Product Sorting and Information Display -->
@@ -18,16 +81,18 @@ require_once 'include/shop-categories.php';
     <div class="row justify-content-between">
         <!-- Displaying the number of products shown -->
         <div id="showDetails" class="col text-center">
-            <p class="text-muted">Showing 9 out of 1000 Products</p>
+            <p class="text-muted">Showing <?php echo ($startRow+1) . " - " . $pageTo . " out of ". $products->num_rows . " Products" ?></p>
         </div>
         <!-- Sorting functionality to order products -->
         <div id="sortProducts" class="col-sm-12 col-md-12 col-lg-3 col-xl-3">
-            <select id="sortBy" class="form-select border-0 rounded-0 shadow-sm mb-3" aria-label="Sort products by">
-                <option selected value="1">Sort by popularity</option>
-                <option value="2">Sort by latest</option>
-                <option value="3">Sort by price: low to high</option>
-                <option value="4">Sort by price: high to low</option>
-            </select>
+            <form method="POST" name="sortForm">
+                <input type="hidden" name="sort" value="sort" />
+                <select id="sortBy" name="sortProduct" class="form-select border-0 rounded-0 shadow-sm mb-3" aria-label="Sort products by" onchange="sortForm.submit();">
+                    <option value="1" <?php if($selectedSort == "1") echo "selected" ?>>Sort by latest</option>
+                    <option value="2" <?php if($selectedSort == "2") echo "selected" ?>>Sort by price: low to high</option>
+                    <option value="3" <?php if($selectedSort == "3") echo "selected" ?>>Sort by price: high to low</option>
+                </select>
+            </form>
         </div>
     </div>
 </div>
@@ -38,32 +103,22 @@ require_once 'include/shop-categories.php';
         <div id="productCategories" class="col-sm-12 col-md-12 col-lg-3 col-xl-3">
             <h3 class="fs-6 mb-2">Product Categories</h3>
             <?php
-            $categories = [
-                'Board Games' => 43,
-                'Burago' => 56,
-                'Collectibles' => 572,
-                'Funko POP!' => 143,
-                'Collectibles' => 572,
-                'Gift Sets' => 28,
-                'Keychains' => 113,
-                'Lego' => 231,
-                'LOL Surprise' => 93,
-                'Maisto' => 82,
-                'Merch' => 34,
-                'Models' => 150,
-                'Mugs' => 24,
-                'Playing Cards' => 12,
-                'Playmobil' => 72,
-                'Plushies' => 24,
-                'Posters' => 52,
-                'Puzzles' => 30,
-                'Trading Cards' => 20
-            ];
             
-            foreach ($categories as $category => $count) {
+            foreach ($categories as $category) {
                 echo '<li class="border-bottom border-1 d-flex justify-content-between align-items-center py-2">';
-                echo '<a href="#" class="text-decoration-none text-muted">' . htmlspecialchars($category) . '</a>';
-                echo '<span class="badge bg-danger rounded-pill">' . htmlspecialchars($count) . '</span>';
+                echo '<a href="shop.php?category=' . $category["ID"] . '" class="text-decoration-none text-muted">' . $category["Name"] . '</a>';
+                echo '<span class="badge bg-danger rounded-pill">' . GetProductCountForCategory($con, $category["ID"]) . '</span>';
+                echo '</li>';
+            }
+            ?>
+            <br>
+            <h3 class="fs-6 mb-2">Brands</h3>
+            <?php
+            
+            foreach ($brands as $brand) {
+                echo '<li class="border-bottom border-1 d-flex justify-content-between align-items-center py-2">';
+                echo '<a href="shop.php?brand=' . $brand["ID"] . '" class="text-decoration-none text-muted">' . $brand["Name"] . '</a>';
+                echo '<span class="badge bg-danger rounded-pill">' . GetProductCountForBrand($con, $brand["ID"]) . '</span>';
                 echo '</li>';
             }
             ?>
@@ -76,8 +131,12 @@ require_once 'include/shop-categories.php';
                     <!-- Product cards -->
                     <!-- Loop to include individual product cards -->
                     <?php 
-                    for ($i = 0; $i < 6; $i++) {
-                        include 'include/product-card.php';
+                    $products->data_seek($startRow);
+                    
+                    
+                    for($i = 0; $i < $limit; $i++) {
+                        includeProduct($products->fetch_assoc(), $key);
+                        $key++;
                     }
                     ?>
                 </div>
@@ -91,16 +150,12 @@ require_once 'include/shop-categories.php';
     <div class="row">
         <div class="col">
             <ul class="pagination justify-content-end">
-                <li class="page-item disabled">
-                    <a class="page-link rounded-0 border-0 text-muted shadow-sm" href="#" tabindex="-1"
-                        aria-disabled="true">Previous</a>
+                <li class="page-item  <?php if($currentPage == 1) echo 'disabled' ?>">
+                    <a class="page-link rounded-0 border-0 text-muted shadow-sm" href="<?php echo getUrl(isset($selectedCategory) ? $selectedCategory : null, isset($selectedBrand) ? $selectedBrand : null, isset($search) ? $search : null, $currentPage-1); ?>" tabindex="-1"
+                        <?php if($currentPage == 1) echo 'aria-disabled="true"' ?> >Previous</a>
                 </li>
-                <li class="page-item active"><a class="page-link bg-danger rounded-0 border-0 shadow-sm" href="#">1</a>
-                </li>
-                <li class="page-item"><a class="page-link rounded-0 border-0 text-muted shadow-sm" href="#">2</a></li>
-                <li class="page-item"><a class="page-link rounded-0 border-0 text-muted shadow-sm" href="#">3</a></li>
-                <li class="page-item">
-                    <a class="page-link rounded-0 border-0 text-muted shadow-sm" href="#">Next</a>
+                <li class="page-item <?php if($currentPage == $noPages) echo 'disabled' ?>">
+                    <a class="page-link rounded-0 border-0 text-muted shadow-sm" href="<?php echo getUrl(isset($selectedCategory) ? $selectedCategory : null, isset($selectedBrand) ? $selectedBrand : null, isset($search) ? $search : null, $currentPage+1); ?>" <?php if($currentPage == $noPages) echo 'aria-disabled="true"' ?>>Next</a>
                 </li>
             </ul>
         </div>

@@ -1,5 +1,5 @@
 <?php 
-$categories = GetCategories($con);
+    $categories = GetCategories($con);
 
 ?>
 
@@ -18,8 +18,8 @@ $categories = GetCategories($con);
                  <!-- Table Body: Each row shows user data with options to edit or delete -->
                  <!-- User -->
                         <?php 
-                        echo '<div class="col me-2">';
-                        echo '<a class="btn btn-danger w-100 text-center rounded-0" href="#">' . $category["Name"] . '</a>';
+                        echo '<div class="col me-2 ">';
+                        echo '<a class="btn btn-danger w-100 text-center rounded-0" href="shop.php?category=' . $category["ID"] . '">' . $category["Name"] . '</a>';
                         echo '</div>';?>
 
                  <?php endforeach ?>

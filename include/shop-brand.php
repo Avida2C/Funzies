@@ -14,7 +14,7 @@ $brands = GetBrands($con);
       <div class="d-flex flex-nowrap overflow-auto pb-4 brand-img">
         <?php foreach ($brands as $brand): ?>
         <div class="col me-4">
-          <a href="#">
+          <a href="shop.php?brand=<?php echo $brand["ID"] ?>">
             <img class="mx-auto object-fit-scale border-0 rounded-0 text-center"
               src="<?php echo htmlspecialchars($brand['Image']); ?>">
           </a>

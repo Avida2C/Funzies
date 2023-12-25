@@ -389,9 +389,91 @@ function GetProducts($con)
     return $result;
 }
 
-function GetProductByID($con,$id)
+function GetProductsPage($con, $sort, $category, $brand, $search)
 {
-    $sql = "SELECT * FROM product WHERE ID = '$id'";
+    $sql = "SELECT p.*, b.Name as 'brandName', c.Name as 'categoryName' FROM product p JOIN brand b on p.Brand = b.ID JOIN category c ON p.Category = c.ID WHERE p.Deleted = '0'";
+
+    if(isset($category)) {
+        $sql .= " AND c.ID = $category";
+    } else if(isset($brand)) {
+        $sql .= " AND b.ID = $brand";
+    } else if(isset($search)) {
+        $sql .= " AND p.Name LIKE '%$search%'";
+    }
+
+    switch($sort) {
+        case "1": {
+            $sql .= " ORDER BY p.DateAdded DESC;";
+            break;
+        }
+        case "2": {
+            $sql .= " ORDER BY p.Price ASC;";
+            break;
+        }
+        case "3": {
+            $sql .= " ORDER BY p.Price DESC;";
+            break;
+        }
+    }
+
+    $stmt = mysqli_stmt_init($con);
+    if(!mysqli_stmt_prepare($stmt, $sql)) {
+        echo "Could not load Products";
+        exit();
+    }
+
+    mysqli_stmt_execute($stmt);
+
+    $result = mysqli_stmt_get_result($stmt);
+
+    mysqli_stmt_close($stmt);
+
+    return $result;
+}
+
+function GetLatestProductsIndex($con)
+{
+    $sql = "SELECT p.*, b.Name as 'brandName', c.Name as 'categoryName' FROM product p JOIN brand b on p.Brand = b.ID JOIN category c ON p.Category = c.ID WHERE p.Deleted = '0' ORDER BY p.DateAdded DESC LIMIT 4;";
+
+    $stmt = mysqli_stmt_init($con);
+    if(!mysqli_stmt_prepare($stmt, $sql)) {
+        echo "Could not load Products";
+        exit();
+    }
+
+    mysqli_stmt_execute($stmt);
+
+    $result = mysqli_stmt_get_result($stmt);
+
+    mysqli_stmt_close($stmt);
+
+    return $result;
+}
+
+function GetBestSellersIndex($con)
+{
+    $sqlOrders = "SELECT o.product, Count(o.product), SUM(o.quantity) FROM funzies.order_product o GROUP BY o.product;";
+
+    $sql = "SELECT p.*, b.Name as 'brandName', c.Name as 'categoryName' FROM product p JOIN brand b on p.Brand = b.ID JOIN category c ON p.Category = c.ID WHERE p.Deleted = '0' ORDER BY p.DateAdded DESC LIMIT 4;";
+
+    $stmt = mysqli_stmt_init($con);
+    if(!mysqli_stmt_prepare($stmt, $sql)) {
+        echo "Could not load Products";
+        exit();
+    }
+
+    mysqli_stmt_execute($stmt);
+
+    $result = mysqli_stmt_get_result($stmt);
+
+    mysqli_stmt_close($stmt);
+
+    return $result;
+}
+
+function GetProductByID($con, $id)
+{
+    $sql = "SELECT p.*, b.Name as 'brandName', c.Name as 'categoryName', c.ID as 'categoryID' FROM product p JOIN brand b on p.Brand = b.ID JOIN category c ON p.Category = c.ID WHERE p.Deleted = '0' AND p.ID = '$id'";
 
     $stmt = mysqli_stmt_init($con);
     if(!mysqli_stmt_prepare($stmt, $sql)) {
@@ -411,6 +493,54 @@ function GetProductByID($con,$id)
     }
 
     return false;
+
+}
+
+function GetProductCountForCategory($con, $category)
+{
+    $sql = "SELECT Count(*) as 'Amount' FROM product WHERE Category = '$category'";
+
+    $stmt = mysqli_stmt_init($con);
+    if(!mysqli_stmt_prepare($stmt, $sql)) {
+        echo "Could not load Products";
+        exit();
+    }
+
+    mysqli_stmt_execute($stmt);
+
+    $result = mysqli_stmt_get_result($stmt);
+
+    mysqli_stmt_close($stmt);
+
+    if(mysqli_num_rows($result) > 0) {
+        return $result->fetch_assoc()["Amount"]; //Memory location, this saves session's data 
+    }
+
+    return 0;
+
+}
+
+function GetProductCountForBrand($con, $brand)
+{
+    $sql = "SELECT Count(*) as 'Amount' FROM product WHERE Brand = '$brand'";
+
+    $stmt = mysqli_stmt_init($con);
+    if(!mysqli_stmt_prepare($stmt, $sql)) {
+        echo "Could not load Products";
+        exit();
+    }
+
+    mysqli_stmt_execute($stmt);
+
+    $result = mysqli_stmt_get_result($stmt);
+
+    mysqli_stmt_close($stmt);
+
+    if(mysqli_num_rows($result) > 0) {
+        return $result->fetch_assoc()["Amount"]; //Memory location, this saves session's data 
+    }
+
+    return 0;
 
 }
 
@@ -528,7 +658,7 @@ function GetOrderStatus($con)
 function GetOrders($con)
 {
     
-    $sql = "SELECT o.*, s.Status as 'statusOrder' FROM orders o JOIN orderstatus s on o.status = s.ID ";
+    $sql = "SELECT o.*, s.Status as 'statusOrder' FROM orders o JOIN orderstatus s on o.status = s.ID WHERE o.deleted = 0";
 
     $stmt = mysqli_stmt_init($con);
     if(!mysqli_stmt_prepare($stmt, $sql)) {
@@ -565,6 +695,39 @@ function createOrderStatus($con,$name)
 function updateOrderStatus($con, $id, $name)
 {
     $sql = "UPDATE orderstatus SET Status = '$name' WHERE ID = $id;";
+    
+    $stmt = mysqli_stmt_init($con);
+    if(!mysqli_stmt_prepare($stmt, $sql)) {
+        echo "Could not update Order Status";
+        exit();
+    }
+
+    $result = mysqli_stmt_execute($stmt);
+
+    mysqli_stmt_close($stmt);
+
+    return $result;
+}
+
+function deleteOrder($con, $id) {
+    $sql = "UPDATE orders SET deleted = 1 WHERE ID = $id;";
+    
+    $stmt = mysqli_stmt_init($con);
+    if(!mysqli_stmt_prepare($stmt, $sql)) {
+        echo "Could not update Order Status";
+        exit();
+    }
+
+    $result = mysqli_stmt_execute($stmt);
+
+    mysqli_stmt_close($stmt);
+
+    return $result;
+}
+
+function setOrderStatus($con, $id, $status)
+{
+    $sql = "UPDATE orders SET status = '$status' WHERE ID = $id;";
     
     $stmt = mysqli_stmt_init($con);
     if(!mysqli_stmt_prepare($stmt, $sql)) {
@@ -876,4 +1039,151 @@ function deleteAddress($con, $id)
     return $result;
 }
 
+function createWishlistItem($con, $productID, $userID) {
+    $sql = "INSERT INTO wishlist (user, product) VALUES('$userID', '$productID');";
+    
+    $stmt = mysqli_stmt_init($con);
+    if(!mysqli_stmt_prepare($stmt, $sql)) {
+        echo "Could not delete Review Status";
+        exit();
+    }
+
+    $result = mysqli_stmt_execute($stmt);
+
+    mysqli_stmt_close($stmt);
+
+    return $result;
+}
+
+function deleteWishlistItem($con, $productID, $userID) {
+    $sql = "DELETE FROM wishlist WHERE user = '$userID' AND product = '$productID';";
+    
+    $stmt = mysqli_stmt_init($con);
+    if(!mysqli_stmt_prepare($stmt, $sql)) {
+        echo "Could not delete Review Status";
+        exit();
+    }
+
+    $result = mysqli_stmt_execute($stmt);
+
+    mysqli_stmt_close($stmt);
+
+    return $result;
+}
+
+function GetWishlistItem($con, $userID, $productID) {
+    $sql = "SELECT * FROM wishlist WHERE user = '$userID' AND product = '$productID';";
+
+    $stmt = mysqli_stmt_init($con);
+    if(!mysqli_stmt_prepare($stmt, $sql)) {
+        echo "Could not load Roles";
+        exit();
+    }
+
+    mysqli_stmt_execute($stmt);
+
+    $result = mysqli_stmt_get_result($stmt);
+
+    mysqli_stmt_close($stmt);
+
+    return $result;
+}
+
+function GetWishlistByUser($con, $userID) {
+    $sql = "SELECT * FROM wishlist WHERE user = '$userID';";
+
+    $stmt = mysqli_stmt_init($con);
+    if(!mysqli_stmt_prepare($stmt, $sql)) {
+        echo "Could not load Roles";
+        exit();
+    }
+
+    mysqli_stmt_execute($stmt);
+
+    $result = mysqli_stmt_get_result($stmt);
+
+    mysqli_stmt_close($stmt);
+
+    return $result;
+}
+
+function createOrder($con, $user, $selectedAddress, $cartItems) {
+    
+    $sql = "INSERT INTO orders (created, updated, status, user, address) VALUES (NOW(), NOW(), 1," . $user['ID'] . ", " . $selectedAddress['ID'] . ");";
+    
+    $stmt = mysqli_stmt_init($con);
+    if(!mysqli_stmt_prepare($stmt, $sql)) {
+        echo "Could not Add Order!";
+        exit();
+    }
+
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_insert_id($stmt);
+    mysqli_stmt_close($stmt);
+
+    foreach($cartItems as $item) {
+        $prodQuantity = GetProductByID($con, $item["ID"]);
+        $newQuantity = ((int)$prodQuantity["Stock"]) - ((int)$item["Quantity"]);
+
+        $sql = "INSERT INTO order_product (orderid, productid, quantity) VALUES ($result, " . $item["ID"] . ", " . $item["Quantity"] . ");";
+        $stmt = mysqli_stmt_init($con);
+        if(!mysqli_stmt_prepare($stmt, $sql)) {
+            echo "Could not add order products";
+            exit();
+        }
+
+        mysqli_stmt_execute($stmt);
+
+        $sql = "UPDATE product SET Stock = '$newQuantity' WHERE ID = '" . $item["ID"] . "';";
+        $stmt = mysqli_stmt_init($con);
+        if(!mysqli_stmt_prepare($stmt, $sql)) {
+            echo "Could not update product quantity";
+            exit();
+        }
+
+        mysqli_stmt_execute($stmt);
+        
+    }
+    return $result;
+}
+
+function GetOrdersByUser($con, $userID)
+{
+    $sql = "SELECT o.*, s.Status FROM orders o JOIN orderstatus s ON o.status = s.ID  WHERE o.User = '$userID';";
+
+    $stmt = mysqli_stmt_init($con);
+    if(!mysqli_stmt_prepare($stmt, $sql)) {
+        echo "Could not load User Orders";
+        exit();
+    }
+
+    mysqli_stmt_execute($stmt);
+
+    $result = mysqli_stmt_get_result($stmt);
+
+    mysqli_stmt_close($stmt);
+
+    return $result;
+}
+
+function GetOrderProducts($con, $orderid)
+{
+    $sql = "SELECT * FROM order_product op WHERE op.orderid = '$orderid';";
+
+    $stmt = mysqli_stmt_init($con);
+    if(!mysqli_stmt_prepare($stmt, $sql)) {
+        echo "Could not load User Orders";
+        exit();
+    }
+
+    mysqli_stmt_execute($stmt);
+
+    $result = mysqli_stmt_get_result($stmt);
+
+    mysqli_stmt_close($stmt);
+
+    return $result;
+}
+
 ?>
+

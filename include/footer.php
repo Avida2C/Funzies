@@ -1,3 +1,4 @@
+<?php require_once 'include/navbar-cart-sidebar.php' ?>
 <footer class="text-center text-lg-start bg-light text-muted py-2 border-top border-5 border-danger">
     <!-- Footer Section -->
     <div class="container align-items-center col-sm-12 col-md-12 col-lg-10 col-xl-10">

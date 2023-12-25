@@ -9,14 +9,14 @@
 
             <!-- Account, Wishlist, and Shopping Cart Icons -->
             <div id="navSearchbar" class="col-sm-12 col-md-12 col-lg-7 col-xl-7 py-2 align-items-center">
-                <form method="get" class="d-flex">
+                <div class="d-flex">
                     <label for="searchInput" class="visually-hidden">Search</label>
                     <input id="searchInput" class="border border-1 border-muted w-100 px-2" type="search"
                         placeholder="Search" aria-label="Search">
-                    <button class="btn btn-danger rounded-0" type="submit">
+                    <button class="btn btn-danger rounded-0" type="button" onclick="window.location.href = 'shop.php?search=' + $('#searchInput').val();">
                         <ion-icon name="search-outline"></ion-icon>
                     </button>
-                </form>
+                </div>
             </div>
 
             <div id="navAccount" class="col-sm-6 col-md-12 col-lg-3 col-xl-3 text-end align-self-center">
@@ -45,7 +45,7 @@
                     <ion-icon size="large" name="cart-outline"></ion-icon>
                 </button>
 
-                <?php require_once 'include/navbar-cart-sidebar.php' ?>
+                
             </div>
 
             <!-- Category Navigation for Different Screen Sizes -->

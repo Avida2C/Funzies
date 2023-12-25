@@ -57,7 +57,7 @@ $categories = GetCategories($con);
                 <!-- Table Body: Each row shows user data with options to edit or delete -->
                 <!-- User -->
                 <li class="nav-item">
-                    <a class="nav-link" href="#"><?php echo $category["Name"] ?></a>
+                    <a class="nav-link" href="shop.php?category=<?php echo $category['ID']; ?>"><?php echo $category["Name"] ?></a>
                 </li>
                 <?php endforeach ?>
                     <!-- Categories End -->

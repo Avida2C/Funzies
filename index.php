@@ -4,11 +4,16 @@ require 'functions.php';
 require 'dbfunctions.php';
 require_once 'include/header.php';
 
-?>
 
-<?php 
-// Start of Body //
 require_once 'include/navbar.php';
+
+$latestProducts = GetLatestProductsIndex($con);
+
+$key = 0;
+
+function includeProduct($product, $key) {
+  include 'include/product-card.php';
+}
 ?>
 
 <!-- Carousel Section -->
@@ -58,8 +63,8 @@ require_once 'include/navbar.php';
     </div>
     <div class="col text-end">
       <!-- More Products Button -->
-      <button class="btn btn-danger rounded-0 p-2 align-middle mb-4">More Products<ion-icon class="align-middle"
-          style="font-size:18px;" name="chevron-forward-outline"></ion-icon></button>
+      <a href="shop.php" class="btn btn-danger rounded-0 p-2 align-middle mb-4">More Products<ion-icon class="align-middle"
+          style="font-size:18px;" name="chevron-forward-outline"></ion-icon></a>
     </div>
   </div>
   <div class="col-12">
@@ -68,8 +73,9 @@ require_once 'include/navbar.php';
         <!-- Loop to include product cards -->
         <?php 
         // Will add 4 product cards
-        for ($i = 0; $i < 4; $i++) {
-            include 'include/product-card.php';
+        foreach ($latestProducts as $prod) {
+          includeProduct($prod, $key);
+          $key++;
         }
         ?>
       </div>
@@ -85,8 +91,8 @@ require_once 'include/navbar.php';
     </div>
     <div class="col text-end">
       <!-- More products button -->
-      <button class="btn btn-danger rounded-0 p-2 align-middle mb-3">More Products<ion-icon class="align-middle"
-          style="font-size:18px;" name="chevron-forward-outline"></ion-icon></button>
+      <a href="shop.php" class="btn btn-danger rounded-0 p-2 align-middle mb-3">More Products<ion-icon class="align-middle"
+          style="font-size:18px;" name="chevron-forward-outline"></ion-icon></a>
     </div>
   </div>
   <div class="col">
@@ -95,8 +101,9 @@ require_once 'include/navbar.php';
         <!-- Loop to include product cards -->
         <?php 
         // Will add 4 product cards
-        for ($i = 0; $i < 4; $i++) {
-            include 'include/product-card.php';
+        foreach ($latestProducts as $prod) {
+          includeProduct($prod, $key);
+          $key++;
         }
         ?>
       </div>
@@ -105,10 +112,8 @@ require_once 'include/navbar.php';
 </div>
 
 <!-- Including Brand Section -->
-<?php require 'include/shop-brand.php';
-?>
-
-<?php  
+<?php 
+require 'include/shop-brand.php';
 require_once 'include/footer.php';
 // End of Body //
 ?>
