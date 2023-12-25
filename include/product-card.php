@@ -76,14 +76,13 @@ if(isset($_SESSION['USER'])) {
             <input type="hidden" name="addProdID" value="<?php echo $product["ID"] ?>">
             <input type="hidden" name="addProdKey" value="<?php echo $key ?>">
             <?php if($product["Stock"] > 0) : ?>
-                <input type="submit" name="addProductCardToCart" class="btn btn-danger mb-0 mt-1 rounded-0 w-100" value="Add To Cart"></input>
+                <input type="submit" name="addProductCardToCart" class="btn btn-danger mb-0 mt-1 rounded-0 w-100 p-0 " value="Add To Cart"></input>
             <?php else : ?>
-                <input type="button" name="addToCart" class="btn btn-secondary rounded-0 mb-0 w-100 mt-1" value="Out of Stock" ?>
+                <input type="button" name="addToCart" class="btn btn-secondary rounded-0 mb-0 w-100 mt-1 p-0 " value="Out of Stock" ?>
             <?php endif; ?>
         </form>
         <div class="row m-0 p-0">
             <div class="col m-0 p-0">
-                <p class="text-end">
                     <!-- Add to Wishlist Link -->
                     <?php if($isLoggedIn) : ?>
                     <!-- Button Add to wishlist -->
@@ -91,7 +90,7 @@ if(isset($_SESSION['USER'])) {
                             <form method="post">
                                 <input type="hidden" name="addProductCardToWishlist" value="addProductToWishlist">
                                 <input type="hidden" name="addProdID" value="<?php echo $product["ID"] ?>">
-                                <button type="submit" class="btn btn-success rounded-0 w-100 m-0 text-decoration-none">
+                                <button type="submit" class="btn btn-success rounded-0 w-100 m-0 mt-1 p-0 text-decoration-none">
                                     Add to wishlist
                                 </button>
                             </form>
@@ -99,7 +98,7 @@ if(isset($_SESSION['USER'])) {
                             <form method="post">
                                 <input type="hidden" name="deleteProductCardFromWishlist" value="deleteProductFromWishlist">
                                 <input type="hidden" name="addProdID" value="<?php echo $product["ID"] ?>">
-                                <button type="submit" class="btn btn-success rounded-0 m-0 w-100 text-decoration-none">
+                                <button type="submit" class="btn btn-success rounded-0 m-0 mt-1 w-100 p-0 text-decoration-none">
                                     Remove from wishlist
                                 </button>
                             </form>
