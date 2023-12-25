@@ -52,10 +52,6 @@ if($_SERVER['REQUEST_METHOD'] == "POST" && !empty($_POST["sideBarLogin"]) && $_P
                         <!-- Remember Me Checkbox and Forgot Password Link -->
                         <div class="row">
                             <div class="col-6">
-                                <input type="checkbox" id="rememberme" name="rememberme">
-                                <label for="rememberme">Remember me</label>
-                            </div>
-                            <div class="col-6 text-end">
                                 <a class="text-danger text-decoration-none" href="forgotPassword.php">Forgot
                                     password?</a>
                             </div>

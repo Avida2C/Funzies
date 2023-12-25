@@ -4,25 +4,34 @@ require 'functions.php';
 require 'dbfunctions.php';
 require_once 'include/header.php';
 
-
+$userCreated = false;
 if($_SERVER['REQUEST_METHOD'] == "POST") {
-    $email = htmlspecialchars(addslashes($_POST['email'])); // 'addslashes' allows the user to use brackets
-    $password = htmlspecialchars(addslashes($_POST['password']));
+    if(isset($_POST["email"])) {
+        $email = htmlspecialchars(addslashes($_POST['email'])); // 'addslashes' allows the user to use brackets
+        $password = htmlspecialchars(addslashes($_POST['password']));
 
-    // print_r(mysqli_num_rows($result)); this will display the result which includes the results found in the db under num_rows
-    if(userLogin($con, $email, $password)) {
-        header("Location: account.php"); //this will direct the user to a different page
-    }
-    else
-    {
-        $error = "Incorrect email or password, try again!";
+        // print_r(mysqli_num_rows($result)); this will display the result which includes the results found in the db under num_rows
+        if(userLogin($con, $email, $password)) {
+            header("Location: account.php"); //this will direct the user to a different page
+        }
+        else
+        {
+            $error = "Incorrect email or password, try again!";
+        }
+    } else if (isset($_POST["createemail"])) {
+        $user = [];
+        $user['Name'] = $_POST['name'];
+        $user['Surname'] = $_POST['surname'];
+        $user['Email'] = $_POST['createemail'];
+        $user['Password'] = sha1($_POST['createpassword']);
+        $user['ContactNumber'] = $_POST['contactnumber'];
+        $user['ID'] = createUser($con, $user);
+        if($user['ID'] > 0) {
+            $userCreated = true;
+        }
     }
 }
 
-?>
-
-<?php 
-// Start of Body //
 require_once 'include/navbar.php';
 ?>
 
@@ -38,10 +47,11 @@ require_once 'include/navbar.php';
                     <!-- Sign Up Form -->
                     <form class="p-4" method="post">
                         <h1>Sign Up</h1>
+                        <?php if(!$userCreated) : ?>
                         <div class="row">
                             <div class="col">
                                 <label for="name-input">Name<span class="text-danger">*</span></label>
-                                <input class="w-100 p-1 mb-2" type="text" id="name-input" name="name" placeholder="Same"
+                                <input class="w-100 p-1 mb-2" type="text" id="name-input" name="name" placeholder="Name"
                                     required autocomplete="name">
                             </div>
                             <div class="col">
@@ -56,17 +66,20 @@ require_once 'include/navbar.php';
                             placeholder="Contact Number" required autocomplete="contactnumber">
 
                         <label for="email-input">Email<span class="text-danger">*</span></label>
-                        <input class="w-100 p-1 mb-2" type="email" id="email-input" name="email" placeholder="Email"
+                        <input class="w-100 p-1 mb-2" type="email" id="email-input" name="createemail" placeholder="Email"
                             required autocomplete="email">
 
                         <label for="password-input">Password<span class="text-danger">*</span></label>
-                        <input class="w-100 p-1 mb-2" type="password" id="password-input" name="password"
+                        <input class="w-100 p-1 mb-2" type="password" id="password-input" name="createpassword"
                             placeholder="Password" required autocomplete="new-password">
 
                         <p>By clicking Sign Up, you are agreeing to our <a class="text-decoration-none"
                                 href="terms.php">Terms and Conditions</a>.</p>
                         <!-- Signup submit button -->
                         <button class="w-100 btn btn-danger rounded-0">Sign Up</button>
+                        <?php else : ?>
+                            <h2>User has been created, you can now login!</h2>
+                        <?php endif; ?>
                     </form>
                 </div>
 
@@ -99,10 +112,6 @@ require_once 'include/navbar.php';
 
                         <div class="row">
                             <div class="col-6">
-                                <input type="checkbox" name="rememberme" id="rememberme-check">
-                                <label for="rememberme-check">Remember me</label>
-                            </div>
-                            <div class="col-6 text-end">
                                 <a class="text-danger text-decoration-none" href="forgotPassword.php">Forgot
                                     password?</a>
                             </div>

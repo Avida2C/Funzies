@@ -67,6 +67,22 @@ function updateUserObject($con, $user)
     return updateUser($con, $user["ID"], $user["Name"], $user["Email"], $user["Surname"], $user["ContactNumber"], $user["Role"], $user["Password"]);
 }
 
+function resetUserPassword($con, $userEmail, $userPassword) {
+    $sql = "UPDATE user SET Password = '$userPassword' WHERE Email = '$userEmail';";
+    
+    $stmt = mysqli_stmt_init($con);
+    if(!mysqli_stmt_prepare($stmt, $sql)) {
+        echo "Could not update user password";
+        exit();
+    }
+
+    $result = mysqli_stmt_execute($stmt);
+
+    mysqli_stmt_close($stmt);
+
+    return $result;
+}
+
 function deleteUser($con, $id)
 {
     $sql = "UPDATE user SET Deleted = '1' WHERE ID = '$id'";
@@ -79,6 +95,28 @@ function deleteUser($con, $id)
 
     $result = mysqli_stmt_execute($stmt);
 
+    mysqli_stmt_close($stmt);
+
+    return $result;
+}
+
+function createUser($con, $user) {
+    $userName = $user["Name"];
+    $userSurname = $user["Surname"];
+    $userEmail = $user["Email"];
+    $userPassword = $user["Password"];
+    $userContactNumber = $user["ContactNumber"];
+
+    $sql = "INSERT INTO user (Email, Name, Surname, Joined, Verified, Password, ContactNumber, Role, Deleted) VALUES ('$userEmail', '$userName', '$userSurname', NOW(), 0, '$userPassword', '$userContactNumber', 2, 0);";
+    
+    $stmt = mysqli_stmt_init($con);
+    if(!mysqli_stmt_prepare($stmt, $sql)) {
+        echo "Could not create Role";
+        exit();
+    }
+
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_insert_id($stmt);
     mysqli_stmt_close($stmt);
 
     return $result;
@@ -724,15 +762,35 @@ function GetAddressesByUser($con, $userID)
     return $result;
 }
 
+function GetAddressByID($con, $ID)
+{
+    $sql = "SELECT * FROM address WHERE ID = '$ID';";
+
+    $stmt = mysqli_stmt_init($con);
+    if(!mysqli_stmt_prepare($stmt, $sql)) {
+        echo "Could not load Roles";
+        exit();
+    }
+
+    mysqli_stmt_execute($stmt);
+
+    $result = mysqli_stmt_get_result($stmt)->fetch_assoc();
+
+    mysqli_stmt_close($stmt);
+
+    return $result;
+}
+
 function createAddress($con, $userID, $address)
 {
     $name = $address["Name"];
     $surname = $address["Surname"];
-    $street = $address["Address"];
+    $street = $address["Street"];
     $city = $address["City"];
     $zipCode = $address["ZipCode"];
     $region = $address["Region"];
-    $default = $address["Default"] === 'on';
+    $default = $address["Default"] == 'true' ? 1 : 0;
+    $mobile = $address['Mobile'];
 
     if($default) {
         $sql = "UPDATE address SET Def = '0' WHERE User = '$userID';";
@@ -742,12 +800,12 @@ function createAddress($con, $userID, $address)
             exit();
         }
 
-        $result = mysqli_stmt_execute($stmt);
-
+        mysqli_stmt_execute($stmt);
+        
         mysqli_stmt_close($stmt);
     }
 
-    $sql = "INSERT INTO address (Street, City, ZipCode, Region, User, Def, Deleted, Name, Surname) VALUES ('$street', '$city', '$zipCode', '$region', '$userID', '$default', '0', '$name', '$surname');";
+    $sql = "INSERT INTO address (Street, City, ZipCode, Region, User, Def, Deleted, Name, Surname, Mobile) VALUES ('$street', '$city', '$zipCode', '$region', '$userID', '$default', '0', '$name', '$surname', '$mobile');";
     
     $stmt = mysqli_stmt_init($con);
     if(!mysqli_stmt_prepare($stmt, $sql)) {
@@ -755,8 +813,8 @@ function createAddress($con, $userID, $address)
         exit();
     }
 
-    $result = mysqli_stmt_execute($stmt);
-
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_insert_id($stmt);
     mysqli_stmt_close($stmt);
 
     return $result;
@@ -771,7 +829,7 @@ function updateAddress($con, $userID, $address)
     $city = $address["City"];
     $zipCode = $address["ZipCode"];
     $region = $address["Region"];
-    $default = $address["Default"] === 'on';
+    $default = $address["Default"] === 'true';
 
     if($default) {
         $sql = "UPDATE address SET Def = '0' WHERE User = '$userID';";
@@ -818,6 +876,4 @@ function deleteAddress($con, $id)
     return $result;
 }
 
-
 ?>
-
