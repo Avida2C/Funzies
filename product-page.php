@@ -72,18 +72,6 @@ require_once 'include/navbar.php';
                     data-bs-target="#pills-desc" type="button" role="tab" aria-controls="pills-desc"
                     aria-selected="true">Description</button>
             </li>
-            <!-- Customer Reviews Tab -->
-            <li class="nav-item" role="presentation">
-                <button class="btn btn-danger rounded-0" id="pills-reviews-tab" data-bs-toggle="pill"
-                    data-bs-target="#pills-reviews" type="button" role="tab" aria-controls="pills-reviews"
-                    aria-selected="false">Customer Reviews</button>
-            </li>
-            <!-- Leave Review Tab -->
-            <li class="nav-item" role="presentation">
-                <button class="btn btn-danger rounded-0" id="pills-reviews-tab" data-bs-toggle="pill"
-                    data-bs-target="#pills-leavereview" type="button" role="tab" aria-controls="pills-leavereview"
-                    aria-selected="false">Leave a Review</button>
-            </li>
         </div>
         <!-- in Tabs Content -->
         <div class="tab-content" id="pills-tabContent">
@@ -98,86 +86,9 @@ require_once 'include/navbar.php';
                     drops. Get ready for a whole new experience - coming soon!
                 </p>
             </div>
-            <!-- Customer Reviews -->
-            <div class="tab-overflow tab-pane fade" id="pills-reviews" role="tabpanel"
-                aria-labelledby="pills-contact-tab" tabindex="0">
-                <!-- Info goes here -->
-                <p>
-                    Be the first to share your thoughts! No reviews have
-                    been submitted for this product yet. We value your feedback and can't wait to hear about your
-                    experience. Don't hesitate to leave a review and help others make informed choices.
-                </p>
-            </div>
-            <!-- Leave a Review form -->
-            <div class="tab-pane fade" id="pills-leavereview" role="tabpanel" aria-labelledby="pills-contact-tab"
-                tabindex="0">
-                <!-- Info goes here -->
-                <div class="container col-sm-12 col-md-12 col-lg-10 col-xl-10">
-                    <div class="row">
-                        <div id="reviewForm" class="col-sm-12 col-md-12 col-lg-6 col-xl-6 me-3 my-4 pb-2">
-
-                            <!-- Reviews Form -->
-                            <form method="POST" enctype="multipart/form-data">
-                                <label for="fullname">Full Name</label>
-                                <input class="w-100 mb-2" type="text" id="fullname" name="fullname">
-                                <label for="title">Title</label>
-                                <input class="w-100 mb-2" type="text" id="title" name="title">
-                                <div class="row">
-                                    <!-- Star review title -->
-                                    <div class="col">
-                                        <label for="rating3-1">Review</label>
-                                    </div>
-                                    <!-- Star Review -->
-                                    <div class="col">
-                                        <div id="star-review" class="rating-group py-3">
-                                            <input disabled checked class="rating-input rating-input-none"
-                                                name="rating3" id="rating3-none" value="0" type="radio">
-                                            <!-- Only showing two star ratings for brevity; you should follow the pattern for the rest -->
-                                            <label aria-label="1 star" class="rating-label" for="rating3-1"><i
-                                                    class="rating-icon rating-icon-star fa fa-star"></i></label>
-                                            <input class="rating-input" name="rating3" id="rating3-1" value="1"
-                                                type="radio">
-
-                                            <label aria-label="2 stars" class="rating-label" for="rating3-2"><i
-                                                    class="rating-icon rating-icon-star fa fa-star"></i></label>
-                                            <input class="rating-input" name="rating3" id="rating3-2" value="2"
-                                                type="radio">
-                                            <label aria-label="3 stars" class="rating-label" for="rating3-3"><i
-                                                    class="rating-icon rating-icon-star fa fa-star"></i></label>
-                                            <input class="rating-input" name="rating3" id="rating3-3" value="3"
-                                                type="radio">
-                                            <label aria-label="4 stars" class="rating-label" for="rating3-4"><i
-                                                    class="rating-icon rating-icon-star fa fa-star"></i></label>
-                                            <input class="rating-input" name="rating3" id="rating3-4" value="4"
-                                                type="radio">
-                                            <label aria-label="5 stars" class="rating-label" for="rating3-5"><i
-                                                    class="rating-icon rating-icon-star fa fa-star"></i></label>
-                                            <input class="rating-input" name="rating3" id="rating3-5" value="5"
-                                                type="radio">
-                                        </div>
-                                    </div>
-                                </div>
-                                <label for="review">Comment</label>
-                                <textarea class="w-100 mb-2" name="review" id="review" cols="30" rows="6"></textarea>
-                                <label for="image">Upload Image</label>
-                                <input class="mb-2" type="file" name="image" id="image">
-                                <button class="btn btn-danger w-100 rounded-0">Submit</button>
-                            </form>
-                        </div>
-                        <!-- Review form Message -->
-                        <div id="ReviewFormMessage" class="col-sm-12 col-md-12 col-lg-5 col-xl-5 m-auto">
-                            <p class="fs-6 ">
-                                Gear up for the ultimate review adventure! Your words have the power to inspire and
-                                guide
-                                fellow explorers. Share your bold experiences here!</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 </div>
-
 
 <!-- Related Products Section -->
 <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 mt-3 p-4 bg-danger">

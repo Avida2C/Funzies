@@ -16,7 +16,6 @@ $fullname = $user['Name']." ".$user['Surname'];
             <a href="../admin/category-management.php" class="list-group-item" style="background-color: transparent;">Category Management</a>
             <a href="../admin/product-management.php" class="list-group-item" style="background-color: transparent;">Product Management</a>
             <a href="../admin/order-management.php" class="list-group-item" style="background-color: transparent;">Order Management</a>
-            <a href="../admin/review-management.php" class="list-group-item" style="background-color: transparent;">Review Management</a>
         </div>
 
         <!-- Admin Info and Sign-out Section -->
