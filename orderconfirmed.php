@@ -5,7 +5,6 @@ require 'dbfunctions.php';
 require_once 'include/header.php';
 require_once 'include/navbar.php';
 
-$user = $_SESSION["USER"];
 $address = $_SESSION["ORDER_SUMMARY"]["ADDRESS"];
 $items = $_SESSION["ORDER_SUMMARY"]["ITEMS"];
 
@@ -83,9 +82,11 @@ $total = $delivery;
                         Home
                     </button>
                     <!-- Check my order button -->
+                    <?php if (isset($_SESSION['USER'])):?>
                     <button onclick="navigateToOrders()" class="btn btn-danger rounded-0" style="width: 190px;">
                         Check my order
                     </button>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>

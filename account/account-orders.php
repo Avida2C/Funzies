@@ -2,6 +2,12 @@
 
 $user = $_SESSION["USER"];
 
+if($_SERVER['REQUEST_METHOD'] == "POST") {
+    if(isset($_POST["cancelOrderID"])) {
+        setOrderStatus($con, $_POST["cancelOrderID"], 3);
+    }
+}
+
 $sqlOrders = GetOrdersByUser($con, $user["ID"]);
 $userOrders = [];
 while ($row = mysqli_fetch_assoc($sqlOrders)) {
@@ -9,6 +15,7 @@ while ($row = mysqli_fetch_assoc($sqlOrders)) {
     $t = strtotime($row["created"]);
     $ord["CreatedDate"] = date('M j, Y',$t);
     $ord["Status"] = $row["Status"];
+    $ord["statusid"] = $row["status"];
     $ord["Address"] = GetAddressByID($con, $row["address"]);
     $prods = GetOrderProducts($con, $row["ID"]);
     $ord["Products"] = [];
@@ -51,8 +58,13 @@ while ($row = mysqli_fetch_assoc($sqlOrders)) {
                 <!-- Modal opening button -->
                 <a class="btn btn-outline-danger rounded-0" data-bs-toggle="modal" data-bs-target="#orderDetails<?php echo $o['ID'] ?>">Order
                     Details</a>
-                <a class="btn btn-danger rounded-0" href="#">Cancel Order</a>
-
+                <?php if($o["statusid"] == '1' || $o["statusid"] == '2' || $o["statusid"] == '4' || 
+                    $o["statusid"] == '5') : ?>
+                    <form method="POST">
+                        <input type="hidden" name="cancelOrderID" value="<?php echo $o['ID'] ?>">
+                        <button type="submit" class="btn btn-danger rounded-0">Cancel Order</button>
+                    </form>
+                <?php endif; ?>
                 <!-- Modal -->
                 <div class="modal fade" id="orderDetails<?php echo $o['ID'] ?>" tabindex="-1" aria-labelledby="#orderDetails<?php echo $o['ID'] ?>Label"
                     aria-hidden="true">
