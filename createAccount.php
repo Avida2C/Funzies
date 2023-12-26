@@ -3,7 +3,7 @@
 require 'functions.php';
 require 'dbfunctions.php';
 require_once 'include/header.php';
-
+$userExists = false;
 $userCreated = false;
 if($_SERVER['REQUEST_METHOD'] == "POST") {
     if(isset($_POST["email"])) {
@@ -20,14 +20,20 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
         }
     } else if (isset($_POST["createemail"])) {
         $user = [];
-        $user['Name'] = $_POST['name'];
-        $user['Surname'] = $_POST['surname'];
-        $user['Email'] = $_POST['createemail'];
+        $user['Name'] = htmlspecialchars(addslashes($_POST['name']));
+        $user['Surname'] = htmlspecialchars(addslashes($_POST['surname']));
+        $user['Email'] = htmlspecialchars(addslashes($_POST['createemail']));
+        $user['Password'] = htmlspecialchars(addslashes($_POST['createpassword']));
         $user['Password'] = sha1($_POST['createpassword']);
-        $user['ContactNumber'] = $_POST['contactnumber'];
-        $user['ID'] = createUser($con, $user);
-        if($user['ID'] > 0) {
-            $userCreated = true;
+        $user['ContactNumber'] = htmlspecialchars(addslashes($_POST['contactnumber']));
+        if(!CheckUserExists($con, $user['Email'])) {
+            $user['ID'] = createUser($con, $user);
+            if($user['ID'] > 0) {
+                $userCreated = true;
+            }
+        }
+        else{
+            $userExists = true;
         }
     }
 }
@@ -66,8 +72,8 @@ require_once 'include/navbar.php';
                             placeholder="Contact Number" required autocomplete="contactnumber">
 
                         <label for="email-input">Email<span class="text-danger">*</span></label>
-                        <input class="w-100 p-1 mb-2" type="email" id="email-input" name="createemail" placeholder="Email"
-                            required autocomplete="email">
+                        <input class="w-100 p-1 mb-2" type="email" id="email-input" name="createemail"
+                            placeholder="Email" required autocomplete="email">
 
                         <label for="password-input">Password<span class="text-danger">*</span></label>
                         <input class="w-100 p-1 mb-2" type="password" id="password-input" name="createpassword"
@@ -77,8 +83,12 @@ require_once 'include/navbar.php';
                                 href="terms.php">Terms and Conditions</a>.</p>
                         <!-- Signup submit button -->
                         <button class="w-100 btn btn-danger rounded-0">Sign Up</button>
+
                         <?php else : ?>
-                            <h2>User has been created, you can now login!</h2>
+                        <h2>User has been created, you can now login!</h2>
+                        <?php endif; ?>
+                        <?php if ($userExists) : ?>
+                        <h2 class="mt-3">User Already Exists!</h2>
                         <?php endif; ?>
                     </form>
                 </div>

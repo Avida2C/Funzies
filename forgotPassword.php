@@ -10,7 +10,7 @@ require_once 'include/navbar.php';
 $passwordUpdated = false;
 $error = false;
 if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['resetPassword'])) {
-    $userEmail = $_POST['email'];
+    $userEmail = htmlspecialchars($_POST['email']);
     $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_';
     $charactersLength = strlen($characters);
     $randomString = '';

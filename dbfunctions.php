@@ -2,6 +2,8 @@
 /* Users Management */
 function GetUsers($con)
 {
+    // Fetches all non-deleted users and their roles from the database.
+    // SQL query to select users and their corresponding role names.
     $sql = "SELECT u.*, r.Name as 'roleName' FROM user u JOIN role r on u.Role = r.ID WHERE u.Deleted = '0';";
 
     $stmt = mysqli_stmt_init($con);
@@ -11,17 +13,36 @@ function GetUsers($con)
     }
 
     mysqli_stmt_execute($stmt);
-
     $result = mysqli_stmt_get_result($stmt);
-
     mysqli_stmt_close($stmt);
-
     return $result;
 }
 
-/* Users Management */
+// Check if user exists by email.
+function CheckUserExists($con, $email)
+{
+    // Select a user by ID.
+    $sql = "SELECT * FROM user WHERE Email = '$email'"; 
+
+    $stmt = mysqli_stmt_init($con);
+    if(!mysqli_stmt_prepare($stmt, $sql)) {
+        echo "Could not load Users";
+        exit();
+    }
+
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
+    mysqli_stmt_close($stmt);
+
+    if(mysqli_num_rows($result) > 0) {
+        return true; //Memory location, this saves session's data 
+    }
+    return false;
+}
+
 function GetUserByID($con, $id)
 {
+    // Select a user by ID.
     $sql = "SELECT * FROM user WHERE ID = '$id'"; 
 
     $stmt = mysqli_stmt_init($con);
@@ -31,20 +52,18 @@ function GetUserByID($con, $id)
     }
 
     mysqli_stmt_execute($stmt);
-
     $result = mysqli_stmt_get_result($stmt);
-
     mysqli_stmt_close($stmt);
 
     if(mysqli_num_rows($result) > 0) {
-
         return $result->fetch_assoc(); //Memory location, this saves session's data 
     }
-
     return false;
-
 }
 
+
+
+// Updates a user's details in the database.
 function updateUser($con, $id, $name, $email, $surname, $number, $role, $password)
 {
     $sql = "UPDATE user SET Name = '$name', Email = '$email', Surname = '$surname', ContactNumber = '$number', Role = '$role', Password = '$password' WHERE ID = $id;";
@@ -56,18 +75,20 @@ function updateUser($con, $id, $name, $email, $surname, $number, $role, $passwor
     }
 
     $result = mysqli_stmt_execute($stmt);
-
     mysqli_stmt_close($stmt);
-
     return $result;
 }
 
+// Updates a user's information based on an array of new user data.
 function updateUserObject($con, $user)
 {
+    // Calls updateUser function with parameters extracted from the $user array.
     return updateUser($con, $user["ID"], $user["Name"], $user["Email"], $user["Surname"], $user["ContactNumber"], $user["Role"], $user["Password"]);
 }
 
-function resetUserPassword($con, $userEmail, $userPassword) {
+// Resets a user's password.
+function resetUserPassword($con, $userEmail, $userPassword)
+{
     $sql = "UPDATE user SET Password = '$userPassword' WHERE Email = '$userEmail';";
     
     $stmt = mysqli_stmt_init($con);
@@ -75,16 +96,15 @@ function resetUserPassword($con, $userEmail, $userPassword) {
         echo "Could not update user password";
         exit();
     }
-
     $result = mysqli_stmt_execute($stmt);
-
     mysqli_stmt_close($stmt);
-
     return $result;
 }
 
+// Marks a user as deleted in the database.
 function deleteUser($con, $id)
 {
+    // SQL query to logically delete a user by setting their Deleted field to '1'.
     $sql = "UPDATE user SET Deleted = '1' WHERE ID = '$id'";
     
     $stmt = mysqli_stmt_init($con);
@@ -92,15 +112,14 @@ function deleteUser($con, $id)
         echo "Could not delete Category";
         exit();
     }
-
     $result = mysqli_stmt_execute($stmt);
-
     mysqli_stmt_close($stmt);
-
     return $result;
 }
 
-function createUser($con, $user) {
+// Creates a new user with the given details.
+function createUser($con, $user)
+{
     $userName = $user["Name"];
     $userSurname = $user["Surname"];
     $userEmail = $user["Email"];
@@ -123,6 +142,7 @@ function createUser($con, $user) {
 }
 
 /* Roles Management */
+// Fetches all non-deleted roles from the database.
 function GetRoles($con)
 {
     $sql = "SELECT * FROM role WHERE Deleted = '0'";
@@ -134,14 +154,12 @@ function GetRoles($con)
     }
 
     mysqli_stmt_execute($stmt);
-
     $result = mysqli_stmt_get_result($stmt);
-
     mysqli_stmt_close($stmt);
-
     return $result;
 }
 
+// Adds a new role to the database.
 function createRole($con,$name, $details)
 {
     $sql = "INSERT INTO role (Name, Details) VALUES ('$name', '$details')";
@@ -153,12 +171,11 @@ function createRole($con,$name, $details)
     }
 
     $result = $result = mysqli_stmt_execute($stmt);
-
     mysqli_stmt_close($stmt);
-
     return $result;
 }
 
+// Updates an existing role's details.
 function updateRole($con, $id, $name, $details)
 {
     $sql = "UPDATE role SET Name = '$name', Details = '$details' WHERE ID = $id;";
@@ -170,14 +187,14 @@ function updateRole($con, $id, $name, $details)
     }
 
     $result = $result = mysqli_stmt_execute($stmt);
-
     mysqli_stmt_close($stmt);
-
     return $result;
 }
 
+// Marks a role as deleted in the database.
 function deleteRole($con, $id)
 {
+    // SQL query to logically delete a role by setting their Deleted field to '1'.
     $sql = "UPDATE role SET Deleted = '1' WHERE ID = '$id'";
     
     $stmt = mysqli_stmt_init($con);
@@ -187,16 +204,15 @@ function deleteRole($con, $id)
     }
 
     $result = mysqli_stmt_execute($stmt);
-
     mysqli_stmt_close($stmt);
-
     return $result;
 }
 
 /* Brands Management */
+// Fetches all non-deleted brands from the database.
 function GetBrands($con)
 {
-    $sql = "SELECT * FROM brand WHERE Deleted = '0'";
+    $sql = "SELECT * FROM brand WHERE Deleted = '0' ORDER BY Name ASC";
 
     $stmt = mysqli_stmt_init($con);
     if(!mysqli_stmt_prepare($stmt, $sql)) {
@@ -205,34 +221,39 @@ function GetBrands($con)
     }
 
     mysqli_stmt_execute($stmt);
-
     $result = mysqli_stmt_get_result($stmt);
-
     mysqli_stmt_close($stmt);
-
     return $result;
 }
 
+// Adds a new brand to the database, including uploading an image.
 function createBrand($con, $name, $details, $image)
 {
+    // Set the path where brand images will be stored.
     $path = "img/brands/";
+    // Construct the target file name based on the original name of the uploaded file.
     $target_file = $path . basename($image["name"]);
+    // Extract the file extension and convert it to lowercase.
     $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+    // Check if the image file is an actual image or a fake image.
     $check = getimagesize($image["tmp_name"]);
     if($check == false) {
+        // If the file is not an image, return false.
         return false;
     }
 
     $guid = getGUID();
+    // Construct the final path for the new image, including the unique ID and file extension.
     $imagePath = '../' . $path . $guid . '.' . $imageFileType;
+    // Move the uploaded file to the new location. If this fails, return false.
     if(!move_uploaded_file($image["tmp_name"], $imagePath)) {
         return false;
     }
 
+    // Update the image path to be relative from the root directory of the project.
     $imagePath = $path . $guid . '.' . $imageFileType;
-
+    // Prepare an SQL statement to insert the new brand into the database.
     $sql = "INSERT INTO brand (Name, Details, Image) VALUES ('$name', '$details', '$imagePath')";
-    
     $stmt = mysqli_stmt_init($con);
     if(!mysqli_stmt_prepare($stmt, $sql)) {
         echo "Could not create Brand";
@@ -240,12 +261,11 @@ function createBrand($con, $name, $details, $image)
     }
 
     $result = mysqli_stmt_execute($stmt);
-
     mysqli_stmt_close($stmt);
-
     return $result;
 }
 
+// Updates an existing brand's details, possibly including changing the image.
 function updateBrand($con, $id, $name, $details, $image)
 {
     $imagePath = '';
@@ -275,14 +295,14 @@ function updateBrand($con, $id, $name, $details, $image)
     }
 
     $result = mysqli_stmt_execute($stmt);
-
     mysqli_stmt_close($stmt);
-
     return $result;
 }
 
+// Marks a brand as deleted in the database.
 function deleteBrand($con, $id)
 {
+    // SQL query to logically delete a brand by setting their Deleted field to '1'.
     $sql = "UPDATE brand SET Deleted = '1' WHERE ID = '$id'";
     
     $stmt = mysqli_stmt_init($con);
@@ -292,16 +312,15 @@ function deleteBrand($con, $id)
     }
 
     $result = mysqli_stmt_execute($stmt);
-
     mysqli_stmt_close($stmt);
-
     return $result;
 }
 
 /* Categories Management */
+// Fetches all non-deleted categories from the database.
 function GetCategories($con)
 {
-    $sql = "SELECT * FROM category WHERE Deleted = '0'";
+    $sql = "SELECT * FROM category WHERE Deleted = '0' ORDER BY Name ASC";
 
     $stmt = mysqli_stmt_init($con);
     if(!mysqli_stmt_prepare($stmt, $sql)) {
@@ -310,14 +329,12 @@ function GetCategories($con)
     }
 
     mysqli_stmt_execute($stmt);
-
     $result = mysqli_stmt_get_result($stmt);
-
     mysqli_stmt_close($stmt);
-
     return $result;
 }
 
+// Adds a new category to the database.
 function createCategory($con,$name, $details)
 {
     $sql = "INSERT INTO category (Name, Details) VALUES ('$name', '$details')";
@@ -329,12 +346,11 @@ function createCategory($con,$name, $details)
     }
 
     $result = mysqli_stmt_execute($stmt);
-
     mysqli_stmt_close($stmt);
-
     return $result;
 }
 
+// Updates an existing category's details.
 function updateCategory($con, $id, $name, $details)
 {
     $sql = "UPDATE category SET Name = '$name', Details = '$details' WHERE ID = $id;";
@@ -352,8 +368,10 @@ function updateCategory($con, $id, $name, $details)
     return $result;
 }
 
+// Marks a category as deleted in the database.
 function deleteCategory($con, $id)
 {
+    // SQL query to logically delete a category by setting their Deleted field to '1'.
     $sql = "UPDATE category SET Deleted = '1' WHERE ID = '$id'";
     
     $stmt = mysqli_stmt_init($con);
@@ -402,18 +420,18 @@ function GetProductsPage($con, $sort, $category, $brand, $search)
     }
 
     switch($sort) {
-        case "1": {
-            $sql .= " ORDER BY p.DateAdded DESC;";
-            break;
-        }
-        case "2": {
-            $sql .= " ORDER BY p.Price ASC;";
-            break;
-        }
-        case "3": {
-            $sql .= " ORDER BY p.Price DESC;";
-            break;
-        }
+    case "1": {
+        $sql .= " ORDER BY p.DateAdded DESC;";
+        break;
+}
+    case "2": {
+        $sql .= " ORDER BY p.Price ASC;";
+        break;
+}
+    case "3": {
+        $sql .= " ORDER BY p.Price DESC;";
+        break;
+}
     }
 
     $stmt = mysqli_stmt_init($con);
@@ -709,7 +727,8 @@ function updateOrderStatus($con, $id, $name)
     return $result;
 }
 
-function deleteOrder($con, $id) {
+function deleteOrder($con, $id)
+{
     $sql = "UPDATE orders SET deleted = 1 WHERE ID = $id;";
     
     $stmt = mysqli_stmt_init($con);
@@ -1039,7 +1058,8 @@ function deleteAddress($con, $id)
     return $result;
 }
 
-function createWishlistItem($con, $productID, $userID) {
+function createWishlistItem($con, $productID, $userID)
+{
     $sql = "INSERT INTO wishlist (user, product) VALUES('$userID', '$productID');";
     
     $stmt = mysqli_stmt_init($con);
@@ -1055,7 +1075,8 @@ function createWishlistItem($con, $productID, $userID) {
     return $result;
 }
 
-function deleteWishlistItem($con, $productID, $userID) {
+function deleteWishlistItem($con, $productID, $userID)
+{
     $sql = "DELETE FROM wishlist WHERE user = '$userID' AND product = '$productID';";
     
     $stmt = mysqli_stmt_init($con);
@@ -1071,7 +1092,8 @@ function deleteWishlistItem($con, $productID, $userID) {
     return $result;
 }
 
-function GetWishlistItem($con, $userID, $productID) {
+function GetWishlistItem($con, $userID, $productID)
+{
     $sql = "SELECT * FROM wishlist WHERE user = '$userID' AND product = '$productID';";
 
     $stmt = mysqli_stmt_init($con);
@@ -1089,7 +1111,8 @@ function GetWishlistItem($con, $userID, $productID) {
     return $result;
 }
 
-function GetWishlistByUser($con, $userID) {
+function GetWishlistByUser($con, $userID)
+{
     $sql = "SELECT * FROM wishlist WHERE user = '$userID';";
 
     $stmt = mysqli_stmt_init($con);
@@ -1107,7 +1130,8 @@ function GetWishlistByUser($con, $userID) {
     return $result;
 }
 
-function createOrder($con, $user, $selectedAddress, $cartItems) {
+function createOrder($con, $user, $selectedAddress, $cartItems)
+{
     
     $sql = "INSERT INTO orders (created, updated, status, user, address) VALUES (NOW(), NOW(), 1," . $user['ID'] . ", " . $selectedAddress['ID'] . ");";
     
@@ -1149,7 +1173,7 @@ function createOrder($con, $user, $selectedAddress, $cartItems) {
 
 function GetOrdersByUser($con, $userID)
 {
-    $sql = "SELECT o.*, s.Status FROM orders o JOIN orderstatus s ON o.status = s.ID  WHERE o.User = '$userID';";
+    $sql = "SELECT o.*, s.Status FROM orders o JOIN orderstatus s ON o.status = s.ID  WHERE o.User = '$userID' ORDER BY created DESC;";
 
     $stmt = mysqli_stmt_init($con);
     if(!mysqli_stmt_prepare($stmt, $sql)) {
@@ -1186,4 +1210,3 @@ function GetOrderProducts($con, $orderid)
 }
 
 ?>
-

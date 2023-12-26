@@ -54,12 +54,12 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
         $tabToShow = "accountdetails";
     }
     else if(isset($_POST["addAddress"])) {
-        $address["Name"] = $_POST["firstname"];
-        $address["Surname"] = $_POST["lastname"];
-        $address["Address"] = $_POST["address-input"];
-        $address["City"] = $_POST["city"];
-        $address["ZipCode"] = $_POST["zipcode"];
-        $address["Region"] = $_POST["region"];
+        $address["Name"] = htmlspecialchars(addslashes($_POST["firstname"]));
+        $address["Surname"] = htmlspecialchars(addslashes($_POST["lastname"]));
+        $address["Address"] = htmlspecialchars(addslashes($_POST["address-input"]));
+        $address["City"] = htmlspecialchars(addslashes($_POST["city"]));
+        $address["ZipCode"] = htmlspecialchars(addslashes($_POST["zipcode"]));
+        $address["Region"] = htmlspecialchars(addslashes($_POST["region"]));
         $address["Default"] = $_POST["defaultAddress"]; //isset($_POST["defaultAddress"]) ? $_POST["defaultAddress"] : 'true';
         if(isset($_POST['addressID']) && !empty($_POST['addressID'])) { 
             $address['ID'] = $_POST['addressID'];

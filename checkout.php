@@ -13,8 +13,9 @@ $total = 0;
 $addresses = null;
 $user = null;
 $selectedAddress = null;
+$userExists = false; 
 
-if(isset($_SESSION['CART_ITEMS']) && !empty( $_SESSION['CART_ITEMS'] )) {
+if(isset($_SESSION['CART_ITEMS']) && !empty($_SESSION['CART_ITEMS'])) {
     $cartItems = $_SESSION['CART_ITEMS'];
     foreach($cartItems as $key => $item) {
         $subtotal += $item['Price'] * $item['Quantity'];
@@ -63,15 +64,15 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         } else {
             if($isLoggedIn) {
                 $selectedAddress = [];
-                $selectedAddress["Name"] = $_POST["firstname"];
-                $selectedAddress["Surname"] = $_POST["lastname"]; 
-                $selectedAddress["Street"] = $_POST["address"]; 
-                $selectedAddress["City"] = $_POST["city"]; 
-                $selectedAddress["ZipCode"] = $_POST["zipcode"]; 
-                $selectedAddress["Region"] = $_POST["region"]; 
+                $selectedAddress["Name"] = htmlspecialchars(addslashes($_POST["firstname"]));
+                $selectedAddress["Surname"] = htmlspecialchars(addslashes($_POST["lastname"])); 
+                $selectedAddress["Street"] = htmlspecialchars(addslashes($_POST["address"])); 
+                $selectedAddress["City"] = htmlspecialchars(addslashes($_POST["city"])); 
+                $selectedAddress["ZipCode"] = htmlspecialchars(addslashes($_POST["zipcode"])); 
+                $selectedAddress["Region"] =$_POST["region"]; 
                 $selectedAddress["User"] = $user["ID"];
                 $selectedAddress["Default"] = $addresses->num_rows == 0 ? true : false;
-                $selectedAddress["Mobile"] = $_POST["addrphone"]; 
+                $selectedAddress["Mobile"] = htmlspecialchars(addslashes($_POST["addrphone"])); 
                 $selectedAddress["ID"] = createAddress($con, $user["ID"], $selectedAddress);
                 $result = createOrder($con, $user, $selectedAddress, $cartItems);
                 if($result) {
@@ -82,29 +83,38 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 }
             } else {
                 $user = [];
-                $user['Name'] = $_POST['userfirstname'];
-                $user['Surname'] = $_POST['userlastname'];
-                $user['Email'] = $_POST['email'];
+                $user['Name'] = htmlspecialchars(addslashes($_POST['userfirstname']));
+                $user['Surname'] = htmlspecialchars(addslashes($_POST['userlastname']));
+                $user['Email'] = htmlspecialchars(addslashes($_POST['email']));
                 $user['Password'] = sha1($_POST['password']);
-                $user['ContactNumber'] = $_POST['userphone'];
-                $user['ID'] = createUser($con, $user);
-                $selectedAddress = [];
-                $selectedAddress["Name"] = $_POST["firstname"];
-                $selectedAddress["Surname"] = $_POST["lastname"]; 
-                $selectedAddress["Street"] = $_POST["address"]; 
-                $selectedAddress["City"] = $_POST["city"]; 
-                $selectedAddress["ZipCode"] = $_POST["zipcode"]; 
-                $selectedAddress["Region"] = $_POST["region"]; 
-                $selectedAddress["User"] = $user["ID"];
-                $selectedAddress["Default"] = $addresses->num_rows == 0 ? true : false;
-                $selectedAddress["Mobile"] = $_POST["addrphone"]; 
-                $selectedAddress["ID"] = createAddress($con, $user["ID"], $selectedAddress);
-                $result = createOrder($con, $user, $selectedAddress, $cartItems);
-                if($result) {
-                    $_SESSION["ORDER_SUMMARY"]["ITEMS"] = $cartItems;
-                    $_SESSION["ORDER_SUMMARY"]["ADDRESS"] = $selectedAddress;
-                    $_SESSION["CART_ITEMS"] = [];
-                    echo '<script type="text/javascript"> window.location.href="orderconfirmed.php" </script>';
+                $user['ContactNumber'] = htmlspecialchars(addslashes($_POST['userphone']));
+                if(!CheckUserExists($con, $user['Email'])) {
+                    $user['ID'] = createUser($con, $user);
+                    if($user['ID'] > 0) {
+                        $userCreated = true;
+                        $selectedAddress = [];
+                        $selectedAddress["Name"] = htmlspecialchars(addslashes($_POST["firstname"]));
+                        $selectedAddress["Surname"] = htmlspecialchars(addslashes($_POST["lastname"])); 
+                        $selectedAddress["Street"] = htmlspecialchars(addslashes($_POST["address"])); 
+                        $selectedAddress["City"] = htmlspecialchars(addslashes($_POST["city"])); 
+                        $selectedAddress["ZipCode"] = htmlspecialchars(addslashes($_POST["zipcode"])); 
+                        $selectedAddress["Region"] = $_POST["region"]; 
+                        $selectedAddress["User"] = $user["ID"];
+                        $selectedAddress["Default"] = $addresses->num_rows == 0 ? true : false;
+                        $selectedAddress["Mobile"] = htmlspecialchars(addslashes($_POST["addrphone"])); 
+                        $selectedAddress["ID"] = createAddress($con, $user["ID"], $selectedAddress);
+                        $result = createOrder($con, $user, $selectedAddress, $cartItems);
+                        if($result) {
+                            $_SESSION["ORDER_SUMMARY"]["ITEMS"] = $cartItems;
+                            $_SESSION["ORDER_SUMMARY"]["ADDRESS"] = $selectedAddress;
+                            $_SESSION["CART_ITEMS"] = [];
+                            echo '<script type="text/javascript"> window.location.href="orderconfirmed.php" </script>';
+                        }
+                    }
+                }
+                else{
+                    $userExists = true;
+                    $user = null;
                 }
             }
         }
@@ -131,11 +141,13 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                     <select name="selectAddress" id="selectAddress" class="form rounded-0 p-1 mb-3" style="width: 100%;" required
                         autocomplete="region" onchange="document.formSelectAddress.submit()">
                         <?php foreach($addresses as $address): ?>
-                            <option value="<?php echo $address['ID']; if($selectedAddress != null && $address["Def"] == $selectedAddress["ID"]) echo 'selected';?>">
+                            <option value="<?php echo $address['ID']; if($selectedAddress != null && $address["Def"] == $selectedAddress["ID"]) { echo 'selected';
+                                           }?>">
                                 <?php echo $address['Name'] . ' ' . $address['Surname'] . ', ' . $address['Street'] .', ' . $address['City'] . ', ' . $address['ZipCode'] . ', ' . $address['Region'] ?>
                             </option>
                         <?php endforeach; ?>
-                        <option value="NEW" <?php if($selectedAddress == null) echo "selected"; ?>>
+                        <option value="NEW" <?php if($selectedAddress == null) { echo "selected";
+                                            } ?>>
                             Add new address...
                         </option>
                     </select>
@@ -185,8 +197,10 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
                     <select name="region" id="region-select" class="form rounded-0 p-1 mb-3" style="width: 100%;" required
                         autocomplete="region" required disabled>
-                        <option value="Malta" <?php if($selectedAddress["Region"] == "Malta") echo "selected"; ?>>Malta</option>
-                        <option value="Gozo" <?php if($selectedAddress["Region"] == "Gozo") echo "selected"; ?>>Gozo</option>
+                        <option value="Malta" <?php if($selectedAddress["Region"] == "Malta") { echo "selected";
+                                              } ?>>Malta</option>
+                        <option value="Gozo" <?php if($selectedAddress["Region"] == "Gozo") { echo "selected";
+                                             } ?>>Gozo</option>
                     </select>
 
                     <label for="address-input">Address:<span class="text-danger">*</span></label>
@@ -231,6 +245,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
                     <label for="phone-input">Mobile Number:<span class="text-danger">*</span></label>
                     <input class="w-100 p-1 mb-3" type="tel" id="user-phone-input" name="addrphone" required autocomplete="tel">
+                <?php endif; ?>
+                <?php if($userExists) : ?>
+                    <h3>A user with this email already exists, nahseb.</h3>
                 <?php endif; ?>
                 <button type="submit"
                         class="btn w-100 btn-danger rounded-0">
