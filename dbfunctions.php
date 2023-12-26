@@ -40,6 +40,7 @@ function CheckUserExists($con, $email)
     return false;
 }
 
+// Fetches user data by user ID from the database.
 function GetUserByID($con, $id)
 {
     // Select a user by ID.
@@ -60,8 +61,6 @@ function GetUserByID($con, $id)
     }
     return false;
 }
-
-
 
 // Updates a user's details in the database.
 function updateUser($con, $id, $name, $email, $surname, $number, $role, $password)
@@ -388,6 +387,7 @@ function deleteCategory($con, $id)
 }
 
 /* Products Management */
+//Retrieves all non-deleted products, joining brand and category data.
 function GetProducts($con)
 {
     $sql = "SELECT p.*, b.Name as 'brandName', c.Name as 'categoryName' FROM product p JOIN brand b on p.Brand = b.ID JOIN category c ON p.Category = c.ID WHERE p.Deleted = '0'";
@@ -407,6 +407,7 @@ function GetProducts($con)
     return $result;
 }
 
+// Fetches products with options to filter by category, brand, or search term and to sort the results. 
 function GetProductsPage($con, $sort, $category, $brand, $search)
 {
     $sql = "SELECT p.*, b.Name as 'brandName', c.Name as 'categoryName' FROM product p JOIN brand b on p.Brand = b.ID JOIN category c ON p.Category = c.ID WHERE p.Deleted = '0'";
@@ -449,6 +450,7 @@ function GetProductsPage($con, $sort, $category, $brand, $search)
     return $result;
 }
 
+// Gets the newest products for display on the index page.
 function GetLatestProductsIndex($con)
 {
     $sql = "SELECT p.*, b.Name as 'brandName', c.Name as 'categoryName' FROM product p JOIN brand b on p.Brand = b.ID JOIN category c ON p.Category = c.ID WHERE p.Deleted = '0' ORDER BY p.DateAdded DESC LIMIT 4;";
@@ -468,6 +470,7 @@ function GetLatestProductsIndex($con)
     return $result;
 }
 
+// Retrieves products that are best sellers
 function GetBestSellersIndex($con)
 {
     $sqlOrders = "SELECT o.product, Count(o.product), SUM(o.quantity) FROM funzies.order_product o GROUP BY o.product;";
@@ -489,6 +492,7 @@ function GetBestSellersIndex($con)
     return $result;
 }
 
+// Fetches a single product by its ID.
 function GetProductByID($con, $id)
 {
     $sql = "SELECT p.*, b.Name as 'brandName', c.Name as 'categoryName', c.ID as 'categoryID' FROM product p JOIN brand b on p.Brand = b.ID JOIN category c ON p.Category = c.ID WHERE p.Deleted = '0' AND p.ID = '$id'";
@@ -514,6 +518,7 @@ function GetProductByID($con, $id)
 
 }
 
+// Counts how many products are in a given category.
 function GetProductCountForCategory($con, $category)
 {
     $sql = "SELECT Count(*) as 'Amount' FROM product WHERE Category = '$category'";
@@ -538,6 +543,7 @@ function GetProductCountForCategory($con, $category)
 
 }
 
+// Counts how many products are associated with a given brand.
 function GetProductCountForBrand($con, $brand)
 {
     $sql = "SELECT Count(*) as 'Amount' FROM product WHERE Brand = '$brand'";
@@ -562,6 +568,7 @@ function GetProductCountForBrand($con, $brand)
 
 }
 
+// Adds a new product to the database.
 function createProduct($con, $name, $description, $category, $price, $stock, $brand, $image)
 {
     $imagePath = '';
@@ -599,6 +606,7 @@ function createProduct($con, $name, $description, $category, $price, $stock, $br
     return $result;
 }
 
+// Updates an existing product.
 function updateProduct($con, $id, $name, $description, $category, $price, $stock, $brand, $image)
 {
     $imagePath = '';
@@ -636,6 +644,7 @@ function updateProduct($con, $id, $name, $description, $category, $price, $stock
     return $result;
 }
 
+// Sets product as deleted by setting the Deleted column to 1
 function deleteProduct($con, $id)
 {
     $sql = "UPDATE product SET Deleted = '1' WHERE ID = '$id'";
@@ -654,6 +663,7 @@ function deleteProduct($con, $id)
 }
 
 /* Order and Order Status Management */
+// Retrieves all non-deleted order statuses.
 function GetOrderStatus($con)
 {
     $sql = "SELECT * FROM orderstatus WHERE Deleted = '0'";
@@ -673,6 +683,7 @@ function GetOrderStatus($con)
     return $result;
 }
 
+// Fetches all non-deleted orders, joining order status data.
 function GetOrders($con)
 {
     
@@ -693,6 +704,7 @@ function GetOrders($con)
     return $result;
 }
 
+/* Adds a new order status to the database. */
 function createOrderStatus($con,$name)
 {
     $sql = "INSERT INTO orderstatus (Status) VALUES ('$name')";
@@ -710,6 +722,7 @@ function createOrderStatus($con,$name)
     return $result;
 }
 
+/* Updates an existing order status with a new name. */
 function updateOrderStatus($con, $id, $name)
 {
     $sql = "UPDATE orderstatus SET Status = '$name' WHERE ID = $id;";
@@ -727,6 +740,7 @@ function updateOrderStatus($con, $id, $name)
     return $result;
 }
 
+/* Deletes an order status by marking it as deleted. */
 function deleteOrder($con, $id)
 {
     $sql = "UPDATE orders SET deleted = 1 WHERE ID = $id;";
@@ -744,6 +758,7 @@ function deleteOrder($con, $id)
     return $result;
 }
 
+// Updates the status of a specific order in the database.
 function setOrderStatus($con, $id, $status)
 {
     $sql = "UPDATE orders SET status = '$status' WHERE ID = $id;";
@@ -761,6 +776,7 @@ function setOrderStatus($con, $id, $status)
     return $result;
 }
 
+/* Deletes an order status by marking it as deleted. */
 function deleteOrderStatus($con, $id)
 {
     $sql = "UPDATE orderstatus SET Deleted = '1' WHERE ID = '$id'";
@@ -778,7 +794,7 @@ function deleteOrderStatus($con, $id)
     return $result;
 }
 
-/* Review and Review Status Management */
+/* Review and Review Status Management
 function GetReviewStatus($con)
 {
     $sql = "SELECT * FROM reviewstatus WHERE Deleted = '0'";
@@ -868,11 +884,14 @@ function deleteReviewStatus($con, $id)
     return $result;
 }
 
+*/
+// Generates a unique identifier
 function getGUID()
 {
     return sprintf('%04X%04X-%04X-%04X-%04X-%04X%04X%04X', mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(16384, 20479), mt_rand(32768, 49151), mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(0, 65535));
 }
 
+// Function to authenticate admin (used on the Admin Page)
 function adminLogin($con, $email, $password)
 {
     $password = sha1($password);
@@ -899,6 +918,7 @@ function adminLogin($con, $email, $password)
     return false;
 }
 
+// Function to authenticate user login on the main funzies page
 function userLogin($con, $email, $password)
 {
     $password = sha1($password);
@@ -925,6 +945,7 @@ function userLogin($con, $email, $password)
     return false;
 }
 
+// Retrieves all non-deleted addresses for a user.
 function GetAddressesByUser($con, $userID)
 {
     $sql = "SELECT * FROM address WHERE User = '$userID' AND Deleted = '0';";
@@ -944,6 +965,7 @@ function GetAddressesByUser($con, $userID)
     return $result;
 }
 
+// Fetches a specific address.
 function GetAddressByID($con, $ID)
 {
     $sql = "SELECT * FROM address WHERE ID = '$ID';";
@@ -963,6 +985,7 @@ function GetAddressByID($con, $ID)
     return $result;
 }
 
+// Creates a new address in the database for a specific user.
 function createAddress($con, $userID, $address)
 {
     $name = $address["Name"];
@@ -1002,6 +1025,7 @@ function createAddress($con, $userID, $address)
     return $result;
 }
 
+// Updates an existing address in the database.
 function updateAddress($con, $userID, $address)
 {
     $id = $address["ID"];
@@ -1041,6 +1065,7 @@ function updateAddress($con, $userID, $address)
     return $result;
 }
 
+// Marks an address as deleted.
 function deleteAddress($con, $id)
 {
     $sql = "UPDATE address SET Deleted = '1' WHERE ID = '$id'";
@@ -1058,6 +1083,7 @@ function deleteAddress($con, $id)
     return $result;
 }
 
+/* Adds a product to a user's wishlist. */
 function createWishlistItem($con, $productID, $userID)
 {
     $sql = "INSERT INTO wishlist (user, product) VALUES('$userID', '$productID');";
@@ -1075,6 +1101,7 @@ function createWishlistItem($con, $productID, $userID)
     return $result;
 }
 
+/* Removes a product from a user's wishlist. */
 function deleteWishlistItem($con, $productID, $userID)
 {
     $sql = "DELETE FROM wishlist WHERE user = '$userID' AND product = '$productID';";
@@ -1092,6 +1119,7 @@ function deleteWishlistItem($con, $productID, $userID)
     return $result;
 }
 
+/* Retrieves a specific wishlist item to check if it exists. */
 function GetWishlistItem($con, $userID, $productID)
 {
     $sql = "SELECT * FROM wishlist WHERE user = '$userID' AND product = '$productID';";
@@ -1111,6 +1139,7 @@ function GetWishlistItem($con, $userID, $productID)
     return $result;
 }
 
+/* Gets all items in a user's wishlist. */
 function GetWishlistByUser($con, $userID)
 {
     $sql = "SELECT * FROM wishlist WHERE user = '$userID';";
@@ -1130,6 +1159,7 @@ function GetWishlistByUser($con, $userID)
     return $result;
 }
 
+/* Creates a new order, including details about the user, address, and the items in the order. */
 function createOrder($con, $user, $selectedAddress, $cartItems)
 {
     
@@ -1171,6 +1201,7 @@ function createOrder($con, $user, $selectedAddress, $cartItems)
     return $result;
 }
 
+/* Retrieves all orders made by a specific user, ordered by creation date. */
 function GetOrdersByUser($con, $userID)
 {
     $sql = "SELECT o.*, s.Status FROM orders o JOIN orderstatus s ON o.status = s.ID  WHERE o.User = '$userID' ORDER BY created DESC;";
@@ -1190,6 +1221,7 @@ function GetOrdersByUser($con, $userID)
     return $result;
 }
 
+/* Fetches all products associated with a specific order. */
 function GetOrderProducts($con, $orderid)
 {
     $sql = "SELECT * FROM order_product op WHERE op.orderid = '$orderid';";

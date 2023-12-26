@@ -3,11 +3,11 @@ require "functions.php";
 require "dbfunctions.php";
 
 //the following will reset the session data completely:
-session_unset();
-session_destroy();
-session_regenerate_id();
+session_unset(); // Remove all session variables.
+session_destroy(); // Destroy the session itself.
+session_regenerate_id(); // Generate a new session ID.
 
-//go to location: 
-header("Location: index.php");
-die;
+// Redirects the user to the homepage (index.php).
+header("Location: index.php"); 
+die; // Terminates the script.
 ?>
