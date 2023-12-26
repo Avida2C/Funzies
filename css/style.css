@@ -1,3 +1,4 @@
+/* Global styles affecting all elements */
 * {
     line-height: 24px;
     font-size: 16px;
@@ -7,6 +8,7 @@ body {
     overflow-y: scroll;
 }
 
+/* Footer styles */
 footer ul li {
     padding: 0.2em;
     cursor: default;
@@ -28,6 +30,7 @@ footer a:hover {
     color: rgb(255, 0, 0) !important;
 }
 
+/* Logo styles */
 .navLogo {
     max-width: 100px;
 }
@@ -36,6 +39,7 @@ footer a:hover {
     max-width: 200px;
 }
 
+/* Carousel style */
 .carousel-md img {
     height: 380px;
 }
@@ -52,11 +56,11 @@ footer a:hover {
 
 .list-group-item.active {
     background-color: #DC3545;
-    color: #ffffff; 
-    border:0;
+    color: #ffffff;
+    border: 0;
 }
 
-
+/* Margin and spacing utility classes */
 .spacing-mt {
     margin-top: 3em;
 }
@@ -70,6 +74,7 @@ footer a:hover {
     margin-top: 3em;
 }
 
+/* Product card styles */
 .product-card {
     padding: 5px !important;
     margin: 0;
@@ -103,12 +108,13 @@ footer a:hover {
     padding: 5px;
 }
 
+/* Utility class to remove margins and padding */
 .clearMP {
     padding: 0;
     margin: 0;
 }
 
-/* Quantity Element */
+/* Styles for quantity selector elements */
 .quantity-selector {
     display: flex;
     align-items: center;
@@ -143,6 +149,7 @@ footer a:hover {
     /* Add some space between the buttons and the number box */
 }
 
+/* Forms Valid and Invalid style */
 .valid {
     border: 3px solid rgb(0, 255, 0) !important;
     border-radius: 4px !important;
@@ -154,13 +161,14 @@ footer a:hover {
 
 }
 
+/* Reset box-sizing for all elements */
 *,
 *::before,
 *::after {
     box-sizing: border-box;
 }
 
-/* Scrollbar */
+/* Custom scrollbar styles */
 /* width */
 ::-webkit-scrollbar {
     width: 10px;
@@ -177,7 +185,7 @@ footer a:hover {
     background: #DC3545;
 }
 
-/*Slider */
+/* Slider styles */
 .slidecontainer {
     width: 100%;
     /* Width of the outside container */
@@ -205,53 +213,9 @@ footer a:hover {
     cursor: pointer;
 }
 
-#star-review {
 
-    /* use display:inline-flex to prevent whitespace issues. alternatively, you can put all the children of .rating-group on a single line */
-    .rating-group {
-        display: inline-flex;
-    }
-
-    /* hide radio inputs */
-    .rating-input {
-        position: absolute !important;
-        left: -9999px !important;
-    }
-
-    /* hide 'none' input from screenreaders */
-    .rating-input-none {
-        display: none
-    }
-
-    /* set icon padding and size */
-    .rating-label {
-        cursor: pointer;
-        padding: 0 0.1em;
-        font-size: 2rem;
-    }
-
-    /* set default star color */
-    .rating-icon-star {
-        color: orange;
-    }
-
-    /* if any input is checked, make its following siblings grey */
-    .rating-input:checked~.rating-label .rating-icon-star {
-        color: #ddd;
-    }
-
-    /* make all stars orange on rating group hover */
-    .rating-group:hover .rating-label .rating-icon-star {
-        color: orange;
-    }
-
-    /* make hovered input's following siblings grey on hover */
-    .rating-input:hover~.rating-label .rating-icon-star {
-        color: #ddd;
-    }
-}
-
-/* Responsiveness */
+/* Media queries for responsiveness */
+/* Styles that apply when the viewport width is 992px or less */
 @media only screen and (max-width: 992px) {
 
     #navCategories {
@@ -309,6 +273,7 @@ footer a:hover {
     }
 }
 
+/* Styles that apply when the viewport width is 993px or more */
 @media only screen and (min-width: 993px) {
 
     #navNavigation {

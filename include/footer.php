@@ -42,9 +42,6 @@
     </div>
 </footer>
 
-<!-- Script Inclusions for Functionality -->
-
-
 <!-- Custom JavaScript for specific website behavior -->
 <script src="js/javascript.js"></script>
 <!-- Ionicons for iconography -->
