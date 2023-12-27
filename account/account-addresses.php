@@ -3,16 +3,21 @@
 <div class="mt-4">
     <h3 class="mb-3 product-card-font fs-5">Your Addresses</h3>
     
+    <!-- Conditional check to display addresses if any exists -->
     <?php if($userAddresses->num_rows > 0) : ?>
     <!-- Address Cards Container -->
     <div class="row">
-        <!-- Single Address Card -->
+  
+        <!-- Loop through each address associated with the user -->
         <?php foreach($userAddresses as $userAddress): ?>
         <div class="col-md-6 mb-2">
+            <!-- Individual Address Card -->
             <div class="card shadow-sm border-0 rounded-0">
-                <!-- Card Body -->
                 <div class="card-body">
-                    <?php if($userAddress["Def"]) echo "(Default)"; ?>
+                    <!-- Indicate if address is the default -->
+                    <?php if($userAddress["Def"]) { echo "(Default)";
+                    } ?>
+                    <!-- Display address name and details -->
                     <h5 class="card-title"><?php echo $userAddress["Name"] . " " . $userAddress["Surname"]; ?></h5>
                     <p class="card-text">
                         <?php echo $userAddress["Street"]; ?>
@@ -32,6 +37,7 @@
         <?php endforeach; ?>
     </div>
     <?php else : ?>
+        <!-- Message if no addresses are found -->
         <h5 class="mb-3">No addresses have been added!</h5>
     <?php endif; ?>
     <!-- Button to Open 'Add New Address' Modal -->

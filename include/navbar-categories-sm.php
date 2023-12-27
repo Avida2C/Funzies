@@ -1,6 +1,8 @@
 <?php 
+// Retrieve the list of categories from the database using the GetCategories function.
 $categories = GetCategories($con);
 ?>
+
 <div id="navCategories-sm" class="container col-sm-4 col-md-6 col-lg-4 col-xl-4 navbar navbar-light bg-light">
     <!-- Categories for small screens -->
     <button class="btn rounded-0 py-2 ms-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar2"
@@ -11,7 +13,6 @@ $categories = GetCategories($con);
     <!-- Offcanvas Navigation Panel -->
     <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar2" aria-labelledby="offcanvasNavbarLabel">
         <div class="offcanvas-header border-bottom border-danger border-3">
-
             <div class="nav nav-tabs border-0" id="nav-tab" role="tablist">
                 <!-- Navigation Tabs -->
                 <ul class="nav nav-underline">
@@ -52,15 +53,13 @@ $categories = GetCategories($con);
                 tabindex="0">
                 <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                     <!-- Categories List -->
-                    <?php foreach($categories as $category):
-                        ?>
-                <!-- Table Body: Each row shows user data with options to edit or delete -->
-                <!-- User -->
-                <li class="nav-item">
-                    <a class="nav-link" href="shop.php?category=<?php echo $category['ID']; ?>"><?php echo $category["Name"] ?></a>
-                </li>
-                <?php endforeach ?>
-                    <!-- Categories End -->
+                    <?php foreach($categories as $category): ?>
+                    <li class="nav-item">
+                        <!-- Link to the shop page filtered by the category ID -->
+                        <a class="nav-link" href="shop.php?category=<?php echo $category['ID']; ?>">
+                            <?php echo $category["Name"] ?></a>
+                    </li>
+                    <?php endforeach ?>
                 </ul>
             </div>
         </div>

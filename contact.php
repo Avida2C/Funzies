@@ -4,24 +4,28 @@ require 'functions.php';
 require 'dbfunctions.php';
 require_once 'include/header.php';
 $isValid = true;
+
+// Check if the request method is POST, indicating form submission.
 if($_SERVER['REQUEST_METHOD'] == "POST") {
+    // Sanitize and validate the name field.
     $name = htmlspecialchars(addslashes($_POST['name']));
     if(preg_match($pattern['name'], $name)!= 1) {
         $isValid = false;
     }
-
+    // Sanitize and validate the email field.
     $email = htmlspecialchars(addslashes($_POST['email'])); 
     if(preg_match($pattern['email'], $email)!= 1) {
         $isValid = false;
     }
-    
+    // Sanitize and validate the subject field.
     $subject = htmlspecialchars(addslashes($_POST['subject']));
     if(preg_match($pattern['subject'], $subject)!= 1) {
         $isValid = false;
     }
-   
+    // If all fields are valid, proceed to send the message.
     if($isValid) {
         if (isset($_POST["Mailer"])) {
+            // Sanitize message fields.
             $name = htmlspecialchars($_POST["name"]);
             $email = htmlspecialchars($_POST["email"]);
             $subject = htmlspecialchars($_POST["subject"]);
@@ -62,13 +66,16 @@ require_once 'include/navbar.php';
 
                 <!-- Send Message Button -->
                 <button class="btn btn-danger rounded-0 w-100" name="Mailer">Send Message</button>
+                <!-- Validation and sending status messages -->
                 <?php if(!$isValid) {
                     echo '<p style="color:red;" class="pt-3">One or more inputs are incorrect! Please try again. </p>';
                 }
+                // If message sent, display 'Message Sent!'
                 if (isset($sent)) {
                     if($sent) {
                           echo "<p class='pt-3' style='color:green;'> Message Sent! </p>";
                     }
+                    // If message not set, display 'Message not sent!'
                     else{
                         echo "<p class='pt-3' style='color:red;'> Message not sent! </p>";
                     }  

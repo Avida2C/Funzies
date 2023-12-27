@@ -1,16 +1,20 @@
 <?php
-
+// Check if the form has been submitted via POST.
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
+    // Check if the 'Add to Cart' button is clicked and a product ID is provided.
     if(!empty($_POST['addProductWishlistToCart']) && isset($_POST['prodID'])) {
         $cartItems = [];
         $existingProd = null;
         $updated = false;
+        // Load existing cart items from the session if they exist.
         if(isset($_SESSION['CART_ITEMS'])) {
             $cartItems = $_SESSION['CART_ITEMS'];
         }
+        // Check if the product is already in the cart.
         if(!empty($cartItems)) {
             foreach($cartItems as $key => $value) {
                 if($cartItems[$key]['ID']== $_POST['prodID']) {
+                    // Increment the quantity if the product is already in the cart.
                     $newQuantity = $cartItems[$key]['Quantity'] + 1;
                     if($newQuantity <= $cartItems[$key]['Stock']) {
                         $cartItems[$key]['Quantity'] = $newQuantity;
@@ -21,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 }
             }
         }
-
+        // If the product is not in the cart, add it.
         if(!$updated) {
             $product = GetProductByID($con, $_POST['prodID']);
             $prodToAdd["ID"] = $product["ID"];
@@ -31,19 +35,28 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             $prodToAdd["Stock"] = $product["Stock"];
             $prodToAdd["Quantity"] = 1;
             array_push($cartItems, $prodToAdd);
-
+            
+            // Update the session with the new cart items.
             $_SESSION['CART_ITEMS'] = $cartItems;
+            // Remove the item from the wishlist.
             deleteWishlistItem($con, $_POST['prodID'], $_SESSION['USER']["ID"]);
+            // Redirect to the wishlist section of the account page.
             echo('<script type="text/javascript"> window.location.href="account.php#accountwishlist" </script> ");');
         }
+        // Check if the 'Remove from Wishlist' button is clicked and a product ID is provided.
     } else if(isset($_POST['deleteProductCardFromWishlist']) && isset($_POST['prodID'])) {
+        // Remove the item from the wishlist.
         deleteWishlistItem($con, $_POST['prodID'], $_SESSION['USER']["ID"]);
+        // Redirect to the wishlist section of the account page.
         echo('<script type="text/javascript"> window.location.href="account.php#accountwishlist" </script>"');
     }
 }
 
+// Retrieve wishlist items for the user.
 $wishlistItems = GetWishlistByUser($con, $user["ID"]);
 $wishlistProducts = [];
+
+// If there are items, get the product details for each.
 if (!empty($wishlistItems)) {
     foreach ($wishlistItems as $wishlistProduct) {
         $prod = GetProductByID($con, $wishlistProduct["product"]);
@@ -51,29 +64,27 @@ if (!empty($wishlistItems)) {
     }
 }
 
-function includeWishList($product){
+// Function to include the wishlist product card.
+function includeWishList($product)
+{
     include 'include/product-card-wl.php';
-}
-
-
-
-?>
+}?>
 
 <h3 class="border-bottom border-2 border-danger pb-2">Wishlist</h3>
 <!-- Section Heading -->
-
 <div class="container">
     <div class="row justify-content-between">
         <!-- Product cards -->
         <?php 
         if(empty($wishlistProducts)) {
+             // Display a message if the wishlist is empty.
             echo('<h2>You have no products on your wish list</h2>');
-        } else {
+        } 
+        else {
             foreach ($wishlistProducts as $product) {
-                // Includes a product card 
+                // Include a product card for each item in the wishlist.
                 includeWishList($product);
             }
-        }
-        ?>
+        }?>
     </div>
 </div>

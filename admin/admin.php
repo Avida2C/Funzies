@@ -1,18 +1,20 @@
 <?php require '../functions.php'; 
 require '../dbfunctions.php'; 
 
-
+// Check if the form has been submitted.
 if($_SERVER['REQUEST_METHOD'] == "POST") {
+    // Sanitize and capture the email and password input from the user.
     $email = htmlspecialchars(addslashes($_POST['email'])); // 'addslashes' allows the user to use brackets
     $password = htmlspecialchars(addslashes($_POST['password']));
 
-    // print_r(mysqli_num_rows($result)); this will display the result which includes the results found in the db under num_rows
-    if(adminLogin($con, $email, $password)) 
-    {
+    // Authenticate the user.
+    if(adminLogin($con, $email, $password)) {
+        // If login is successful, redirect to the user management page.
         header("Location: ../admin/user-management.php"); //this will direct the user to a different page
     }
     else
     {
+        // If login fails, set an error message.
         $error = "Incorrect email or password, try again!";
     }
 }
@@ -44,21 +46,17 @@ require_once 'include/navbar.php'; // Navbar Include: Site navigation bar
                 <!-- Password Input -->
                 <label class="mt-2" for="password">Password: <span class="text-danger">*</span></label>
                 <input class="w-100 p-1" type="password" name="password" id="password" required
-                    autocomplete="current-password" >
+                    autocomplete="current-password">
 
                 <!-- Login Button -->
                 <button class="w-100 my-3 btn btn-primary">Log In</button>
             </form>
 
-            <?php
-    if(!empty($error)) {
-        echo '<div class="container" style="margin-left: auto; margin-right: auto;">
-        <p style="text-align:center;color:red;">' 
-        . $error . 
-        '</p></div>';
-    }
-    ?>
-
+            <!-- Error message display -->
+            <?php if(!empty($error)) {
+                echo '<div class="container" style="margin-left: auto; margin-right: auto;">
+            <p style="text-align:center;color:red;">' . $error . '</p></div>';
+            } ?>
         </div>
     </div>
 </div>

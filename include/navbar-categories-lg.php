@@ -1,7 +1,6 @@
 <?php 
-
+// Retrieve the list of categories from the database using the GetCategories function.
 $categories = GetCategories($con);
-
 ?>
 
 <div id="navCategories" class="container col-sm-6 col-md-6 col-lg-4 col-xl-4 navbar navbar-light bg-light">
@@ -22,12 +21,12 @@ $categories = GetCategories($con);
         <!-- Categories List -->
         <div class="offcanvas-body m-2">
             <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                <?php foreach($categories as $category):
-                        ?>
-                <!-- Table Body: Each row shows user data with options to edit or delete -->
-                <!-- User -->
+                <!-- Loop through each category and create a list item with a link -->
+                <?php foreach($categories as $category): ?>
                 <li class="nav-item">
-                    <a class="nav-link" href="shop.php?category=<?php echo $category['ID']; ?>"><?php echo $category["Name"] ?></a>
+                    <!-- Link to the shop page filtered by the category ID -->
+                    <a class="nav-link" href="shop.php?category=<?php echo $category['ID']; ?>">
+                        <?php echo $category["Name"] ?></a>
                 </li>
                 <?php endforeach ?>
             </ul>

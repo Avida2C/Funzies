@@ -18,18 +18,19 @@
                     </button>
                 </div>
             </div>
-
+            <!-- Account Icon: Shows login button if not logged in, button becomes a link to the account page if logged in -->
             <div id="navAccount" class="col-sm-6 col-md-12 col-lg-3 col-xl-3 text-end align-self-center">
                 <!-- Account Login Button and Sidebar -->
-                <?php if(!isset($_SESSION["USER"])) echo 
-                '<button class="btn text-muted" type="button" data-bs-toggle="offcanvas" data-bs-target="#AccountLogin"
+                <?php if(!isset($_SESSION["USER"])) { echo 
+                    '<button class="btn text-muted" type="button" data-bs-toggle="offcanvas" data-bs-target="#AccountLogin"
                     aria-controls="AccountLogin">
                     <ion-icon size="large" name="person-circle-outline"></ion-icon>
                 </button>';
-                else
-                echo '<a class="btn text-muted" href="account.php">
+                } else {
+                    echo '<a class="btn text-muted" href="account.php">
                         <ion-icon size="large" name="person-circle-outline"></ion-icon>
                     </button>';
+                }
                 ?>
                 <!-- Account Login Sidebar -->
                 <?php require_once 'include/navbar-account-sidebar.php'?>

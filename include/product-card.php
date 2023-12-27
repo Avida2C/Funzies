@@ -1,24 +1,30 @@
-
 <?php 
 require 'connection.php';
 
 $isLoggedIn = false;
+// Check if product ID is provided in the URL and fetch product details.
 if(isset($_GET['productID']) && !empty($_GET['productID'])) {
     $product = GetProductByID($con, $_GET['productID']);
 }
 
+// Handle POST requests for cart and wishlist updates.
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
+    // If 'Add to Cart' is triggered.
     if(!empty($_POST['addProductCardToCart']) && $_POST['addProdKey'] == $key) {
         $cartItems = [];
         $existingProd = null;
         $updated = false;
+        // Check if there are existing cart items in the session.
         if(isset($_SESSION['CART_ITEMS'])) {
             $cartItems = $_SESSION['CART_ITEMS'];
         }
+        // Loop through cart items to check if the product is already added.
         if(!empty($cartItems)) {
             foreach($cartItems as $key => $value) {
+                // If product is found, increase the quantity.
                 if($cartItems[$key]['ID']== $product['ID']) {
                     $newQuantity = $cartItems[$key]['Quantity'] + 1;
+                    // Ensure the new quantity does not exceed stock.
                     if($newQuantity <= $cartItems[$key]['Stock']) {
                         $cartItems[$key]['Quantity'] = $newQuantity;
                         $_SESSION['CART_ITEMS'] = $cartItems;
@@ -28,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 }
             }
         }
-
+        // If the product is not already in the cart, add it.
         if(!$updated) {
             $prodToAdd["ID"] = $product["ID"];
             $prodToAdd["Name"] = $product["Name"];
@@ -40,6 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
             $_SESSION['CART_ITEMS'] = $cartItems;
         }
+        // If 'Add to Wishlist' or 'Remove from Wishlist' is triggered.
     } else if(isset($_POST['addProductCardToWishlist']) && $_POST['addProdID'] == $product["ID"]) {
         createWishlistItem($con, $product['ID'], $_SESSION['USER']["ID"]);
     } else if(isset($_POST['deleteProductCardFromWishlist']) && $_POST['addProdID'] == $product["ID"]) {
@@ -47,13 +54,13 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     }
 }
 
+// Check if a user is logged in and fetch wishlist status.
 if(isset($_SESSION['USER'])) {
     $isLoggedIn = true;
     $wishlist = GetWishlistItem($con, $_SESSION['USER']['ID'], $product['ID']);
     $isInWishlist = $wishlist->num_rows > 0;
-}
+}?>
 
-?>
 <div class="card shadow-sm rounded-0 border-0 product-card mb-2">
     <!-- Product Card Container -->
     <a href="product-page.php?productID=<?php echo $product['ID'] ?>">
@@ -83,11 +90,11 @@ if(isset($_SESSION['USER'])) {
         </form>
         <div class="row m-0 p-0">
             <div class="col m-0 p-0">
-                    <!-- Add to Wishlist Link -->
                     <?php if($isLoggedIn) : ?>
-                    <!-- Button Add to wishlist -->
+                    <!-- Show Button Add to wishlist -->
                         <?php if(!$isInWishlist) : ?>
                             <form method="post">
+                                <!-- If product does not exist in wishlist, add it -->
                                 <input type="hidden" name="addProductCardToWishlist" value="addProductToWishlist">
                                 <input type="hidden" name="addProdID" value="<?php echo $product["ID"] ?>">
                                 <button type="submit" class="btn btn-success rounded-0 w-100 m-0 mt-1 p-0 text-decoration-none">
@@ -95,6 +102,7 @@ if(isset($_SESSION['USER'])) {
                                 </button>
                             </form>
                         <?php else : ?>
+                            <!-- Remove from wishlist -->
                             <form method="post">
                                 <input type="hidden" name="deleteProductCardFromWishlist" value="deleteProductFromWishlist">
                                 <input type="hidden" name="addProdID" value="<?php echo $product["ID"] ?>">

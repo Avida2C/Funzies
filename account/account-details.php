@@ -34,31 +34,38 @@
     </div>
     <!-- Submit Button for Updating Email -->
     <button class="btn btn-danger rounded-0 mb-4">Update Email</button>
+    <!-- Hidden input to indicate that this form is for updating email -->
     <input type="hidden" name="updateEmail">
 </form>
 
 <!-- Form to Change Password -->
 <form method="POST" class="form mt-3 px-4">
+    <!-- Input for current password -->
     <div class="mb-3">
         <label for="currentPassword" class="form-label">Current Password</label>
         <input type="password" class="form-control rounded-0" id="currentPassword" name="currentPassword"
             placeholder="Enter current password" required>
     </div>
+    <!-- Input for new password -->
     <div class="mb-3">
         <label for="newPassword" class="form-label">New Password</label>
         <input type="password" class="form-control rounded-0" id="newPassword" name="newPassword"
             placeholder="Enter new password" required>
     </div>
+    <!-- Input for confirming new password -->
     <div class="mb-3">
         <label for="confirmPassword" class="form-label">Confirm New Password</label>
         <input type="password" class="form-control rounded-0" id="confirmPassword" name="confirmPassword"
             placeholder="Confirm new password" required>
     </div>
     <div class ="mb-3">
+        <!-- Display message for incorrect password input -->
         <label class="form-label"><?php echo $incorrectPassword ?></label>
+        <!-- Display message if the password was updated successfully -->
         <?php if($passwordUpdated) echo '<label class="form-label">Password changed successfully!</label>' ?>
     </div>
     <!-- Submit Button for Changing Password -->
     <button class="btn btn-danger rounded-0 mb-4">Change Password</button>
+    <!-- Hidden input to indicate that this form is for updating the password -->
     <input type="hidden" name="updatePassword">
 </form>

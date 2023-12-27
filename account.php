@@ -4,17 +4,22 @@ require 'functions.php';
 require 'dbfunctions.php';
 require_once 'include/header.php';
 
+// Redirecting to index page if the user is not logged in.
 if(!isset($_SESSION['USER'])) {
     header("Location: index.php");
 }
 
+// Fetching the user's details.
 $user = GetUserByID($con, $_SESSION['USER']['ID']);
 
 $incorrectPassword = "";
 $passwordUpdated = false;
 $tabToShow = "";
+
 if($_SERVER['REQUEST_METHOD'] == "POST") {
+    // Updating user details.
     if(isset($_POST["updateDetails"])) {
+        // Sanitize and update user details.
         $name = htmlspecialchars(addslashes($_POST['firstname']));
         $surname = htmlspecialchars(addslashes($_POST['lastname']));
         $contactNumber = htmlspecialchars(addslashes($_POST['mobilenumber']));
@@ -24,17 +29,21 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
         $incorrectPassword = "";
         $tabToShow = "accountdetails";
     }
+    // Updating user email.
     else if(isset($_POST["updateEmail"])) {
         $email = htmlspecialchars(addslashes($_POST['emailAddress']));
         $user["Email"] = $email;
         $incorrectPassword = "";
         $tabToShow = "accountdetails";
     }
+    // Updating user password.
     else if(isset($_POST["updatePassword"])) {
+        // Check if the current password matches
         $password = sha1(htmlspecialchars(addslashes($_POST['currentPassword'])));
         if(strtoupper($password) == strtoupper($user['Password'])) {
             $newPassword = sha1(htmlspecialchars(addslashes($_POST['newPassword'])));
             $confirmPassword = sha1(htmlspecialchars(addslashes($_POST['confirmPassword'])));
+            // Check if new passwords match.
             if($newPassword == $confirmPassword) {
                 $user['Password'] = $newPassword;
                 $incorrectPassword = "";
@@ -47,20 +56,25 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
         else {
             $incorrectPassword = "Current password is incorrect";
         }
+        // Update user object if there's no error.
         if(empty($incorrectPassword)) {
             updateUserObject($con, $user);
         }
+        // Fetch the updated user details.
         $user = GetUserByID($con, $user["ID"]);
         $tabToShow = "accountdetails";
     }
+    // Adding a new address.
     else if(isset($_POST["addAddress"])) {
+        // Sanitize and prepare address details.
         $address["Name"] = htmlspecialchars(addslashes($_POST["firstname"]));
         $address["Surname"] = htmlspecialchars(addslashes($_POST["lastname"]));
         $address["Address"] = htmlspecialchars(addslashes($_POST["address-input"]));
         $address["City"] = htmlspecialchars(addslashes($_POST["city"]));
         $address["ZipCode"] = htmlspecialchars(addslashes($_POST["zipcode"]));
         $address["Region"] = htmlspecialchars(addslashes($_POST["region"]));
-        $address["Default"] = $_POST["defaultAddress"]; //isset($_POST["defaultAddress"]) ? $_POST["defaultAddress"] : 'true';
+        $address["Default"] = $_POST["defaultAddress"]; 
+        // Update or create address based on the presence of address ID.
         if(isset($_POST['addressID']) && !empty($_POST['addressID'])) { 
             $address['ID'] = $_POST['addressID'];
             updateAddress($con, $user["ID"], $address);
@@ -71,14 +85,14 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
         
         $tabToShow = "accountaddress";
     }
+    // Deleting an address.
     else if(isset($_POST["deleteAddressID"])) {
         deleteAddress($con, $_POST["deleteAddressID"]);
         $tabToShow = "accountaddress";
     }
 }
-
+// Fetching user addresses.
 $userAddresses = GetAddressesByUser($con, $user['ID']);
-
 ?>
 
 <?php 

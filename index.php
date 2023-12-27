@@ -4,13 +4,14 @@ require 'functions.php';
 require 'dbfunctions.php';
 require_once 'include/header.php';
 
-
 require_once 'include/navbar.php';
 
+// Fetching the latest products for the New Arrivals section.
 $latestProducts = GetLatestProductsIndex($con);
 
 $key = 0;
 
+// includes product card template
 function includeProduct($product, $key) {
   include 'include/product-card.php';
 }
@@ -72,7 +73,7 @@ function includeProduct($product, $key) {
       <div class="row justify-content-between">
         <!-- Loop to include product cards -->
         <?php 
-        // Will add 4 product cards
+        // Loop through the latest products and include their product cards.
         foreach ($latestProducts as $prod) {
           includeProduct($prod, $key);
           $key++;

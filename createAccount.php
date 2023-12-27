@@ -1,24 +1,33 @@
 <?php 
-// functions.php will contain any functionalities which may be required on more than one page. 
-require 'functions.php';
-require 'dbfunctions.php';
-require_once 'include/header.php';
+// Import necessary files and establish a database connection
+require 'functions.php';  // Contains shared functions
+require 'dbfunctions.php';  // Contains database related functions
+require_once 'include/header.php';  // Includes the header part of the HTML
+
 $userExists = false;
 $userCreated = false;
+
+// Check the request method to handle form submissions
 if($_SERVER['REQUEST_METHOD'] == "POST") {
+    // Login form submitted
     if(isset($_POST["email"])) {
-        $email = htmlspecialchars(addslashes($_POST['email'])); // 'addslashes' allows the user to use brackets
+        // Sanitize and store input values
+        $email = htmlspecialchars(addslashes($_POST['email'])); 
         $password = htmlspecialchars(addslashes($_POST['password']));
 
-        // print_r(mysqli_num_rows($result)); this will display the result which includes the results found in the db under num_rows
+        // Attempt to login the user
         if(userLogin($con, $email, $password)) {
-            header("Location: account.php"); //this will direct the user to a different page
+            // Redirect to account page upon successful login
+            header("Location: account.php"); 
         }
         else
         {
+            // Set error message for incorrect credentials
             $error = "Incorrect email or password, try again!";
         }
+        // Account creation form submitted
     } else if (isset($_POST["createemail"])) {
+        // Sanitize and store input values
         $user = [];
         $user['Name'] = htmlspecialchars(addslashes($_POST['name']));
         $user['Surname'] = htmlspecialchars(addslashes($_POST['surname']));
@@ -26,13 +35,17 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
         $user['Password'] = htmlspecialchars(addslashes($_POST['createpassword']));
         $user['Password'] = sha1($_POST['createpassword']);
         $user['ContactNumber'] = htmlspecialchars(addslashes($_POST['contactnumber']));
+        // Check if user already exists
         if(!CheckUserExists($con, $user['Email'])) {
+            // Create a new user
             $user['ID'] = createUser($con, $user);
             if($user['ID'] > 0) {
+                // Set UserCreated to true
                 $userCreated = true;
             }
         }
         else{
+            // If user already exists, set userExists to true
             $userExists = true;
         }
     }
@@ -88,6 +101,7 @@ require_once 'include/navbar.php';
                         <h2>User has been created, you can now login!</h2>
                         <?php endif; ?>
                         <?php if ($userExists) : ?>
+                        <!-- Display message if user already exists -->
                         <h2 class="mt-3">User Already Exists!</h2>
                         <?php endif; ?>
                     </form>
@@ -112,7 +126,7 @@ require_once 'include/navbar.php';
 
                         <?php
                         if(!empty($error)) {
-
+                            // Display error message
                             echo '<div class="container" style="margin-left: auto; margin-right: auto;">
                             <p style="text-align:center;color:red;">' 
                             . $error . 
@@ -127,7 +141,6 @@ require_once 'include/navbar.php';
                             </div>
                         </div>
                     </form>
-
                 </div>
             </div>
         </div>

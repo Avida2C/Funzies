@@ -5,14 +5,15 @@ require 'dbfunctions.php';
 require_once 'include/header.php';
 require_once 'include/navbar.php';
 
+// Retrieve order details from the session
 $address = $_SESSION["ORDER_SUMMARY"]["ADDRESS"];
 $items = $_SESSION["ORDER_SUMMARY"]["ITEMS"];
 
+// Initialize variables for calculating totals
 $subtotal = 0;
 $delivery = 5;
 
 $total = $delivery;
-
 ?>
 
 <!-- Order Confirmation Section -->
@@ -44,6 +45,7 @@ $total = $delivery;
             <!-- Table of Ordered Items -->
                 <table class="table table-borderless">
                     <?php foreach ($items as $item) : ?>
+                        <!-- Calculate and display each item -->
                         <?php $total += $item["Price"]; ?>
                         <tr>
                             <td>
@@ -81,7 +83,7 @@ $total = $delivery;
                         style="width: 190px;">
                         Home
                     </button>
-                    <!-- Check my order button -->
+                    <!-- Check my order button (visible only if the user is logged in) -->
                     <?php if (isset($_SESSION['USER'])):?>
                     <button onclick="navigateToOrders()" class="btn btn-danger rounded-0" style="width: 190px;">
                         Check my order

@@ -1,7 +1,11 @@
 <?php
 $defAddress = null;
+
+// Iterate through each address in the userAddresses array.
 foreach($userAddresses as $address) {
+    // Check if the current address is marked as the default address.
     if($address["Def"]) {
+        // If it is default, set defAddress to the current address.
         $defAddress = $address;
     }
 }
@@ -12,9 +16,9 @@ foreach($userAddresses as $address) {
     <!-- Profile Image and User Details -->
     <div class="row align-items-center">
         <div class="col-sm-7 col-md-8 col-lg-9">
-
-            <!-- Adjusted the column size -->
+            <!-- Display the user's name and surname -->
             <h4><?php echo $user["Name"] . " " . $user["Surname"]?></h4>
+            <!-- Display the date the user joined -->
             <p><strong>Joined:</strong> <?php echo $user["Joined"]?></p>
         </div>
     </div>
@@ -22,7 +26,9 @@ foreach($userAddresses as $address) {
     <!-- Shipping Address -->
     <div class="mt-4">
         <h5>Default Shipping Address</h5>
+        <!-- Check if a default address exists -->
         <?php if($defAddress != null) : ?>
+        <!-- Display the default address details -->
         <address>
             <?php echo $defAddress["Name"] . " " . $defAddress["Surname"] ?>
             <br><?php echo $defAddress["Street"] ?>
@@ -31,6 +37,7 @@ foreach($userAddresses as $address) {
             <br><?php echo $defAddress["Region"] ?>
         </address>
         <?php else : ?>
+            <!-- Display message: no addresses are available -->
             You have no addresses!
         <?php endif; ?>
     </div>

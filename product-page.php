@@ -7,12 +7,14 @@ require_once 'include/navbar.php';
 
 $product = [];
 $isLoggedIn = false;
+
+// Check if a product ID is provided and fetch its details from the database.
 if(isset($_GET['productID']) && !empty($_GET['productID'])) {
     $product = GetProductByID($con, $_GET['productID']);
 }
-
-
+// Handle POST requests for adding products to cart.
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
+    // Adding a product to the cart.
     if(isset($_POST['addProductToCart'])) {
         $cartItems = [];
         $existingProd = null;
@@ -20,6 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         if(isset($_SESSION['CART_ITEMS'])) {
             $cartItems = $_SESSION['CART_ITEMS'];
         }
+        // Check if the product already exists in the cart and update its quantity.
         if(!empty($cartItems)) {
             foreach($cartItems as $key => $value) {
                 if($cartItems[$key]['ID'] == $product['ID']) {
@@ -33,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 }
             }
         }
-
+        // If the product isn't in the cart, add it.
         if(!$updated) {
             $prodToAdd["ID"] = $product["ID"];
             $prodToAdd["Name"] = $product["Name"];
@@ -45,6 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
             $_SESSION['CART_ITEMS'] = $cartItems;
         }
+        // Adding or removing a product from the wishlist.
     } else if(isset($_POST['addProductToWishlist'])) {
         createWishlistItem($con, $product['ID'], $_SESSION['USER']["ID"]);
     } else if(isset($_POST['deleteProductFromWishlist'])) {
@@ -52,13 +56,13 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     }
 }
 
+// Check if the user is logged in and fetch their wishlist status for the product.
 if(isset($_SESSION['USER'])) {
     $isLoggedIn = true;
     $wishlist = GetWishlistItem($con, $_SESSION['USER']['ID'], $product['ID']);
     $isInWishlist = $wishlist->num_rows > 0;
-}
+}?>
 
-?>
 <!-- Breadcrumb for Navigation -->
 <div class="container col-sm-12 col-md-12 col-lg-8 col-xl-8 mt-3 div-spacing-mb">
     <!-- Breadcrumb Structure -->
@@ -70,6 +74,7 @@ if(isset($_SESSION['USER'])) {
                     </li>
                     <li class="breadcrumb-item">
                         <a class="text-decoration-none text-danger" href="shop.php?category=<?php echo $product["categoryID"] ?>">
+                            <!-- Get Category Name -->
                             <?php echo $product["categoryName"]?>
                         </a>
                     </li>
@@ -108,21 +113,27 @@ if(isset($_SESSION['USER'])) {
             <!-- Button Add to cart -->
             <form method="POST">
                 <input type="hidden" name="addProductToCart" value="addProductToCart">
+                
                 <?php if($product["Stock"] > 0) : ?>
+                     <!-- If the product is in stock, show the 'Add to Cart' button. -->
                     <input type="submit" class="btn btn-danger rounded-0 w-100" value="Add To Cart"></input>
                 <?php else : ?>
+                    <!-- Otherwise, show an 'Out of Stock' button which is disabled. -->
                     <input type="button" name="addToCart" class="btn btn-secondary rounded-0 w-100" value="Out of Stock" ?>
                 <?php endif; ?>
             </form>
-            <hr>
+            <hr>            
+            <!-- Check if the user is logged in to display wishlist options. -->
             <?php if($isLoggedIn) : ?>
             <!-- Button Add to wishlist -->
+                <!-- If the product is not already in the wishlist, show 'Add to Wishlist' button. -->
                 <?php if(!$isInWishlist) : ?>
                     <form method="post">
                         <input type="hidden" name="addProductToWishlist" value="addProductToWishlist">
                         <button type="submit" class="btn btn-success rounded-0 w-100">Add to Wishlist</button>
                     </form>
                 <?php else : ?>
+                    <!-- If the product is in the wishlist, show 'Remove from Wishlist' button. -->
                     <form method="post">
                         <input type="hidden" name="deleteProductFromWishlist" value="deleteProductFromWishlist">
                         <button type="submit" class="btn btn-success rounded-0 w-100">Remove from Wishlist</button>
@@ -153,16 +164,6 @@ if(isset($_SESSION['USER'])) {
                 <!-- Info goes here -->
                 <p>
                 <?php echo $product['Description'] ?>
-                </p>
-            </div>
-            <!-- Customer Reviews -->
-            <div class="tab-overflow tab-pane fade" id="pills-reviews" role="tabpanel"
-                aria-labelledby="pills-contact-tab" tabindex="0">
-                <!-- Info goes here -->
-                <p>
-                    Be the first to share your thoughts! No reviews have
-                    been submitted for this product yet. We value your feedback and can't wait to hear about your
-                    experience. Don't hesitate to leave a review and help others make informed choices.
                 </p>
             </div>
         </div>
