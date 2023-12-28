@@ -28,7 +28,7 @@ $(document).ready(function () {
             let price = parseFloat($('#prodPrice' + $(this).val()).val());
             let delivery = parseFloat($('#deliveryPrice').val());
             let subtotal = (price * value).toFixed(2);
-            let allsubtotal = parseFloat($($('.subTotalPrice')[0]).text().substring(1));
+            let allsubtotal = parseFloat($($('.subTotalPrice')[0]).text().trim().substring(1));
             allsubtotal += price;
             let total = allsubtotal + delivery;
             
@@ -57,7 +57,7 @@ $(document).ready(function () {
             let price = parseFloat($('#prodPrice' + $(this).val()).val());
             let delivery = parseFloat($('#deliveryPrice').val());
             let subtotal = (price * value).toFixed(2);
-            let allsubtotal = parseFloat($($('.subTotalPrice')[0]).text().substring(1));
+            let allsubtotal = parseFloat($($('.subTotalPrice')[0]).text().trim().substring(1));
             allsubtotal -= price;
             let total = allsubtotal + delivery;
             
