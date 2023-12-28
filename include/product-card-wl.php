@@ -27,15 +27,13 @@
         <!-- Remove from Wishlist: Submits a form to remove the product from the wishlist -->
         <div class="row m-0 p-0">
             <div class="col m-0 p-0">
-                <p class="text-end">
                     <form method="POST">
                         <input type="hidden" name="deleteProductCardFromWishlist" value="deleteProductCardFromWishlist">
                         <input type="hidden" name="prodID" value="<?php echo $product["ID"]; ?>">
-                        <button type="submit" class="text-muted text-decoration-none">
+                        <button type="submit" class="btn btn-success p-0 rounded-0 w-100 text-white">
                             Remove from wishlist
                         </button>
                     </form>
-                </p>
             </div>
         </div>
     </div>
