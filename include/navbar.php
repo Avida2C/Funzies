@@ -36,9 +36,15 @@
                 <?php require_once 'include/navbar-account-sidebar.php'?>
 
                 <!-- Wishlist Button -->
-                <button onclick="navigateToWishlist()" class="btn text-muted">
+                <?php if(!isset($_SESSION["USER"])) { echo 
+                '<a href="createAccount.php" class="btn text-muted">
                     <ion-icon style="font-size: 30px;" name="gift-outline"></ion-icon>
-                </button>
+                </a>';
+                } else {
+                    echo '<button onclick="navigateToWishlist()" class="btn text-muted">
+                    <ion-icon style="font-size: 30px;" name="gift-outline"></ion-icon>
+                </button>';
+                }?>
 
                 <!-- Shopping Cart Button and Sidebar -->
                 <button class="btn text-muted" type="button" data-bs-toggle="offcanvas" data-bs-target="#ShoppingCart"
