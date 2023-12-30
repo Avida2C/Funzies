@@ -58,7 +58,7 @@ function includeProduct($product, $key) {
 
 <!-- New Arrivals Section -->
 <div class="container col-sm-12 col-md-12 col-lg-12 col-xl-8 spacing-mb">
-  <div class="row d-flex justify-content-between">
+  <div class="row d-flex justify-content-start">
     <div class="col">
       <h3 class="fs-5">New Arrivals</h3>
     </div>

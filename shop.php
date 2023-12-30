@@ -9,7 +9,7 @@ $selectedSort = '1'; // Default sort option.
 $selectedCategory = null; // No category selected by default.
 $selectedBrand = null; // No brand selected by default.
 $search = null; // No search query by default.
-$pageSize = 9.0; // Number of products per page.
+$pageSize = 12.0; // Number of products per page.
 $currentPage = 1; // Start on the first page.
 
 // Update filters based on GET parameters if they exist.
@@ -40,7 +40,7 @@ $noPages = ceil($products->num_rows / $pageSize); // Calculate the number of pag
 $startRow = ($currentPage * $pageSize) - $pageSize; // Calculate the starting row for the current page.
 
 // Determine the number of products to display on the current page.
-$limit = 9; // Default limit.
+$limit = 12; // Default limit.
 $pageTo = ($currentPage * $pageSize);
 
 // Adjust if the last page contains fewer products than the default limit.
@@ -79,7 +79,7 @@ function getUrl($selectedCategory, $selectedBrand, $search, $pageNumber)
 
 <!-- Product Sorting and Information Display -->
 <div class="container col-sm-12 col-md-12 col-lg-8 col-xl-8">
-    <div class="row justify-content-between">
+    <div class="row justify-content-start">
         <!-- Displaying the number of products shown -->
         <div id="showDetails" class="col text-center my-4">
             <p class="text-muted">Showing <?php echo ($startRow+1) . " - " . $pageTo . " out of ". $products->num_rows . " Products" ?></p>
@@ -130,7 +130,7 @@ function getUrl($selectedCategory, $selectedBrand, $search, $pageNumber)
         <!-- Product Cards Display -->
         <div class="col-sm-12 col-md-12 col-lg-9 col-xl-9">
             <div class="container-fluid">
-                <div class="row justify-content-between">
+                <div class="row justify-content-start">
                     <!-- Product cards -->
                     <!-- Loop to include individual product cards -->
                     <?php 

@@ -39,6 +39,10 @@ footer a:hover {
     max-width: 200px;
 }
 
+.address-card{
+ width: 220px;
+}
+
 /* Carousel style */
 .carousel-md img {
     height: 380px;
@@ -76,30 +80,57 @@ footer a:hover {
 
 /* Product card styles */
 .product-card {
-    padding: 5px !important;
-    margin: 0;
-    width: 15rem !important;
-    height: 27em !important;
+    margin: 5px;
+    width: 12rem !important;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
 }
 
-.product-card h5 {
-    height: 30px;
+.product-card-price
+{
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.product-card-name{
+    font-size: 18px;
+    min-height: 100px;
+    color: black;
+    font-weight: 500;
 }
 
 .product-card img {
-    height: 220px;
+    height: 140px;
     width: 100%;
+    object-position: top;
+    object-fit: contain;
 }
 
-.product-card-font {
+.no-gap {
+    padding-right: 0;
+    padding-left: 0;
+}
+
+.order-image{
+    max-width: 120px;
+    max-height: 120px;
     margin: 0;
     padding: 0;
-    font-size: 24px;
-    font-weight: 600;
 }
 
-.product-card-icon {
-    font-size: 24px;
+/* For the wishlist button to align with the 'Add to Cart' button */
+.wishlist-btn {
+    display: flex;
+    align-items: stretch;
+    /* This will make the button stretch full height of the column */
+}
+
+.wishlist-btn button {
+    width: 100%;
+    /* Make the button fill the column width */
 }
 
 .tab-overflow {
@@ -107,6 +138,7 @@ footer a:hover {
     overflow: auto;
     padding: 5px;
 }
+
 
 /* Utility class to remove margins and padding */
 .clearMP {

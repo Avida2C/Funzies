@@ -12,7 +12,7 @@
         <?php foreach($userAddresses as $userAddress): ?>
         <div class="col-md-6 mb-2">
             <!-- Individual Address Card -->
-            <div class="card shadow-sm border-0 rounded-0">
+            <div class="card shadow-sm border-0 rounded-0 address-card">
                 <div class="card-body">
                     <!-- Indicate if address is the default -->
                     <?php if($userAddress["Def"]) { echo "(Default)";
@@ -26,9 +26,9 @@
                         <br><?php echo $userAddress["Region"]; ?>
                     </p>
                      <!-- Edit and Delete Buttons for the Address -->
-                    <a href="#" class="btn btn-primary btn-sm rounded-0" data-bs-toggle="modal" data-bs-target="#addAddressModal" onclick="setModalAddressFields('<?php echo $userAddress['ID'] ?>', '<?php echo $userAddress['Name'] ?>', '<?php echo $userAddress['Surname'] ?>', '<?php echo $userAddress['Street'] ?>', '<?php echo $userAddress['City'] ?>', '<?php echo $userAddress['ZipCode'] ?>', '<?php echo $userAddress['Region'] ?>', '<?php echo $userAddress['Def'] ?>', <?php echo $userAddresses->num_rows ?>);">Edit</a>
+                    <a href="#" class="btn btn-primary btn-sm rounded-0 w-100" data-bs-toggle="modal" data-bs-target="#addAddressModal" onclick="setModalAddressFields('<?php echo $userAddress['ID'] ?>', '<?php echo $userAddress['Name'] ?>', '<?php echo $userAddress['Surname'] ?>', '<?php echo $userAddress['Street'] ?>', '<?php echo $userAddress['City'] ?>', '<?php echo $userAddress['ZipCode'] ?>', '<?php echo $userAddress['Region'] ?>', '<?php echo $userAddress['Def'] ?>', <?php echo $userAddresses->num_rows ?>);">Edit</a>
                     <form method="POST">
-                    <input type="submit" class="btn btn-danger btn-sm rounded-0" value="Delete"></input>
+                    <input type="submit" class="btn btn-danger w-100 btn-sm rounded-0" value="Delete"></input>
                     <input type="hidden" name="deleteAddressID" value="<?php echo $userAddress["ID"] ?>">
                     </form>
                 </div>

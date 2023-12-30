@@ -48,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         // Remove the item from the wishlist.
         deleteWishlistItem($con, $_POST['prodID'], $_SESSION['USER']["ID"]);
         // Redirect to the wishlist section of the account page.
-        echo('<script type="text/javascript"> window.location.href="account.php#accountwishlist" </script>"');
+        echo('<script type="text/javascript"> window.location.href="account.php#accountwishlist" </script>');
     }
 }
 
@@ -73,7 +73,7 @@ function includeWishList($product)
 <h3 class="border-bottom border-2 border-danger pb-2">Wishlist</h3>
 <!-- Section Heading -->
 <div class="container">
-    <div class="row justify-content-between">
+    <div class="row justify-content-start">
         <!-- Product cards -->
         <?php 
         if(empty($wishlistProducts)) {

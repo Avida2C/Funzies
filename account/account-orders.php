@@ -52,9 +52,9 @@ while ($row = mysqli_fetch_assoc($sqlOrders)) {
                 
             <!-- Loop through each product in the order -->
                 <?php foreach($o["Products"] as $p) : ?>
-                <div class="col-4 col-md-2">
+                <div class="col-4 col-md-2 my-2">
                     <!-- Display product image -->
-                    <img src="<?php echo $p["Image"] ?>" alt="<?php echo $p["Name"] ?>" class="order-product-img img-fluid mb-2">
+                    <img class="order-image" src="<?php echo $p["Image"] ?>" alt="<?php echo $p["Name"] ?>" class="order-product-img img-fluid mb-2">
                 </div>
                 <?php endforeach; ?>
             </div>

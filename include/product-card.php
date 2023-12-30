@@ -61,59 +61,64 @@ if(isset($_SESSION['USER'])) {
     $isInWishlist = $wishlist->num_rows > 0;
 }?>
 
-<div class="card shadow-sm rounded-0 border-0 product-card mb-2">
+
+<div class="shadow-sm rounded-0 border-0 product-card my-2">
     <!-- Product Card Container -->
     <a href="product-page.php?productID=<?php echo $product['ID'] ?>">
         <!-- Product Image -->
-        <img class="card-img-top object-fit-cover" src='<?php echo $product["Image"] ?>' alt="<?php echo $product["Name"] ?>">
+        <img class="mb-2" src='<?php echo $product["Image"] ?>' alt="<?php echo $product["Name"] ?>">
     </a>
-    <div class="card-body">
+    <div>
         <!-- Brand Name -->
         <a href="#" class="text-decoration-none">
-            <p class="card-text text-muted fs-6"><?php echo $product["brandName"] ?></p>
+            <p class="card-text text-muted"><?php echo $product["brandName"] ?></p>
         </a>
         <!-- Product Title -->
         <a href="product-page.php" class="text-decoration-none">
-            <h5 class="card-title text-black fs-6 mb-4"><?php echo $product["Name"] ?></h5>
+            <h5 class="product-card-name"><?php echo $product["Name"] ?></h5>
         </a>
         <!-- Product Price -->
-        <p class="text-danger product-card-font"> &euro;<?php echo number_format((float) $product["Price"], 2, '.', ''); ?></p>
+        <p class="text-danger product-card-price">
+            &euro;<?php echo number_format((float) $product["Price"], 2, '.', ''); ?>
+        </p>
         <!-- Add to Cart Button -->
+
+
         <form method="POST">
-            <input type="hidden" name="addProdID" value="<?php echo $product["ID"] ?>">
-            <input type="hidden" name="addProdKey" value="<?php echo $key ?>">
-            <?php if($product["Stock"] > 0) : ?>
-                <input type="submit" name="addProductCardToCart" class="btn btn-danger mb-0 mt-1 rounded-0 w-100 " value="Add To Cart"></input>
-            <?php else : ?>
-                <input type="button" name="addToCart" class="btn btn-secondary rounded-0 mb-0 w-100 mt-1 " value="Out of Stock" ?>
-            <?php endif; ?>
-        </form>
-        <div class="row m-0 p-0">
-            <div class="col m-0 p-0">
-                    <?php if($isLoggedIn) : ?>
-                    <!-- Show Button Add to wishlist -->
-                        <?php if(!$isInWishlist) : ?>
-                            <form method="post">
-                                <!-- If product does not exist in wishlist, add it -->
-                                <input type="hidden" name="addProductCardToWishlist" value="addProductToWishlist">
-                                <input type="hidden" name="addProdID" value="<?php echo $product["ID"] ?>">
-                                <button type="submit" class="btn btn-success rounded-0 w-100 m-0 mt-1 p-0 text-decoration-none">
-                                    Add to wishlist
-                                </button>
-                            </form>
-                        <?php else : ?>
-                            <!-- Remove from wishlist -->
-                            <form method="post">
-                                <input type="hidden" name="deleteProductCardFromWishlist" value="deleteProductFromWishlist">
-                                <input type="hidden" name="addProdID" value="<?php echo $product["ID"] ?>">
-                                <button type="submit" class="btn btn-success rounded-0 m-0 mt-1 w-100 p-0 text-decoration-none">
-                                    Remove from wishlist
-                                </button>
-                            </form>
-                        <?php endif; ?>
+            <input type="hidden" name="addProdID" value="<?php echo $product["ID"]; ?>">
+            <input type="hidden" name="addProdKey" value="<?php echo $key; ?>">
+            <div class="row">
+                <div class="col-9 no-gap">
+                    <?php if($product["Stock"] > 0) : ?>
+
+                    <input type="submit" name="addProductCardToCart" class="btn btn-success rounded-0 w-100"
+                        value="Add To Cart">
+
+                    <?php else: ?>
+
+                    <input type="button" name="addToCart" class="btn btn-secondary rounded-0 w-100"
+                        value="Out of Stock">
+
                     <?php endif; ?>
-                </p>
+                </div>
+                <?php if($isLoggedIn) : ?>
+                <div class="col-3 no-gap wishlist-btn">
+                    <?php if(!$isInWishlist) : ?>
+                    <!-- If product does not exist in wishlist, add it -->
+                    <button type="submit" name="addProductCardToWishlist" value="addProductToWishlist"
+                        class="btn btn-danger rounded-0">
+                        <ion-icon name="heart-outline"></ion-icon>
+                    </button>
+                    <?php else: ?>
+                    <!-- Remove from wishlist -->
+                    <button type="submit" name="deleteProductCardFromWishlist" value="deleteProductFromWishlist"
+                        class="btn btn-danger rounded-0">
+                        <ion-icon name="heart"></ion-icon>
+                    </button>
+                    <?php endif; ?>
+                </div>
+                <?php endif; ?>
             </div>
-        </div>
+        </form>
     </div>
 </div>
