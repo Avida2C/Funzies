@@ -2,8 +2,6 @@
 // functions.php will contain any functionalities which may be required on more than one page. 
 require 'functions.php';
 require 'dbfunctions.php';
-require_once 'include/header.php';
-require_once 'include/navbar.php';
 
 $product = [];
 $isLoggedIn = false;
@@ -62,6 +60,12 @@ if(isset($_SESSION['USER'])) {
     $wishlist = GetWishlistItem($con, $_SESSION['USER']['ID'], $product['ID']);
     $isInWishlist = $wishlist->num_rows > 0;
 }?>
+
+<?php 
+$pagetitle = $product['Name'];
+require_once 'include/header.php';
+require_once 'include/navbar.php';
+?>
 
 <!-- Breadcrumb for Navigation -->
 <div class="container col-sm-12 col-md-12 col-lg-8 col-xl-8 mt-3 div-spacing-mb">

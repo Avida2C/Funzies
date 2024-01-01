@@ -1,8 +1,6 @@
 <?php 
 require 'functions.php'; // General functions used throughout the site.
 require 'dbfunctions.php'; // Database interaction functions.
-require_once 'include/header.php'; // Site header.
-require_once 'include/navbar.php'; // Navigation bar.
 
 if ($_SERVER['REQUEST_METHOD'] == "POST" && !empty($_POST['deleteCartItem'])) {
     foreach($_SESSION['CART_ITEMS'] as $key => $itm) {
@@ -27,6 +25,12 @@ if(isset($_SESSION['CART_ITEMS'])) {
     $delivery = 5; // Delivery Fee.
     $total = $subtotal + $delivery; // Total cost calculation.
 }?>
+
+<?php
+$pagetitle = 'view cart';
+require_once 'include/header.php'; // Site header.
+require_once 'include/navbar.php'; // Navigation bar.
+?>
 
 <div class="container col-sm-12 col-md-12 col-lg-9 col-xl-9 spacing-mt">
     <h3 class="fs-4">Shopping Cart</h3>

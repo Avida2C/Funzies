@@ -2,8 +2,6 @@
 // functions.php will contain any functionalities which may be required on more than one page. 
 require 'functions.php';
 require 'dbfunctions.php';
-require_once 'include/header.php';
-require_once 'include/navbar.php';
 
 $isLoggedIn = false;
 $cartItems = null;
@@ -130,6 +128,12 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         }
     }
 }?>
+
+<?php
+$pagetitle = 'checkout';
+require_once 'include/header.php';
+require_once 'include/navbar.php';
+?>
 
 <!-- Page Title -->
 <div class="container col-sm-12 col-md-12 col-lg-10 col-xl-10 spacing-mt mb-4">

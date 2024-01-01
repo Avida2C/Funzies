@@ -2,7 +2,6 @@
 // functions.php will contain any functionalities which may be required on more than one page. 
 require 'functions.php';
 require 'dbfunctions.php';
-require_once 'include/header.php';
 
 // Redirecting to index page if the user is not logged in.
 if(!isset($_SESSION['USER'])) {
@@ -97,6 +96,8 @@ $userAddresses = GetAddressesByUser($con, $user['ID']);
 
 <?php 
 // Start of Body //
+$pagetitle = 'account';
+require_once 'include/header.php';
 require_once 'include/navbar.php';
 ?>
 

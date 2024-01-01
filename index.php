@@ -2,8 +2,9 @@
 // functions.php will contain any functionalities which may be required on more than one page. 
 require 'functions.php';
 require 'dbfunctions.php';
-require_once 'include/header.php';
 
+$pagetitle = 'home';
+require_once 'include/header.php';
 require_once 'include/navbar.php';
 
 // Fetching the latest products for the New Arrivals section.

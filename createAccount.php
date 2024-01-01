@@ -2,7 +2,6 @@
 // Import necessary files and establish a database connection
 require 'functions.php';  // Contains shared functions
 require 'dbfunctions.php';  // Contains database related functions
-require_once 'include/header.php';  // Includes the header part of the HTML
 
 $userExists = false;
 $userCreated = false;
@@ -50,7 +49,11 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
         }
     }
 }
+?>
 
+<?php
+$pagetitle = 'create login';
+require_once 'include/header.php';  // Includes the header part of the HTML
 require_once 'include/navbar.php';
 ?>
 

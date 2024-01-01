@@ -2,9 +2,6 @@
 // functions.php will contain any functionalities which may be required on more than one page. 
 require 'functions.php';
 require 'dbfunctions.php';
-require_once 'include/header.php';
-
-require_once 'include/navbar.php';
 
 $passwordUpdated = false;
 $error = false;
@@ -34,6 +31,12 @@ if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['resetPassword'])) {
     }
 }
 
+?>
+
+<?php
+$pagetitle = 'forgot password';
+require_once 'include/header.php';
+require_once 'include/navbar.php';
 ?>
 
 <!-- Password Reset Section -->

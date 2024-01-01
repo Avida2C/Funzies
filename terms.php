@@ -2,11 +2,12 @@
 // functions.php will contain any functionalities which may be required on more than one page. 
 require 'functions.php';
 require 'dbfunctions.php';
-require_once 'include/header.php';
 ?>
 
 <?php 
 // Start of Body //
+$pagetitle = 'terms & conditions';
+require_once 'include/header.php';
 require_once 'include/navbar.php';
 ?>
 

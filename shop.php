@@ -1,8 +1,6 @@
 <?php 
 require 'functions.php'; // General functions used throughout the site.
 require 'dbfunctions.php'; // Database interaction functions.
-require_once 'include/header.php'; // Site header.
-require_once 'include/navbar.php'; // Navigation bar.
 
 $brands = GetBrands($con); // Fetching all brands.
 $selectedSort = '1'; // Default sort option.
@@ -76,6 +74,12 @@ function getUrl($selectedCategory, $selectedBrand, $search, $pageNumber)
     $url .= join("&", $params);
     return $url; // Return the constructed URL.
 }?>
+
+<?php
+$pagetitle = 'shop';
+require_once 'include/header.php'; // Site header.
+require_once 'include/navbar.php'; // Navigation bar.
+?>
 
 <!-- Product Sorting and Information Display -->
 <div class="container col-sm-12 col-md-12 col-lg-8 col-xl-8">
