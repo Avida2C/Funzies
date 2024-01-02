@@ -2,7 +2,7 @@
 // Check if the form has been submitted via POST.
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     // Check if the 'Add to Cart' button is clicked and a product ID is provided.
-    if(!empty($_POST['addProductWishlistToCart']) && isset($_POST['prodID'])) {
+    if(isset($_POST['movetocart']) && isset($_POST['prodID'])) {
         $cartItems = [];
         $existingProd = null;
         $updated = false;
@@ -44,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             echo('<script type="text/javascript"> window.location.href="account.php#accountwishlist" </script> ");');
         }
         // Check if the 'Remove from Wishlist' button is clicked and a product ID is provided.
-    } else if(isset($_POST['deleteProductCardFromWishlist']) && isset($_POST['prodID'])) {
+    } else if(isset($_POST['removefromwishlist']) && isset($_POST['prodID'])) {
         // Remove the item from the wishlist.
         deleteWishlistItem($con, $_POST['prodID'], $_SESSION['USER']["ID"]);
         // Redirect to the wishlist section of the account page.

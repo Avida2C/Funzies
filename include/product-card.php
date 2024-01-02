@@ -9,8 +9,13 @@ if(isset($_GET['productID']) && !empty($_GET['productID'])) {
 
 // Handle POST requests for cart and wishlist updates.
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
+    if(isset($_POST['addProductCardToWishlist']) && $_POST['addProdKey'] == $key) {
+        createWishlistItem($con, $product['ID'], $_SESSION['USER']["ID"]);
+    } else if(isset($_POST['deleteProductCardFromWishlist']) && $_POST['addProdKey'] == $key) {
+        deleteWishlistItem($con, $product['ID'], $_SESSION['USER']["ID"]);
+    }
     // If 'Add to Cart' is triggered.
-    if(!empty($_POST['addProductCardToCart']) && $_POST['addProdKey'] == $key) {
+    elseif(!empty($_POST['addProductCardToCart']) && $_POST['addProdKey'] == $key) {
         $cartItems = [];
         $existingProd = null;
         $updated = false;
@@ -47,11 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             $_SESSION['CART_ITEMS'] = $cartItems;
         }
         // If 'Add to Wishlist' or 'Remove from Wishlist' is triggered.
-    } else if(isset($_POST['addProductCardToWishlist']) && $_POST['addProdID'] == $product["ID"]) {
-        createWishlistItem($con, $product['ID'], $_SESSION['USER']["ID"]);
-    } else if(isset($_POST['deleteProductCardFromWishlist']) && $_POST['addProdID'] == $product["ID"]) {
-        deleteWishlistItem($con, $product['ID'], $_SESSION['USER']["ID"]);
-    }
+    } 
 }
 
 // Check if a user is logged in and fetch wishlist status.
