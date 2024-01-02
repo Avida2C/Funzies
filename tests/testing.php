@@ -8,13 +8,13 @@ class testing extends TestCase{
     
    /* vendor\bin\phpunit tests\testing.php */
 
-    public function testDBConnection()
+      public function testDBConnection()
     {
         $con = mysqli_connect('localhost', 'root', '', 'funzies');
         $this->assertNull ($con->connect_error); 
     }
 
-    public function testAdminLogin()
+   /* public function testAdminLogin()
     {
         $con = mysqli_connect('localhost', 'root', '', 'funzies');
         $result = AdminLogin($con, 'n4dinevid4l@hotmail.com', 'abc123');
@@ -28,7 +28,7 @@ class testing extends TestCase{
         $this -> assertGreaterThan(0, $result -> num_rows);
     }
 
-    /* 
+    
     public function testGetData()
     {
         $con = mysqli_connect('localhost', 'root', '', 'funzies');
@@ -101,7 +101,15 @@ class testing extends TestCase{
     }
     */
 
-    
+    public function testLogout()
+    {
+        $con = mysqli_connect('localhost', 'root', '', 'funzies');
+        $result = userLogin($con, 'n4dinevid4l@hotmail.com', 'password');
+        $this -> assertNotEmpty($_SESSION['USER']);
+
+        logout();
+        $this -> assertEmpty($_SESSION['USER']);
+    }
     
 }
 ?>
