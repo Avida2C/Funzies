@@ -81,7 +81,7 @@ footer a:hover {
 /* Product card styles */
 .product-card {
     margin: 5px;
-    width: 12rem !important;
+    width: 11rem !important;
     display: flex;
     flex-direction: column;
     height: 100%;
