@@ -26,6 +26,7 @@ $brands = GetBrands($con);
 ?>
 
 <?php 
+$pagetitle = 'brand management';
 require_once 'include/header.php'; // Header Include: HTML header setup
 require_once 'include/navbar.php'; // Navbar Include: Site navigation bar
 ?>

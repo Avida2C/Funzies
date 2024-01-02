@@ -25,6 +25,7 @@ $users = GetUsers($con);
 <!-- Functions Include: Importing shared functions for the site -->
 
 <?php 
+$pagetitle = 'user management';
 require_once 'include/header.php'; // Header Include: HTML header setup
 require_once 'include/navbar.php'; // Navbar Include: Site navigation bar
 ?>

@@ -21,6 +21,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
 ?>
 
 <?php 
+$pagetitle = "login";
 require_once 'include/header.php'; // Header Include: HTML header setup
 require_once 'include/navbar.php'; // Navbar Include: Site navigation bar
 ?>

@@ -27,6 +27,7 @@ $categories = GetCategories($con);
 ?>
 
 <?php 
+$pagetitle = 'category management';
 require_once 'include/header.php'; // Header Include: HTML header setup
 require_once 'include/navbar.php'; // Navbar Include: Site navigation bar
 ?>
