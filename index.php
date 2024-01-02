@@ -58,7 +58,7 @@ function includeProduct($product, $key) {
 <?php require_once 'include/shop-categories.php'; ?>
 
 <!-- New Arrivals Section -->
-<div class="container col-sm-12 col-md-12 col-lg-12 col-xl-8 spacing-mb">
+<div class="container col-sm-12 col-md-12 col-lg-8 col-xl-8 spacing-mb">
   <div class="row d-flex justify-content-start">
     <div class="col">
       <h3 class="fs-5">New Arrivals</h3>
@@ -86,7 +86,7 @@ function includeProduct($product, $key) {
 </div>
 
 <!-- Best Sellers Section -->
-<div class="container col-sm-12 col-md-12 col-lg-12 col-xl-8">
+<div class="container col-sm-12 col-md-12 col-lg-8 col-xl-8">
   <div class="row">
     <div class="col">
       <h3 class="fs-5">Best Sellers</h3>

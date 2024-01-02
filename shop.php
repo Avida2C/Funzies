@@ -38,7 +38,7 @@ $noPages = ceil($products->num_rows / $pageSize); // Calculate the number of pag
 $startRow = ($currentPage * $pageSize) - $pageSize; // Calculate the starting row for the current page.
 
 // Determine the number of products to display on the current page.
-$limit = 12; // Default limit.
+$limit = 15; // Default limit.
 $pageTo = ($currentPage * $pageSize);
 
 // Adjust if the last page contains fewer products than the default limit.
@@ -103,10 +103,10 @@ require_once 'include/navbar.php'; // Navigation bar.
     </div>
 </div>
 
-<div class="container col-sm-12 col-md-12 col-lg-8 col-xl-8">
+<div class="container col-sm-12 col-md-12 col-lg-10 col-xl-10">
     <div class="row">
         <!-- Product Categories List -->
-        <div id="productCategories" class="col-sm-12 col-md-12 col-lg-3 col-xl-3">
+        <div id="productCategories" class="col-sm-12 col-md-12 col-lg-2 col-xl-2">
             <h3 class="fs-6 mb-2">Product Categories</h3>
             <?php
             // Loop through each category and display it with a link.
