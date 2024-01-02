@@ -22,7 +22,7 @@
             <div id="navAccount" class="col-sm-6 col-md-12 col-lg-3 col-xl-3 text-end align-self-center">
                 <!-- Account Login Button and Sidebar -->
                 <?php if(!isset($_SESSION["USER"])) { echo 
-                    '<button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#AccountLogin"
+                    '<button class="btn text-muted" type="button" data-bs-toggle="offcanvas" data-bs-target="#AccountLogin"
                     aria-controls="AccountLogin">
                     <ion-icon size="large" name="person-circle-outline"></ion-icon>
                 </button>';

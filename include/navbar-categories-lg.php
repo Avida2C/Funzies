@@ -9,7 +9,7 @@ $categories = GetCategories($con);
         aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
         <!-- Burger menu icon -->
         <span class="navbar-toggler-icon"></span>
-        <span>Categories</span>
+        <span class="nav-effect text-muted">Categories</span>
     </button></a>
 
     <!-- Offcanvas Categories Panel -->
