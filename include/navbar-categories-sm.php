@@ -51,10 +51,10 @@ $categories = GetCategories($con);
             <!-- Categories Tab Pane -->
             <div class="tab-pane fade" id="nav-categories" role="tabpanel" aria-labelledby="nav-categories-tab"
                 tabindex="0">
-                <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                <ul class="navbar-nav justify-content-end flex-grow-1 pe-3 ">
                     <!-- Categories List -->
                     <?php foreach($categories as $category): ?>
-                    <li class="nav-item">
+                    <li class="nav-item nav-effect">
                         <!-- Link to the shop page filtered by the category ID -->
                         <a class="nav-link" href="shop.php?category=<?php echo $category['ID']; ?>">
                             <?php echo $category["Name"] ?></a>

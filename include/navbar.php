@@ -22,7 +22,7 @@
             <div id="navAccount" class="col-sm-6 col-md-12 col-lg-3 col-xl-3 text-end align-self-center">
                 <!-- Account Login Button and Sidebar -->
                 <?php if(!isset($_SESSION["USER"])) { echo 
-                    '<button class="btn text-muted" type="button" data-bs-toggle="offcanvas" data-bs-target="#AccountLogin"
+                    '<button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#AccountLogin"
                     aria-controls="AccountLogin">
                     <ion-icon size="large" name="person-circle-outline"></ion-icon>
                 </button>';
@@ -61,15 +61,15 @@
 
             <!-- Central Navigation Links -->
             <div id="navNavigation" class="col-lg-8 col-xl-8 navbar-expand mx-auto text-center">
-                <ul class="navbar-nav">
+                <ul class="navbar-nav nav-effect nav-a-width">
                     <li class="nav-item">
-                        <a class="nav-link active p-3" aria-current="page" href="index.php">Home</a>
+                        <a class="nav-link" aria-current="page" href="index.php">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link p-3" href="shop.php">Shop</a>
+                        <a class="nav-link" href="shop.php">Shop</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link p-3" href="contact.php">Contact Us</a>
+                        <a class="nav-link" href="contact.php">Contact Us</a>
                     </li>
                 </ul>
             </div>

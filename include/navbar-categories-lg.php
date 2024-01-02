@@ -3,14 +3,14 @@
 $categories = GetCategories($con);
 ?>
 
-<div id="navCategories" class="container col-sm-6 col-md-6 col-lg-4 col-xl-4 navbar navbar-light bg-light">
+<div id="navCategories" class=" nav-effect container col-sm-6 col-md-6 col-lg-4 col-xl-4 navbar navbar-light bg-light">
     <!-- Categories Navigation Button -->
-    <button class="btn py-2 rounded-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+    <a href="#"><button class="btn rounded-0 " type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
         aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
         <!-- Burger menu icon -->
         <span class="navbar-toggler-icon"></span>
         <span>Categories</span>
-    </button>
+    </button></a>
 
     <!-- Offcanvas Categories Panel -->
     <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
@@ -23,9 +23,9 @@ $categories = GetCategories($con);
             <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                 <!-- Loop through each category and create a list item with a link -->
                 <?php foreach($categories as $category): ?>
-                <li class="nav-item">
+                <li class="nav-item nav-effect">
                     <!-- Link to the shop page filtered by the category ID -->
-                    <a class="nav-link" href="shop.php?category=<?php echo $category['ID']; ?>">
+                    <a class="nav-link p-2" href="shop.php?category=<?php echo $category['ID']; ?>">
                         <?php echo $category["Name"] ?></a>
                 </li>
                 <?php endforeach ?>

@@ -88,6 +88,17 @@ footer a:hover {
 
 }
 
+.nav-a-width a
+{
+    width: 120px;
+}
+
+.nav-effect a:hover
+{
+    background-color:#DC3545;
+    color: white;
+}
+
 .product-card-price
 {
     font-size: 20px;
