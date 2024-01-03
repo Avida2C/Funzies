@@ -6,16 +6,16 @@ if(!isset($_SESSION))
 } 
 
 //Database connection
-$serverName = "localhost"; // The hostname of the database server.
-$dbUsername = "root";      // The username for accessing the database.
-$dbPassword = "";          // The password for the database user.
-$dbName = "funzies";       // The name of the database to connect to.
+$serverName = "localhost"; 
+$dbUsername = "root";      
+$dbPassword = "";          
+$dbName = "funzies";       
 
-// Attempt to establish a connection.
+// Attempt connection
 $con = mysqli_connect($serverName, $dbUsername, $dbPassword, $dbName);
 
-// Check if the connection was successful. If not, end the script and output an error message.
 if(!$con) {
+    // If connection fails to connect to the db, end script and output an error message.
     die("Connection failed: ".mysqli_connect_error());
 }
 
