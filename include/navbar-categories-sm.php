@@ -1,9 +1,10 @@
 <?php 
 // Retrieve the list of categories from the database using the GetCategories function.
 $categories = GetCategories($con);
+$brands = GetBrands($con);
 ?>
 
-<div id="navCategories-sm" class="container col-sm-4 col-md-6 col-lg-4 col-xl-4 navbar navbar-light bg-light">
+<div id="navCategories-sm" class="container container-sm container-md container-lg container-xl container-xxl navbar navbar-light bg-light">
     <!-- Categories for small screens -->
     <button class="btn rounded-0 py-2 ms-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar2"
         aria-controls="offcanvasNavbar2" aria-label="Toggle navigation">
@@ -51,17 +52,30 @@ $categories = GetCategories($con);
             <!-- Categories Tab Pane -->
             <div class="tab-pane fade" id="nav-categories" role="tabpanel" aria-labelledby="nav-categories-tab"
                 tabindex="0">
-                <ul class="navbar-nav justify-content-end flex-grow-1 pe-3 ">
+                <div class="navbar-nav pe-3">
                     <!-- Categories List -->
-                    <?php foreach($categories as $category): ?>
-                    <li class="nav-item nav-effect">
-                        <!-- Link to the shop page filtered by the category ID -->
-                        <a class="nav-link" href="shop.php?category=<?php echo $category['ID']; ?>">
-                            <?php echo $category["Name"] ?></a>
-                    </li>
-                    <?php endforeach ?>
-                </ul>
+                    <div class="container">
+                            <?php
+                        // Loop through each category and display it with a link.
+                        foreach ($categories as $category) {
+                            echo '<li class="border-bottom border-1 align-items-center py-2">';
+                            // Link to filter products by this category.
+                            echo '<a href="shop.php?category=' . $category["ID"] . '" class="text-decoration-none text-muted">' . $category["Name"] . '</a>';
+                            echo '</li>'; 
+                        }?>
+                            <h3 class="fs-6 mt-2">Brands</h3>
+                            <?php
+                        // Loop through each brand and display it with a link and product count.
+                        foreach ($brands as $brand) {
+                            echo '<li class="border-bottom border-1 align-items-center py-2">';
+                            // Link to filter products by this brand.
+                            echo '<a href="shop.php?brand=' . $brand["ID"] . '" class="text-decoration-none text-muted">' . $brand["Name"] . '</a>';
+                        }?>
+                        </div>
+
+                    </div>
+                    <br>
+                </div>
             </div>
         </div>
     </div>
-</div>

@@ -1,9 +1,9 @@
 <nav class="bg-light py-2 shadow-sm border-bottom border-5 border-danger">
     <!-- Main Navigation Bar -->
-    <div class="container col-sm-12 col-md-12 col-lg-10 col-xl-10">
+    <div class="container container-sm container-md container-lg container-xl container-xxl ">
         <div class="row text-muted align-items-center">
             <!-- Navbar Logo -->
-            <div id="navLogo" class="col-sm-1 col-md-12 col-lg-2 col-xl-2 text-start py-1">
+            <div id="navLogo" class="col-sm-1 col-md-3 col-lg-2 col-xl-2 text-start py-1">
                 <a href="index.php"><img class="navLogo" src="img/logo.png" alt="Website Logo"></a>
             </div>
 
@@ -19,7 +19,7 @@
                 </div>
             </div>
             <!-- Account Icon: Shows login button if not logged in, button becomes a link to the account page if logged in -->
-            <div id="navAccount" class="col-sm-6 col-md-12 col-lg-3 col-xl-3 text-end align-self-center">
+            <div id="navAccount" class="col-sm-11 col-md-12 col-lg-3 col-xl-3 text-end align-self-center">
                 <!-- Account Login Button and Sidebar -->
                 <?php if(!isset($_SESSION["USER"])) { echo 
                     '<button class="btn text-muted" type="button" data-bs-toggle="offcanvas" data-bs-target="#AccountLogin"
@@ -51,8 +51,6 @@
                     aria-controls="ShoppingCart">
                     <ion-icon size="large" name="cart-outline"></ion-icon>
                 </button>
-
-                
             </div>
 
             <!-- Category Navigation for Different Screen Sizes -->

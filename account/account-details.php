@@ -2,7 +2,7 @@
 <!-- Account Details Section -->
 
 <!-- Form to Update Full Name and Contact Number -->
-<form class="form mt-3 px-4" method="POST">
+<form class="form mt-3" method="POST">
     <!-- Full Name -->
     <div class="mb-3">
         <label for="firstname" class="form-label">First Name:</label>

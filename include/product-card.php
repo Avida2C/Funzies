@@ -63,7 +63,7 @@ if(isset($_SESSION['USER'])) {
 }?>
 
 
-<div class="shadow-sm rounded-0 border-0 product-card my-2">
+<div class=" bg-white pt-2 shadow-sm rounded border-0 product-card my-2">
     <!-- Product Card Container -->
     <a href="product-page.php?productID=<?php echo $product['ID'] ?>">
         <!-- Product Image -->

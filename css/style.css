@@ -54,8 +54,8 @@ footer a:hover {
 }
 
 .brand-img img {
-    width: 175px;
-    height: 125px;
+    width: 120px;
+    height: 120px;
 }
 
 .list-group-item.active {
@@ -85,7 +85,6 @@ footer a:hover {
     display: flex;
     flex-direction: column;
     height: 100%;
-
 }
 
 .nav-a-width a
@@ -106,7 +105,6 @@ footer a:hover {
     text-transform: uppercase;
     font-weight: 600;
     vertical-align: middle;
-
 }
 
 .product-card-price
@@ -278,7 +276,6 @@ footer a:hover {
     #navCategories-sm {
         display: inline !important;
         order: 1;
-        width: 12%;
     }
 
     #navNavigation {
@@ -288,7 +285,7 @@ footer a:hover {
 
     #navAccount {
         order: 3;
-        width: 45%;
+        width: 60%;
     }
 
     #navSearchbar {
@@ -323,6 +320,131 @@ footer a:hover {
 
     #forgotPassText {
         order: 2;
+    }
+
+    #productCategories
+    {
+        display: none;
+    }
+}
+@media only screen and (max-width: 576px) {
+
+    #navCategories {
+        display: none !important;
+    }
+
+    #navCategories-sm {
+        display: inline !important;
+        order: 1;
+    }
+
+    #navNavigation {
+        order: 6;
+        display: none;
+    }
+
+    #navAccount {
+        order: 3;
+        width: 40%;
+    }
+
+    #navSearchbar {
+        order: 4;
+    }
+
+    #navLogo {
+        order: 2;
+        width: 60%;
+    }
+
+    #footerIcos {
+        text-align: center !important;
+    }
+
+
+    #createAccRight {
+        height: fit-content !important;
+    }
+
+    #contactFunzies {
+        order: 2;
+    }
+
+    #aboutFunzies {
+        order: 1;
+    }
+
+    #iconDiamond {
+        order: 1;
+    }
+
+    #forgotPassText {
+        order: 2;
+    }
+
+    #productCategories
+    {
+        display: none;
+    }
+}
+@media only screen and (max-width: 510px) {
+
+    #navCategories {
+        display: none !important;
+    }
+
+    #navCategories-sm {
+        display: inline !important;
+        order: 1;
+    }
+
+    #navNavigation {
+        order: 6;
+        display: none;
+    }
+
+    #navAccount {
+        order: 3;
+        width: 70%;
+    }
+
+    #navSearchbar {
+        order: 4;
+    }
+
+    #navLogo {
+        order: 2;
+        width: 30%;
+    }
+
+    #footerIcos {
+        text-align: center !important;
+    }
+
+
+    #createAccRight {
+        height: fit-content !important;
+    }
+
+    #contactFunzies {
+        order: 2;
+    }
+
+    #aboutFunzies {
+        order: 1;
+    }
+
+    #iconDiamond {
+        order: 1;
+    }
+
+    #forgotPassText {
+        order: 2;
+    }
+
+    #productCategories
+    {
+        display: none;
     }
 }
 

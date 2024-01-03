@@ -38,7 +38,7 @@ $noPages = ceil($products->num_rows / $pageSize); // Calculate the number of pag
 $startRow = ($currentPage * $pageSize) - $pageSize; // Calculate the starting row for the current page.
 
 // Determine the number of products to display on the current page.
-$limit = 15; // Default limit.
+$limit = 12; // Default limit.
 $pageTo = ($currentPage * $pageSize);
 
 // Adjust if the last page contains fewer products than the default limit.
@@ -82,14 +82,14 @@ require_once 'include/navbar.php'; // Navigation bar.
 ?>
 
 <!-- Product Sorting and Information Display -->
-<div class="container col-sm-12 col-md-12 col-lg-8 col-xl-8">
-    <div class="row justify-content-start">
+<div class="container">
+    <div class="row justify-content-evenly">
         <!-- Displaying the number of products shown -->
-        <div id="showDetails" class="col text-center my-4">
+        <div id="showDetails" class="col-sm-12 col-md-12 col-lg-6 col-xl-6 text-center my-4">
             <p class="text-muted">Showing <?php echo ($startRow+1) . " - " . $pageTo . " out of ". $products->num_rows . " Products" ?></p>
         </div>
         <!-- Sorting functionality to order products -->
-        <div id="sortProducts" class="col-sm-12 col-md-12 col-lg-3 col-xl-3 my-3">
+        <div id="sortProducts" class="col-sm-12 col-md-12 col-lg-4 col-xl-4 my-3">
             <form method="POST" name="sortForm">
                 <input type="hidden" name="sort" value="sort" />
                 <!-- Dropdown for selecting sort option -->
@@ -103,7 +103,7 @@ require_once 'include/navbar.php'; // Navigation bar.
     </div>
 </div>
 
-<div class="container col-sm-12 col-md-12 col-lg-10 col-xl-10">
+<div class="container">
     <div class="row">
         <!-- Product Categories List -->
         <div id="productCategories" class="col-sm-12 col-md-12 col-lg-2 col-xl-2">
@@ -132,7 +132,7 @@ require_once 'include/navbar.php'; // Navigation bar.
 
         </div>
         <!-- Product Cards Display -->
-        <div class="col-sm-12 col-md-12 col-lg-9 col-xl-9">
+        <div class="col-sm-12 col-md-12 col-lg-10 col-xl-10">
             <div class="container-fluid">
                 <div class="row justify-content-start">
                     <!-- Product cards -->
