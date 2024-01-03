@@ -25,7 +25,7 @@
 </form>
 
 <!-- Form to Update Email Address -->
-<form method="POST" class="form mt-3 px-4">
+<form method="POST" class="form mt-3">
     <!-- Email Address -->
     <div class="mb-3">
         <label for="emailAddress" class="form-label">Email Address</label>
@@ -39,7 +39,7 @@
 </form>
 
 <!-- Form to Change Password -->
-<form method="POST" class="form mt-3 px-4">
+<form method="POST" class="form mt-3">
     <!-- Input for current password -->
     <div class="mb-3">
         <label for="currentPassword" class="form-label">Current Password</label>
@@ -53,12 +53,12 @@
             placeholder="Enter new password" required>
     </div>
     <!-- Input for confirming new password -->
-    <div class="mb-3">
+    <div>
         <label for="confirmPassword" class="form-label">Confirm New Password</label>
         <input type="password" class="form-control rounded-0" id="confirmPassword" name="confirmPassword"
             placeholder="Confirm new password" required>
     </div>
-    <div class ="mb-3">
+    <div>
         <!-- Display message for incorrect password input -->
         <label class="form-label"><?php echo $incorrectPassword ?></label>
         <!-- Display message if the password was updated successfully -->
