@@ -165,6 +165,16 @@ footer a:hover {
     margin: 0;
 }
 
+.img-thumbnail{
+    
+}
+
+.truncate{
+    white-space: nowrap;
+overflow: hidden;
+text-overflow:ellipsis;
+}
+
 /* Styles for quantity selector elements */
 .quantity-selector {
     display: flex;

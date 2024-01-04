@@ -77,7 +77,8 @@ require_once 'include/navbar.php';
                     <li class="breadcrumb-item"><a class="text-decoration-none text-danger" href="index.php">Home</a>
                     </li>
                     <li class="breadcrumb-item">
-                        <a class="text-decoration-none text-danger" href="shop.php?category=<?php echo $product["categoryID"] ?>">
+                        <a class="text-decoration-none text-danger"
+                            href="shop.php?category=<?php echo $product["categoryID"] ?>">
                             <!-- Get Category Name -->
                             <?php echo $product["categoryName"]?>
                         </a>
@@ -90,14 +91,15 @@ require_once 'include/navbar.php';
 </div>
 
 <!-- Product Details Section -->
-<div class="container col-sm-12 col-md-12 col-lg-8 col-xl-8 mb-4">
-    <div class="row">
+<div class="container col-sm-12 col-md-12 col-lg-8 col-xl-8 border-0 shadow-sm rounded">
+    <div class="row justify-content-center">
         <!-- Product Image and Details -->
-        <div class="col-sm-12 col-md-12 col-lg-8 col-xl-8">
-            <img src="<?php echo $product['Image'] ?>" class="img-thumbnail border-0 rounded-0" alt="<?php echo $product['Name'] ?>">
+        <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
+            <img src="<?php echo $product['Image'] ?>" class="img-thumbnail border-0 rounded-0"
+                alt="<?php echo $product['Name'] ?>">
         </div>
         <!-- Product details -->
-        <div class="col-sm-12 col-md-12 col-lg-8 col-xl-4 border-0 shadow-sm rounded-0 p-4">
+        <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 border-0 rounded p-4">
             <!-- Badge In stock-->
             <?php if($product['Stock'] > 0) : ?>
             <p class="text-end"><span class="badge rounded-pill bg-success">In Stock</span></p>
@@ -109,41 +111,48 @@ require_once 'include/navbar.php';
                 <h5 class="fs-6 text-muted"><?php echo $product['brandName'] ?></h5>
             </a>
             <!-- Title of Product -->
-            <h3 class="fs-5 mb-4"><?php echo $product['Name'] ?></h3>
+            <h3 class="fs-5"><?php echo $product['Name'] ?></h3>
             <!-- Price -->
-            <p class="text-danger product-card-font mb-4"> &euro;<?php echo $product['Price'] ?></p>
+            <p class="text-danger mb-5 product-card-price"> &euro;<?php echo $product['Price'] ?></p>
             <!-- Description -->
-            <p style="height:250px;"><?php echo $product['Description'] ?></p>
+            <p class="text-truncate mb-4"><?php echo $product['Description'] ?></p>
             <!-- Button Add to cart -->
             <form method="POST">
-                <input type="hidden" name="addProductToCart" value="addProductToCart">
-                
-                <?php if($product["Stock"] > 0) : ?>
-                     <!-- If the product is in stock, show the 'Add to Cart' button. -->
-                    <input type="submit" class="btn btn-danger rounded-0 w-100" value="Add To Cart"></input>
-                <?php else : ?>
-                    <!-- Otherwise, show an 'Out of Stock' button which is disabled. -->
-                    <input type="button" name="addToCart" class="btn btn-secondary rounded-0 w-100" value="Out of Stock" ?>
-                <?php endif; ?>
+                <input type="hidden" name="addProdID" value="<?php echo $product["ID"]; ?>">
+                <input type="hidden" name="addProdKey" value="<?php echo $key; ?>">
+                <div class="row">
+                    <div class="col-9 no-gap">
+                        <?php if($product["Stock"] > 0) : ?>
+
+                        <input type="submit" name="addProductToCart" class="btn btn-success rounded-0 w-100"
+                            value="Add To Cart">
+
+                        <?php else: ?>
+
+                        <input type="button" name="addToCart" class="btn btn-secondary rounded-0 w-100"
+                            value="Out of Stock">
+
+                        <?php endif; ?>
+                    </div>
+                    <?php if($isLoggedIn) : ?>
+                    <div class="col-3 no-gap wishlist-btn">
+                        <?php if(!$isInWishlist) : ?>
+                        <!-- If product does not exist in wishlist, add it -->
+                        <button type="submit" name="addProductToWishlist" value="addProductToWishlist"
+                            class="btn btn-danger rounded-0">
+                            <ion-icon name="heart-outline"></ion-icon>
+                        </button>
+                        <?php else: ?>
+                        <!-- Remove from wishlist -->
+                        <button type="submit" name="deleteProductFromWishlist" value="deleteProductFromWishlist"
+                            class="btn btn-danger rounded-0">
+                            <ion-icon name="heart"></ion-icon>
+                        </button>
+                        <?php endif; ?>
+                    </div>
+                    <?php endif; ?>
+                </div>
             </form>
-            <hr>            
-            <!-- Check if the user is logged in to display wishlist options. -->
-            <?php if($isLoggedIn) : ?>
-            <!-- Button Add to wishlist -->
-                <!-- If the product is not already in the wishlist, show 'Add to Wishlist' button. -->
-                <?php if(!$isInWishlist) : ?>
-                    <form method="post">
-                        <input type="hidden" name="addProductToWishlist" value="addProductToWishlist">
-                        <button type="submit" class="btn btn-success rounded-0 w-100">Add to Wishlist</button>
-                    </form>
-                <?php else : ?>
-                    <!-- If the product is in the wishlist, show 'Remove from Wishlist' button. -->
-                    <form method="post">
-                        <input type="hidden" name="deleteProductFromWishlist" value="deleteProductFromWishlist">
-                        <button type="submit" class="btn btn-success rounded-0 w-100">Remove from Wishlist</button>
-                    </form>
-                <?php endif; ?>
-            <?php endif; ?>
         </div>
     </div>
 </div>
@@ -163,16 +172,17 @@ require_once 'include/navbar.php';
         <!-- in Tabs Content -->
         <div class="tab-content" id="pills-tabContent">
             <!-- Description -->
-            <div class="tab-overflow tab-pane fade show active" id="pills-desc" role="tabpanel"
+            <div class="tab-overflow tab-pane fade show active h-100 p-2" id="pills-desc" role="tabpanel"
                 aria-labelledby="pills-home-tab" tabindex="0">
                 <!-- Info goes here -->
                 <p>
-                <?php echo $product['Description'] ?>
+                    <?php echo $product['Description'] ?>
                 </p>
             </div>
         </div>
     </div>
 </div>
+
 
 
 <?php  
