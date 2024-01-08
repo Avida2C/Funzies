@@ -1,4 +1,7 @@
 <h2>Funzies E-Commerce Platform</h2>
+<img src="https://img.shields.io/badge/HTML-eb5a00?style=flat" alt="HTML" /> <img src="https://img.shields.io/badge/Bootstrap-b319ff?style=flat" alt="Bootstrap" />
+ <img src="https://img.shields.io/badge/JavaScript-ffdd00?style=flat" alt="JavaScript" /> <img src="https://img.shields.io/badge/PHP-8fceff?style=flat" alt="PHP" />
+
 
 <h3>Description</h3>
 <p>
