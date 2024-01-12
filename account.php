@@ -5,7 +5,7 @@ require 'dbfunctions.php';
 
 // Redirecting to index page if the user is not logged in.
 if(!isset($_SESSION['USER'])) {
-    header("Location: index.php");
+    header("Location: createAccount.php");
 }
 
 // Fetching the user's details.

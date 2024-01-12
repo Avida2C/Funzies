@@ -10,6 +10,9 @@ $isLoggedIn = false;
 if(isset($_GET['productID']) && !empty($_GET['productID'])) {
     $product = GetProductByID($con, $_GET['productID']);
 }
+else{
+    header("Location: 404.php");
+}
 // Handle POST requests for adding products to cart.
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     // Adding a product to the cart.
