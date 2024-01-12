@@ -3,6 +3,7 @@
 require 'functions.php';  // Contains shared functions
 require 'dbfunctions.php';  // Contains database related functions
 
+$isValid = true;
 $userExists = false;
 $userCreated = false;
 
@@ -29,26 +30,50 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
         // Sanitize and store input values
         $user = [];
         $user['Name'] = htmlspecialchars(addslashes($_POST['name']));
+        if(preg_match($pattern['name'], $user['Name'])!= 1) {
+            $isValid = false;
+        }
+
         $user['Surname'] = htmlspecialchars(addslashes($_POST['surname']));
+        if(preg_match($pattern['surname'], $user['Surname'])!= 1) {
+            $isValid = false;
+        }
+
         $user['Email'] = htmlspecialchars(addslashes($_POST['createemail']));
+        if(preg_match($pattern['email'], $user['Email'])!= 1) {
+            $isValid = false;
+        }
+
         $user['Password'] = htmlspecialchars(addslashes($_POST['createpassword']));
         $user['Password'] = sha1($_POST['createpassword']);
+        if(preg_match($pattern['password'], $user['Password'])!= 1) {
+            $isValid = false;
+        }
+
         $user['ContactNumber'] = htmlspecialchars(addslashes($_POST['contactnumber']));
-        // Check if user already exists
-        if(!CheckUserExists($con, $user['Email'])) {
-            // Create a new user
-            $user['ID'] = createUser($con, $user);
-            if($user['ID'] > 0) {
-                // Set UserCreated to true
-                $userCreated = true;
+        if(preg_match($pattern['contactnumber'], $user['ContactNumber'])!= 1) {
+            $isValid = false;
+        }
+        if($isValid) {
+
+            // Check if user already exists
+            if(!CheckUserExists($con, $user['Email'])) {
+                // Create a new user
+                $user['ID'] = createUser($con, $user);
+                if($user['ID'] > 0) {
+                    // Set UserCreated to true
+                    $userCreated = true;
+                }
+            }
+            else{
+                // If user already exists, set userExists to true
+                $userExists = true;
             }
         }
-        else{
-            // If user already exists, set userExists to true
-            $userExists = true;
-        }
+
     }
 }
+
 ?>
 
 <?php
@@ -67,33 +92,54 @@ require_once 'include/navbar.php';
                     aria-labelledby="pills-signup-tab" tabindex="0">
 
                     <!-- Sign Up Form -->
-                    <form class="p-4" method="post">
+                    <form id="SignUpform" class="p-4" method="post">
                         <h1>Sign Up</h1>
                         <?php if(!$userCreated) : ?>
                         <div class="row">
                             <div class="col">
                                 <label for="name-input">Name<span class="text-danger">*</span></label>
                                 <input class="w-100 p-1 mb-2" type="text" id="name-input" name="name" placeholder="Name"
-                                    required autocomplete="name">
+                                    onkeyup="validate(this, patterns.name)" required autocomplete="name">
                             </div>
                             <div class="col">
                                 <label for="surname-input">Surname<span class="text-danger">*</span></label>
-                                <input class="w-100 p-1 mb-2" type="text" id="surname-input" name="surname"
-                                    placeholder="Surname" required autocomplete="surname">
+                                <input onkeyup="validate(this, patterns.surname)" class="w-100 p-1 mb-2" type="text"
+                                    id="surname-input" name="surname" placeholder="Surname" required
+                                    autocomplete="surname">
                             </div>
                         </div>
 
                         <label for="contactnumber">Contact Number<span class="text-danger">*</span></label>
-                        <input class="w-100 p-1 mb-2" type="contactnumber" id="contactnumber-input" name="contactnumber"
-                            placeholder="Contact Number" required autocomplete="contactnumber">
-
+                        <input class="w-100 p-1 mb-2" onkeyup="validate(this, patterns.contactnumber)" type="text"
+                            id="contactnumber-input" name="contactnumber" placeholder="Contact Number" required
+                            autocomplete="contactnumber">
+                        <div class="contact-number-requirements">
+                            <p><strong>Must consist of 1 to 8 digits only.</strong></p>
+                        </div>
                         <label for="email-input">Email<span class="text-danger">*</span></label>
-                        <input class="w-100 p-1 mb-2" type="email" id="email-input" name="createemail"
-                            placeholder="Email" required autocomplete="email">
-
+                        <input class="w-100 p-1 mb-2" onkeyup="validate(this, patterns.email)" type="email"
+                            id="email-input" name="createemail" placeholder="Email" required autocomplete="email">
+                        <div class="email-requirements">
+                            <p><strong>Email must meet the following criteria:</strong></p>
+                            <ul>
+                                <li>Must contain the "@" symbol.</li>
+                                <li>Must have a valid domain name (e.g., example.com).</li>
+                            </ul>
+                        </div>
                         <label for="password-input">Password<span class="text-danger">*</span></label>
-                        <input class="w-100 p-1 mb-2" type="password" id="password-input" name="createpassword"
-                            placeholder="Password" required autocomplete="new-password">
+                        <input class="w-100 p-1 mb-2" onkeyup="validate(this, patterns.password)" type="password"
+                            id="password-input" name="createpassword" placeholder="Password" required
+                            autocomplete="new-password">
+                        <div class="password-requirements">
+                            <p><strong>Password must contain at least:</strong></p>
+                            <ul>
+                                <li>One lowercase letter</li>
+                                <li>One uppercase letter</li>
+                                <li>One digit</li>
+                                <li>One special character from [@$!%*?&]</li>
+                            </ul>
+                            <p><strong>Must have a minimum length of 8 characters.</strong></p>
+                        </div>
 
                         <p>By clicking Sign Up, you are agreeing to our <a class="text-decoration-none"
                                 href="terms.php">Terms and Conditions</a>.</p>

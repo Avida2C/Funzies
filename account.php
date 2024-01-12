@@ -27,6 +27,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
         $user["ContactNumber"] = $contactNumber;
         $incorrectPassword = "";
         $tabToShow = "accountdetails";
+        updateUserObject($con, $user);
     }
     // Updating user email.
     else if(isset($_POST["updateEmail"])) {
@@ -34,6 +35,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
         $user["Email"] = $email;
         $incorrectPassword = "";
         $tabToShow = "accountdetails";
+        updateUserObject($con, $user);
     }
     // Updating user password.
     else if(isset($_POST["updatePassword"])) {

@@ -52,14 +52,14 @@ require_once 'include/navbar.php';
             <form id="ContactMeform" method="POST">
                 <h3>Get in Touch</h3>
                 <label for="name">Full Name:</label>
-                <input class="w-100 mb-3 p-1" id="contactName" type="text" name="name" required>
+                <input class="w-100 mb-3 p-1" id="contactName" type="text" name="name" onkeyup="validate(this, patterns.name)" required>
 
 
                 <label for="email">Email:</label>
-                <input class="w-100 mb-3 p-1" id="contactEmail" type="email" name="email" required autocomplete="email">
+                <input class="w-100 mb-3 p-1" id="contactEmail" type="email" name="email" required autocomplete="email" onkeyup="validate(this, patterns.email)">
 
                 <label for="subject">Subject:</label>
-                <input class="w-100 mb-3 p-1" id="contactSubject" type="text" name="subject" required>
+                <input class="w-100 mb-3 p-1" id="contactSubject" type="text" name="subject" required onkeyup="validate(this, patterns.subject)">
 
                 <label for="message">Message:</label>
                 <textarea class="w-100 mb-3 p-2" id="contactMessage" name="message" cols="20" rows="8"

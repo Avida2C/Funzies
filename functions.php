@@ -3,8 +3,11 @@ require 'connection.php';
 
 // Regex Patterns
 $pattern ['name']='/^[a-z A-Z]/';
+$pattern ['surname']="/^[a-zA-Z' -]+$/";
 $pattern ['email']='/^([a-z\d\.-]+)@([a-z\d-]+)\.([a-z]{2,4})(\.[a-z]{2,4})?$/';
+$pattern ['password']="/^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@$!%*?&])[a-zA-Z\d@$!%*?&]{8,}$/";
 $pattern ['subject']='/^[a-z A-Z\d]{5,30}$/';
+$pattern ['contactnumber']='/^\d{8}$/';
 
 //Import PHPMailer classes into the global namespace
     //These must be at the top of your script, not inside a function
