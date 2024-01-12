@@ -2,7 +2,20 @@
 
 $incorrectLoginSidebar = false;
 
-// Check if the form has been submitted via POST and is specifically from the sidebar login.
+/**
+ * Handles the login functionality for the sidebar form.
+ *
+ * If the request method is POST and the "sideBarLogin" parameter is set to "true" and not empty,
+ * it retrieves the email and password from the POST data and sanitizes them.
+ *
+ * It then calls the userLogin function with the database connection, email, and password as parameters.
+ * If the login is successful, it redirects the user to the account.php page.
+ * If the login fails, it sets the $incorrectLoginSidebar variable to true and assigns an error message to $errorSidebar.
+ *
+ * @param array $con The database connection object.
+ * @param string $email The email address entered by the user.
+ * @param string $password The
+ */
 if($_SERVER['REQUEST_METHOD'] == "POST" && !empty($_POST["sideBarLogin"]) && $_POST["sideBarLogin"] == "true") {
     // Sanitize and capture the email and password input from the user.
     $email = htmlspecialchars(addslashes($_POST['email']));

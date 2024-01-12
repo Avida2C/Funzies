@@ -6,14 +6,31 @@ require 'dbfunctions.php';
 $product = [];
 $isLoggedIn = false;
 
-// Check if a product ID is provided and fetch its details from the database.
+
+/**
+ * Checks if the 'productID' parameter is set in the $_GET array and is not empty.
+ * If it is set and not empty, retrieves the product information using the GetProductByID function.
+ * If it is not set or empty, redirects the user to the 404.php page.
+ *
+ * @param mysqli $con The database connection object.
+ * @param string $productID The ID of the product to retrieve.
+ * @return mixed The product information if 'productID' is set and not empty.
+ * @throws Exception If 'productID' is not set or empty.
+ */
 if(isset($_GET['productID']) && !empty($_GET['productID'])) {
     $product = GetProductByID($con, $_GET['productID']);
 }
 else{
     header("Location: 404.php");
 }
-// Handle POST requests for adding products to cart.
+
+/**
+ * Handles the POST request for adding a product to the cart, adding a product to the wishlist, or deleting a product from the wishlist.
+ *
+ * @param array $product The product details.
+ * @param mysqli $con The database connection object.
+ * @return void
+ */
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     // Adding a product to the cart.
     if(isset($_POST['addProductToCart'])) {
@@ -57,7 +74,15 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     }
 }
 
-// Check if the user is logged in and fetch their wishlist status for the product.
+/**
+ * Checks if the user is logged in and retrieves the wishlist item for the given user and product.
+ *
+ * @param array $con The database connection object.
+ * @param int $userID The ID of the user.
+ * @param int $productID The ID of the product.
+ * @return bool $isLoggedIn True if the user is logged in, false otherwise.
+ * @return bool $isInWishlist True if the product is in the user's wishlist, false otherwise.
+ */
 if(isset($_SESSION['USER'])) {
     $isLoggedIn = true;
     $wishlist = GetWishlistItem($con, $_SESSION['USER']['ID'], $product['ID']);

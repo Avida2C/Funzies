@@ -1,5 +1,14 @@
 <?php 
-// Check if the request is a POST and if the 'deleteCartItem' button was pressed.
+/**
+ * Check if the request method is POST and the 'deleteCartItem' parameter is not empty.
+ * If both conditions are met, iterate through the 'CART_ITEMS' stored in the session.
+ * If an item's 'ID' matches the value of the 'deleteCartItem' parameter, remove it from the 'CART_ITEMS' array in the session.
+ *
+ * @param array $_SERVER
+ * @param array $_POST
+ * @param array $_SESSION
+ * @return void
+ */
 if ($_SERVER['REQUEST_METHOD'] == "POST" && !empty($_POST['deleteCartItem'])) {
     // Loop through the cart items in the session.
     foreach($_SESSION['CART_ITEMS'] as $key => $itm) {
@@ -16,7 +25,13 @@ $subtotal = 0;
 $delivery = 0;
 $total = 0;
 
-// Check if there are items in the cart.
+
+/**
+ * Check if there are items in the cart.
+ * Calculates the total cost of items in the cart, including subtotal and delivery fee.
+ *
+ * @return float The total cost of items in the cart.
+ */
 if(isset($_SESSION['CART_ITEMS'])) {
     $cartItems = $_SESSION['CART_ITEMS'];
     // Calculate the subtotal by looping through each item and adding its cost.
@@ -29,6 +44,12 @@ if(isset($_SESSION['CART_ITEMS'])) {
     $total = $subtotal + $delivery;
 }
 
+/**
+ * Includes the product card slider file and passes the $item variable to it.
+ *
+ * @param mixed $item
+ * @return void
+ */
 function includeItem($item)
 {
     include 'include/product-card-slider.php';

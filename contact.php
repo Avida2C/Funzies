@@ -4,7 +4,11 @@ require 'functions.php';
 require 'dbfunctions.php';
 $isValid = true;
 
-// Check if the request method is POST, indicating form submission.
+/**
+ * Process a POST request and validate the input fields before sending an email.
+ *
+ * @return void
+ */
 if($_SERVER['REQUEST_METHOD'] == "POST") {
     // Sanitize and validate the name field.
     $name = htmlspecialchars(addslashes($_POST['name']));
@@ -68,7 +72,15 @@ require_once 'include/navbar.php';
                 <!-- Send Message Button -->
                 <button class="btn btn-danger rounded-0 w-100" name="Mailer">Send Message</button>
                 <!-- Validation and sending status messages -->
-                <?php if(!$isValid) {
+                <?php
+                /**
+                 * Displays appropriate messages based on the validation and sending status.
+                 *
+                 * @param bool $isValid - Indicates if the inputs are valid or not.
+                 * @param bool $sent - Indicates if the message was successfully sent or not.
+                 * @return void
+                 */
+                if(!$isValid) {
                     echo '<p style="color:red;" class="pt-3">One or more inputs are incorrect! Please try again. </p>';
                 }
                 // If message sent, display 'Message Sent!'

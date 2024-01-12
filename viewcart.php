@@ -2,6 +2,14 @@
 require 'functions.php'; // General functions used throughout the site.
 require 'dbfunctions.php'; // Database interaction functions.
 
+/**
+ * Deletes a specific item from the cart if the request method is POST and the 'deleteCartItem' parameter is not empty.
+ *
+ * @param array $_SERVER
+ * @param array $_POST
+ * @param array $_SESSION
+ * @return void
+ */
 if ($_SERVER['REQUEST_METHOD'] == "POST" && !empty($_POST['deleteCartItem'])) {
     foreach($_SESSION['CART_ITEMS'] as $key => $itm) {
         if ($itm['ID'] == $_POST['deleteCartItem']) {
@@ -15,7 +23,12 @@ $subtotal = 0; // Total cost of items before adding extra fees.
 $delivery = 0; // Delivery fee.
 $total = 0; // Total cost including delivery.
 
-// Calculate totals if there are items in the cart.
+
+/**
+ * Calculates the total cost of items in the cart, including subtotal and delivery charges.
+ * 
+ * @return float The total cost of items in the cart.
+ */
 if(isset($_SESSION['CART_ITEMS'])) {
     $cartItems = $_SESSION['CART_ITEMS']; // Load items from session.
     // Calculate subtotal from item prices and quantities.

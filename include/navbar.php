@@ -21,7 +21,15 @@
             <!-- Account Icon: Shows login button if not logged in, button becomes a link to the account page if logged in -->
             <div id="navAccount" class="col-sm-11 col-md-12 col-lg-3 col-xl-3 text-end align-self-center">
                 <!-- Account Login Button and Sidebar -->
-                <?php if(!isset($_SESSION["USER"])) { echo 
+                <?php 
+                /**
+                 * Generates HTML code for a button or a link based on the session status of the user.
+                 *
+                 * If the user is not logged in, a button is displayed that triggers an offcanvas login form.
+                 * If the user is logged in, a link is displayed that redirects to the account page.
+                 *
+                 */
+                if(!isset($_SESSION["USER"])) { echo 
                     '<button class="btn text-muted" type="button" data-bs-toggle="offcanvas" data-bs-target="#AccountLogin"
                     aria-controls="AccountLogin">
                     <ion-icon size="large" name="person-circle-outline"></ion-icon>
@@ -36,7 +44,15 @@
                 <?php require_once 'include/navbar-account-sidebar.php'?>
 
                 <!-- Wishlist Button -->
-                <?php if(!isset($_SESSION["USER"])) { echo 
+                <?php
+                /**
+                 * Generates HTML code for a button or link based on the user session status.
+                 *
+                 * If the user session is not set, it will generate a link to create an account.
+                 * If the user session is set, it will generate a button to navigate to the wishlist.
+                 *
+                 */
+                if(!isset($_SESSION["USER"])) { echo 
                 '<a href="createAccount.php" class="btn text-muted">
                     <ion-icon style="font-size: 30px;" name="gift-outline"></ion-icon>
                 </a>';

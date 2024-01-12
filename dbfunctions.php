@@ -1,5 +1,11 @@
 <?php
 /* Users Management */
+/**
+ * Retrieves a list of users from the database.
+ *
+ * @param mysqli $con The database connection object.
+ * @return mysqli_result|bool The result set of the query, or false if an error occurred.
+ */
 function GetUsers($con)
 {
     // Fetches all non-deleted users and their roles from the database.
@@ -18,7 +24,13 @@ function GetUsers($con)
     return $result;
 }
 
-// Check if user exists by email.
+/**
+ * Check if a user with the given email exists in the database.
+ *
+ * @param  mysqli $con
+ * @param  string $email
+ * @return bool
+ */
 function CheckUserExists($con, $email)
 {
     // Select a user by ID.
@@ -40,7 +52,13 @@ function CheckUserExists($con, $email)
     return false;
 }
 
-// Fetches user data by user ID from the database.
+/**
+ * Retrieves a user from the database based on their ID.
+ *
+ * @param mysqli $con The database connection object.
+ * @param int $id The ID of the user to retrieve.
+ * @return array|false The user data as an associative array if found, false otherwise.
+ */
 function GetUserByID($con, $id)
 {
     // Select a user by ID.
@@ -450,7 +468,12 @@ function GetProductsPage($con, $sort, $category, $brand, $search)
     return $result;
 }
 
-// Gets the newest products for display on the index page.
+/**
+ * Retrieves the latest products from the database.
+ *
+ * @param mysqli $con The database connection object.
+ * @return mysqli_result|bool The result set of the query, or false if an error occurred.
+ */
 function GetLatestProductsIndex($con)
 {
     $sql = "SELECT p.*, b.Name as 'brandName', c.Name as 'categoryName' FROM product p JOIN brand b on p.Brand = b.ID JOIN category c ON p.Category = c.ID WHERE p.Deleted = '0' ORDER BY p.DateAdded DESC LIMIT 5;";
@@ -470,11 +493,8 @@ function GetLatestProductsIndex($con)
     return $result;
 }
 
-// Retrieves products that are best sellers
 function GetBestSellersIndex($con)
 {
-    $sqlOrders = "SELECT o.product, Count(o.product), SUM(o.quantity) FROM funzies.order_product o GROUP BY o.product;";
-
     $sql = "SELECT p.*, b.Name as 'brandName', c.Name as 'categoryName' FROM product p JOIN brand b on p.Brand = b.ID JOIN category c ON p.Category = c.ID WHERE p.Deleted = '0' ORDER BY p.DateAdded DESC LIMIT 4;";
 
     $stmt = mysqli_stmt_init($con);
@@ -492,7 +512,13 @@ function GetBestSellersIndex($con)
     return $result;
 }
 
-// Fetches a single product by its ID.
+/**
+ * Retrieves a product from the database based on its ID.
+ *
+ * @param mysqli $con The database connection object.
+ * @param int $id The ID of the product to retrieve.
+ * @return array|false Returns an associative array representing the product if found, or false if not found.
+ */
 function GetProductByID($con, $id)
 {
     $sql = "SELECT p.*, b.Name as 'brandName', c.Name as 'categoryName', c.ID as 'categoryID' FROM product p JOIN brand b on p.Brand = b.ID JOIN category c ON p.Category = c.ID WHERE p.Deleted = '0' AND p.ID = '$id'";
@@ -683,10 +709,24 @@ function GetOrderStatus($con)
     return $result;
 }
 
-// Fetches all non-deleted orders, joining order status data.
+
+/**
+ * Retrieves the orders from the database.
+ *
+ * @param mysqli $con The database connection object.
+ * @return mysqli_result|bool The result set of the query or false if an error occurred.
+ */
 function GetOrders($con)
 {
     
+    /**
+     * Builds a SQL query to select orders and their corresponding status from the database.
+     *
+     * The query selects all columns from the "orders" table and aliases the "Status" column as "statusOrder".
+     * It joins the "orderstatus" table on the "status" column of the "orders" table.
+     * The query filters out deleted orders by checking the "deleted" column for a value of 0.
+     *
+     */
     $sql = "SELECT o.*, s.Status as 'statusOrder' FROM orders o JOIN orderstatus s on o.status = s.ID WHERE o.deleted = 0";
 
     $stmt = mysqli_stmt_init($con);
@@ -704,7 +744,13 @@ function GetOrders($con)
     return $result;
 }
 
-/* Adds a new order status to the database. */
+/**
+ * Creates a new order status in the database.
+ *
+ * @param mysqli $con The database connection object.
+ * @param string $name The name of the order status.
+ * @return bool Returns true if the order status was created successfully, false otherwise.
+ */
 function createOrderStatus($con,$name)
 {
     $sql = "INSERT INTO orderstatus (Status) VALUES ('$name')";
@@ -891,7 +937,14 @@ function getGUID()
     return sprintf('%04X%04X-%04X-%04X-%04X-%04X%04X%04X', mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(16384, 20479), mt_rand(32768, 49151), mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(0, 65535));
 }
 
-// Function to authenticate admin (used on the Admin Page)
+/**
+ * Logs in an admin user, used on the admin page.
+ *
+ * @param mysqli $con The database connection object.
+ * @param string $email The email of the user.
+ * @param string $password The password of the user.
+ * @return bool Returns true if the login is successful, false otherwise.
+ */
 function adminLogin($con, $email, $password)
 {
     $password = sha1($password);
@@ -918,7 +971,14 @@ function adminLogin($con, $email, $password)
     return false;
 }
 
-// Function to authenticate user login on the main funzies page
+/**
+ * Authenticates a user by checking their email and password against the database.
+ *
+ * @param mysqli $con The database connection object.
+ * @param string $email The user's email.
+ * @param string $password The user's password.
+ * @return bool Returns true if the user is authenticated, false otherwise.
+ */
 function userLogin($con, $email, $password)
 {
     $password = sha1($password);
@@ -1083,7 +1143,14 @@ function deleteAddress($con, $id)
     return $result;
 }
 
-/* Adds a product to a user's wishlist. */
+/**
+ * Creates a new wishlist item in the database.
+ *
+ * @param mysqli $con The database connection object.
+ * @param int $productID The ID of the product to add to the wishlist.
+ * @param int $userID The ID of the user who owns the wishlist.
+ * @return bool Returns true if the wishlist item was successfully created, false otherwise.
+ */
 function createWishlistItem($con, $productID, $userID)
 {
     $sql = "INSERT INTO wishlist (user, product) VALUES('$userID', '$productID');";
@@ -1159,7 +1226,15 @@ function GetWishlistByUser($con, $userID)
     return $result;
 }
 
-/* Creates a new order, including details about the user, address, and the items in the order. */
+/**
+ * Creates an order in the database.
+ *
+ * @param $con The database connection object.
+ * @param $user The user object.
+ * @param $selectedAddress The selected address object.
+ * @param $cartItems An array of cart items.
+ * @return int The ID of the newly created order.
+ */
 function createOrder($con, $user, $selectedAddress, $cartItems)
 {
     

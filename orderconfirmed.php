@@ -3,7 +3,11 @@
 require 'functions.php';
 require 'dbfunctions.php';
 
-// Retrieve order details from the session
+/**
+ * Retrieve the address from the ORDER_SUMMARY session variable.
+ *
+ * @var string $address
+ */
 $address = $_SESSION["ORDER_SUMMARY"]["ADDRESS"];
 $items = $_SESSION["ORDER_SUMMARY"]["ITEMS"];
 

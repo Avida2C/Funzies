@@ -1,10 +1,16 @@
 <?php 
-// Retrieve the list of categories from the database using the GetCategories function.
+/**
+ * Retrieves the categories from the database.
+ *
+ * @param  $con  The database connection object.
+ * @return An array of categories.
+ */
 $categories = GetCategories($con);
 $brands = GetBrands($con);
 ?>
 
-<div id="navCategories-sm" class="container container-sm container-md container-lg container-xl container-xxl navbar navbar-light bg-light">
+<div id="navCategories-sm"
+    class="container container-sm container-md container-lg container-xl container-xxl navbar navbar-light bg-light">
     <!-- Categories for small screens -->
     <button class="btn rounded-0 py-2 ms-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar2"
         aria-controls="offcanvasNavbar2" aria-label="Toggle navigation">
@@ -55,7 +61,7 @@ $brands = GetBrands($con);
                 <div class="navbar-nav pe-3">
                     <!-- Categories List -->
                     <div class="container">
-                            <?php
+                        <?php
                         // Loop through each category and display it with a link.
                         foreach ($categories as $category) {
                             echo '<li class="border-bottom border-1 align-items-center py-2">';
@@ -63,19 +69,19 @@ $brands = GetBrands($con);
                             echo '<a href="shop.php?category=' . $category["ID"] . '" class="text-decoration-none text-muted">' . $category["Name"] . '</a>';
                             echo '</li>'; 
                         }?>
-                            <h3 class="fs-6 mt-2">Brands</h3>
-                            <?php
+                        <h3 class="fs-6 mt-2">Brands</h3>
+                        <?php
                         // Loop through each brand and display it with a link and product count.
                         foreach ($brands as $brand) {
                             echo '<li class="border-bottom border-1 align-items-center py-2">';
                             // Link to filter products by this brand.
                             echo '<a href="shop.php?brand=' . $brand["ID"] . '" class="text-decoration-none text-muted">' . $brand["Name"] . '</a>';
                         }?>
-                        </div>
-
                     </div>
-                    <br>
+
                 </div>
+                <br>
             </div>
         </div>
     </div>
+</div>

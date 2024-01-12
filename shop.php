@@ -24,7 +24,12 @@ if(isset($_GET["page"])) {
     $currentPage = (int)$_GET["page"]; // Update current page.
 }
 
-// Handle POST request to sort products.
+/**
+ * Check if the request method is POST and process the form data.
+ *
+ * @param array $_SERVER
+ * @return void
+ */
 if($_SERVER['REQUEST_METHOD'] == "POST") {
     if(isset($_POST["sort"])) {
         $selectedSort = $_POST["sortProduct"]; // Update selected sort option.
@@ -49,12 +54,27 @@ if(($currentPage * $pageSize) > $products->num_rows) {
 
 $key = 0;
 
-// Function to include individual product card.
+/**
+ * Includes the product card template file.
+ *
+ * @param string $product The product to be included in the card.
+ * @param string $key The key to be used as a unique identifier for the product card.
+ * @return void
+ */
 function includeProduct($product, $key){
     include 'include/product-card.php';
 }
 
-// Function to construct a URL with query parameters.
+
+/**
+ * Generates a URL with query parameters based on the selected category, brand, search term, and page number.
+ *
+ * @param string|null $selectedCategory The selected category.
+ * @param string|null $selectedBrand The selected brand.
+ * @param string|null $search The search term.
+ * @param int|null $pageNumber The page number.
+ * @return string The generated URL.
+ */
 function getUrl($selectedCategory, $selectedBrand, $search, $pageNumber)
 {
     $url = $_SERVER['PHP_SELF'] . '?';

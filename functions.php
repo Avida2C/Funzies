@@ -2,6 +2,11 @@
 require 'connection.php'; 
 
 // Regex Patterns
+/**
+ * Regular expression patterns for various fields.
+ *
+ * @var array
+ */
 $pattern ['fullname']='/^[A-Za-z\s]+$/';
 $pattern ['name']='/^[a-zA-Z]+$/';
 $pattern ['surname']="/^[a-zA-Z]+$/";
@@ -10,14 +15,28 @@ $pattern ['password']="/^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@$!%*?&])[a-zA-Z\d@$!%*?&]{
 $pattern ['subject']='/^[a-z A-Z\d]{5,30}$/';
 $pattern ['contactnumber']='/^\d{8}$/';
 
-//Import PHPMailer classes into the global namespace
-    //These must be at the top of your script, not inside a function
+
+    /**
+     * Import the necessary classes for using PHPMailer.
+     * 
+     * This code imports the PHPMailer, SMTP, and Exception classes from the PHPMailer\PHPMailer namespace.
+     * It also requires the 'vendor/autoload.php' file, which is typically used for autoloading classes in a PHP project.
+     */
     use PHPMailer\PHPMailer\PHPMailer;
     use PHPMailer\PHPMailer\SMTP;
     use PHPMailer\PHPMailer\Exception;
         //Load Composer's autoloader
         require 'vendor/autoload.php';
     
+/**
+ * Sends an email using PHPMailer.
+ *
+ * @param string $email The recipient's email address.
+ * @param string $name The recipient's name.
+ * @param string $subject The subject of the email.
+ * @param string $message The body of the email.
+ * @return bool Returns true if the email was sent successfully, false otherwise.
+ */
 function Mailer($email, $name, $subject, $message)
 {
     //Instantiation and passing `true` enables exceptions
@@ -68,6 +87,15 @@ function Mailer($email, $name, $subject, $message)
     }
 }
 
+/**
+ * Sends a password reset email to the specified email address.
+ *
+ * @param string $email The recipient's email address.
+ * @param string $name The recipient's name.
+ * @param string $subject The subject of the email.
+ * @param string $message The body of the email.
+ * @return bool Returns true if the email was sent successfully, false otherwise.
+ */
 function resetPasswordMail($email, $name, $subject, $message)
 {
     //Instantiation and passing `true` enables exceptions
@@ -118,10 +146,11 @@ function resetPasswordMail($email, $name, $subject, $message)
     }
 }
 
-
+/**
+ * Logs out the current user by unsetting and destroying the session.
+ */
 function logout()
 {
-    //the following will reset the session data completely:
     session_unset(); // Remove all session variables.
     session_destroy(); // Destroy the session itself.
 }

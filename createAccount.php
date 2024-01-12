@@ -7,7 +7,21 @@ $isValid = true;
 $userExists = false;
 $userCreated = false;
 
-// Check the request method to handle form submissions
+/**
+ * Handles form submission based on the request method.
+ *
+ * If the request method is "POST":
+ * - Checks if the "email" parameter is set in the $_POST array.
+ * - Sanitizes and validates the email and password parameters.
+ * - Calls the userLogin function with the sanitized email and password.
+ * - If the login is successful, redirects to the account.php page.
+ * - If the login fails, sets an error message.
+ *
+ * If the "createemail" parameter is set in the $_POST array:
+ * - Creates an empty user array.
+ * - Sanitizes and validates the name, surname, email, password, and contact number parameters.
+ * - Hashes the password using the sha1 algorithm.
+ */
 if($_SERVER['REQUEST_METHOD'] == "POST") {
     // Login form submitted
     if(isset($_POST["email"])) {
@@ -72,7 +86,6 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
         }
     }
 }
-
 ?>
 
 <?php

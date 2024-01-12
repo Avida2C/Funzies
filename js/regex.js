@@ -1,6 +1,9 @@
 const inputs = document.querySelectorAll('input');
 
-// Define regex patterns for different input types.
+
+/**
+ * Regular expression patterns for validating different types of input.
+*/
 const patterns = {
     fullname: /^[A-Za-z\s]+$/,
     name: /^[a-zA-Z]+$/,
@@ -9,8 +12,6 @@ const patterns = {
     subject: /^[a-z A-Z\d]{5,30}$/,
     password:/^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@$!%*?&])[a-zA-Z\d@$!%*?&]{8,}$/,
     contactnumber:/^\d{8}$/,
-    //regex ends with , if it continues, the last one does not require a coma , 
-    //spaces between numbers and characters will make the regex invalid
 };
 
 function validate(field, regex) {
@@ -45,6 +46,14 @@ $('#ContactMeform').on('submit', function () {
 });
 
 // SignUp Form - createAccount.php
+/**
+ * Attach an event listener to the form with the id "SignUpform" to handle the form submission.
+ * This function validates the input fields for name, surname, email, password, and contact number
+ * using the provided patterns. If all fields pass validation, the form is submitted. Otherwise, the
+ * form submission is prevented.
+ * @returns {boolean} - Returns true if all fields pass validation and the form should be submitted,
+ *                     otherwise returns false.
+ */
 $('#SignUpform').on('submit', function () {
     var SignUpNameValid = validate($('#name-input')[0], patterns.name);
     var SignUpSurnameValid = validate($('#surname-input')[0], patterns.surname);
@@ -75,6 +84,12 @@ $('#customerDetailsForm').on('submit', function () {
 });
 
 // forgot password input - forgotPassword.php
+/**
+ * Attaches a submit event handler to the element with the ID "forgotPassword".
+ * Validates the email input field using the provided regular expression pattern.
+ * If the email is valid, the form is submitted. Otherwise, the form submission is prevented.
+ * @returns {boolean} - Returns true if the form is valid and can be submitted, false otherwise.
+ */
 $('#forgotPassword').on('submit', function () {
     var forgotEmailValid = validate($('#password-reset')[0], patterns.email);
     // If all fields are valid, allow the form to be submitted.
@@ -109,6 +124,13 @@ $('#accountEmail').on('submit', function () {
 });
 
 // Change User Details - Account-Details section
+/**
+ * Attaches a submit event handler to the element with the ID "accountDetails".
+ * Validates the values of the input fields for account name, surname, and contact number
+ * using the provided patterns. If all validations pass, the form is submitted.
+ * @returns {boolean} - Returns true if all validations pass and the form is submitted,
+ * otherwise returns false.
+ */
 $('#accountDetails').on('submit', function () {
     var AccountNameValid = validate($('#firstname')[0], patterns.name);
     var AccountSurnameValid = validate($('#lastname')[0], patterns.surname);

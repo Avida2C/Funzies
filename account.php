@@ -3,7 +3,9 @@
 require 'functions.php';
 require 'dbfunctions.php';
 
-// Redirecting to index page if the user is not logged in.
+/**
+ * Checks if the 'USER' key is set in the $_SESSION array. If it is not set, redirects the user to the createAccount.php page.
+ */
 if(!isset($_SESSION['USER'])) {
     header("Location: createAccount.php");
 }
@@ -15,6 +17,12 @@ $incorrectPassword = "";
 $passwordUpdated = false;
 $tabToShow = "";
 
+/**
+ * Handles the form submissions for updating user details, email, password, and adding/deleting addresses.
+ *
+ * @param  array  $_POST
+ * @return void
+ */
 if($_SERVER['REQUEST_METHOD'] == "POST") {
     // Updating user details.
     if(isset($_POST["updateDetails"])) {

@@ -13,7 +13,11 @@ $user = null;
 $selectedAddress = null;
 $userExists = false; 
 
-// Calculate subtotal from cart items if they exist
+/**
+ * Calculates the total cost of items in the shopping cart.
+ *
+ * @return float The total cost of items in the shopping cart.
+ */
 if(isset($_SESSION['CART_ITEMS']) && !empty($_SESSION['CART_ITEMS'])) {
     $cartItems = $_SESSION['CART_ITEMS'];
     foreach($cartItems as $key => $item) {
@@ -23,7 +27,11 @@ if(isset($_SESSION['CART_ITEMS']) && !empty($_SESSION['CART_ITEMS'])) {
     $total = $subtotal + $delivery;
 }
 
-// If the user is logged in, retrieve their information and default address.
+/**
+ * Checks if the user is logged in and retrieves their information and addresses.
+ *
+ * @return void
+ */
 if(isset($_SESSION['USER'])) {
     $isLoggedIn = true;
     $user = $_SESSION['USER'];
@@ -36,7 +44,12 @@ if(isset($_SESSION['USER'])) {
     }
 }
 
-// Handle form submissions for address selection and order completion
+/**
+ * Handles the form submission when the request method is POST.
+ *
+ * @param array $_POST
+ * @return void
+ */
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     // Allow the user to select an existing address or enter a new one.
     if(isset($_POST["selectAddress"])) {

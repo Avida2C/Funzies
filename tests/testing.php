@@ -134,6 +134,16 @@ class testing extends TestCase
         $this->assertTrue($result);
     }
     */
+     /**
+      * Test the checkout process.
+      *
+      * This function connects to the database, retrieves a user and a product by their IDs,
+      * selects an address, sets the quantity of the product to 1, creates an order using the
+      * database connection, user, selected address, and cart items, and asserts that the result
+      * is greater than 0.
+      *
+      * @return void
+      */
      public function testCheckout(){
         $con = mysqli_connect('localhost', 'root', '', 'funzies');
         $user = GetUserByID($con, 2);

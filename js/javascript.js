@@ -1,3 +1,8 @@
+/**
+ * Switches between login and register buttons based on the button clicked.
+ * @param {string} btnClicked - The button that was clicked ("login" or "register").
+ * @returns None
+ */
 function buttonSwitch(btnClicked) {
     if (btnClicked == "login") {
         $(".btnLogin").css("display", "none");
@@ -12,6 +17,10 @@ function buttonSwitch(btnClicked) {
     }
 }
 
+/**
+ * A jQuery function that handles the increment and decrement buttons for a quantity selector.
+ * @returns None
+ */
 $(document).ready(function () {
     // Increment Quantity
     $(".quantity-selector .increment-btn").click(function () {
@@ -39,15 +48,13 @@ $(document).ready(function () {
                 $(this).text('€' + allsubtotal.toFixed(2));
             });
             $('#totalPrice').text('€' + total.toFixed(2));
-        }
-        
+        }  
     });
 
     // Decrement Quantity
     $(".quantity-selector .decrement-btn").click(function () {
         let $input = $(".quantity-input" + $(this).val());
         let value = parseInt($($input[0]).val(), 10);
-
         if (value > 1) {
             value--;
             $input.each(function () {
@@ -72,6 +79,12 @@ $(document).ready(function () {
     });
 });
 
+/**
+ * Initializes an event listener for the click event on the elements with the class "list-group-item-action"
+ * inside the element with the id "accountOptions". When a non-disabled element is clicked, it adds the "active"
+ * and "disabled" classes to the clicked element and removes those classes from all other elements with the same class.
+ * @returns None
+ */
 $(document).ready(function () {
     $('#accountOptions').on('click', '.list-group-item-action:not(.disabled)', function () {
         // Check if clicked item is already active
@@ -87,35 +100,12 @@ $(document).ready(function () {
     });
 });
 
-// Navigate from navbar to account.php#wishlist, where user is taken to the wishlist
-function navigateToWishlist() {
-    window.location.href = 'account.php#accountwishlist';
-    window.onload = function () {
-        scrollToWishlist();
-    }
-}
-
-// this code is used to check whether to show or hide content depending on the .hash location
-$(document).ready(function () {
-    // If there's a hash in the URL
-    if (window.location.hash) {
-        let target = window.location.hash;
-
-        // Hide any other active sections and remove active state from all list group items
-        $('.collapse.show').removeClass('show');
-        $('.list-group-item-action.active').removeClass('active');
-
-        // Show the target section and highlight the corresponding list group item
-        $(target).addClass('show');
-        $('a[href="' + target + '"]').addClass('active');
-
-    } else {
-        // Default to "Profile Overview" as the active section if no hash is present
-        $('#overview').addClass('show');
-        $('a[href="#overview"]').addClass('active'); // Changed to #overview, assuming this was the intended behavior.
-    }
-});
-
+/**
+ * Initializes an event listener for the click event on the elements with the class "list-group-item-action"
+ * inside the element with the id "accountOptions". When a non-disabled element is clicked, it adds the "active"
+ * and "disabled" classes to the clicked element and removes those classes from all other elements with the same class.
+ * @returns None
+ */
 $(document).ready(function () {
     $('#accountOptions').on('click', '.list-group-item-action:not(.disabled)', function () {
         // Check if clicked item is already active
@@ -131,7 +121,10 @@ $(document).ready(function () {
     });
 });
 
-// Navigate from navbar to account.php#wishlist, where user is taken to the wishlist
+/**
+ * Navigates the user to the wishlist page and scrolls to the wishlist section.
+ * @returns None
+ */
 function navigateToWishlist() {
     window.location.href = 'account.php#accountwishlist';
     window.onload = function () {
@@ -139,6 +132,12 @@ function navigateToWishlist() {
     }
 }
 
+/**
+ * Navigates the user to the orders section of the account page.
+ * It sets the window location to 'account.php#accountorders' and scrolls to the orders section
+ * once the page has finished loading.
+ * @returns None
+ */
 function navigateToOrders() {
     window.location.href = 'account.php#accountorders';
     window.onload = function () {
@@ -146,7 +145,14 @@ function navigateToOrders() {
     }
 }
 
-// this code is used to check whether to show or hide content depending on the .hash location
+/**
+ * Executes the code inside the function when the document is ready.
+ * If the window location has a hash, it finds the element with the matching hash and adds the 'show' class to it.
+ * It also adds the 'active' class to the corresponding anchor element.
+ * If there is no hash in the window location, it adds the 'show' class to the element with the id 'overview'.
+ * It also adds the 'active' class to the anchor element with the href value '#overview'.
+ * @returns None
+ */
 $(document).ready(function () {
     // If there's a hash in the URL
     if (window.location.hash) {
@@ -167,6 +173,19 @@ $(document).ready(function () {
     }
 });
 
+/**
+ * Sets the values of the modal address fields with the provided data.
+ * @param {string} id - The ID of the address.
+ * @param {string} name - The first name of the address owner.
+ * @param {string} surname - The last name of the address owner.
+ * @param {string} street - The street address.
+ * @param {string} city - The city name.
+ * @param {string} zipcode - The postal code.
+ * @param {string} region - The region or state.
+ * @param {boolean} defaultAddress - Indicates if the address is the default address.
+ * @param {number} numRows - The number of rows in the address table.
+ * @returns None
+ */
 function setModalAddressFields(id, name, surname, street, city, zipcode, region, defaultAddress, numRows) {
     $("#addressID").val(id);
     $("#addressfirstname").val(name);
@@ -179,6 +198,10 @@ function setModalAddressFields(id, name, surname, street, city, zipcode, region,
     if(numRows == 1) $("#default-address-input").prop( "disabled", true );
 }
 
+/**
+ * Clears the input fields in a modal for entering address information.
+ * @returns None
+ */
 function clearModalAddressFields() {
     $("#addressID").val("");
     $("#addressfirstname").val("");
@@ -191,6 +214,11 @@ function clearModalAddressFields() {
     //$("#default-address-input").prop("disabled", false);
 }
 
+/**
+ * Sets the value of the "addToCart" input field to "true" and submits the form to add the product card to the cart.
+ * @param {string} guid - The unique identifier of the product card.
+ * @returns None
+ */
 function setValToAddToCart(guid) {
     $("#setAddToCart" + guid).val("true");
     $("#addProductCardToCartForm" + guid).submit();

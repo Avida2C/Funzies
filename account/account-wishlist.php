@@ -1,5 +1,11 @@
 <?php
-// Check if the form has been submitted via POST.
+
+/**
+ * Handles the POST request for moving items to the cart or removing items from the wishlist.
+ *
+ * @param array $_SERVER
+ * @return void
+ */
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     // Check if the 'Add to Cart' button is clicked and a product ID is provided.
     if(isset($_POST['movetocart']) && isset($_POST['prodID'])) {
@@ -56,7 +62,15 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 $wishlistItems = GetWishlistByUser($con, $user["ID"]);
 $wishlistProducts = [];
 
-// If there are items, get the product details for each.
+
+/**
+ * If the wishlistItems array is not empty, iterate over each item and retrieve the corresponding product using the GetProductByID function.
+ * Add the retrieved product to the wishlistProducts array.
+ *
+ * @param array $wishlistItems
+ * @param mysqli $con
+ * @return array
+ */
 if (!empty($wishlistItems)) {
     foreach ($wishlistItems as $wishlistProduct) {
         $prod = GetProductByID($con, $wishlistProduct["product"]);

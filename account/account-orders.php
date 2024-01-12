@@ -1,7 +1,14 @@
 <?php
 $user = $_SESSION["USER"];
 
-// Check if POST request is made to cancel an order
+/**
+ * Checks if the request method is POST and cancels an order if the cancelOrderID parameter is set.
+ *
+ * @param array $_SERVER
+ * @param array $_POST
+ * @param object $con
+ * @return void
+ */
 if($_SERVER['REQUEST_METHOD'] == "POST") {
     if(isset($_POST["cancelOrderID"])) {
         // Set order status to canceled (3)

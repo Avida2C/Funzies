@@ -6,7 +6,12 @@ require 'dbfunctions.php';
 $passwordUpdated = false;
 $error = false;
 
-// Check if the request is a POST request and the 'resetPassword' button was pressed.
+/**
+ * Handles the reset password functionality when a POST request is made and the 'resetPassword' parameter is set.
+ *
+ * @param array $_POST
+ * @return void
+ */
 if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['resetPassword'])) {
     // Sanitize the user's email input.
     $userEmail = htmlspecialchars($_POST['email']);
