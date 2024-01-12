@@ -8,7 +8,7 @@ $isValid = true;
 if($_SERVER['REQUEST_METHOD'] == "POST") {
     // Sanitize and validate the name field.
     $name = htmlspecialchars(addslashes($_POST['name']));
-    if(preg_match($pattern['name'], $name)!= 1) {
+    if(preg_match($pattern['fullname'], $name)!= 1) {
         $isValid = false;
     }
     // Sanitize and validate the email field.
@@ -52,7 +52,7 @@ require_once 'include/navbar.php';
             <form id="ContactMeform" method="POST">
                 <h3>Get in Touch</h3>
                 <label for="name">Full Name:</label>
-                <input class="w-100 mb-3 p-1" id="contactName" type="text" name="name" onkeyup="validate(this, patterns.name)" required>
+                <input class="w-100 mb-3 p-1" id="contactName" type="text" name="name" onkeyup="validate(this, patterns.fullname)" required>
 
 
                 <label for="email">Email:</label>

@@ -91,38 +91,58 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 // If the user is not logged in, check if they already exist and either create a new user or set an error message.
                 $user = [];
                 $user['Name'] = htmlspecialchars(addslashes($_POST['userfirstname']));
+                if(preg_match($pattern['name'], $user['Name'])!= 1) {
+                    $isValid = false;
+                }
                 $user['Surname'] = htmlspecialchars(addslashes($_POST['userlastname']));
+                if(preg_match($pattern['name'], $user['Surname'])!= 1) {
+                    $isValid = false;
+                }
                 $user['Email'] = htmlspecialchars(addslashes($_POST['email']));
+                if(preg_match($pattern['name'], $user['Email'])!= 1) {
+                    $isValid = false;
+                }
+
+                $user['Password'] = htmlspecialchars(addslashes($_POST['password']));
+                if(preg_match($pattern['name'], $user['Password'])!= 1) {
+                    $isValid = false;
+                }
                 $user['Password'] = sha1($_POST['password']);
+
                 $user['ContactNumber'] = htmlspecialchars(addslashes($_POST['userphone']));
-                if(!CheckUserExists($con, $user['Email'])) {
-                    $user['ID'] = createUser($con, $user);
-                    if($user['ID'] > 0) {
-                        $userCreated = true;
-                        $selectedAddress = [];
-                        $selectedAddress["Name"] = htmlspecialchars(addslashes($_POST["firstname"]));
-                        $selectedAddress["Surname"] = htmlspecialchars(addslashes($_POST["lastname"])); 
-                        $selectedAddress["Street"] = htmlspecialchars(addslashes($_POST["address"])); 
-                        $selectedAddress["City"] = htmlspecialchars(addslashes($_POST["city"])); 
-                        $selectedAddress["ZipCode"] = htmlspecialchars(addslashes($_POST["zipcode"])); 
-                        $selectedAddress["Region"] = $_POST["region"]; 
-                        $selectedAddress["User"] = $user["ID"];
-                        $selectedAddress["Default"] = $addresses->num_rows == 0 ? true : false;
-                        $selectedAddress["Mobile"] = htmlspecialchars(addslashes($_POST["addrphone"])); 
-                        $selectedAddress["ID"] = createAddress($con, $user["ID"], $selectedAddress);
-                        $result = createOrder($con, $user, $selectedAddress, $cartItems);
-                        if($result) {
-                            $_SESSION["ORDER_SUMMARY"]["ITEMS"] = $cartItems;
-                            $_SESSION["ORDER_SUMMARY"]["ADDRESS"] = $selectedAddress;
-                            $_SESSION["CART_ITEMS"] = [];
-                            echo '<script type="text/javascript"> window.location.href="orderconfirmed.php" </script>';
+                if(preg_match($pattern['name'], $user['ContactNumber'])!= 1) {
+                    $isValid = false;
+                }
+                if($isValid) {
+                    if(!CheckUserExists($con, $user['Email'])) {
+                        $user['ID'] = createUser($con, $user);
+                        if($user['ID'] > 0) {
+                            $userCreated = true;
+                            $selectedAddress = [];
+                            $selectedAddress["Name"] = htmlspecialchars(addslashes($_POST["firstname"]));
+                            $selectedAddress["Surname"] = htmlspecialchars(addslashes($_POST["lastname"])); 
+                            $selectedAddress["Street"] = htmlspecialchars(addslashes($_POST["address"])); 
+                            $selectedAddress["City"] = htmlspecialchars(addslashes($_POST["city"])); 
+                            $selectedAddress["ZipCode"] = htmlspecialchars(addslashes($_POST["zipcode"])); 
+                            $selectedAddress["Region"] = $_POST["region"]; 
+                            $selectedAddress["User"] = $user["ID"];
+                            $selectedAddress["Default"] = $addresses->num_rows == 0 ? true : false;
+                            $selectedAddress["Mobile"] = htmlspecialchars(addslashes($_POST["addrphone"])); 
+                            $selectedAddress["ID"] = createAddress($con, $user["ID"], $selectedAddress);
+                            $result = createOrder($con, $user, $selectedAddress, $cartItems);
+                            if($result) {
+                                $_SESSION["ORDER_SUMMARY"]["ITEMS"] = $cartItems;
+                                $_SESSION["ORDER_SUMMARY"]["ADDRESS"] = $selectedAddress;
+                                $_SESSION["CART_ITEMS"] = [];
+                                echo '<script type="text/javascript"> window.location.href="orderconfirmed.php" </script>';
+                            }
                         }
                     }
-                }
-                else{
-                    // If the user already exists, set userExists to true and user to null.
-                    $userExists = true;
-                    $user = null;
+                    else{
+                        // If the user already exists, set userExists to true and user to null.
+                        $userExists = true;
+                        $user = null;
+                    }
                 }
             }
         }
@@ -199,21 +219,44 @@ require_once 'include/navbar.php';
                 <?php else : ?>
                 <!-- Display empty input fields for guest users -->
                 <label for="firstname-input">First Name:<span class="text-danger">*</span></label>
-                <input class="w-100 p-1 mb-3" type="text" id="user-firstname-input" name="userfirstname" required>
+                <input class="w-100 p-1 mb-3" type="text" id="user-firstname-input" name="userfirstname"
+                    onkeyup="validate(this, patterns.name)" required>
 
                 <label for="lastname-input">Last Name:<span class="text-danger">*</span></label>
-                <input class="w-100 p-1 mb-3" type="text" id="user-lastname-input" name="userlastname" required>
+                <input class="w-100 p-1 mb-3" type="text" id="user-lastname-input" name="userlastname"
+                    onkeyup="validate(this, patterns.surname)" required>
 
                 <label for="phone-input">Mobile Number:<span class="text-danger">*</span></label>
-                <input class="w-100 p-1 mb-3" type="tel" id="user-phone-input" name="userphone" required
-                    autocomplete="tel">
+                <input class="w-100 p-1 mb-3" type="tel" id="user-phone-input" name="userphone"
+                    onkeyup="validate(this, patterns.contactnumber)" required autocomplete="tel">
+                <div class="contact-number-requirements">
+                    <p><strong>Must be 8 digits only.</strong></p>
+                </div>
 
                 <label for="email-input">E-Mail:<span class="text-danger">*</span></label>
-                <input class="w-100 p-1 mb-3" type="tel" id="email-input" name="email" required autocomplete="email">
+                <input class="w-100 p-1 mb-3" type="tel" id="email-input" name="email" required
+                    onkeyup="validate(this, patterns.email)" autocomplete="email">
+                <div class="email-requirements">
+                    <p><strong>Email must meet the following criteria:</strong></p>
+                    <ul>
+                        <li>Must contain the "@" symbol.</li>
+                        <li>Must have a valid domain name (e.g., example.com).</li>
+                    </ul>
+                </div>
 
-                <label for="email-input">Password:<span class="text-danger">*</span></label>
-                <input class="w-100 p-1 mb-3" type="password" id="password-input" name="password" required
-                    autocomplete="email">
+                <label for="password-input">Password:<span class="text-danger">*</span></label>
+                <input class="w-100 p-1 mb-3" type="password" id="password-input" name="password"
+                    onkeyup="validate(this, patterns.password)" required>
+                <div class="password-requirements">
+                    <p><strong>Password must contain at least:</strong></p>
+                    <ul>
+                        <li>One lowercase letter</li>
+                        <li>One uppercase letter</li>
+                        <li>One digit</li>
+                        <li>One special character from [@$!%*?&]</li>
+                    </ul>
+                    <p><strong>Must have a minimum length of 8 characters.</strong></p>
+                </div>
                 <?php endif; ?>
 
                 <h3 class="product-card-font fs-4 my-3">Delivery Details</h3>
@@ -259,6 +302,7 @@ require_once 'include/navbar.php';
                 <label for="firstname-input">First Name:<span class="text-danger">*</span></label>
                 <input class="w-100 p-1 mb-3" type="text" id="firstname-input" name="firstname" required>
 
+
                 <label for="lastname-input">Last Name:<span class="text-danger">*</span></label>
                 <input class="w-100 p-1 mb-3" type="text" id="lastname-input" name="lastname" required>
 
@@ -280,12 +324,15 @@ require_once 'include/navbar.php';
 
                 <label for="phone-input">Mobile Number:<span class="text-danger">*</span></label>
                 <input class="w-100 p-1 mb-3" type="tel" id="user-phone-input" name="addrphone" required
-                    autocomplete="tel">
+                    autocomplete="tel" onkeyup="validate(this, patterns.contactnumber)">
+                <div class="contact-number-requirements">
+                    <p><strong>Must Be 8 digits only.</strong></p>
+                </div>
                 <?php endif; ?>
                 <!-- Check if user Exists -->
-                <?php if($userExists) : ?>
+                <?php if($userExists): ?>
                 <!-- If User exists: Display Error -->
-                <h3>A user with this email already exists, nahseb.</h3>
+                <h3>A user with this email already exists.</h3>
                 <?php endif; ?>
                 <button type="submit" class="btn w-100 btn-danger rounded-0">
                     Complete Order
@@ -376,7 +423,6 @@ require_once 'include/navbar.php';
                 <h3 class="product-card-font fs-5">Payment on Delivery</h3>
                 <p>Cash, Revolut or BOV Pay Only</p>
             </div>
-
         </div>
     </div>
 </div>

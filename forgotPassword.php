@@ -57,10 +57,10 @@ require_once 'include/navbar.php';
                 </div>
             </div>
             <!-- Send Verification Code Form -->
-            <form method="post">
+            <form id="forgotPassword" method="post">
                 <label for="email">Email Address<span class="text-danger">*</span>:</label>
-                <input type="email" class="w-100 p-1" name="email" placeholder="Enter email" required
-                    autocomplete="email">
+                <input id="password-reset" type="email" class="w-100 p-1" name="email" placeholder="Enter email" required
+                    autocomplete="email" onkeyup="validate(this, patterns.email)">
                 <button name="resetPassword" type="submit" class="btn btn-danger rounded-0 w-100 mt-3">Reset Password</button>
                 <!-- Success message if the password was reset -->
                 <?php if ($passwordUpdated) : ?>

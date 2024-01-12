@@ -2,6 +2,7 @@ const inputs = document.querySelectorAll('input');
 
 // Define regex patterns for different input types.
 const patterns = {
+    fullname: /^[A-Za-z\s]+$/,
     name: /^[a-zA-Z]+$/,
     surname: /^[a-zA-Z]+$/,
     email: /^([a-z\d\.-]+)@([a-z\d-]+)\.([a-z]{2,4})(\.[a-z]{2,4})?$/, 
@@ -30,11 +31,9 @@ function validate(field, regex) {
     }
 }
 
-
-
-//JQuery onSubmit
+// Contact me form - contact.php
 $('#ContactMeform').on('submit', function () {
-    var contactNameValid = validate($('#contactName')[0], patterns.name);
+    var contactNameValid = validate($('#contactName')[0], patterns.fullname);
     var contactEmailValid = validate($('#contactEmail')[0], patterns.email);
     var contactSubjectValid = validate($('#contactSubject')[0], patterns.subject);
     // If all fields are valid, allow the form to be submitted.
@@ -45,6 +44,7 @@ $('#ContactMeform').on('submit', function () {
     return false;
 });
 
+// SignUp Form - createAccount.php
 $('#SignUpform').on('submit', function () {
     var SignUpNameValid = validate($('#name-input')[0], patterns.name);
     var SignUpSurnameValid = validate($('#surname-input')[0], patterns.surname);
@@ -59,6 +59,33 @@ $('#SignUpform').on('submit', function () {
     return false;
 });
 
+// Customers Form - checkout.php
+$('#customerDetailsForm').on('submit', function () {
+    var customerNameValid = validate($('#user-firstname-input')[0], patterns.name);
+    var customerSurnameValid = validate($('#user-lastname-input')[0], patterns.surname);
+    var customerEmailValid = validate($('#email-input')[0], patterns.email);
+    var customerPasswordValid = validate($('#password-input')[0], patterns.password);
+    var customerContactNumberValid = validate($('#user-phone-input')[0], patterns.contactnumber);
+    // If all fields are valid, allow the form to be submitted.
+    if (customerNameValid && customerSurnameValid && customerEmailValid && customerPasswordValid && customerContactNumberValid) {
+        return true;
+    }
+    // If any field is invalid, prevent form submission.
+    return false;
+});
+
+// forgot password input - forgotPassword.php
+$('#forgotPassword').on('submit', function () {
+    var forgotEmailValid = validate($('#password-reset')[0], patterns.email);
+    // If all fields are valid, allow the form to be submitted.
+    if (forgotEmailValid) {
+        return true;
+    }
+    // If any field is invalid, prevent form submission.
+    return false;
+});
+
+// Reset password - Account-Details section
 $('#accountPassword').on('submit', function () {
     var accountnewPasswordValid = validate($('#newPassword')[0], patterns.password);
     var accountconfirmPasswordValid = validate($('#confirmPassword')[0], patterns.password);
@@ -70,6 +97,7 @@ $('#accountPassword').on('submit', function () {
     return false;
 });
 
+// Reset Email - Account-Details section
 $('#accountEmail').on('submit', function () {
     var accountEmailValid = validate($('#email-input')[0], patterns.email);
     // If all fields are valid, allow the form to be submitted.
@@ -80,6 +108,7 @@ $('#accountEmail').on('submit', function () {
     return false;
 });
 
+// Change User Details - Account-Details section
 $('#accountDetails').on('submit', function () {
     var AccountNameValid = validate($('#firstname')[0], patterns.name);
     var AccountSurnameValid = validate($('#lastname')[0], patterns.surname);

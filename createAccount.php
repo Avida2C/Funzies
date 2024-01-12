@@ -45,10 +45,10 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
         }
 
         $user['Password'] = htmlspecialchars(addslashes($_POST['createpassword']));
-        $user['Password'] = sha1($_POST['createpassword']);
         if(preg_match($pattern['password'], $user['Password'])!= 1) {
             $isValid = false;
         }
+        $user['Password'] = sha1($_POST['createpassword']);
 
         $user['ContactNumber'] = htmlspecialchars(addslashes($_POST['contactnumber']));
         if(preg_match($pattern['contactnumber'], $user['ContactNumber'])!= 1) {
@@ -70,7 +70,6 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
                 $userExists = true;
             }
         }
-
     }
 }
 
@@ -82,7 +81,7 @@ require_once 'include/header.php';  // Includes the header part of the HTML
 require_once 'include/navbar.php';
 ?>
 
-<div class="container py-4 col-sm-12 col-md-12 col-lg-8 col-xl-8">
+<div class="container py-4 col-sm-12 col-md-12 col-lg-10 col-xl-10">
     <div class="row d-flex justify-content-center">
         <!-- Account Creation and Login Section -->
         <div id="createAccLeft" class="col-sm-12 col-md-12 col-lg-5 col-xl-5">
@@ -114,7 +113,7 @@ require_once 'include/navbar.php';
                             id="contactnumber-input" name="contactnumber" placeholder="Contact Number" required
                             autocomplete="contactnumber">
                         <div class="contact-number-requirements">
-                            <p><strong>Must consist of 1 to 8 digits only.</strong></p>
+                            <p><strong>Must Be 8 digits only.</strong></p>
                         </div>
                         <label for="email-input">Email<span class="text-danger">*</span></label>
                         <input class="w-100 p-1 mb-2" onkeyup="validate(this, patterns.email)" type="email"
@@ -195,7 +194,7 @@ require_once 'include/navbar.php';
         </div>
 
         <!-- Right Section with Information and Toggle Buttons -->
-        <div id="createAccRight" class="col-sm-12 col-md-12 col-lg-4 col-xl-4 p-4 align-self-center"
+        <div id="createAccRight" class="col-sm-12 col-md-12 col-lg-4 col-xl-4 p-4"
             style="height: 400px;">
             <!-- Additional Information and Toggle Buttons for Sign Up and Log In -->
             <div class="container-fluid">
