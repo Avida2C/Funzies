@@ -1050,12 +1050,11 @@ function createAddress($con, $userID, $address)
 {
     $name = $address["Name"];
     $surname = $address["Surname"];
-    $street = $address["Street"];
+    $street = $address["Address"];
     $city = $address["City"];
     $zipCode = $address["ZipCode"];
     $region = $address["Region"];
     $default = $address["Default"] == 'true' ? 1 : 0;
-    $mobile = $address['Mobile'];
 
     if($default) {
         $sql = "UPDATE address SET Def = '0' WHERE User = '$userID';";
@@ -1070,7 +1069,7 @@ function createAddress($con, $userID, $address)
         mysqli_stmt_close($stmt);
     }
 
-    $sql = "INSERT INTO address (Street, City, ZipCode, Region, User, Def, Deleted, Name, Surname, Mobile) VALUES ('$street', '$city', '$zipCode', '$region', '$userID', '$default', '0', '$name', '$surname', '$mobile');";
+    $sql = "INSERT INTO address (Street, City, ZipCode, Region, User, Def, Deleted, Name, Surname) VALUES ('$street', '$city', '$zipCode', '$region', '$userID', '$default', '0', '$name', '$surname');";
     
     $stmt = mysqli_stmt_init($con);
     if(!mysqli_stmt_prepare($stmt, $sql)) {
